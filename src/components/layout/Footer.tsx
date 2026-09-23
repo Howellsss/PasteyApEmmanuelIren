@@ -29,7 +29,7 @@ const SOCIALS = [
 
 export function Footer() {
   return (
-    <footer className="bg-ink text-cream">
+    <footer className="bg-walnut text-cream">
       <div className="container-wide py-16 lg:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
           {/* Brand column */}

@@ -417,7 +417,7 @@ export function HomePage() {
 
       <CreativeAccordion />
 
-      <section className="py-20 lg:py-32 bg-cocoa text-cream overflow-hidden">
+      <section className="py-20 lg:py-32 bg-walnut text-cream overflow-hidden">
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-5 lg:order-2">
