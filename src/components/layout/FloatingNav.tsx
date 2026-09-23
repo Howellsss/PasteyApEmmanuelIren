@@ -46,9 +46,9 @@ export function FloatingNav() {
         <div
           className={cn(
             'flex min-h-[72px] items-center justify-between rounded-pill px-3 transition-all duration-500 ease-out-quart',
-            scrolled
-              ? 'bg-charcoal/90 backdrop-blur-xl shadow-lg shadow-charcoal/10 border border-white/10'
-              : 'bg-charcoal/40 backdrop-blur-md border border-white/10'
+            // Glass: see-through fill with a light blur, and a visible edge so the container still reads.
+            'backdrop-blur-[6px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]',
+            scrolled ? 'bg-charcoal/15' : 'bg-white/5'
           )}
         >
           <ul className="hidden lg:flex flex-1 items-center justify-evenly gap-1 px-4">
