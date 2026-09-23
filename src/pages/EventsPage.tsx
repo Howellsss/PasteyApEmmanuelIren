@@ -94,7 +94,7 @@ export function EventsPage() {
               </div>
               <div className="lg:col-span-5 py-8 lg:py-12 lg:pl-14 flex flex-col justify-center">
                 <p className="mb-5 text-eyebrow uppercase tracking-[0.16em] text-accent">Next gathering</p>
-                <h2 className="font-sans font-extrabold uppercase leading-[1.05] sm:leading-[1.05] lg:leading-[1.05] tracking-[-0.02em] text-3xl lg:text-[2.5rem] text-cream mb-5 text-balance">
+                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-3xl lg:text-[2.5rem] text-cream mb-5 text-balance">
                   Triumph30 — Lagos
                 </h2>
                 <p className="text-ash leading-relaxed mb-8">
@@ -206,7 +206,7 @@ export function EventsPage() {
             <div className="lg:col-span-8">
               <Reveal>
                 <ChapterMarker tone="light" number="03" label="Speaking Engagements" />
-                <h2 className="font-sans font-extrabold uppercase leading-[1.05] sm:leading-[1.05] lg:leading-[1.05] tracking-[-0.02em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-ink mb-6">
+                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-ink mb-6">
                   Want to invite Emmanuel to minister at your gathering?
                 </h2>
                 <p className="text-lg text-umber leading-relaxed max-w-xl text-pretty">

@@ -41,7 +41,7 @@ export function DisplayHeading({
       <ChapterMarker label={eyebrow} number={number} tone={tone} centered={centered} />
       <h2
         className={cn(
-          'font-sans font-extrabold uppercase leading-[1.05] sm:leading-[1.05] lg:leading-[1.05] tracking-[-0.02em] text-balance',
+          'font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance',
           SIZES[size],
           tone === 'light' ? 'text-ink' : 'text-cream',
           centered ? 'mx-auto max-w-4xl' : 'max-w-3xl'

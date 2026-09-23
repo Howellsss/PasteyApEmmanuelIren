@@ -147,7 +147,7 @@ export function FloatingNav() {
                   onClick={() => setMenuOpen(false)}
                   className={({ isActive }) =>
                     cn(
-                      'flex items-baseline gap-4 border-b border-line py-4 font-sans text-2xl font-extrabold uppercase tracking-[-0.02em] transition-colors duration-300 focus:outline-none focus-visible:text-accent',
+                      'flex items-baseline gap-4 border-b border-line py-4 font-sans text-2xl font-extrabold tracking-[-0.03em] transition-colors duration-300 focus:outline-none focus-visible:text-accent',
                       isActive ? 'text-accent' : 'text-cream hover:text-accent'
                     )
                   }

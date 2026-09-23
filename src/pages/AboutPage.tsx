@@ -237,7 +237,7 @@ export function AboutPage() {
             <div className="lg:col-span-7">
               <Reveal>
                 <ChapterMarker number="01" label="The Journey" />
-                <h2 className="font-sans font-extrabold uppercase leading-[1.05] sm:leading-[1.05] lg:leading-[1.05] tracking-[-0.02em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream">
+                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream">
                   From a campus fellowship to a global church.
                 </h2>
               </Reveal>
@@ -312,7 +312,7 @@ export function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-8">
               <Reveal>
-                <h2 className="font-sans font-extrabold uppercase leading-[1.05] sm:leading-[1.05] lg:leading-[1.05] tracking-[-0.02em] text-balance text-3xl sm:text-4xl lg:text-[3.25rem] text-cream">
+                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[3.25rem] text-cream">
                   To teach the word faithfully, to create with purpose, and to build
                   people who will carry the message forward.
                 </h2>
@@ -406,7 +406,7 @@ export function AboutPage() {
             <div className="lg:col-span-7">
               <Reveal>
                 <ChapterMarker number="05" label="Beyond the Pulpit" />
-                <h2 className="font-sans font-extrabold uppercase leading-[1.05] sm:leading-[1.05] lg:leading-[1.05] tracking-[-0.02em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream">
+                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream">
                   The message travels through pages, melodies, and stories.
                 </h2>
               </Reveal>
@@ -490,7 +490,7 @@ export function AboutPage() {
             <div className="lg:col-span-6 lg:col-start-7">
               <Reveal delay={100}>
                 <ChapterMarker tone="light" number="06" label="Family" />
-                <h2 className="font-sans font-extrabold uppercase leading-[1.05] sm:leading-[1.05] lg:leading-[1.05] tracking-[-0.02em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-ink mb-6">
+                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-ink mb-6">
                   A life grounded in home.
                 </h2>
                 <div className="space-y-4 text-umber leading-relaxed">
@@ -517,7 +517,7 @@ export function AboutPage() {
             <div className="lg:col-span-7">
               <Reveal>
                 <ChapterMarker number="07" label="Where the Ministry Is Today" />
-                <h2 className="font-sans font-extrabold uppercase leading-[1.05] sm:leading-[1.05] lg:leading-[1.05] tracking-[-0.02em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream">
+                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream">
                   One calling, many expressions — all still growing.
                 </h2>
               </Reveal>

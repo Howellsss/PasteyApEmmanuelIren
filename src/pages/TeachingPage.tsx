@@ -485,7 +485,7 @@ export function TeachingPage() {
             <div className="lg:col-span-6 lg:col-start-7">
               <Reveal delay={100}>
                 <ChapterMarker number="01" label="The Podcast" />
-                <h2 className="font-sans font-extrabold uppercase leading-[1.05] sm:leading-[1.05] lg:leading-[1.05] tracking-[-0.02em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
+                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   Endless Life with Emmanuel Iren
                 </h2>
                 <p className="text-lg text-white/65 leading-relaxed mb-8 text-pretty">
@@ -557,7 +557,7 @@ export function TeachingPage() {
             <div className="lg:col-span-6 lg:col-start-7">
               <Reveal delay={100}>
                 <ChapterMarker tone="light" number="02" label="Written Teaching" />
-                <h2 className="font-sans font-extrabold uppercase leading-[1.05] sm:leading-[1.05] lg:leading-[1.05] tracking-[-0.02em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-ink mb-6">
+                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-ink mb-6">
                   The word also travels through pages.
                 </h2>
                 <p className="text-lg text-umber leading-relaxed mb-8 text-pretty">

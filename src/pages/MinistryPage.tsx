@@ -90,7 +90,7 @@ export function MinistryPage() {
               </div>
               <div className="lg:col-span-4 p-8 sm:p-10 lg:p-14 flex flex-col justify-center">
                 <ChapterMarker number="01" label="The Church" />
-                <h2 className="font-sans font-extrabold uppercase leading-[1.05] sm:leading-[1.05] lg:leading-[1.05] tracking-[-0.02em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-5">
+                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-5">
                   Celebration Church International
                 </h2>
                 <p className="text-white/65 leading-relaxed mb-8">
@@ -126,7 +126,7 @@ export function MinistryPage() {
             <div className="lg:col-span-5 lg:col-start-8">
               <Reveal delay={100}>
                 <ChapterMarker number="02" label="Bible Course" />
-                <h2 className="font-sans font-extrabold uppercase leading-[1.05] sm:leading-[1.05] lg:leading-[1.05] tracking-[-0.02em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
+                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   Manifest
                 </h2>
                 <p className="text-lg text-ash leading-relaxed mb-8 text-pretty">
@@ -159,7 +159,7 @@ export function MinistryPage() {
             <div className="lg:col-span-4 lg:col-start-9">
               <Reveal delay={100}>
                 <ChapterMarker number="03" label="Devotional" />
-                <h2 className="font-sans font-extrabold uppercase leading-[1.05] sm:leading-[1.05] lg:leading-[1.05] tracking-[-0.02em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
+                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   Triumph30
                 </h2>
                 <p className="text-lg text-ash leading-relaxed mb-6 text-pretty">
@@ -188,7 +188,7 @@ export function MinistryPage() {
             <div className="lg:col-span-6">
               <Reveal>
                 <ChapterMarker number="04" label="Music &amp; Creative" />
-                <h2 className="font-sans font-extrabold uppercase leading-[1.05] sm:leading-[1.05] lg:leading-[1.05] tracking-[-0.02em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
+                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   Outburst
                 </h2>
                 <p className="text-lg text-white/65 leading-relaxed mb-8 text-pretty">
