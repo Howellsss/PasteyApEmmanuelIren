@@ -193,9 +193,13 @@ export function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-transparent to-transparent" />
         <div className="relative w-full px-6 sm:px-8 lg:px-16 pb-16 lg:pb-24 pt-32 flex justify-center text-center">
           <Reveal className="w-full max-w-4xl flex flex-col items-center">
-            <Eyebrow tone="rust" centered className="mb-8 text-sm tracking-[0.2em] sm:text-base">
-              Apostle · Teacher · Author
-            </Eyebrow>
+            <div className="mb-8 flex items-center justify-center gap-4">
+              <span aria-hidden="true" className="h-0.5 w-10 bg-rust sm:w-14" />
+              <span className="text-eyebrow font-sans uppercase tracking-widest text-cream">
+                Apostle · Teacher · Author
+              </span>
+              <span aria-hidden="true" className="h-0.5 w-10 bg-rust sm:w-14" />
+            </div>
             <h1 className="font-sans text-5xl sm:text-6xl lg:text-8xl font-extrabold leading-[0.98] text-cream text-balance mb-8 tracking-[-0.04em] min-h-[0.98em]">
               {typedHeroName}
             </h1>
