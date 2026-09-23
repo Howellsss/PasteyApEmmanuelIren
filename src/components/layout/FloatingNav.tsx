@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { ArrowRight, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
 const NAV_ITEMS = [
@@ -129,7 +129,7 @@ export function FloatingNav() {
           )}
         >
           <div className="flex items-center justify-between px-6 py-5 border-b border-line">
-            <span className="font-display text-lg text-cream">Menu</span>
+            <span className="text-eyebrow uppercase tracking-[0.2em] text-ash">Menu</span>
             <button
               onClick={() => setMenuOpen(false)}
               className="flex items-center justify-center w-10 h-10 text-cream rounded-pill hover:bg-surface transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
@@ -138,7 +138,7 @@ export function FloatingNav() {
               <X className="w-5 h-5" />
             </button>
           </div>
-          <ul className="flex flex-col py-4 overflow-y-auto">
+          <ul className="flex flex-col px-6 py-4 overflow-y-auto">
             {[...NAV_ITEMS, { label: 'Contact', path: '/contact' }].map((item, index) => (
               <li key={item.path}>
                 <NavLink
@@ -147,12 +147,12 @@ export function FloatingNav() {
                   onClick={() => setMenuOpen(false)}
                   className={({ isActive }) =>
                     cn(
-                      'flex items-baseline gap-4 px-6 py-3.5 text-lg font-display transition-colors duration-300',
+                      'flex items-baseline gap-4 border-b border-line py-4 font-sans text-2xl font-extrabold uppercase tracking-[-0.02em] transition-colors duration-300 focus:outline-none focus-visible:text-accent',
                       isActive ? 'text-accent' : 'text-cream hover:text-accent'
                     )
                   }
                 >
-                  <span className="text-meta font-sans text-ash tabular-nums">
+                  <span className="text-[0.8125rem] font-semibold tabular-nums tracking-normal text-accent">
                     {String(index + 1).padStart(2, '0')}
                   </span>
                   {item.label}
@@ -160,6 +160,15 @@ export function FloatingNav() {
               </li>
             ))}
           </ul>
+          <div className="mt-auto border-t border-line p-6">
+            <NavLink
+              to="/invite"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center justify-center gap-2.5 rounded-button bg-cream px-6 py-4 text-base font-semibold text-ink transition-colors duration-300 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              Invite Emmanuel <ArrowRight className="h-4 w-4 text-accent" />
+            </NavLink>
+          </div>
         </div>
       </div>
     </>

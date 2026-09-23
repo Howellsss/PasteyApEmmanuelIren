@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Reveal } from '@/components/ui/Reveal';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeader } from '@/components/ui/SectionHeader';
@@ -17,7 +18,7 @@ export function InvitePage() {
             <Eyebrow className="mb-6">
               Invite
             </Eyebrow>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.08] text-cream text-balance tracking-tight mb-6 max-w-3xl">
+            <h1 className="font-sans text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[0.98] text-cream text-balance tracking-[-0.04em] mb-6 max-w-4xl">
               Bring the word to your city, your church, your event.
             </h1>
             <p className="text-lg text-ash leading-relaxed max-w-xl text-pretty">
@@ -65,9 +66,11 @@ export function InvitePage() {
               <Button variant="primary" size="lg" withArrow>
                 Submit Enquiry
               </Button>
-              <Button variant="ghost" size="lg">
-                Cancel
-              </Button>
+              <Link to="/">
+                <Button variant="ghost" size="lg">
+                  Cancel
+                </Button>
+              </Link>
             </div>
           </Reveal>
         </div>

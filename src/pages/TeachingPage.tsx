@@ -5,9 +5,7 @@ import {
   Clock,
   Headphones,
   Search,
-  ArrowRight,
   ArrowUpRight,
-  BookOpen,
   Sparkles,
 } from 'lucide-react';
 import { cn } from '@/lib/cn';
@@ -15,14 +13,13 @@ import { Reveal } from '@/components/ui/Reveal';
 import { ChapterMarker } from '@/components/ui/ChapterMarker';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Button } from '@/components/ui/Button';
-import { TextLink } from '@/components/ui/TextLink';
 
-const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.png';
-const ABOUT_IMAGE = '/images/about/image.png';
-const CREATIVE_IMAGE = '/images/creative/e5.jpeg';
-const MINISTRY_IMAGE = '/images/ministry/e6.jpeg';
-const TEACHING_IMAGE_2 = '/images/teachings/image copy.png';
-const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.png';
+const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.webp';
+const ABOUT_IMAGE = '/images/about/image.webp';
+const CREATIVE_IMAGE = '/images/creative/e5.webp';
+const MINISTRY_IMAGE = '/images/ministry/e6.webp';
+const TEACHING_IMAGE_2 = '/images/teachings/image copy.webp';
+const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.webp';
 
 const PULPIT_1 = TEACHING_IMAGE_2;
 const PULPIT_2 = TEACHING_IMAGE_3;
@@ -343,12 +340,7 @@ export function TeachingPage() {
                   <span>{featured.duration}</span>
                 </div>
                 <div className="flex flex-wrap gap-4">
-                  <Button
-                    variant="secondary"
-                    size="md"
-                    withArrow
-                    className="border-white/20 text-cream hover:bg-surface hover:text-cream"
-                  >
+                  <Button variant="secondary" size="md" withArrow>
                     Watch
                   </Button>
                   <button className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-accent transition-colors duration-300">

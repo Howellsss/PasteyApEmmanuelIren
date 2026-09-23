@@ -1,31 +1,31 @@
+import { Link } from 'react-router-dom';
 import { ArrowUpRight, Mail, Instagram, Youtube, Twitter } from 'lucide-react';
 
 const FOOTER_LINKS = {
   Explore: [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Teach', href: '#teach' },
-    { label: 'Create', href: '#create' },
+    { label: 'Home', to: '/' },
+    { label: 'About', to: '/about' },
+    { label: 'Teaching', to: '/teaching' },
+    { label: 'Events', to: '/events' },
   ],
   Ministry: [
-    { label: 'Celebration Church', href: '#ministry' },
-    { label: 'Manifest', href: '#ministry' },
-    { label: 'Triumph30', href: '#ministry' },
-    { label: 'Outburst', href: '#ministry' },
+    { label: 'Celebration Church', to: '/ministry' },
+    { label: 'Manifest', to: '/ministry' },
+    { label: 'Triumph30', to: '/ministry' },
+    { label: 'Outburst', to: '/ministry' },
   ],
   Connect: [
-    { label: 'Events', href: '#events' },
-    { label: 'Invite Emmanuel', href: '#invite' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Invite Emmanuel', to: '/invite' },
+    { label: 'Contact', to: '/contact' },
   ],
 };
 
+// Add each profile URL to show its icon; entries without a URL stay hidden so no icon leads nowhere.
 const SOCIALS = [
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Youtube, href: '#', label: 'YouTube' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Mail, href: '#', label: 'Email' },
-];
+  { icon: Instagram, href: '', label: 'Instagram' },
+  { icon: Youtube, href: '', label: 'YouTube' },
+  { icon: Twitter, href: '', label: 'Twitter' },
+].filter((social) => social.href);
 
 export function Footer() {
   return (
@@ -49,12 +49,21 @@ export function Footer() {
                 <a
                   key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={social.label}
                   className="flex items-center justify-center w-10 h-10 rounded-pill border border-line text-ash hover:text-accent hover:border-accent transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 >
                   <social.icon className="w-4 h-4" />
                 </a>
               ))}
+              <Link
+                to="/contact"
+                aria-label="Contact"
+                className="flex items-center justify-center w-10 h-10 rounded-pill border border-line text-ash hover:text-accent hover:border-accent transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                <Mail className="w-4 h-4" />
+              </Link>
             </div>
           </div>
 
@@ -68,13 +77,13 @@ export function Footer() {
                 <ul className="space-y-3">
                   {links.map((link) => (
                     <li key={link.label}>
-                      <a
-                        href={link.href}
+                      <Link
+                        to={link.to}
                         className="group inline-flex items-center gap-1 text-sm text-cream hover:text-accent transition-colors duration-300"
                       >
                         {link.label}
                         <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

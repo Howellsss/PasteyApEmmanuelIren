@@ -22,7 +22,7 @@ export const TEACHING_SLIDES: TeachingSlide[] = [
     watchUrl: 'https://www.youtube.com/watch?v=iZAt3VZMJAI',
     bgPos: 'center 20%',
     bgSize: '120%',
-    imageUrl: '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.png',
+    imageUrl: '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.webp',
   },
   {
     series: 'The Word',
@@ -34,7 +34,7 @@ export const TEACHING_SLIDES: TeachingSlide[] = [
     watchUrl: 'https://www.youtube.com/live/qsTHhh7f8pQ?si=_By-t45yJZKm8pT8',
     bgPos: 'center 0%',
     bgSize: '125%',
-    imageUrl: '/images/teachings/image copy.png',
+    imageUrl: '/images/teachings/image copy.webp',
   },
   {
     series: 'The Word',
@@ -46,7 +46,7 @@ export const TEACHING_SLIDES: TeachingSlide[] = [
     watchUrl: 'https://youtu.be/53oy7e5CTKQ?si=C2TLwOUxAdeMJj6h',
     bgPos: 'center 0%',
     bgSize: 'cover',
-    imageUrl: '/images/teachings/image copy 2.png',
+    imageUrl: '/images/teachings/image copy 2.webp',
   },
   {
     series: 'The Word',
@@ -58,7 +58,7 @@ export const TEACHING_SLIDES: TeachingSlide[] = [
     watchUrl: 'https://youtu.be/WWDlFiYpBOY?si=HAXIzc4L86Mq0Q_P',
     bgPos: 'center 0%',
     bgSize: 'cover',
-    imageUrl: '/images/teachings/e2.jpeg',
+    imageUrl: '/images/teachings/e2.webp',
   },
   {
     series: 'The Word',
@@ -70,6 +70,6 @@ export const TEACHING_SLIDES: TeachingSlide[] = [
     watchUrl: 'https://www.youtube.com/watch?v=x71RhblDHdE',
     bgPos: 'center 0%',
     bgSize: 'cover',
-    imageUrl: '/images/teachings/image.png',
+    imageUrl: '/images/teachings/image.webp',
   },
 ];

@@ -1,31 +1,21 @@
 import { Link } from 'react-router-dom';
 import {
   ArrowUpRight,
-  ArrowRight,
   BookOpen,
-  Users,
   Calendar,
-  Music2,
-  PenLine,
-  Sparkles,
 } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 import { ChapterMarker } from '@/components/ui/ChapterMarker';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeader } from '@/components/ui/SectionHeader';
-import { TextLink } from '@/components/ui/TextLink';
-import { Button } from '@/components/ui/Button';
 
-const MINISTRY_IMAGE = '/images/ministry/e6.jpeg';
-const ABOUT_IMAGE = '/images/about/image.png';
-const CREATIVE_IMAGE = '/images/creative/e5.jpeg';
-const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.png';
 
-const IMG_CCI = 'IMAGE_REQUIRED — CCI';
-const IMG_MANIFEST = 'IMAGE_REQUIRED — Manifest';
-const IMG_TRIUMPH30 = 'IMAGE_REQUIRED — Triumph30';
-const IMG_OUTBURST = 'IMAGE_REQUIRED — Outburst';
-const IMG_EMMANUEL_MINISTERING = 'IMAGE_REQUIRED — Emmanuel ministering';
+// Portraits of Emmanuel Iren used for each expression until dedicated ministry photography is supplied.
+const IMG_CCI = '/images/hero/image copy 13.webp';
+const IMG_MANIFEST = '/images/hero/image copy 3.webp';
+const IMG_TRIUMPH30 = '/images/hero/image copy 10.webp';
+const IMG_OUTBURST = '/images/hero/image copy 12.webp';
+const IMG_EMMANUEL_MINISTERING = '/images/hero/image copy 11.webp';
 
 const ministryThemes = [
   {
@@ -96,11 +86,7 @@ export function MinistryPage() {
           <Reveal variant="scale">
             <article className="grid grid-cols-1 lg:grid-cols-12 rounded-soft overflow-hidden bg-ink-2 text-cream">
               <div className="relative lg:col-span-8 aspect-[16/10] lg:aspect-auto min-h-[24rem] overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center bg-surface">
-                  <span className="text-ash text-sm text-center px-6">
-                    {IMG_CCI}
-                  </span>
-                </div>
+                <img src={IMG_CCI} alt="Emmanuel Iren preaching on stage" loading="lazy" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: '60% 30%' }} />
               </div>
               <div className="lg:col-span-4 p-8 sm:p-10 lg:p-14 flex flex-col justify-center">
                 <ChapterMarker number="01" label="The Church" />
@@ -133,11 +119,7 @@ export function MinistryPage() {
             <div className="lg:col-span-6">
               <Reveal variant="scale">
                 <div className="relative aspect-[4/5] max-w-lg overflow-hidden rounded-soft bg-surface">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-ash text-sm text-center px-6">
-                      {IMG_MANIFEST}
-                    </span>
-                  </div>
+                  <img src={IMG_MANIFEST} alt="Emmanuel Iren at his desk" loading="lazy" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: '30% center' }} />
                 </div>
               </Reveal>
             </div>
@@ -153,7 +135,6 @@ export function MinistryPage() {
                   space for rigorous, accessible teaching that complements the local
                   church.
                 </p>
-                <TextLink>Learn more about Manifest</TextLink>
               </Reveal>
             </div>
           </div>
@@ -167,20 +148,12 @@ export function MinistryPage() {
             <div className="lg:col-span-7 relative">
               <Reveal variant="scale">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-soft bg-surface">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-ash text-sm text-center px-6">
-                      {IMG_TRIUMPH30}
-                    </span>
-                  </div>
+                  <img src={IMG_TRIUMPH30} alt="Emmanuel Iren in worship" loading="lazy" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: 'center 25%' }} />
                 </div>
               </Reveal>
               {/* Overlapping smaller image — offset on desktop */}
               <div className="hidden lg:block absolute -bottom-8 -right-8 w-40 h-52 rounded-soft overflow-hidden border-4 border-line shadow-lg shadow-black/30 bg-surface">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-ash text-xs text-center px-2">
-                    {IMG_EMMANUEL_MINISTERING}
-                  </span>
-                </div>
+                <img src={IMG_EMMANUEL_MINISTERING} alt="Emmanuel Iren ministering" loading="lazy" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: '40% center' }} />
               </div>
             </div>
             <div className="lg:col-span-4 lg:col-start-9">
@@ -239,11 +212,7 @@ export function MinistryPage() {
             <div className="lg:col-span-5 lg:col-start-8">
               <Reveal variant="scale" delay={100}>
                 <div className="relative aspect-[4/5] overflow-hidden rounded-soft bg-white/5">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-white/30 text-sm text-center px-6">
-                      {IMG_OUTBURST}
-                    </span>
-                  </div>
+                  <img src={IMG_OUTBURST} alt="Emmanuel Iren on stage with a microphone" loading="lazy" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: '45% center' }} />
                 </div>
               </Reveal>
             </div>

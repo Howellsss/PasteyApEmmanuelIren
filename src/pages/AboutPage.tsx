@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { cn } from '@/lib/cn';
 import {
   BookOpen,
@@ -7,11 +6,6 @@ import {
   Film,
   Users,
   Mic,
-  PenLine,
-  ArrowUpRight,
-  ArrowRight,
-  Play,
-  Quote,
 } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 import { ChapterMarker } from '@/components/ui/ChapterMarker';
@@ -20,13 +14,13 @@ import { SectionHeader } from '@/components/ui/SectionHeader';
 import { CTASection } from '@/components/ui/CTASection';
 import { InteractiveTimeline, type TimelineMilestone } from '@/components/ui/InteractiveTimeline';
 
-const PORTRAIT_HERO = '/images/hero/image copy.png';
-const ABOUT_IMAGE = '/images/about/image.png';
-const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.png';
-const CREATIVE_IMAGE = '/images/creative/e5.jpeg';
-const MINISTRY_IMAGE = '/images/ministry/e6.jpeg';
-const TEACHING_IMAGE_2 = '/images/teachings/image copy.png';
-const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.png';
+const PORTRAIT_HERO = '/images/hero/image copy.webp';
+const ABOUT_IMAGE = '/images/about/image.webp';
+const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.webp';
+const CREATIVE_IMAGE = '/images/creative/e5.webp';
+const MINISTRY_IMAGE = '/images/ministry/e6.webp';
+const TEACHING_IMAGE_2 = '/images/teachings/image copy.webp';
+const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.webp';
 
 const CAMPUS_IMG = TEACHING_IMAGE_2;
 const WORSHIP_IMG = TEACHING_IMAGE;
@@ -570,7 +564,9 @@ export function AboutPage() {
             title="Explore His Teachings"
             description="Sermons, conversations, and devotionals for the questions, decisions, and ordinary days that make up a life of faith."
             primaryLabel="Explore Teachings"
+            primaryTo="/teaching"
             secondaryLabel="View Events"
+            secondaryTo="/events"
           />
         </div>
       </section>

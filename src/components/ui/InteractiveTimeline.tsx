@@ -1,6 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { cn } from '@/lib/cn';
-import { Reveal } from './Reveal';
 
 export interface TimelineMilestone {
   year: string;

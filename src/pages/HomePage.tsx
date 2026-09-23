@@ -11,12 +11,12 @@ import { useReveal } from '@/lib/useReveal';
 import { cn } from '@/lib/cn';
 
 const HERO_NAME = 'Apostle Emmanuel Iren';
-const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.png';
-const ABOUT_IMAGE = '/images/about/image copy.png';
-const CREATIVE_IMAGE = '/images/creative/e5.jpeg';
-const MINISTRY_IMAGE = '/images/ministry/e6.jpeg';
-const TEACHING_IMAGE_2 = '/images/teachings/image copy.png';
-const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.png';
+const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.webp';
+const ABOUT_IMAGE = '/images/about/image copy.webp';
+const CREATIVE_IMAGE = '/images/creative/e5.webp';
+const MINISTRY_IMAGE = '/images/ministry/e6.webp';
+const TEACHING_IMAGE_2 = '/images/teachings/image copy.webp';
+const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.webp';
 
 const latestTeachings = [
   {
@@ -25,7 +25,7 @@ const latestTeachings = [
     description: 'A life-changing teaching on how God calls us to honour Him through the careful stewardship of our physical bodies.',
     date: 'September 2025',
     type: 'Video',
-    image: '/images/teachings/image copy 3.png',
+    image: '/images/teachings/image copy 3.webp',
     imagePosition: 'center center',
     watchUrl: 'https://www.youtube.com/watch?v=iZAt3VZMJAI',
   },
@@ -35,7 +35,7 @@ const latestTeachings = [
     description: "Discover the intentionality behind God's design for your life — purpose, pattern, and the beauty of His sovereign plan.",
     date: 'September 2025',
     type: 'Video',
-    image: '/images/teachings/image copy 4.png',
+    image: '/images/teachings/image copy 4.webp',
     imagePosition: 'center center',
     watchUrl: 'https://www.youtube.com/live/qsTHhh7f8pQ',
   },
@@ -45,7 +45,7 @@ const latestTeachings = [
     description: 'Understanding giving not as an obligation but as a grace — a reflection of the generosity God has already shown us.',
     date: 'September 2025',
     type: 'Video',
-    image: '/images/teachings/image copy 5.png',
+    image: '/images/teachings/image copy 5.webp',
     imagePosition: 'center center',
     watchUrl: 'https://youtu.be/53oy7e5CTKQ',
   },
@@ -55,7 +55,7 @@ const latestTeachings = [
     description: 'A powerful message on the nature of God as the One who blesses — and what it means to walk in His covenant promises.',
     date: 'September 2025',
     type: 'Video',
-    image: '/images/teachings/image copy 6.png',
+    image: '/images/teachings/image copy 6.webp',
     imagePosition: 'center top',
     watchUrl: 'https://youtu.be/WWDlFiYpBOY',
   },
@@ -65,7 +65,7 @@ const latestTeachings = [
     description: 'Rekindling the flame of spiritual fervency and learning how to maintain a burning heart in every season of life.',
     date: 'September 2025',
     type: 'Video',
-    image: '/images/teachings/image copy 7.png',
+    image: '/images/teachings/image copy 7.webp',
     imagePosition: 'center top',
     watchUrl: 'https://www.youtube.com/watch?v=x71RhblDHdE',
   },

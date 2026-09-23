@@ -14,7 +14,7 @@ export default {
         // The one light "chapter" per page: bone background with umber body text.
         bone: '#EEE6DA',
         umber: '#6B6057',
-        accent: { DEFAULT: '#DA4F43', dark: '#C2443A' },
+        accent: { DEFAULT: '#DF584C', dark: '#C2443A' },
       },
       fontFamily: {
         display: ['"Inter"', 'system-ui', 'sans-serif'],

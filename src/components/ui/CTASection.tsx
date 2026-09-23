@@ -1,4 +1,5 @@
 import { type ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import { cn } from '@/lib/cn';
 import { Reveal } from './Reveal';
 import { Button } from './Button';
@@ -9,7 +10,9 @@ interface CTASectionProps {
   title: ReactNode;
   description?: ReactNode;
   primaryLabel?: string;
+  primaryTo?: string;
   secondaryLabel?: string;
+  secondaryTo?: string;
   className?: string;
 }
 
@@ -19,7 +22,9 @@ export function CTASection({
   title,
   description,
   primaryLabel = 'Invite Emmanuel',
+  primaryTo = '/invite',
   secondaryLabel,
+  secondaryTo = '/contact',
   className,
 }: CTASectionProps) {
   return (
@@ -34,13 +39,17 @@ export function CTASection({
         <h2 className="font-display text-2xl lg:text-4xl leading-[1.15] text-balance max-w-3xl text-cream">{title}</h2>
         {description && <p className="text-base leading-relaxed max-w-xl text-pretty text-ash">{description}</p>}
         <div className="flex flex-col sm:flex-row items-center gap-3 mt-3">
-          <Button variant="primary" size="lg" withArrow>
-            {primaryLabel}
-          </Button>
-          {secondaryLabel && (
-            <Button variant="secondary" size="lg">
-              {secondaryLabel}
+          <Link to={primaryTo}>
+            <Button variant="primary" size="lg" withArrow>
+              {primaryLabel}
             </Button>
+          </Link>
+          {secondaryLabel && (
+            <Link to={secondaryTo}>
+              <Button variant="secondary" size="lg">
+                {secondaryLabel}
+              </Button>
+            </Link>
           )}
         </div>
       </section>
