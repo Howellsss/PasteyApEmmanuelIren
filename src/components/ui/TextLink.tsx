@@ -2,26 +2,23 @@ import { type ReactNode } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
-type LegacyTone = 'burgundy' | 'gold' | 'charcoal' | 'rust' | 'copper';
-
 interface TextLinkProps {
   children: ReactNode;
   href?: string;
   className?: string;
   /** accent: red link; plain: cream link with a red arrow; light: ink link for the bone chapter. */
-  tone?: 'accent' | 'plain' | 'light' | LegacyTone;
+  tone?: 'accent' | 'plain' | 'light';
   withArrow?: boolean;
 }
 
-const TONES: Record<string, string> = {
+const TONES = {
   accent: 'text-accent hover:text-cream',
   plain: 'text-cream hover:text-accent',
   light: 'text-ink hover:text-accent',
-  charcoal: 'text-cream hover:text-accent',
 };
 
 export function TextLink({ children, href = '#', className, tone = 'accent', withArrow = true }: TextLinkProps) {
-  const toneClass = TONES[tone] ?? TONES.accent;
+  const toneClass = TONES[tone];
 
   return (
     <a

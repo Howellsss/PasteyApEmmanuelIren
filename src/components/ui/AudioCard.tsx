@@ -33,7 +33,7 @@ export function AudioCard({
         </div>
         <div className="flex-1 min-w-0">
           {episode && (
-            <Eyebrow tone="olive" className="mb-1">
+            <Eyebrow tone="muted" className="mb-1">
               {episode}
             </Eyebrow>
           )}

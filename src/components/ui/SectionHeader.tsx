@@ -11,8 +11,6 @@ interface SectionHeaderProps {
   numbered?: string;
   /** dark: the default near-black sections; light: the bone chapter. */
   surface?: 'dark' | 'light';
-  /** Kept for older call sites; the accent is fixed by the palette. */
-  tone?: string;
   className?: string;
   titleClassName?: string;
   descriptionClassName?: string;

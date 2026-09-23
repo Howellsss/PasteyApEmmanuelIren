@@ -54,7 +54,7 @@ export function EditorialImageCard({
               <p className="text-sm text-ash leading-relaxed max-w-md">{caption}</p>
             )}
             {credit && (
-              <Eyebrow tone="stone" className="flex-shrink-0">
+              <Eyebrow tone="muted" className="flex-shrink-0">
                 {credit}
               </Eyebrow>
             )}

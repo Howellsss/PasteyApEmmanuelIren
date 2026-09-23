@@ -35,7 +35,7 @@ export function EventCard({
           <span className="text-meta text-ash hidden sm:block">{date}</span>
         </div>
         <div className="flex-1">
-          <Eyebrow tone={status === 'past' ? 'stone' : 'burgundy'} className="mb-2">
+          <Eyebrow tone={status === 'past' ? 'muted' : 'accent'} className="mb-2">
             {status === 'past' ? 'Past Event' : 'Upcoming'}
           </Eyebrow>
           <h3 className="font-display text-xl leading-snug text-cream group-hover:text-accent transition-colors duration-300 mb-3">

@@ -9,18 +9,18 @@ import { Button } from '@/components/ui/Button';
 
 export function InvitePage() {
   return (
-    <div className="min-h-screen bg-ivory pt-24">
+    <div className="min-h-screen bg-ink pt-24">
       {/* Opening */}
       <section className="py-16 lg:py-24">
         <div className="container-editorial">
           <Reveal>
-            <Eyebrow tone="burgundy" className="mb-6">
+            <Eyebrow className="mb-6">
               Invite
             </Eyebrow>
-            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.08] text-charcoal text-balance tracking-tight mb-6 max-w-3xl">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-semibold leading-[1.08] text-cream text-balance tracking-tight mb-6 max-w-3xl">
               Bring the word to your city, your church, your event.
             </h1>
-            <p className="text-lg text-charcoal/70 leading-relaxed max-w-xl text-pretty">
+            <p className="text-lg text-ash leading-relaxed max-w-xl text-pretty">
               Submit an invitation for a speaking engagement, conference, or
               interview. Every enquiry is prayerfully reviewed.
             </p>
@@ -74,11 +74,13 @@ export function InvitePage() {
       </section>
 
       {/* Process info */}
-      <section className="py-16 lg:py-24 bg-soft-white">
+      <section className="py-16 lg:py-24 bg-bone">
         <div className="container-editorial">
           <SectionHeader
+            surface="light"
+            numbered="01"
             eyebrow="The Process"
-            tone="burgundy"
+           
             title="What to expect after you submit."
           />
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12">
@@ -88,10 +90,10 @@ export function InvitePage() {
               { num: '03', title: 'Confirmation', desc: 'Once confirmed, the team works with you to prepare for the engagement.' },
             ].map((step, i) => (
               <Reveal key={i} delay={i * 100}>
-                <div className="p-8 rounded-soft border border-stone/25 bg-ivory">
-                  <span className="font-display text-2xl text-gold tabular-nums">{step.num}</span>
-                  <h3 className="font-display text-lg mt-3 mb-2 text-charcoal">{step.title}</h3>
-                  <p className="text-sm text-charcoal/70 leading-relaxed">{step.desc}</p>
+                <div className="p-8 rounded-soft border-t-2 border-accent bg-cream/60">
+                  <span className="font-display text-2xl text-accent tabular-nums">{step.num}</span>
+                  <h3 className="font-display text-lg mt-3 mb-2 text-ink">{step.title}</h3>
+                  <p className="text-sm text-umber leading-relaxed">{step.desc}</p>
                 </div>
               </Reveal>
             ))}

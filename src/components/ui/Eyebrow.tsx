@@ -1,28 +1,24 @@
 import { type ReactNode } from 'react';
 import { cn } from '@/lib/cn';
 
-type LegacyTone = 'gold' | 'burgundy' | 'rust' | 'copper' | 'stone' | 'olive';
-
 interface EyebrowProps {
   children: ReactNode;
   className?: string;
   /** accent: small red label; muted: quiet grey label; light: for the bone chapter. */
-  tone?: 'accent' | 'muted' | 'light' | LegacyTone;
+  tone?: 'accent' | 'muted' | 'light';
   numbered?: string;
   centered?: boolean;
 }
 
-const TONES: Record<string, string> = {
+const TONES = {
   accent: 'text-accent',
   muted: 'text-ash',
   light: 'text-umber',
-  stone: 'text-ash',
-  olive: 'text-ash',
 };
 
 /** Small uppercase label for cards and inline metadata. Section openers use ChapterMarker. */
 export function Eyebrow({ children, className, tone = 'accent', numbered, centered }: EyebrowProps) {
-  const toneClass = TONES[tone] ?? TONES.accent;
+  const toneClass = TONES[tone];
 
   return (
     <div className={cn('flex items-center gap-3', centered && 'justify-center', className)}>

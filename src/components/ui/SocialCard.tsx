@@ -28,7 +28,7 @@ export function SocialCard({
     <Reveal className={cn('group', className)}>
       <article className="flex flex-col gap-4 p-6 rounded-soft border border-line hover:border-line transition-colors duration-300 bg-surface/40">
         <div className="flex items-center justify-between">
-          <Eyebrow tone="olive">{platform}</Eyebrow>
+          <Eyebrow tone="muted">{platform}</Eyebrow>
           <span className="text-meta text-ash">{handle}</span>
         </div>
         <p className="text-sm text-ash leading-relaxed text-pretty">{content}</p>

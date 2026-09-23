@@ -10,8 +10,6 @@ interface CTASectionProps {
   description?: ReactNode;
   primaryLabel?: string;
   secondaryLabel?: string;
-  /** Kept for older call sites; the block always uses the dark surface. */
-  variant?: string;
   className?: string;
 }
 

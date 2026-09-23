@@ -43,14 +43,14 @@ export function UploadArea({
           dragging
             ? 'border-accent bg-accent/5'
             : file
-            ? 'border-olive/40 bg-olive/5'
+            ? 'border-accent/40 bg-accent/5'
             : 'border-line hover:border-line bg-surface/30'
         )}
       >
         {file ? (
           <>
             <div className="flex items-center gap-3">
-              <div className="flex items-center justify-center w-10 h-10 rounded-pill bg-olive/15">
+              <div className="flex items-center justify-center w-10 h-10 rounded-pill bg-accent/15">
                 <Check className="w-5 h-5 text-ash" />
               </div>
               <div className="text-left">
