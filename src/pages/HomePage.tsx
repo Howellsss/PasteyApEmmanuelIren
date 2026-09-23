@@ -169,8 +169,8 @@ export function HomePage() {
 
   return (
     <div className="min-h-screen bg-ivory">
-      <section className="relative min-h-screen flex items-end overflow-hidden bg-charcoal">
-        <div className="absolute inset-0 overflow-hidden bg-charcoal">
+      <section className="relative min-h-screen flex items-end overflow-hidden bg-ink">
+        <div className="absolute inset-0 overflow-hidden bg-ink">
           <iframe
             ref={heroIframeRef}
             src="https://player.vimeo.com/video/1229309895?autoplay=1&loop=1&autopause=0&controls=0&title=0&byline=0&portrait=0&badge=0&dnt=1&pip=0&keyboard=0&muted=1"
@@ -183,37 +183,33 @@ export function HomePage() {
               height: 'max(100%, calc(100vw * 9 / 16))',
             }}
           />
-          <div aria-hidden="true" className="pointer-events-none absolute right-0 top-0 h-20 w-56 bg-gradient-to-l from-charcoal/80 via-charcoal/35 to-transparent" />
+          <div aria-hidden="true" className="pointer-events-none absolute right-0 top-0 h-20 w-56 bg-gradient-to-l from-ink/80 via-ink/35 to-transparent" />
           <div
             aria-hidden="true"
-            className={`absolute inset-0 bg-charcoal z-10 transition-opacity duration-1000 ${isVideoReady ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+            className={`absolute inset-0 bg-ink z-10 transition-opacity duration-1000 ${isVideoReady ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-charcoal/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/50 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-ink/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-transparent to-transparent" />
         <div className="relative w-full px-6 sm:px-8 lg:px-16 pb-16 lg:pb-24 pt-32 flex justify-center text-center">
           <Reveal className="w-full max-w-4xl flex flex-col items-center">
-            <Eyebrow tone="gold" centered className="mb-8 text-sm tracking-[0.2em] sm:text-base">
+            <Eyebrow tone="copper" centered className="mb-8 text-sm tracking-[0.2em] sm:text-base">
               Apostle · Teacher · Author
             </Eyebrow>
-            <h1 className="font-sans text-5xl sm:text-6xl lg:text-8xl font-extrabold leading-[0.98] text-soft-white text-balance mb-8 tracking-[-0.04em] min-h-[0.98em]">
+            <h1 className="font-sans text-5xl sm:text-6xl lg:text-8xl font-extrabold leading-[0.98] text-cream text-balance mb-8 tracking-[-0.04em] min-h-[0.98em]">
               {typedHeroName}
             </h1>
-            <p className="text-lg sm:text-xl lg:text-2xl text-white/85 leading-relaxed max-w-2xl mb-10 text-pretty font-light">
+            <p className="text-lg sm:text-xl lg:text-2xl text-taupe leading-relaxed max-w-2xl mb-10 text-pretty font-light">
               A teaching minister, author, songwriter, and founder of Celebration Church International.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 items-center">
               <Link to="/teaching">
-                <Button variant="primary" size="lg" withArrow className="rounded-pill">
+                <Button variant="rust" size="lg" withArrow className="rounded-pill">
                   Explore Teachings
                 </Button>
               </Link>
               <Link to="/about">
-                <Button
-                  variant="secondary"
-                  size="lg"
-                  className="rounded-pill border-white/20 text-soft-white hover:bg-soft-white hover:text-charcoal"
-                >
+                <Button variant="outline-dark" size="lg" className="rounded-pill">
                   Discover Emmanuel
                 </Button>
               </Link>
@@ -222,39 +218,39 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="bg-charcoal py-20 text-soft-white lg:py-28">
+      <section className="bg-onyx py-20 text-cream lg:py-28">
         <div className="container-wide">
           <div className="mb-12 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
             <Reveal>
               <div className="mb-5 flex items-center gap-4">
-                <span className="h-px w-14 bg-gold/70" />
-                <span className="text-eyebrow uppercase tracking-[0.2em] text-gold">Teachings</span>
+                <span className="h-px w-14 bg-copper/70" />
+                <span className="text-eyebrow uppercase tracking-[0.2em] text-copper">Teachings</span>
               </div>
-              <h2 className="max-w-3xl font-sans text-4xl font-extrabold uppercase leading-[0.98] tracking-[-0.04em] text-soft-white sm:text-5xl lg:text-7xl">
-                Latest <span className="text-gold">Teachings</span>
+              <h2 className="max-w-3xl font-sans text-4xl font-extrabold uppercase leading-[0.98] tracking-[-0.04em] text-cream sm:text-5xl lg:text-7xl">
+                Latest <span className="text-copper">Teachings</span>
               </h2>
             </Reveal>
             <Reveal delay={100}>
               <Link to="/teaching">
-                <TextLink tone="gold">Browse the library</TextLink>
+                <TextLink tone="copper">Browse the library</TextLink>
               </Link>
             </Reveal>
           </div>
 
           <Reveal variant="scale">
-            <article className="grid overflow-hidden rounded-soft border border-white/10 bg-[#1a1a1a] lg:grid-cols-[0.92fr_1.08fr]">
-              <div className="order-2 flex min-h-[28rem] flex-col border-t border-white/10 p-8 sm:p-10 lg:order-1 lg:min-h-[34rem] lg:border-t-0 lg:border-r lg:p-12">
+            <article className="grid overflow-hidden rounded-soft border border-graphite bg-[#1a1a1a] lg:grid-cols-[0.92fr_1.08fr]">
+              <div className="order-2 flex min-h-[28rem] flex-col border-t border-graphite p-8 sm:p-10 lg:order-1 lg:min-h-[34rem] lg:border-t-0 lg:border-r lg:border-graphite lg:p-12">
                 <div className="flex-1 space-y-5 lg:flex lg:flex-col lg:justify-center">
-                  <p className="text-eyebrow uppercase tracking-[0.16em] text-gold">{latestTeachings[activeTeachingIndex].series}</p>
-                  <h3 className="max-w-lg font-display text-3xl leading-[1.1] sm:text-4xl">
+                  <p className="text-eyebrow uppercase tracking-[0.16em] text-copper">{latestTeachings[activeTeachingIndex].series}</p>
+                  <h3 className="max-w-lg font-display text-3xl leading-[1.1] text-cream sm:text-4xl">
                     {latestTeachings[activeTeachingIndex].title}
                   </h3>
-                  <p className="max-w-md text-sm font-light leading-7 text-white/60">
+                  <p className="max-w-md text-sm font-light leading-7 text-taupe">
                     {latestTeachings[activeTeachingIndex].description}
                   </p>
-                  <div className="flex flex-wrap items-center gap-3 text-meta text-white/45">
+                  <div className="flex flex-wrap items-center gap-3 text-meta text-taupe">
                     <span>{latestTeachings[activeTeachingIndex].date}</span>
-                    <span className="h-1 w-1 rounded-pill bg-gold/60" />
+                    <span className="h-1 w-1 rounded-pill bg-copper/60" />
                     <span>{latestTeachings[activeTeachingIndex].type}</span>
                   </div>
                   <div className="pt-2">
@@ -263,13 +259,13 @@ export function HomePage() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <Button variant="secondary" size="md" withArrow className="border-white/20 text-soft-white hover:bg-soft-white hover:text-charcoal">
+                      <Button variant="outline-dark" size="md" withArrow>
                         Watch Now
                       </Button>
                     </a>
                   </div>
                 </div>
-                <div className="mt-10 flex items-center justify-between border-t border-white/10 pt-6">
+                <div className="mt-10 flex items-center justify-between border-t border-graphite pt-6">
                   <div className="flex items-center gap-5" role="tablist" aria-label="Latest teachings">
                     {latestTeachings.map((teaching, index) => (
                       <button
@@ -279,10 +275,10 @@ export function HomePage() {
                         aria-selected={activeTeachingIndex === index}
                         aria-label={`Show ${teaching.title}`}
                         onClick={() => setActiveTeachingIndex(index)}
-                        className={`relative pb-2 text-xs tracking-[0.12em] transition-colors ${activeTeachingIndex === index ? 'text-gold' : 'text-white/25 hover:text-white/60'}`}
+                        className={`relative pb-2 text-xs tracking-[0.12em] transition-colors ${activeTeachingIndex === index ? 'text-copper' : 'text-white/25 hover:text-white/60'}`}
                       >
                         {String(index + 1).padStart(2, '0')}
-                        <span className={`absolute bottom-0 left-0 h-px bg-gold transition-all duration-300 ${activeTeachingIndex === index ? 'w-full' : 'w-0'}`} />
+                        <span className={`absolute bottom-0 left-0 h-px bg-copper transition-all duration-300 ${activeTeachingIndex === index ? 'w-full' : 'w-0'}`} />
                       </button>
                     ))}
                   </div>
@@ -291,7 +287,7 @@ export function HomePage() {
                       type="button"
                       aria-label="Previous teaching"
                       onClick={() => setActiveTeachingIndex((index) => (index - 1 + latestTeachings.length) % latestTeachings.length)}
-                      className="flex h-9 w-9 items-center justify-center text-white/45 transition-colors hover:text-gold"
+                      className="flex h-9 w-9 items-center justify-center text-white/45 transition-colors hover:text-copper"
                     >
                       <ChevronLeft className="h-5 w-5" />
                     </button>
@@ -299,7 +295,7 @@ export function HomePage() {
                       type="button"
                       aria-label="Next teaching"
                       onClick={() => setActiveTeachingIndex((index) => (index + 1) % latestTeachings.length)}
-                      className="flex h-9 w-9 items-center justify-center text-white/45 transition-colors hover:text-gold"
+                      className="flex h-9 w-9 items-center justify-center text-white/45 transition-colors hover:text-copper"
                     >
                       <ChevronRight className="h-5 w-5" />
                     </button>
@@ -354,11 +350,11 @@ export function HomePage() {
             </div>
             <div className="lg:col-span-5 lg:col-start-9">
               <Reveal delay={100}>
-                <Eyebrow tone="burgundy" className="mb-6">About Emmanuel</Eyebrow>
-                <h2 className="font-display text-3xl lg:text-5xl leading-[1.1] text-charcoal text-balance mb-6">
+                <Eyebrow tone="rust" className="mb-6">About Emmanuel</Eyebrow>
+                <h2 className="font-display text-3xl lg:text-5xl leading-[1.1] text-ink text-balance mb-6">
                   A life given to Christ and His purpose.
                 </h2>
-                <div className="space-y-5 text-charcoal/70 leading-relaxed">
+                <div className="space-y-5 text-umber leading-relaxed">
                   <p>
                     Apostle Emmanuel Iren is the founder and lead pastor of Celebration Church International, a teacher of God’s Word, author, songwriter, and ministry leader.
                   </p>
@@ -367,7 +363,7 @@ export function HomePage() {
                   </p>
                 </div>
                 <Link to="/about" className="inline-block mt-8">
-                  <TextLink tone="burgundy">Read His Story</TextLink>
+                  <TextLink tone="rust">Read His Story</TextLink>
                 </Link>
               </Reveal>
             </div>
@@ -380,6 +376,9 @@ export function HomePage() {
           <SectionHeader
             eyebrow="Teaching"
             title="Teach the word. Live the word."
+            tone="rust"
+            titleClassName="text-ink"
+            descriptionClassName="text-umber"
             description="Sermons and conversations for the questions, decisions, and ordinary days that make up a life of faith."
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 mt-14">
@@ -410,7 +409,7 @@ export function HomePage() {
           </div>
           <Reveal className="mt-12">
             <Link to="/teaching">
-              <TextLink tone="burgundy">Explore Teachings</TextLink>
+              <TextLink tone="rust">Explore Teachings</TextLink>
             </Link>
           </Reveal>
         </div>
@@ -418,7 +417,7 @@ export function HomePage() {
 
       <CreativeAccordion />
 
-      <section className="py-20 lg:py-32 text-soft-white overflow-hidden" style={{ backgroundColor: '#3B2F27' }}>
+      <section className="py-20 lg:py-32 bg-cocoa text-cream overflow-hidden">
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-5 lg:order-2">
@@ -435,26 +434,26 @@ export function HomePage() {
             </div>
             <div className="lg:col-span-6 lg:order-1">
               <Reveal>
-                <Eyebrow tone="gold" className="mb-6">Ministry</Eyebrow>
+                <Eyebrow tone="copper" className="mb-6">Ministry</Eyebrow>
                 <h2 className="font-display text-4xl lg:text-6xl leading-[1.05] text-balance mb-6">
                   One calling. Many expressions.
                 </h2>
-                <p className="text-white/65 leading-relaxed max-w-xl mb-10">
+                <p className="text-taupe leading-relaxed max-w-xl mb-10">
                   A growing family of ministry expressions, each carrying the same invitation to know Christ, live purposefully, and make Him known.
                 </p>
-                <div className="border-t border-white/15">
+                <div className="border-t border-bark">
                   {ministryExpressions.map((expression, index) => (
-                    <div key={expression.name} className="grid grid-cols-[2.5rem_1fr] gap-4 py-5 border-b border-white/15">
-                      <span className="text-meta text-gold">0{index + 1}</span>
+                    <div key={expression.name} className="grid grid-cols-[2.5rem_1fr] gap-4 py-5 border-b border-bark">
+                      <span className="text-meta text-copper">0{index + 1}</span>
                       <div>
-                        <h3 className="font-display text-xl mb-1">{expression.name}</h3>
-                        <p className="text-sm text-white/55 leading-relaxed max-w-md">{expression.description}</p>
+                        <h3 className="font-display text-xl text-taupe mb-1">{expression.name}</h3>
+                        <p className="text-sm text-taupe leading-relaxed max-w-md">{expression.description}</p>
                       </div>
                     </div>
                   ))}
                 </div>
                 <Link to="/ministry" className="inline-block mt-8">
-                  <TextLink tone="gold">Explore Ministry</TextLink>
+                  <TextLink tone="copper">Explore Ministry</TextLink>
                 </Link>
               </Reveal>
             </div>
@@ -466,11 +465,12 @@ export function HomePage() {
         <div className="container-editorial">
           <SectionHeader
             eyebrow="Events"
-            tone="burgundy"
+            tone="rust"
+            titleClassName="text-ink"
             title="Where Apostle Emmanuel Iren is ministering."
           />
           <Reveal variant="scale" className="mt-14">
-            <article className="grid grid-cols-1 lg:grid-cols-12 rounded-soft overflow-hidden bg-soft-white border border-stone/20">
+            <article className="grid grid-cols-1 lg:grid-cols-12 rounded-soft overflow-hidden bg-cream border border-stone/20">
               <div className="lg:col-span-7 aspect-[4/5] lg:aspect-auto min-h-[20rem] overflow-hidden">
                 <img
                   src={TEACHING_IMAGE}
@@ -480,22 +480,22 @@ export function HomePage() {
                 />
               </div>
               <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
-                <Eyebrow tone="burgundy" className="mb-5">Upcoming Event</Eyebrow>
-                <h3 className="font-display text-3xl leading-tight text-charcoal mb-6">Triumph30 — Lagos</h3>
-                <div className="space-y-3 text-sm text-charcoal/65 mb-8">
-                  <p className="flex items-center gap-3"><Calendar className="w-4 h-4 text-gold" /> Saturday, October 18, 2026</p>
-                  <p className="flex items-center gap-3"><MapPin className="w-4 h-4 text-gold" /> Eko Hotels, Lagos</p>
-                  <p className="text-eyebrow uppercase tracking-widest text-burgundy pl-7">Prayer & Worship Gathering</p>
+                <Eyebrow tone="rust" className="mb-5">Upcoming Event</Eyebrow>
+                <h3 className="font-display text-3xl leading-tight text-ink mb-6">Triumph30 — Lagos</h3>
+                <div className="space-y-3 text-sm text-umber mb-8">
+                  <p className="flex items-center gap-3"><Calendar className="w-4 h-4 text-rust" /> Saturday, October 18, 2026</p>
+                  <p className="flex items-center gap-3"><MapPin className="w-4 h-4 text-rust" /> Eko Hotels, Lagos</p>
+                  <p className="text-eyebrow uppercase tracking-widest text-rust pl-7">Prayer & Worship Gathering</p>
                 </div>
                 <Link to="/events">
-                  <Button variant="primary" size="md" withArrow className="rounded-pill">Details & Registration</Button>
+                  <Button variant="rust" size="md" withArrow className="rounded-pill">Details & Registration</Button>
                 </Link>
               </div>
             </article>
           </Reveal>
           <Reveal className="mt-10">
             <Link to="/events">
-              <TextLink tone="burgundy">View All Events</TextLink>
+              <TextLink tone="rust">View All Events</TextLink>
             </Link>
           </Reveal>
         </div>
@@ -505,25 +505,25 @@ export function HomePage() {
         <div className="container-editorial">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
             <Reveal>
-              <Eyebrow tone="gold" className="mb-5">Current Content</Eyebrow>
-              <h2 className="font-display text-3xl lg:text-5xl leading-[1.1] text-charcoal">A curated continuation.</h2>
+              <Eyebrow tone="rust" className="mb-5">Current Content</Eyebrow>
+              <h2 className="font-display text-3xl lg:text-5xl leading-[1.1] text-ink">A curated continuation.</h2>
             </Reveal>
             <Reveal delay={100}>
-              <p className="text-sm text-charcoal/60 max-w-xs leading-relaxed">Teaching, conversation, and worship for the week you are living.</p>
+              <p className="text-sm text-umber max-w-xs leading-relaxed">Teaching, conversation, and worship for the week you are living.</p>
             </Reveal>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <Link to="/teaching" className="group p-6 rounded-soft bg-charcoal text-soft-white min-h-[16rem] flex flex-col justify-between hover:bg-burgundy transition-colors duration-500">
-              <div className="flex items-center justify-between"><Play className="w-5 h-5 text-gold" /><span className="text-meta uppercase tracking-widest text-white/50">YouTube</span></div>
+            <Link to="/teaching" className="group p-6 rounded-soft bg-ink text-cream min-h-[16rem] flex flex-col justify-between hover:bg-rust transition-colors duration-500">
+              <div className="flex items-center justify-between"><Play className="w-5 h-5 text-copper" /><span className="text-meta uppercase tracking-widest text-white/50">YouTube</span></div>
               <div><h3 className="font-display text-2xl mb-2">Led by the Spirit</h3><p className="text-sm text-white/60">A short teaching for the journey.</p></div>
             </Link>
-            <Link to="/teaching" className="group p-6 rounded-soft border border-white/15 bg-espresso min-h-[16rem] flex flex-col justify-between hover:bg-burgundy hover:border-burgundy transition-colors duration-500">
-              <div className="flex items-center justify-between"><Headphones className="w-5 h-5 text-gold group-hover:text-soft-white transition-colors duration-500" /><span className="text-meta uppercase tracking-widest text-white/50 group-hover:text-white/70 transition-colors duration-500">Podcast</span></div>
-              <div><h3 className="font-display text-2xl text-soft-white mb-2">The Creative Calling</h3><p className="text-sm text-white/60 group-hover:text-white/80 transition-colors duration-500">A conversation about making with purpose.</p></div>
+            <Link to="/teaching" className="group p-6 rounded-soft border border-white/15 bg-walnut min-h-[16rem] flex flex-col justify-between hover:bg-rust hover:border-rust transition-colors duration-500">
+              <div className="flex items-center justify-between"><Headphones className="w-5 h-5 text-copper group-hover:text-cream transition-colors duration-500" /><span className="text-meta uppercase tracking-widest text-white/50 group-hover:text-white/70 transition-colors duration-500">Podcast</span></div>
+              <div><h3 className="font-display text-2xl text-cream mb-2">The Creative Calling</h3><p className="text-sm text-white/60 group-hover:text-white/80 transition-colors duration-500">A conversation about making with purpose.</p></div>
             </Link>
-            <Link to="/ministry" className="group overflow-hidden rounded-soft min-h-[16rem] bg-ivory p-6 flex flex-col justify-between hover:bg-burgundy transition-colors duration-500">
-              <div className="flex justify-end"><ArrowUpRight className="w-5 h-5 text-burgundy group-hover:text-soft-white transition-colors duration-500" /></div>
-              <div><span className="text-meta uppercase tracking-widest text-burgundy/70 group-hover:text-gold transition-colors duration-500">Social Highlight</span><h3 className="font-display text-2xl text-charcoal group-hover:text-soft-white transition-colors duration-500 mt-2">Make room for the work.</h3></div>
+            <Link to="/ministry" className="group overflow-hidden rounded-soft min-h-[16rem] bg-sand p-6 flex flex-col justify-between hover:bg-rust transition-colors duration-500">
+              <div className="flex justify-end"><ArrowUpRight className="w-5 h-5 text-rust group-hover:text-cream transition-colors duration-500" /></div>
+              <div><span className="text-meta uppercase tracking-widest text-rust group-hover:text-copper transition-colors duration-500">Social Highlight</span><h3 className="font-display text-2xl text-ink group-hover:text-cream transition-colors duration-500 mt-2">Make room for the work.</h3></div>
             </Link>
           </div>
         </div>
@@ -532,8 +532,8 @@ export function HomePage() {
       <section className="py-28 lg:py-44" style={{ backgroundColor: '#3B2F27' }}>
         <div className="container-editorial text-center">
           <Reveal>
-            <p className="text-eyebrow uppercase tracking-[0.3em] text-gold mb-8">The Invitation</p>
-            <h2 className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-7xl leading-[0.98] tracking-[-0.04em] text-soft-white text-balance">
+            <p className="text-eyebrow uppercase tracking-[0.3em] text-copper mb-8">The Invitation</p>
+            <h2 className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-7xl leading-[0.98] tracking-[-0.04em] text-cream text-balance">
               Know Christ.<br />
               Live purposefully.<br />
               Make Him known.
@@ -550,7 +550,7 @@ export function HomePage() {
             description="Submit an invitation for a speaking engagement, conference, or interview."
             primaryLabel="Invite Emmanuel"
             secondaryLabel="Contact Directly"
-            variant="dark"
+            variant="ink"
           />
         </div>
       </section>

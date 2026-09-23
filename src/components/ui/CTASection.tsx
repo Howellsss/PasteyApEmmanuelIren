@@ -11,7 +11,7 @@ interface CTASectionProps {
   description?: ReactNode;
   primaryLabel?: string;
   secondaryLabel?: string;
-  variant?: 'light' | 'dark' | 'burgundy';
+  variant?: 'light' | 'dark' | 'burgundy' | 'ink';
   className?: string;
 }
 
@@ -28,9 +28,11 @@ export function CTASection({
     light: 'bg-soft-white border border-stone/20',
     dark: 'bg-charcoal text-soft-white',
     burgundy: 'bg-burgundy text-soft-white',
+    ink: 'bg-ink text-cream',
   };
 
-  const eyebrowTone = variant === 'light' ? 'gold' : 'gold';
+  const isInk = variant === 'ink';
+  const eyebrowTone = isInk ? 'copper' : 'gold';
 
   return (
     <Reveal variant="scale">
@@ -53,7 +55,7 @@ export function CTASection({
           <p
             className={cn(
               'text-lg leading-relaxed max-w-xl text-pretty',
-              variant === 'light' ? 'text-charcoal/70' : 'text-white/70'
+              variant === 'light' ? 'text-charcoal/70' : isInk ? 'text-cream' : 'text-white/70'
             )}
           >
             {description}
@@ -61,11 +63,12 @@ export function CTASection({
         )}
         <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
           <Button
-            variant={variant === 'light' ? 'primary' : 'secondary'}
+            variant={variant === 'light' ? 'primary' : isInk ? 'rust' : 'secondary'}
             size="lg"
             withArrow
             className={cn(
               variant !== 'light' &&
+                !isInk &&
                 'border-white/20 text-soft-white hover:bg-soft-white hover:text-charcoal'
             )}
           >
@@ -76,7 +79,7 @@ export function CTASection({
               variant="ghost"
               size="lg"
               className={cn(
-                variant !== 'light' && 'text-soft-white hover:text-gold'
+                variant !== 'light' && (isInk ? 'text-cream hover:text-copper' : 'text-soft-white hover:text-gold')
               )}
             >
               {secondaryLabel}

@@ -62,8 +62,8 @@ export function FloatingNav() {
                       'relative px-3.5 py-2 text-sm font-medium rounded-pill transition-all duration-300',
                       'focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal',
                       isActive
-                        ? 'text-soft-white'
-                        : 'text-white/70 hover:text-soft-white'
+                        ? 'text-copper'
+                        : 'text-taupe hover:text-cream'
                     )
                   }
                 >
@@ -72,7 +72,7 @@ export function FloatingNav() {
                       {item.label}
                       <span
                         className={cn(
-                          'absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-px bg-gold transition-all duration-300',
+                          'absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-px bg-copper transition-all duration-300',
                           isActive
                             ? 'w-4 opacity-100'
                             : 'w-0 opacity-0 group-hover/link:w-4 group-hover/link:opacity-100'
@@ -93,8 +93,8 @@ export function FloatingNav() {
                 'hidden lg:inline-flex items-center px-5 py-2 mr-2 text-sm font-medium rounded-button transition-all duration-300',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal',
                 isActive
-                  ? 'bg-gold text-charcoal'
-                  : 'bg-burgundy text-soft-white hover:bg-burgundy-dark'
+                  ? 'bg-copper text-ink'
+                  : 'bg-rust text-cream hover:bg-rust-dark'
               )
             }
           >

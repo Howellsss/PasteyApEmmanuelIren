@@ -139,7 +139,7 @@
 /* ── Creative Expression accordion (scoped) ────────────────────────────── */
 .ce-section {
   background-color: #E8DFD2;
-  color: #151515;
+  color: #1B1714;
   padding: 110px 24px 90px;
 }
 .ce-section * { box-sizing: border-box; }
@@ -162,14 +162,14 @@
   border-radius: 22px;
   overflow: hidden;
   cursor: pointer;
-  border: 1px solid rgba(21, 21, 21, 0.32);
+  border: 1px solid rgba(27, 23, 20, 0.32);
   transition: flex-grow 0.75s cubic-bezier(0.22, 1, 0.36, 1),
               border-color 0.5s ease;
-  background: #151515;
+  background: #1B1714;
 }
 .ce-card.is-active {
   flex-grow: 2.6;
-  border-color: var(--ce-accent, #D4A72C);
+  border-color: var(--ce-accent, #C08463);
 }
 .ce-card-image {
   position: absolute;
@@ -187,7 +187,7 @@
 .ce-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(21, 21, 21, 0.92) 0%, rgba(21, 21, 21, 0.45) 45%, rgba(21, 21, 21, 0.1) 100%);
+  background: linear-gradient(to top, rgba(27, 23, 20, 0.92) 0%, rgba(27, 23, 20, 0.45) 45%, rgba(27, 23, 20, 0.1) 100%);
   opacity: 0.7;
   transition: opacity 0.5s ease;
 }
@@ -199,8 +199,8 @@
   right: 18px;
   width: 34px;
   height: 34px;
-  border-top: 1.5px solid var(--ce-accent, #D4A72C);
-  border-right: 1.5px solid var(--ce-accent, #D4A72C);
+  border-top: 1.5px solid var(--ce-accent, #C08463);
+  border-right: 1.5px solid var(--ce-accent, #C08463);
   opacity: 0;
   transition: opacity 0.5s ease 0.1s;
 }
@@ -212,7 +212,7 @@
   right: 0;
   bottom: 0;
   padding: 30px 30px 32px;
-  color: #FAF9F6;
+  color: #F6F2EB;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -224,8 +224,8 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--ce-accent, #D4A72C);
-  color: #151515;
+  background: var(--ce-accent, #C08463);
+  color: #1B1714;
   margin-bottom: 6px;
 }
 .ce-tag {
@@ -234,7 +234,7 @@
   font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--ce-accent, #D4A72C);
+  color: var(--ce-accent, #C08463);
   margin: 0;
 }
 .ce-card-title {
@@ -244,13 +244,13 @@
   font-size: 1.875rem;
   line-height: 1.1;
   margin: 0;
-  color: #FAF9F6;
+  color: #F6F2EB;
 }
 .ce-desc {
   font-family: 'Inter', sans-serif;
   font-size: 0.9375rem;
   line-height: 1.55;
-  color: rgba(250, 249, 246, 0.82);
+  color: rgba(246, 242, 235, 0.82);
   margin: 4px 0 0;
   max-width: 420px;
 }
@@ -262,15 +262,15 @@
   letter-spacing: 0.04em;
   padding: 5px 12px;
   border-radius: 999px;
-  border: 1px solid rgba(250, 249, 246, 0.4);
-  color: rgba(250, 249, 246, 0.8);
+  border: 1px solid rgba(246, 242, 235, 0.4);
+  color: rgba(246, 242, 235, 0.8);
   margin-top: 4px;
 }
 .ce-explore {
   font-family: 'Inter', sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #FAF9F6;
+  color: #F6F2EB;
   margin-top: 10px;
   opacity: 0.85;
 }
@@ -285,7 +285,7 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  color: #FAF9F6;
+  color: #F6F2EB;
   text-align: center;
 }
 .ce-collapsed-icon {
@@ -295,8 +295,8 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  border: 1px solid rgba(250, 249, 246, 0.5);
-  color: #FAF9F6;
+  border: 1px solid rgba(246, 242, 235, 0.5);
+  color: #F6F2EB;
 }
 .ce-collapsed-title {
   font-family: 'Inter', sans-serif;
@@ -304,7 +304,7 @@
   font-weight: 500;
   font-size: 1rem;
   line-height: 1.2;
-  color: #FAF9F6;
+  color: #F6F2EB;
   writing-mode: horizontal-tb;
   text-orientation: mixed;
   white-space: nowrap;
@@ -324,16 +324,16 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid rgba(21, 21, 21, 0.25);
+  border: 1px solid rgba(27, 23, 20, 0.25);
   background: transparent;
-  color: #151515;
+  color: #1B1714;
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 .ce-nav:hover {
-  background: #151515;
-  color: #FAF9F6;
-  border-color: #151515;
+  background: #1B1714;
+  color: #F6F2EB;
+  border-color: #1B1714;
 }
 .ce-dots {
   display: flex;
@@ -345,7 +345,7 @@
   height: 8px;
   border-radius: 50%;
   border: none;
-  background: rgba(21, 21, 21, 0.25);
+  background: rgba(27, 23, 20, 0.25);
   cursor: pointer;
   padding: 0;
   transition: width 0.4s ease, background 0.3s ease;
@@ -353,7 +353,7 @@
 .ce-dot.is-active {
   width: 26px;
   border-radius: 999px;
-  background: #151515;
+  background: #1B1714;
 }
 
 @media (max-width: 900px) {

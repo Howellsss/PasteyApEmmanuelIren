@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'gold';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'gold' | 'rust' | 'outline-dark';
   size?: 'md' | 'lg';
   children: ReactNode;
   withArrow?: boolean;
@@ -29,6 +29,10 @@ export function Button({
       'bg-transparent text-charcoal hover:text-burgundy focus-visible:ring-burgundy',
     gold:
       'bg-transparent text-gold-dark border border-gold/40 hover:bg-gold hover:text-charcoal focus-visible:ring-gold',
+    rust:
+      'bg-rust text-cream hover:bg-rust-dark focus-visible:ring-rust active:bg-rust-dark/90',
+    'outline-dark':
+      'bg-transparent text-cream border border-bark hover:border-cream hover:bg-cream hover:text-ink focus-visible:ring-copper',
   };
 
   const sizes = {

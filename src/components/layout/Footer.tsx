@@ -29,18 +29,18 @@ const SOCIALS = [
 
 export function Footer() {
   return (
-    <footer className="bg-charcoal text-soft-white">
+    <footer className="bg-ink text-cream">
       <div className="container-wide py-16 lg:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
           {/* Brand column */}
           <div className="lg:col-span-5">
-            <p className="text-eyebrow text-gold uppercase tracking-widest mb-4">
+            <p className="text-eyebrow text-copper uppercase tracking-widest mb-4">
               Emmanuel Iren
             </p>
             <h2 className="font-display text-3xl lg:text-4xl leading-tight text-balance mb-6">
               Teaching the word, creating with purpose, building the church.
             </h2>
-            <p className="text-stone-light text-sm max-w-md leading-relaxed">
+            <p className="text-taupe text-sm max-w-md leading-relaxed">
               Apostle, author, and creative leader. Founder of Celebration Church International.
               This is the digital home for the work and the word.
             </p>
@@ -50,7 +50,7 @@ export function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="flex items-center justify-center w-10 h-10 rounded-pill border border-white/15 text-white/60 hover:text-soft-white hover:border-gold hover:bg-white/5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                  className="flex items-center justify-center w-10 h-10 rounded-pill border border-white/15 text-taupe hover:text-copper hover:border-copper hover:bg-white/5 transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
                 >
                   <social.icon className="w-4 h-4" />
                 </a>
@@ -62,7 +62,7 @@ export function Footer() {
           <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
             {Object.entries(FOOTER_LINKS).map(([heading, links]) => (
               <div key={heading}>
-                <p className="text-eyebrow text-stone uppercase tracking-widest mb-5">
+                <p className="text-eyebrow text-taupe uppercase tracking-widest mb-5">
                   {heading}
                 </p>
                 <ul className="space-y-3">
@@ -70,7 +70,7 @@ export function Footer() {
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="group inline-flex items-center gap-1 text-sm text-white/70 hover:text-soft-white transition-colors duration-300"
+                        className="group inline-flex items-center gap-1 text-sm text-copper hover:text-cream transition-colors duration-300"
                       >
                         {link.label}
                         <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
@@ -84,10 +84,10 @@ export function Footer() {
         </div>
 
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <p className="text-meta text-stone">
+          <p className="text-meta text-taupe">
             © {new Date().getFullYear()} Emmanuel Iren. All rights reserved.
           </p>
-          <p className="text-meta text-stone">
+          <p className="text-meta text-taupe">
             Celebration Church International · Manifest · Triumph30 · Outburst
           </p>
         </div>

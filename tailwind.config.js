@@ -4,6 +4,19 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Warm palette. Rule: `rust` for accents on light backgrounds, `copper` on dark.
+        ink: '#1B1714',
+        cream: '#F6F2EB',
+        sand: '#E8DFD2',
+        taupe: '#AFA397',
+        umber: '#6A5F55',
+        copper: '#C08463',
+        rust: { DEFAULT: '#9A553A', dark: '#834630' },
+        bark: '#3E352D',
+        cocoa: '#26201B',
+        walnut: '#3B2F27',
+        onyx: '#151515',
+        graphite: '#2E2E2E',
         ivory: {
           DEFAULT: '#EDE3CF',
           50: '#F4F0E8',

@@ -9,8 +9,10 @@ interface SectionHeaderProps {
   description?: ReactNode;
   align?: 'left' | 'center';
   numbered?: string;
-  tone?: 'gold' | 'burgundy' | 'stone' | 'olive';
+  tone?: 'gold' | 'burgundy' | 'stone' | 'olive' | 'rust' | 'copper';
   className?: string;
+  titleClassName?: string;
+  descriptionClassName?: string;
 }
 
 export function SectionHeader({
@@ -21,6 +23,8 @@ export function SectionHeader({
   numbered,
   tone = 'gold',
   className,
+  titleClassName,
+  descriptionClassName,
 }: SectionHeaderProps) {
   return (
     <Reveal
@@ -38,7 +42,8 @@ export function SectionHeader({
       <h2
         className={cn(
           'font-display text-3xl sm:text-4xl lg:text-5xl leading-[1.15] text-balance',
-          align === 'center' ? 'max-w-3xl' : 'max-w-4xl'
+          align === 'center' ? 'max-w-3xl' : 'max-w-4xl',
+          titleClassName
         )}
       >
         {title}
@@ -46,7 +51,8 @@ export function SectionHeader({
       {description && (
         <p
           className={cn(
-            'text-lg text-charcoal/70 leading-relaxed text-pretty',
+            'text-lg leading-relaxed text-pretty',
+            descriptionClassName ?? 'text-charcoal/70',
             align === 'center' ? 'max-w-2xl' : 'max-w-2xl'
           )}
         >

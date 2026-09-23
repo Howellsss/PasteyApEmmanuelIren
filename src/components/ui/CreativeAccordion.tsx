@@ -19,7 +19,7 @@ const cards: Card[] = [
     description: 'Words that make the life of faith practical, clear, and lived.',
     icon: BookOpen,
     image: '/images/creative/image copy 2.png',
-    accent: '#D4A72C',
+    accent: '#C08463',
   },
   {
     tag: 'Music',
@@ -27,7 +27,7 @@ const cards: Card[] = [
     description: 'Songs of worship, conviction, and the joy of knowing Christ.',
     icon: Music2,
     image: '/images/creative/image.png',
-    accent: '#C9A66B',
+    accent: '#C08463',
   },
   {
     tag: 'Film & Media',
@@ -35,7 +35,7 @@ const cards: Card[] = [
     description: 'Stories and conversations that carry the message beyond the pulpit.',
     icon: Film,
     image: '/images/creative/image copy.png',
-    accent: '#C9A64D',
+    accent: '#C08463',
     objectPosition: 'center top',
   },
   {
@@ -44,7 +44,7 @@ const cards: Card[] = [
     description: 'Conversations and teachings that explore faith, purpose, leadership, and the Christian life.',
     icon: Mic2,
     image: '/images/creative/image copy 3.png',
-    accent: '#C97C3E',
+    accent: '#C08463',
   },
   {
     tag: 'Speaking',
@@ -52,7 +52,7 @@ const cards: Card[] = [
     description: 'Biblical teaching and conversations that bring clarity to faith, purpose, leadership, and culture.',
     icon: Sparkles,
     image: '/images/creative/image copy 4.png',
-    accent: '#6B3FA0',
+    accent: '#C08463',
   },
 ];
 
@@ -96,6 +96,9 @@ export function CreativeAccordion() {
           eyebrow="Creative Expression"
           title="More than the pulpit."
           description="The message also travels through pages, melodies, images, and stories — each one made to meet people where they are."
+          tone="rust"
+          titleClassName="text-ink"
+          descriptionClassName="text-umber"
           className="mb-12"
         />
       </div>
