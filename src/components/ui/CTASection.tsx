@@ -48,13 +48,13 @@ export function CTASection({
             {eyebrow}
           </Eyebrow>
         )}
-        <h2 className="font-display text-3xl lg:text-5xl leading-[1.15] text-balance max-w-3xl">
+        <h2 className="font-display text-2xl lg:text-4xl leading-[1.15] text-balance max-w-3xl">
           {title}
         </h2>
         {description && (
           <p
             className={cn(
-              'text-lg leading-relaxed max-w-xl text-pretty',
+              'text-base leading-relaxed max-w-xl text-pretty',
               variant === 'light' ? 'text-charcoal/70' : isInk ? 'text-cream' : 'text-white/70'
             )}
           >

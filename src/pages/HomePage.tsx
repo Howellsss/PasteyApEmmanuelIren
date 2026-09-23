@@ -212,7 +212,7 @@ export function HomePage() {
               <div className="order-2 flex min-h-[28rem] flex-col border-t border-graphite p-8 sm:p-10 lg:order-1 lg:min-h-[34rem] lg:border-t-0 lg:border-r lg:border-graphite lg:p-12">
                 <div className="flex-1 space-y-5 lg:flex lg:flex-col lg:justify-center">
                   <p className="text-eyebrow uppercase tracking-[0.16em] text-rust-light">{latestTeachings[activeTeachingIndex].series}</p>
-                  <h3 className="max-w-lg font-display text-3xl leading-[1.1] text-cream sm:text-4xl">
+                  <h3 className="max-w-lg font-display text-2xl leading-[1.15] text-cream lg:text-[1.75rem]">
                     {latestTeachings[activeTeachingIndex].title}
                   </h3>
                   <p className="max-w-md text-sm font-light leading-7 text-taupe">
@@ -348,7 +348,7 @@ export function HomePage() {
         <div className="container-editorial">
           <Reveal>
             <DisplayHeading eyebrow="Teaching" title="Teach the word." accent="Live the word." />
-            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-umber text-pretty">
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-umber text-pretty">
               Sermons and conversations for the questions, decisions, and ordinary days that make up a life of faith.
             </p>
           </Reveal>
@@ -410,10 +410,9 @@ export function HomePage() {
                   title="One calling."
                   accent="Many expressions."
                   tone="brown"
-                  size="md"
                   className="mb-6"
                 />
-                <p className="text-taupe leading-relaxed max-w-xl mb-10">
+                <p className="text-taupe leading-relaxed max-w-xl mb-8">
                   A growing family of ministry expressions, each carrying the same invitation to know Christ, live purposefully, and make Him known.
                 </p>
                 <div className="border-t border-bark">
@@ -439,7 +438,7 @@ export function HomePage() {
       <section className="py-14 md:py-16 lg:py-24" style={{ backgroundColor: '#E8DFD2' }}>
         <div className="container-editorial">
           <Reveal>
-            <DisplayHeading eyebrow="Events" title="Where Apostle Emmanuel Iren" accent="is ministering." size="md" />
+            <DisplayHeading eyebrow="Events" title="Where Apostle Emmanuel Iren" accent="is ministering." />
           </Reveal>
           <Reveal variant="scale" className="mt-10">
             <article className="grid grid-cols-1 lg:grid-cols-12 rounded-soft overflow-hidden bg-cream border border-stone/20">
@@ -453,7 +452,7 @@ export function HomePage() {
               </div>
               <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
                 <Eyebrow tone="rust" className="mb-5">Upcoming Event</Eyebrow>
-                <h3 className="font-display text-3xl leading-tight text-ink mb-6">Triumph30 — Lagos</h3>
+                <h3 className="font-display text-2xl leading-tight text-ink mb-5">Triumph30 — Lagos</h3>
                 <div className="space-y-3 text-sm text-umber mb-8">
                   <p className="flex items-center gap-3"><Calendar className="w-4 h-4 text-rust" /> Saturday, October 18, 2026</p>
                   <p className="flex items-center gap-3"><MapPin className="w-4 h-4 text-rust" /> Eko Hotels, Lagos</p>
@@ -477,7 +476,7 @@ export function HomePage() {
         <div className="container-editorial">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
             <Reveal>
-              <DisplayHeading eyebrow="Current Content" title="A curated" accent="continuation." size="md" />
+              <DisplayHeading eyebrow="Current Content" title="A curated" accent="continuation." />
             </Reveal>
             <Reveal delay={100}>
               <p className="text-sm text-umber max-w-xs leading-relaxed">Teaching, conversation, and worship for the week you are living.</p>
@@ -508,6 +507,7 @@ export function HomePage() {
               title={<>Know Christ.<br />Live purposefully.<br /></>}
               accent="Make Him known."
               tone="brown"
+              size="lg"
               align="center"
             />
           </Reveal>

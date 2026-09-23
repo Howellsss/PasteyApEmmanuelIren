@@ -19,10 +19,11 @@ const TONES = {
   brown: { line: 'bg-rust-lighter/70', label: 'text-rust-lighter', title: 'text-cream', accent: 'text-rust-lighter' },
 };
 
+// md (~40px on desktop) is the standard section heading; lg is kept for the closing statement.
 const SIZES = {
-  lg: 'text-4xl sm:text-5xl lg:text-7xl',
-  md: 'text-4xl sm:text-5xl lg:text-6xl',
-  sm: 'text-3xl sm:text-4xl lg:text-5xl',
+  lg: 'text-3xl sm:text-4xl lg:text-5xl',
+  md: 'text-3xl sm:text-4xl lg:text-[2.5rem]',
+  sm: 'text-3xl lg:text-4xl',
 };
 
 /** Section heading in the "Latest Teachings" style: ruled eyebrow over a bold, uppercase, two-tone title. */
@@ -31,7 +32,7 @@ export function DisplayHeading({
   title,
   accent,
   tone = 'light',
-  size = 'lg',
+  size = 'md',
   align = 'left',
   className,
 }: DisplayHeadingProps) {
@@ -40,14 +41,14 @@ export function DisplayHeading({
 
   return (
     <div className={cn(centered && 'text-center', className)}>
-      <div className={cn('mb-5 flex items-center gap-4', centered && 'justify-center')}>
+      <div className={cn('mb-4 flex items-center gap-4', centered && 'justify-center')}>
         <span className={cn('h-px w-14', colors.line)} />
         <span className={cn('text-eyebrow uppercase tracking-[0.2em]', colors.label)}>{eyebrow}</span>
         {centered && <span className={cn('h-px w-14', colors.line)} />}
       </div>
       <h2
         className={cn(
-          'font-sans font-extrabold uppercase leading-[0.98] tracking-[-0.04em] text-balance',
+          'font-sans font-extrabold uppercase leading-[1.05] tracking-[-0.02em] text-balance',
           SIZES[size],
           colors.title,
           centered ? 'mx-auto max-w-4xl' : 'max-w-3xl'

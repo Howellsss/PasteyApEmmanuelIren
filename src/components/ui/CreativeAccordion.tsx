@@ -95,7 +95,7 @@ export function CreativeAccordion() {
       <div className="container-editorial">
         <Reveal className="mb-10">
           <DisplayHeading eyebrow="Creative Expression" title="More than" accent="the pulpit." />
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-umber text-pretty">
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-umber text-pretty">
             The message also travels through pages, melodies, images, and stories — each one made to meet people where they are.
           </p>
         </Reveal>
