@@ -95,6 +95,26 @@
     transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
+  /* About photo: curtain wipe from the bottom plus a zoom that settles. */
+  .about-reveal {
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+  .about-reveal.is-visible {
+    clip-path: inset(0 0 0 0);
+  }
+  .about-reveal-img {
+    transform: scale(1.18);
+    transition: transform 1.8s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .about-reveal.is-visible .about-reveal-img {
+    transform: scale(1);
+  }
+  .about-reveal.is-visible:hover .about-reveal-img {
+    transform: scale(1.04);
+    transition-duration: 1.2s;
+  }
+
   .reveal-from-left {
     animation: slide-in-left 0.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   }
@@ -130,9 +150,12 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .reveal-hidden, .reveal-scale-hidden {
+  .reveal-hidden, .reveal-scale-hidden, .about-reveal-img {
     opacity: 1 !important;
     transform: none !important;
+  }
+  .about-reveal {
+    clip-path: none !important;
   }
 }
 

@@ -7,7 +7,7 @@ interface RevealProps {
   className?: string;
   delay?: number;
   variant?: 'up' | 'scale' | 'fade';
-  as?: 'div' | 'section' | 'article' | 'li' | 'span';
+  as?: 'div' | 'section' | 'article' | 'li' | 'span' | 'p';
 }
 
 export function Reveal({

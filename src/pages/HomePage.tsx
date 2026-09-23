@@ -17,6 +17,8 @@ import { MediaCard } from '@/components/ui/MediaCard';
 import { CTASection } from '@/components/ui/CTASection';
 import { DisplayHeading } from '@/components/ui/DisplayHeading';
 import { CreativeAccordion } from '@/components/ui/CreativeAccordion';
+import { useReveal } from '@/lib/useReveal';
+import { cn } from '@/lib/cn';
 
 const HERO_NAME = 'Apostle Emmanuel Iren';
 const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.png';
@@ -97,6 +99,32 @@ const ministryExpressions = [
     description: 'A youth and campus expression built to ignite faith and purpose.',
   },
 ];
+
+/** About photo: wipes up into view while settling from a slow zoom; eases in again on hover. */
+function AboutImage() {
+  const { ref, visible } = useReveal<HTMLDivElement>(0.2);
+
+  // Observe the unclipped wrapper: a fully clipped element never reports as intersecting.
+  return (
+    <div ref={ref}>
+      <div
+        className={cn(
+          'about-reveal relative aspect-[4/5] overflow-hidden rounded-soft bg-ink sm:aspect-[4/3]',
+          visible && 'is-visible'
+        )}
+      >
+        <img
+          src={ABOUT_IMAGE}
+          alt="Emmanuel Iren speaking on stage"
+          className="about-reveal-img h-full w-full object-cover"
+          style={{ objectPosition: 'center 35%' }}
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+    </div>
+  );
+}
 
 export function HomePage() {
   const [typedHeroName, setTypedHeroName] = useState('');
@@ -303,23 +331,13 @@ export function HomePage() {
       </section>
 
       <section className="py-14 md:py-16 lg:py-24" style={{ backgroundColor: '#E8DFD2' }}>
-        <div className="container-editorial">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            <div className="lg:col-span-7">
-              <Reveal variant="scale">
-                <div className="relative aspect-[4/5] lg:aspect-[3/4] max-w-none overflow-hidden rounded-soft">
-                  <img
-                    src={ABOUT_IMAGE}
-                    alt="Emmanuel Iren speaking on stage"
-                    className="w-full h-full object-cover bg-charcoal transition-transform duration-700 ease-out-quart hover:scale-[1.02]"
-                    style={{ objectPosition: 'center center' }}
-                    loading="eager"
-                  />
-                </div>
-              </Reveal>
+        <div className="container-wide">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            <div className="lg:col-span-8">
+              <AboutImage />
             </div>
-            <div className="lg:col-span-5 lg:col-start-9">
-              <Reveal delay={100}>
+            <div className="lg:col-span-4">
+              <Reveal>
                 <DisplayHeading
                   eyebrow="About Emmanuel"
                   title="A life given to Christ"
@@ -327,14 +345,16 @@ export function HomePage() {
                   size="sm"
                   className="mb-6"
                 />
-                <div className="space-y-5 text-umber leading-relaxed">
-                  <p>
-                    Apostle Emmanuel Iren is the founder and lead pastor of Celebration Church International, a teacher of God’s Word, author, songwriter, and ministry leader.
-                  </p>
-                  <p>
-                    His work brings together sound teaching, creative expression, and a deep commitment to helping people live their faith with clarity and purpose.
-                  </p>
-                </div>
+              </Reveal>
+              <div className="space-y-5 text-umber leading-relaxed">
+                <Reveal delay={150} as="p">
+                  Apostle Emmanuel Iren is the founder and lead pastor of Celebration Church International, a teacher of God’s Word, author, songwriter, and ministry leader.
+                </Reveal>
+                <Reveal delay={300} as="p">
+                  His work brings together sound teaching, creative expression, and a deep commitment to helping people live their faith with clarity and purpose.
+                </Reveal>
+              </div>
+              <Reveal delay={450}>
                 <Link to="/about" className="inline-block mt-8">
                   <TextLink tone="rust">Read His Story</TextLink>
                 </Link>
