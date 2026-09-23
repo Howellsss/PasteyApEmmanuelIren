@@ -113,17 +113,24 @@ export function HomePage() {
     if (hasFinishedIntro) return;
 
     let characterIndex = 0;
-    const typeInterval = window.setInterval(() => {
-      characterIndex += 1;
-      setTypedHeroName(HERO_NAME.slice(0, characterIndex));
+    let typeInterval: number | undefined;
+    // Short pause so the hero has faded in before the first letter appears.
+    const startDelay = window.setTimeout(() => {
+      typeInterval = window.setInterval(() => {
+        characterIndex += 1;
+        setTypedHeroName(HERO_NAME.slice(0, characterIndex));
 
-      if (characterIndex === HERO_NAME.length) {
-        window.clearInterval(typeInterval);
-        setHasFinishedIntro(true);
-      }
-    }, 150);
+        if (characterIndex === HERO_NAME.length) {
+          window.clearInterval(typeInterval);
+          setHasFinishedIntro(true);
+        }
+      }, 180);
+    }, 700);
 
-    return () => window.clearInterval(typeInterval);
+    return () => {
+      window.clearTimeout(startDelay);
+      window.clearInterval(typeInterval);
+    };
   }, [hasFinishedIntro]);
 
   useEffect(() => {
@@ -191,7 +198,7 @@ export function HomePage() {
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-ink/40" />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-transparent to-transparent" />
-        <div className="relative w-full px-6 sm:px-8 lg:px-16 pb-16 lg:pb-24 pt-32 flex justify-center text-center">
+        <div className="relative z-20 w-full px-6 sm:px-8 lg:px-16 pb-16 lg:pb-24 pt-32 flex justify-center text-center">
           <Reveal className="w-full max-w-4xl flex flex-col items-center">
             <div className="mb-8 flex items-center justify-center gap-4">
               <span aria-hidden="true" className="h-0.5 w-10 bg-rust sm:w-14" />
