@@ -20,6 +20,7 @@ import { SectionHeader } from '@/components/ui/SectionHeader';
 import { CreativeAccordion } from '@/components/ui/CreativeAccordion';
 
 const HERO_NAME = 'Apostle Emmanuel Iren';
+const HERO_VIDEO_ID = '1229309895';
 const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.png';
 const ABOUT_IMAGE = '/images/about/image copy.png';
 const CREATIVE_IMAGE = '/images/creative/e5.jpeg';
@@ -105,6 +106,7 @@ export function HomePage() {
   const [activeTeachingIndex, setActiveTeachingIndex] = useState(0);
   const [isTeachingPaused, setIsTeachingPaused] = useState(false);
   const [isVideoReady, setIsVideoReady] = useState(false);
+  const [heroPoster, setHeroPoster] = useState<string | null>(null);
   const heroPlayerRef = useRef<Player | null>(null);
   const heroIframeRef = useRef<HTMLIFrameElement | null>(null);
   const HERO_VIDEO_CUTOFF = 28;
@@ -156,12 +158,24 @@ export function HomePage() {
       }
     });
 
-    const readyFallback = window.setTimeout(() => setIsVideoReady(true), 8000);
-
     return () => {
-      window.clearTimeout(readyFallback);
       player.destroy().catch(() => {});
     };
+  }, []);
+
+  // Show the video's own thumbnail while the player loads, so the hero opens on him instead of a blank screen.
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${HERO_VIDEO_ID}&width=1920`, {
+      signal: controller.signal,
+    })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data: { thumbnail_url?: string } | null) => {
+        if (data?.thumbnail_url) setHeroPoster(data.thumbnail_url);
+      })
+      .catch(() => {});
+
+    return () => controller.abort();
   }, []);
 
   useEffect(() => {
@@ -180,7 +194,7 @@ export function HomePage() {
         <div className="absolute inset-0 overflow-hidden bg-ink">
           <iframe
             ref={heroIframeRef}
-            src="https://player.vimeo.com/video/1229309895?autoplay=1&loop=1&autopause=0&controls=0&title=0&byline=0&portrait=0&badge=0&dnt=1&pip=0&keyboard=0&muted=1"
+            src={`https://player.vimeo.com/video/${HERO_VIDEO_ID}?autoplay=1&loop=1&autopause=0&controls=0&title=0&byline=0&portrait=0&badge=0&dnt=1&pip=0&keyboard=0&muted=1`}
             allow="autoplay; fullscreen; picture-in-picture"
             referrerPolicy="strict-origin-when-cross-origin"
             title="What an explosive time in the word we had on sunday!"
@@ -193,8 +207,17 @@ export function HomePage() {
           <div aria-hidden="true" className="pointer-events-none absolute right-0 top-0 h-20 w-56 bg-gradient-to-l from-ink/80 via-ink/35 to-transparent" />
           <div
             aria-hidden="true"
-            className={`absolute inset-0 bg-ink z-10 transition-opacity duration-1000 ${isVideoReady ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
-          />
+            className={`absolute inset-0 bg-ink z-10 transition-opacity duration-700 ${isVideoReady ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+          >
+            {heroPoster && (
+              <img
+                src={heroPoster}
+                alt=""
+                className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-500"
+                onLoad={(event) => event.currentTarget.classList.replace('opacity-0', 'opacity-100')}
+              />
+            )}
+          </div>
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-ink/40" />
         <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-transparent to-transparent" />
