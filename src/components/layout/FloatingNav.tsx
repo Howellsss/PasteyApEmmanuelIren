@@ -72,7 +72,7 @@ export function FloatingNav() {
                       {item.label}
                       <span
                         className={cn(
-                          'absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-px bg-copper transition-all duration-300',
+                          'absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-px bg-rust transition-all duration-300',
                           isActive
                             ? 'w-4 opacity-100'
                             : 'w-0 opacity-0 group-hover/link:w-4 group-hover/link:opacity-100'
@@ -93,7 +93,7 @@ export function FloatingNav() {
                 'hidden lg:inline-flex items-center px-5 py-2 mr-2 text-sm font-medium rounded-button transition-all duration-300',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal',
                 isActive
-                  ? 'bg-copper text-ink'
+                  ? 'bg-rust-dark text-cream'
                   : 'bg-rust text-cream hover:bg-rust-dark'
               )
             }

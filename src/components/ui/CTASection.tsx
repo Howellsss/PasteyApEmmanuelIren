@@ -32,7 +32,7 @@ export function CTASection({
   };
 
   const isInk = variant === 'ink';
-  const eyebrowTone = isInk ? 'copper' : 'gold';
+  const eyebrowTone = isInk ? 'rust' : 'gold';
 
   return (
     <Reveal variant="scale">
@@ -79,7 +79,7 @@ export function CTASection({
               variant="ghost"
               size="lg"
               className={cn(
-                variant !== 'light' && (isInk ? 'text-cream hover:text-copper' : 'text-soft-white hover:text-gold')
+                variant !== 'light' && (isInk ? 'text-cream hover:text-rust' : 'text-soft-white hover:text-gold')
               )}
             >
               {secondaryLabel}
