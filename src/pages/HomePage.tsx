@@ -193,7 +193,7 @@ export function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-transparent to-transparent" />
         <div className="relative w-full px-6 sm:px-8 lg:px-16 pb-16 lg:pb-24 pt-32 flex justify-center text-center">
           <Reveal className="w-full max-w-4xl flex flex-col items-center">
-            <Eyebrow tone="rust" centered className="mb-8 text-sm tracking-[0.2em] sm:text-base">
+            <Eyebrow tone="rust-light" centered className="mb-8 text-sm tracking-[0.2em] sm:text-base">
               Apostle · Teacher · Author
             </Eyebrow>
             <h1 className="font-sans text-5xl sm:text-6xl lg:text-8xl font-extrabold leading-[0.98] text-cream text-balance mb-8 tracking-[-0.04em] min-h-[0.98em]">
@@ -223,16 +223,16 @@ export function HomePage() {
           <div className="mb-12 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
             <Reveal>
               <div className="mb-5 flex items-center gap-4">
-                <span className="h-px w-14 bg-rust/70" />
-                <span className="text-eyebrow uppercase tracking-[0.2em] text-rust">Teachings</span>
+                <span className="h-px w-14 bg-rust-light/70" />
+                <span className="text-eyebrow uppercase tracking-[0.2em] text-rust-light">Teachings</span>
               </div>
               <h2 className="max-w-3xl font-sans text-4xl font-extrabold uppercase leading-[0.98] tracking-[-0.04em] text-cream sm:text-5xl lg:text-7xl">
-                Latest <span className="text-rust">Teachings</span>
+                Latest <span className="text-rust-light">Teachings</span>
               </h2>
             </Reveal>
             <Reveal delay={100}>
               <Link to="/teaching">
-                <TextLink tone="rust">Browse the library</TextLink>
+                <TextLink tone="rust-light">Browse the library</TextLink>
               </Link>
             </Reveal>
           </div>
@@ -241,7 +241,7 @@ export function HomePage() {
             <article className="grid overflow-hidden rounded-soft border border-graphite bg-[#1a1a1a] lg:grid-cols-[0.92fr_1.08fr]">
               <div className="order-2 flex min-h-[28rem] flex-col border-t border-graphite p-8 sm:p-10 lg:order-1 lg:min-h-[34rem] lg:border-t-0 lg:border-r lg:border-graphite lg:p-12">
                 <div className="flex-1 space-y-5 lg:flex lg:flex-col lg:justify-center">
-                  <p className="text-eyebrow uppercase tracking-[0.16em] text-rust">{latestTeachings[activeTeachingIndex].series}</p>
+                  <p className="text-eyebrow uppercase tracking-[0.16em] text-rust-light">{latestTeachings[activeTeachingIndex].series}</p>
                   <h3 className="max-w-lg font-display text-3xl leading-[1.1] text-cream sm:text-4xl">
                     {latestTeachings[activeTeachingIndex].title}
                   </h3>
@@ -250,7 +250,7 @@ export function HomePage() {
                   </p>
                   <div className="flex flex-wrap items-center gap-3 text-meta text-taupe">
                     <span>{latestTeachings[activeTeachingIndex].date}</span>
-                    <span className="h-1 w-1 rounded-pill bg-rust/60" />
+                    <span className="h-1 w-1 rounded-pill bg-rust-light/60" />
                     <span>{latestTeachings[activeTeachingIndex].type}</span>
                   </div>
                   <div className="pt-2">
@@ -275,10 +275,10 @@ export function HomePage() {
                         aria-selected={activeTeachingIndex === index}
                         aria-label={`Show ${teaching.title}`}
                         onClick={() => setActiveTeachingIndex(index)}
-                        className={`relative pb-2 text-xs tracking-[0.12em] transition-colors ${activeTeachingIndex === index ? 'text-rust' : 'text-white/25 hover:text-white/60'}`}
+                        className={`relative pb-2 text-xs tracking-[0.12em] transition-colors ${activeTeachingIndex === index ? 'text-rust-light' : 'text-white/25 hover:text-white/60'}`}
                       >
                         {String(index + 1).padStart(2, '0')}
-                        <span className={`absolute bottom-0 left-0 h-px bg-rust transition-all duration-300 ${activeTeachingIndex === index ? 'w-full' : 'w-0'}`} />
+                        <span className={`absolute bottom-0 left-0 h-px bg-rust-light transition-all duration-300 ${activeTeachingIndex === index ? 'w-full' : 'w-0'}`} />
                       </button>
                     ))}
                   </div>
@@ -287,7 +287,7 @@ export function HomePage() {
                       type="button"
                       aria-label="Previous teaching"
                       onClick={() => setActiveTeachingIndex((index) => (index - 1 + latestTeachings.length) % latestTeachings.length)}
-                      className="flex h-9 w-9 items-center justify-center text-white/45 transition-colors hover:text-rust"
+                      className="flex h-9 w-9 items-center justify-center text-white/45 transition-colors hover:text-rust-light"
                     >
                       <ChevronLeft className="h-5 w-5" />
                     </button>
@@ -295,7 +295,7 @@ export function HomePage() {
                       type="button"
                       aria-label="Next teaching"
                       onClick={() => setActiveTeachingIndex((index) => (index + 1) % latestTeachings.length)}
-                      className="flex h-9 w-9 items-center justify-center text-white/45 transition-colors hover:text-rust"
+                      className="flex h-9 w-9 items-center justify-center text-white/45 transition-colors hover:text-rust-light"
                     >
                       <ChevronRight className="h-5 w-5" />
                     </button>
@@ -434,7 +434,7 @@ export function HomePage() {
             </div>
             <div className="lg:col-span-6 lg:order-1">
               <Reveal>
-                <Eyebrow tone="rust" className="mb-6">Ministry</Eyebrow>
+                <Eyebrow tone="rust-lighter" className="mb-6">Ministry</Eyebrow>
                 <h2 className="font-display text-4xl lg:text-6xl leading-[1.05] text-balance mb-6">
                   One calling. Many expressions.
                 </h2>
@@ -444,7 +444,7 @@ export function HomePage() {
                 <div className="border-t border-bark">
                   {ministryExpressions.map((expression, index) => (
                     <div key={expression.name} className="grid grid-cols-[2.5rem_1fr] gap-4 py-5 border-b border-bark">
-                      <span className="text-meta text-rust">0{index + 1}</span>
+                      <span className="text-meta text-rust-lighter">0{index + 1}</span>
                       <div>
                         <h3 className="font-display text-xl text-taupe mb-1">{expression.name}</h3>
                         <p className="text-sm text-taupe leading-relaxed max-w-md">{expression.description}</p>
@@ -453,7 +453,7 @@ export function HomePage() {
                   ))}
                 </div>
                 <Link to="/ministry" className="inline-block mt-8">
-                  <TextLink tone="rust">Explore Ministry</TextLink>
+                  <TextLink tone="rust-lighter">Explore Ministry</TextLink>
                 </Link>
               </Reveal>
             </div>
@@ -514,11 +514,11 @@ export function HomePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             <Link to="/teaching" className="group p-6 rounded-soft bg-ink text-cream min-h-[16rem] flex flex-col justify-between hover:bg-rust transition-colors duration-500">
-              <div className="flex items-center justify-between"><Play className="w-5 h-5 text-rust group-hover:text-cream transition-colors duration-500" /><span className="text-meta uppercase tracking-widest text-white/50">YouTube</span></div>
+              <div className="flex items-center justify-between"><Play className="w-5 h-5 text-rust-light group-hover:text-cream transition-colors duration-500" /><span className="text-meta uppercase tracking-widest text-white/50">YouTube</span></div>
               <div><h3 className="font-display text-2xl mb-2">Led by the Spirit</h3><p className="text-sm text-white/60">A short teaching for the journey.</p></div>
             </Link>
             <Link to="/teaching" className="group p-6 rounded-soft border border-white/15 bg-walnut min-h-[16rem] flex flex-col justify-between hover:bg-rust hover:border-rust transition-colors duration-500">
-              <div className="flex items-center justify-between"><Headphones className="w-5 h-5 text-rust group-hover:text-cream transition-colors duration-500" /><span className="text-meta uppercase tracking-widest text-white/50 group-hover:text-white/70 transition-colors duration-500">Podcast</span></div>
+              <div className="flex items-center justify-between"><Headphones className="w-5 h-5 text-rust-lighter group-hover:text-cream transition-colors duration-500" /><span className="text-meta uppercase tracking-widest text-white/50 group-hover:text-white/70 transition-colors duration-500">Podcast</span></div>
               <div><h3 className="font-display text-2xl text-cream mb-2">The Creative Calling</h3><p className="text-sm text-white/60 group-hover:text-white/80 transition-colors duration-500">A conversation about making with purpose.</p></div>
             </Link>
             <Link to="/ministry" className="group overflow-hidden rounded-soft min-h-[16rem] bg-sand p-6 flex flex-col justify-between hover:bg-rust transition-colors duration-500">
@@ -532,7 +532,7 @@ export function HomePage() {
       <section className="py-28 lg:py-44" style={{ backgroundColor: '#3B2F27' }}>
         <div className="container-editorial text-center">
           <Reveal>
-            <p className="text-eyebrow uppercase tracking-[0.3em] text-rust mb-8">The Invitation</p>
+            <p className="text-eyebrow uppercase tracking-[0.3em] text-rust-lighter mb-8">The Invitation</p>
             <h2 className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-7xl leading-[0.98] tracking-[-0.04em] text-cream text-balance">
               Know Christ.<br />
               Live purposefully.<br />

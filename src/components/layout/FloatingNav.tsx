@@ -72,7 +72,7 @@ export function FloatingNav() {
                       {item.label}
                       <span
                         className={cn(
-                          'absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-px bg-rust transition-all duration-300',
+                          'absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-px bg-rust-light transition-all duration-300',
                           isActive
                             ? 'w-4 opacity-100'
                             : 'w-0 opacity-0 group-hover/link:w-4 group-hover/link:opacity-100'

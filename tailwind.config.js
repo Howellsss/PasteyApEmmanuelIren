@@ -11,7 +11,8 @@ export default {
         taupe: '#AFA397',
         umber: '#6A5F55',
         copper: '#C08463',
-        rust: { DEFAULT: '#6E1717', dark: '#5A1212' },
+        // light/lighter: brighter reds for text on dark and coffee-brown backgrounds.
+        rust: { DEFAULT: '#6E1717', dark: '#5A1212', light: '#D35454', lighter: '#E06666' },
         bark: '#3E352D',
         cocoa: '#26201B',
         walnut: '#3B2F27',

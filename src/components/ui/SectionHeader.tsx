@@ -9,7 +9,7 @@ interface SectionHeaderProps {
   description?: ReactNode;
   align?: 'left' | 'center';
   numbered?: string;
-  tone?: 'gold' | 'burgundy' | 'stone' | 'olive' | 'rust' | 'copper';
+  tone?: 'gold' | 'burgundy' | 'stone' | 'olive' | 'rust' | 'rust-light' | 'rust-lighter' | 'copper';
   className?: string;
   titleClassName?: string;
   descriptionClassName?: string;

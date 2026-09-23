@@ -4,7 +4,7 @@ import { cn } from '@/lib/cn';
 interface EyebrowProps {
   children: ReactNode;
   className?: string;
-  tone?: 'gold' | 'burgundy' | 'stone' | 'olive' | 'rust' | 'copper';
+  tone?: 'gold' | 'burgundy' | 'stone' | 'olive' | 'rust' | 'rust-light' | 'rust-lighter' | 'copper';
   numbered?: string;
   centered?: boolean;
 }
@@ -16,6 +16,8 @@ export function Eyebrow({ children, className, tone = 'gold', numbered, centered
     stone: 'text-stone',
     olive: 'text-olive',
     rust: 'text-rust',
+    'rust-light': 'text-rust-light',
+    'rust-lighter': 'text-rust-lighter',
     copper: 'text-copper',
   }[tone];
 
@@ -37,6 +39,8 @@ export function Eyebrow({ children, className, tone = 'gold', numbered, centered
               gold: 'bg-gold/40',
               burgundy: 'bg-burgundy/40',
               rust: 'bg-rust/40',
+              'rust-light': 'bg-rust-light/40',
+              'rust-lighter': 'bg-rust-lighter/40',
               copper: 'bg-copper/40',
               stone: 'bg-stone/40',
               olive: 'bg-stone/40',

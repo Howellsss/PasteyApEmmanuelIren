@@ -169,7 +169,7 @@
 }
 .ce-card.is-active {
   flex-grow: 2.6;
-  border-color: var(--ce-accent, #6E1717);
+  border-color: var(--ce-accent, #D35454);
 }
 .ce-card-image {
   position: absolute;
@@ -199,8 +199,8 @@
   right: 18px;
   width: 34px;
   height: 34px;
-  border-top: 1.5px solid var(--ce-accent, #6E1717);
-  border-right: 1.5px solid var(--ce-accent, #6E1717);
+  border-top: 1.5px solid var(--ce-accent, #D35454);
+  border-right: 1.5px solid var(--ce-accent, #D35454);
   opacity: 0;
   transition: opacity 0.5s ease 0.1s;
 }
@@ -224,7 +224,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: var(--ce-accent, #6E1717);
+  background: var(--ce-accent, #D35454);
   color: #F6F2EB;
   margin-bottom: 6px;
 }
@@ -234,7 +234,7 @@
   font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--ce-accent, #6E1717);
+  color: var(--ce-accent, #D35454);
   margin: 0;
 }
 .ce-card-title {

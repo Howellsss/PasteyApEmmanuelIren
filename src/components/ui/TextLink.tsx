@@ -6,7 +6,7 @@ interface TextLinkProps {
   children: ReactNode;
   href?: string;
   className?: string;
-  tone?: 'burgundy' | 'gold' | 'charcoal' | 'rust' | 'copper';
+  tone?: 'burgundy' | 'gold' | 'charcoal' | 'rust' | 'rust-light' | 'rust-lighter' | 'copper';
   withArrow?: boolean;
 }
 
@@ -22,6 +22,8 @@ export function TextLink({
     gold: 'text-gold-dark hover:text-gold',
     charcoal: 'text-charcoal hover:text-burgundy',
     rust: 'text-rust hover:text-rust-dark',
+    'rust-light': 'text-rust-light hover:text-cream',
+    'rust-lighter': 'text-rust-lighter hover:text-cream',
     copper: 'text-copper hover:text-cream',
   }[tone];
 
