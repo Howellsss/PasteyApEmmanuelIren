@@ -30,7 +30,7 @@ export function UploadArea({
 
   return (
     <div className={cn('flex flex-col gap-1.5', className)}>
-      <label className="text-sm font-medium text-charcoal">{label}</label>
+      <label className="text-sm font-medium text-cream">{label}</label>
       <div
         onDragOver={(e) => {
           e.preventDefault();
@@ -41,21 +41,21 @@ export function UploadArea({
         className={cn(
           'relative flex flex-col items-center justify-center gap-3 p-8 rounded-soft border-2 border-dashed transition-all duration-300 cursor-pointer',
           dragging
-            ? 'border-burgundy bg-burgundy/5'
+            ? 'border-accent bg-accent/5'
             : file
             ? 'border-olive/40 bg-olive/5'
-            : 'border-stone/40 hover:border-stone/60 bg-soft-white/30'
+            : 'border-line hover:border-line bg-surface/30'
         )}
       >
         {file ? (
           <>
             <div className="flex items-center gap-3">
               <div className="flex items-center justify-center w-10 h-10 rounded-pill bg-olive/15">
-                <Check className="w-5 h-5 text-olive" />
+                <Check className="w-5 h-5 text-ash" />
               </div>
               <div className="text-left">
-                <p className="text-sm font-medium text-charcoal">{file.name}</p>
-                <p className="text-meta text-stone">
+                <p className="text-sm font-medium text-cream">{file.name}</p>
+                <p className="text-meta text-ash">
                   {(file.size / 1024).toFixed(1)} KB
                 </p>
               </div>
@@ -64,7 +64,7 @@ export function UploadArea({
                   e.stopPropagation();
                   setFile(null);
                 }}
-                className="flex items-center justify-center w-8 h-8 rounded-pill text-stone hover:text-burgundy hover:bg-burgundy/5 transition-colors duration-300"
+                className="flex items-center justify-center w-8 h-8 rounded-pill text-ash hover:text-accent hover:bg-accent/5 transition-colors duration-300"
                 aria-label="Remove file"
               >
                 <X className="w-4 h-4" />
@@ -76,14 +76,14 @@ export function UploadArea({
             <UploadCloud
               className={cn(
                 'w-8 h-8 transition-colors duration-300',
-                dragging ? 'text-burgundy' : 'text-stone'
+                dragging ? 'text-accent' : 'text-ash'
               )}
             />
             <div className="text-center">
-              <p className="text-sm text-charcoal">
-                <span className="text-burgundy font-medium">Browse</span> or drag here
+              <p className="text-sm text-cream">
+                <span className="text-accent font-medium">Browse</span> or drag here
               </p>
-              <p className="text-meta text-stone mt-1">{accept}</p>
+              <p className="text-meta text-ash mt-1">{accept}</p>
             </div>
           </>
         )}

@@ -26,18 +26,18 @@ export function SocialCard({
 }: SocialCardProps) {
   return (
     <Reveal className={cn('group', className)}>
-      <article className="flex flex-col gap-4 p-6 rounded-soft border border-stone/30 hover:border-stone/50 transition-colors duration-300 bg-soft-white/40">
+      <article className="flex flex-col gap-4 p-6 rounded-soft border border-line hover:border-line transition-colors duration-300 bg-surface/40">
         <div className="flex items-center justify-between">
           <Eyebrow tone="olive">{platform}</Eyebrow>
-          <span className="text-meta text-stone">{handle}</span>
+          <span className="text-meta text-ash">{handle}</span>
         </div>
-        <p className="text-sm text-charcoal/80 leading-relaxed text-pretty">{content}</p>
+        <p className="text-sm text-ash leading-relaxed text-pretty">{content}</p>
         {image && (
-          <div className="overflow-hidden rounded-soft aspect-video bg-charcoal/5">
+          <div className="overflow-hidden rounded-soft aspect-video bg-surface">
             <img src={image} alt="" loading="lazy" className="w-full h-full object-cover" />
           </div>
         )}
-        <div className="flex items-center gap-6 text-stone">
+        <div className="flex items-center gap-6 text-ash">
           <span className="flex items-center gap-1.5 text-meta">
             <Heart className="w-3.5 h-3.5" />
             {likes.toLocaleString()}

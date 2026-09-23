@@ -25,11 +25,11 @@ export function SelectField({
   return (
     <div className={cn('flex flex-col gap-1.5', className)}>
       <div className="flex items-baseline justify-between">
-        <label className="text-sm font-medium text-charcoal">
+        <label className="text-sm font-medium text-cream">
           {label}
-          {required && <span className="text-burgundy ml-0.5">*</span>}
+          {required && <span className="text-accent ml-0.5">*</span>}
         </label>
-        {hint && <span className="text-meta text-stone">{hint}</span>}
+        {hint && <span className="text-meta text-ash">{hint}</span>}
       </div>
       <div className="relative">
         <select
@@ -43,13 +43,13 @@ export function SelectField({
             props.onBlur?.(e);
           }}
           className={cn(
-            'w-full appearance-none px-4 py-3 pr-10 rounded-subtle border bg-soft-white text-charcoal',
+            'w-full appearance-none px-4 py-3 pr-10 rounded-subtle border bg-surface text-cream',
             'transition-all duration-300 ease-out-quart focus:outline-none cursor-pointer',
             error
-              ? 'border-burgundy'
+              ? 'border-accent'
               : focused
-              ? 'border-charcoal/40 ring-1 ring-charcoal/10'
-              : 'border-stone/30 hover:border-stone/50'
+              ? 'border-line ring-1 ring-accent/10'
+              : 'border-line hover:border-line'
           )}
         >
           <option value="" disabled>
@@ -63,12 +63,12 @@ export function SelectField({
         </select>
         <ChevronDown
           className={cn(
-            'absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone pointer-events-none transition-transform duration-300',
+            'absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-ash pointer-events-none transition-transform duration-300',
             focused && 'rotate-180'
           )}
         />
       </div>
-      {error && <p className="text-meta text-burgundy mt-0.5">{error}</p>}
+      {error && <p className="text-meta text-accent mt-0.5">{error}</p>}
     </div>
   );
 }

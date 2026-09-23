@@ -37,7 +37,7 @@ export function EditorialImageCard({
   return (
     <Reveal variant="scale" className={cn('group', className)}>
       <figure>
-        <div className={cn('overflow-hidden rounded-soft bg-charcoal/5', ratioClass[ratio])}>
+        <div className={cn('overflow-hidden rounded-soft bg-surface', ratioClass[ratio])}>
           <img
             src={image}
             alt={alt}
@@ -51,7 +51,7 @@ export function EditorialImageCard({
         {(caption || credit) && (
           <figcaption className="flex items-start justify-between gap-4 mt-3">
             {caption && (
-              <p className="text-sm text-charcoal/70 leading-relaxed max-w-md">{caption}</p>
+              <p className="text-sm text-ash leading-relaxed max-w-md">{caption}</p>
             )}
             {credit && (
               <Eyebrow tone="stone" className="flex-shrink-0">

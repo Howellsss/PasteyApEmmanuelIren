@@ -42,7 +42,7 @@ export function InteractiveTimeline({ milestones, className }: InteractiveTimeli
   return (
     <div className={cn('w-full', className)}>
       {/* Display panel */}
-      <div className="relative overflow-hidden rounded-soft bg-charcoal">
+      <div className="relative overflow-hidden rounded-soft bg-ink-2">
         <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[24rem]">
           {/* Image */}
           <div className="relative lg:col-span-7 aspect-[16/10] lg:aspect-auto overflow-hidden">
@@ -60,10 +60,10 @@ export function InteractiveTimeline({ milestones, className }: InteractiveTimeli
                 )}
               />
             ))}
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent" />
           </div>
           {/* Content */}
-          <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-center text-soft-white">
+          <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-center text-cream">
             <div
               key={active}
               className={cn(
@@ -71,7 +71,7 @@ export function InteractiveTimeline({ milestones, className }: InteractiveTimeli
                 direction === 'right' ? 'reveal-from-left' : 'reveal-from-right',
               )}
             >
-              <span className="font-display text-5xl lg:text-6xl text-gold tabular-nums leading-none block mb-4">
+              <span className="font-display text-5xl lg:text-6xl text-accent tabular-nums leading-none block mb-4">
                 {milestone.year}
               </span>
               <h3 className="font-display text-2xl lg:text-3xl leading-tight mb-4 text-balance">
@@ -87,7 +87,7 @@ export function InteractiveTimeline({ milestones, className }: InteractiveTimeli
 
       {/* Horizontal milestone track */}
       <div className="relative mt-8">
-        <div className="absolute top-1/2 left-0 right-0 h-px bg-stone/30 -translate-y-1/2" />
+        <div className="absolute top-1/2 left-0 right-0 h-px bg-line -translate-y-1/2" />
         <div
           ref={trackRef}
           className="relative flex items-center gap-2 overflow-x-auto pb-2 pt-2 scrollbar-thin"
@@ -102,7 +102,7 @@ export function InteractiveTimeline({ milestones, className }: InteractiveTimeli
               <span
                 className={cn(
                   'text-meta font-sans uppercase tracking-widest transition-colors duration-300',
-                  i === active ? 'text-burgundy' : 'text-stone',
+                  i === active ? 'text-accent' : 'text-ash',
                 )}
               >
                 {m.year}
@@ -111,8 +111,8 @@ export function InteractiveTimeline({ milestones, className }: InteractiveTimeli
                 className={cn(
                   'w-4 h-4 rounded-full border-2 transition-all duration-300',
                   i === active
-                    ? 'bg-burgundy border-burgundy scale-125'
-                    : 'bg-ivory border-stone group-hover:border-burgundy',
+                    ? 'bg-accent border-accent scale-125'
+                    : 'bg-ink border-line group-hover:border-accent',
                 )}
               />
             </button>

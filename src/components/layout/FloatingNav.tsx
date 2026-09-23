@@ -48,7 +48,7 @@ export function FloatingNav() {
             'flex min-h-[80px] items-center justify-between rounded-pill px-3 transition-all duration-500 ease-out-quart',
             // Glass: see-through fill with a light blur, and a visible edge so the container still reads.
             'backdrop-blur-[6px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]',
-            scrolled ? 'bg-charcoal/15' : 'bg-white/5'
+            scrolled ? 'bg-ink/40' : 'bg-white/5'
           )}
         >
           <ul className="hidden lg:flex flex-1 items-center justify-evenly gap-1 px-4">
@@ -60,10 +60,10 @@ export function FloatingNav() {
                   className={({ isActive }) =>
                     cn(
                       'relative px-3.5 py-2 text-sm font-medium rounded-pill transition-all duration-300',
-                      'focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal',
+                      'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink',
                       isActive
-                        ? 'text-soft-white'
-                        : 'text-white/70 hover:text-soft-white'
+                        ? 'text-cream'
+                        : 'text-white/70 hover:text-cream'
                     )
                   }
                 >
@@ -72,7 +72,7 @@ export function FloatingNav() {
                       {item.label}
                       <span
                         className={cn(
-                          'absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-px bg-rust-light transition-all duration-300',
+                          'absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-px bg-accent transition-all duration-300',
                           isActive
                             ? 'w-4 opacity-100'
                             : 'w-0 opacity-0 group-hover/link:w-4 group-hover/link:opacity-100'
@@ -91,10 +91,10 @@ export function FloatingNav() {
             className={({ isActive }) =>
               cn(
                 'hidden lg:inline-flex items-center px-5 py-2 mr-2 text-sm font-medium rounded-button transition-all duration-300',
-                'focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal',
+                'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink',
                 isActive
-                  ? 'bg-rust-dark text-cream'
-                  : 'bg-rust text-cream hover:bg-rust-dark'
+                  ? 'bg-white text-ink'
+                  : 'bg-cream text-ink hover:bg-white'
               )
             }
           >
@@ -103,7 +103,7 @@ export function FloatingNav() {
 
           <button
             onClick={() => setMenuOpen(true)}
-            className="lg:hidden flex items-center justify-center w-11 h-11 mr-2 text-soft-white rounded-pill hover:bg-white/10 transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+            className="lg:hidden flex items-center justify-center w-11 h-11 mr-2 text-cream rounded-pill hover:bg-white/10 transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             aria-label="Open menu"
           >
             <Menu className="w-5 h-5" />
@@ -119,20 +119,20 @@ export function FloatingNav() {
         )}
       >
         <div
-          className="absolute inset-0 bg-charcoal/95 backdrop-blur-xl"
+          className="absolute inset-0 bg-ink-2/95 backdrop-blur-xl"
           onClick={() => setMenuOpen(false)}
         />
         <div
           className={cn(
-            'absolute right-0 top-0 bottom-0 w-full max-w-sm bg-ivory flex flex-col transition-transform duration-500 ease-out-quart',
+            'absolute right-0 top-0 bottom-0 w-full max-w-sm bg-ink flex flex-col transition-transform duration-500 ease-out-quart',
             menuOpen ? 'translate-x-0' : 'translate-x-full'
           )}
         >
-          <div className="flex items-center justify-between px-6 py-5 border-b border-stone/30">
-            <span className="font-display text-lg text-charcoal">Menu</span>
+          <div className="flex items-center justify-between px-6 py-5 border-b border-line">
+            <span className="font-display text-lg text-cream">Menu</span>
             <button
               onClick={() => setMenuOpen(false)}
-              className="flex items-center justify-center w-10 h-10 text-charcoal rounded-pill hover:bg-charcoal/5 transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-burgundy"
+              className="flex items-center justify-center w-10 h-10 text-cream rounded-pill hover:bg-surface transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               aria-label="Close menu"
             >
               <X className="w-5 h-5" />
@@ -148,11 +148,11 @@ export function FloatingNav() {
                   className={({ isActive }) =>
                     cn(
                       'flex items-baseline gap-4 px-6 py-3.5 text-lg font-display transition-colors duration-300',
-                      isActive ? 'text-burgundy' : 'text-charcoal hover:text-burgundy'
+                      isActive ? 'text-accent' : 'text-cream hover:text-accent'
                     )
                   }
                 >
-                  <span className="text-meta font-sans text-stone tabular-nums">
+                  <span className="text-meta font-sans text-ash tabular-nums">
                     {String(index + 1).padStart(2, '0')}
                   </span>
                   {item.label}

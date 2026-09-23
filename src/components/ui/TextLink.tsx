@@ -2,30 +2,26 @@ import { type ReactNode } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
+type LegacyTone = 'burgundy' | 'gold' | 'charcoal' | 'rust' | 'copper';
+
 interface TextLinkProps {
   children: ReactNode;
   href?: string;
   className?: string;
-  tone?: 'burgundy' | 'gold' | 'charcoal' | 'rust' | 'rust-light' | 'rust-lighter' | 'copper';
+  /** accent: red link; plain: cream link with a red arrow; light: ink link for the bone chapter. */
+  tone?: 'accent' | 'plain' | 'light' | LegacyTone;
   withArrow?: boolean;
 }
 
-export function TextLink({
-  children,
-  href = '#',
-  className,
-  tone = 'burgundy',
-  withArrow = true,
-}: TextLinkProps) {
-  const toneClass = {
-    burgundy: 'text-burgundy hover:text-burgundy-dark',
-    gold: 'text-gold-dark hover:text-gold',
-    charcoal: 'text-charcoal hover:text-burgundy',
-    rust: 'text-rust hover:text-rust-dark',
-    'rust-light': 'text-rust-light hover:text-cream',
-    'rust-lighter': 'text-rust-lighter hover:text-cream',
-    copper: 'text-copper hover:text-cream',
-  }[tone];
+const TONES: Record<string, string> = {
+  accent: 'text-accent hover:text-cream',
+  plain: 'text-cream hover:text-accent',
+  light: 'text-ink hover:text-accent',
+  charcoal: 'text-cream hover:text-accent',
+};
+
+export function TextLink({ children, href = '#', className, tone = 'accent', withArrow = true }: TextLinkProps) {
+  const toneClass = TONES[tone] ?? TONES.accent;
 
   return (
     <a
@@ -38,7 +34,7 @@ export function TextLink({
     >
       {children}
       {withArrow && (
-        <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+        <ArrowRight className="w-3.5 h-3.5 text-accent transition-transform duration-300 group-hover:translate-x-1" />
       )}
     </a>
   );

@@ -20,7 +20,7 @@ const cards: Card[] = [
     description: 'Words that make the life of faith practical, clear, and lived.',
     icon: BookOpen,
     image: '/images/creative/image copy 2.png',
-    accent: '#D35454',
+    accent: '#DA4F43',
   },
   {
     tag: 'Music',
@@ -28,7 +28,7 @@ const cards: Card[] = [
     description: 'Songs of worship, conviction, and the joy of knowing Christ.',
     icon: Music2,
     image: '/images/creative/image.png',
-    accent: '#D35454',
+    accent: '#DA4F43',
   },
   {
     tag: 'Film & Media',
@@ -36,7 +36,7 @@ const cards: Card[] = [
     description: 'Stories and conversations that carry the message beyond the pulpit.',
     icon: Film,
     image: '/images/creative/image copy.png',
-    accent: '#D35454',
+    accent: '#DA4F43',
     objectPosition: 'center top',
   },
   {
@@ -45,7 +45,7 @@ const cards: Card[] = [
     description: 'Conversations and teachings that explore faith, purpose, leadership, and the Christian life.',
     icon: Mic2,
     image: '/images/creative/image copy 3.png',
-    accent: '#D35454',
+    accent: '#DA4F43',
   },
   {
     tag: 'Speaking',
@@ -53,7 +53,7 @@ const cards: Card[] = [
     description: 'Biblical teaching and conversations that bring clarity to faith, purpose, leadership, and culture.',
     icon: Sparkles,
     image: '/images/creative/image copy 4.png',
-    accent: '#D35454',
+    accent: '#DA4F43',
   },
 ];
 
@@ -94,7 +94,7 @@ export function CreativeAccordion() {
     <section className="ce-section" aria-label="Creative Expression">
       <div className="container-editorial">
         <Reveal className="mb-10">
-          <DisplayHeading eyebrow="Creative Expression" title="More than" accent="the pulpit." />
+          <DisplayHeading number="04" eyebrow="Creative Expression" title="More than" accent="the pulpit." tone="light" />
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-umber text-pretty">
             The message also travels through pages, melodies, images, and stories — each one made to meet people where they are.
           </p>
