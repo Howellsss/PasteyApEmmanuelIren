@@ -4,7 +4,7 @@ import { cn } from '@/lib/cn';
 interface DisplayHeadingProps {
   eyebrow: string;
   title: ReactNode;
-  /** Trailing words set in accent-red italic, e.g. "Teachings" in "Latest Teachings". */
+  /** Trailing words set in the accent red, e.g. "Teachings" in "Latest Teachings". */
   accent?: string;
   /** Background the heading sits on; picks a red that stays readable on it. */
   tone?: 'light' | 'dark' | 'brown';
@@ -14,19 +14,18 @@ interface DisplayHeadingProps {
 }
 
 const TONES = {
-  // Thin serif strokes need a heavier weight on dark grounds to stay visible.
-  light: { line: 'bg-rust/70', label: 'text-rust', title: 'text-ink font-medium', accent: 'text-rust' },
-  dark: { line: 'bg-rust-light/70', label: 'text-rust-light', title: 'text-cream font-semibold', accent: 'text-rust-light' },
-  brown: { line: 'bg-rust-lighter/70', label: 'text-rust-lighter', title: 'text-cream font-semibold', accent: 'text-rust-lighter' },
+  light: { line: 'bg-rust/70', label: 'text-rust', title: 'text-ink', accent: 'text-rust' },
+  dark: { line: 'bg-rust-light/70', label: 'text-rust-light', title: 'text-cream', accent: 'text-rust-light' },
+  brown: { line: 'bg-rust-lighter/70', label: 'text-rust-lighter', title: 'text-cream', accent: 'text-rust-lighter' },
 };
 
 const SIZES = {
-  lg: 'text-4xl sm:text-5xl lg:text-6xl',
-  md: 'text-4xl sm:text-5xl lg:text-[3.5rem]',
+  lg: 'text-4xl sm:text-5xl lg:text-7xl',
+  md: 'text-4xl sm:text-5xl lg:text-6xl',
   sm: 'text-3xl sm:text-4xl lg:text-5xl',
 };
 
-/** Section heading: ruled eyebrow over a Fraunces title with an accent-red italic ending. */
+/** Section heading in the "Latest Teachings" style: ruled eyebrow over a bold, uppercase, two-tone title. */
 export function DisplayHeading({
   eyebrow,
   title,
@@ -48,14 +47,14 @@ export function DisplayHeading({
       </div>
       <h2
         className={cn(
-          'font-serif leading-[1.08] tracking-[-0.01em] text-balance',
+          'font-sans font-extrabold uppercase leading-[0.98] tracking-[-0.04em] text-balance',
           SIZES[size],
           colors.title,
           centered ? 'mx-auto max-w-4xl' : 'max-w-3xl'
         )}
       >
         {title}
-        {accent && <> <em className={cn('italic', colors.accent)}>{accent}</em></>}
+        {accent && <> <span className={colors.accent}>{accent}</span></>}
       </h2>
     </div>
   );

@@ -62,8 +62,6 @@ export default {
       fontFamily: {
         display: ['"Inter"', 'system-ui', 'sans-serif'],
         sans: ['"Inter"', 'system-ui', 'sans-serif'],
-        // Headings only (28px+); body, labels and buttons stay in Inter.
-        serif: ['"Fraunces"', 'Georgia', 'serif'],
       },
       fontSize: {
         'eyebrow': ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.2em' }],

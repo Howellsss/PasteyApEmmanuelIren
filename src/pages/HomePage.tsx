@@ -19,8 +19,6 @@ import { DisplayHeading } from '@/components/ui/DisplayHeading';
 import { CreativeAccordion } from '@/components/ui/CreativeAccordion';
 
 const HERO_NAME = 'Apostle Emmanuel Iren';
-// The surname is set in italic once the typewriter reaches it.
-const HERO_ACCENT_START = HERO_NAME.lastIndexOf(' ') + 1;
 const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.png';
 const ABOUT_IMAGE = '/images/about/image copy.png';
 const CREATIVE_IMAGE = '/images/creative/e5.jpeg';
@@ -174,9 +172,8 @@ export function HomePage() {
               </span>
               <span aria-hidden="true" className="h-0.5 w-10 bg-rust sm:w-14" />
             </div>
-            <h1 className="font-serif text-5xl sm:text-6xl lg:text-8xl font-semibold leading-[1.02] text-cream text-balance mb-8 tracking-[-0.01em] min-h-[1.02em]">
-              {typedHeroName.slice(0, HERO_ACCENT_START)}
-              <em className="font-medium italic">{typedHeroName.slice(HERO_ACCENT_START)}</em>
+            <h1 className="font-sans text-5xl sm:text-6xl lg:text-8xl font-extrabold leading-[0.98] text-cream text-balance mb-8 tracking-[-0.04em] min-h-[0.98em]">
+              {typedHeroName}
             </h1>
             <p className="text-lg sm:text-xl lg:text-2xl text-taupe leading-relaxed max-w-2xl mb-10 text-pretty font-light">
               A teaching minister, author, songwriter, and founder of Celebration Church International.
