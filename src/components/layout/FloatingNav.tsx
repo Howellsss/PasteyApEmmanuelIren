@@ -62,8 +62,8 @@ export function FloatingNav() {
                       'relative px-3.5 py-2 text-sm font-medium rounded-pill transition-all duration-300',
                       'focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-charcoal',
                       isActive
-                        ? 'text-copper'
-                        : 'text-taupe hover:text-cream'
+                        ? 'text-soft-white'
+                        : 'text-white/70 hover:text-soft-white'
                     )
                   }
                 >
