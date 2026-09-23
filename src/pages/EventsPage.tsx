@@ -83,7 +83,7 @@ export function EventsPage() {
       <section className="pb-16 lg:pb-24">
         <div className="container-wide">
           <Reveal variant="scale">
-            <article className="grid grid-cols-1 lg:grid-cols-12 border-t-2 border-accent">
+            <article className="grid grid-cols-1 lg:grid-cols-12 border-t-2 border-brand">
               <div className="relative lg:col-span-7 aspect-[16/10] lg:aspect-auto lg:min-h-[28rem] overflow-hidden rounded-soft lg:mt-8">
                 <img
                   src={TEACHING_IMAGE}
@@ -184,7 +184,7 @@ export function EventsPage() {
                 delay={i * 80}
                 className="grid grid-cols-1 gap-3 border-b border-line py-8 sm:grid-cols-[7rem_1fr] sm:gap-8"
               >
-                <p className="font-sans text-4xl font-extrabold leading-none text-accent">{event.year}</p>
+                <p className="font-sans text-4xl font-extrabold leading-none text-brand">{event.year}</p>
                 <div>
                   <h3 className="font-display text-xl text-cream">{event.title}</h3>
                   <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ash">{event.description}</p>

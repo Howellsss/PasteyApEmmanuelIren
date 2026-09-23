@@ -383,7 +383,7 @@ export function AboutPage() {
                   key={activeTheme}
                   className="reveal-from-right"
                 >
-                  <span className="font-display text-7xl lg:text-8xl text-accent tabular-nums leading-none block mb-4">
+                  <span className="font-display text-7xl lg:text-8xl text-brand tabular-nums leading-none block mb-4">
                     {ministryThemes[activeTheme].number}
                   </span>
                   <h3 className="font-display text-3xl lg:text-4xl text-cream mb-6 leading-tight">

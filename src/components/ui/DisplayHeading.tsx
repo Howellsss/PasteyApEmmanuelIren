@@ -48,7 +48,7 @@ export function DisplayHeading({
         )}
       >
         {title}
-        {accent && <> <span className="text-accent">{accent}</span></>}
+        {accent && <> <span className="text-brand">{accent}</span></>}
       </h2>
     </div>
   );

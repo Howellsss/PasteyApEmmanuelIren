@@ -14,7 +14,9 @@ export default {
         // The one light "chapter" per page: bone background with umber body text.
         bone: '#EEE6DA',
         umber: '#6B6057',
-        accent: { DEFAULT: '#6E1717', dark: '#5A1212' },
+        // Two reds: `brand` (deep) for fills, heading accents, big numbers, rules and anything on bone;
+        // `accent` (brighter) only for small text and marks on dark grounds, where the deep red gets lost.
+        accent: { DEFAULT: '#DF584C', dark: '#C2443A' },
         // The deep brand red: hero call-to-action, menu Contact button, hero rules and full stop.
         brand: { DEFAULT: '#6E1717', dark: '#5A1212' },
         bark: '#3E352D',

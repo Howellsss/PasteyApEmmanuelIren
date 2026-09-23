@@ -228,7 +228,7 @@ export function HomePage() {
           </div>
 
           <Reveal variant="scale">
-            <article className="grid border-t-2 border-accent lg:grid-cols-[0.92fr_1.08fr]">
+            <article className="grid border-t-2 border-brand lg:grid-cols-[0.92fr_1.08fr]">
               <div className="order-2 flex min-h-[26rem] flex-col py-8 sm:py-10 lg:order-1 lg:min-h-[32rem] lg:py-12 lg:pr-12">
                 <div className="flex-1 space-y-5 lg:flex lg:flex-col lg:justify-center">
                   <p className="text-eyebrow uppercase tracking-[0.16em] text-accent">{activeTeaching.series}</p>
@@ -422,7 +422,7 @@ export function HomePage() {
                 <div className="border-t border-line">
                   {ministryExpressions.map((expression, index) => (
                     <div key={expression.name} className="grid grid-cols-[3rem_1fr] gap-2 py-5 border-b border-line">
-                      <span className="font-sans text-[1.75rem] font-extrabold leading-none text-accent">{index + 1}</span>
+                      <span className="font-sans text-[1.75rem] font-extrabold leading-none text-brand">{index + 1}</span>
                       <div>
                         <h3 className="font-display text-xl text-cream mb-1">{expression.name}</h3>
                         <p className="text-sm text-ash leading-relaxed max-w-md">{expression.description}</p>
@@ -498,7 +498,7 @@ export function HomePage() {
               <Link
                 key={item.title}
                 to={item.to}
-                className="group flex min-h-[15rem] flex-col justify-between rounded-soft border-t-2 border-accent bg-surface p-6 transition-colors duration-500 hover:bg-line"
+                className="group flex min-h-[15rem] flex-col justify-between rounded-soft border-t-2 border-brand bg-surface p-6 transition-colors duration-500 hover:bg-line"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-eyebrow uppercase tracking-[0.16em] text-accent">{item.label}</span>

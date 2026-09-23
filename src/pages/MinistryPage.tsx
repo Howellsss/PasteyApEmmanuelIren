@@ -237,7 +237,7 @@ export function MinistryPage() {
                 delay={(i % 3) * 80}
                 className="bg-ink p-8 lg:p-10 group hover:bg-surface transition-colors duration-300"
               >
-                <span className="font-display text-5xl text-accent tabular-nums leading-none block mb-4">
+                <span className="font-display text-5xl text-brand tabular-nums leading-none block mb-4">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <h3 className="font-display text-2xl text-cream mb-3 leading-tight">
@@ -260,7 +260,7 @@ export function MinistryPage() {
             <h2 className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-7xl leading-[0.98] tracking-[-0.04em] text-ink text-balance">
               Different platforms.<br />
               Same conviction.<br />
-              <span className="text-accent">One Gospel.</span>
+              <span className="text-brand">One Gospel.</span>
             </h2>
           </Reveal>
         </div>
@@ -273,7 +273,7 @@ export function MinistryPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               <Link
                 to="/teaching"
-                className="group relative overflow-hidden rounded-soft bg-ink-2 text-cream p-10 lg:p-14 min-h-[16rem] flex flex-col justify-between border-t-2 border-accent hover:bg-line transition-colors duration-500"
+                className="group relative overflow-hidden rounded-soft bg-ink-2 text-cream p-10 lg:p-14 min-h-[16rem] flex flex-col justify-between border-t-2 border-brand hover:bg-line transition-colors duration-500"
               >
                 <BookOpen className="w-6 h-6 text-accent mb-6" />
                 <div>
@@ -288,7 +288,7 @@ export function MinistryPage() {
               </Link>
               <Link
                 to="/invite"
-                className="group relative overflow-hidden rounded-soft border border-line bg-ink text-cream p-10 lg:p-14 min-h-[16rem] flex flex-col justify-between hover:border-accent transition-colors duration-500"
+                className="group relative overflow-hidden rounded-soft border border-line bg-ink text-cream p-10 lg:p-14 min-h-[16rem] flex flex-col justify-between hover:border-brand transition-colors duration-500"
               >
                 <Calendar className="w-6 h-6 text-accent mb-6" />
                 <div>

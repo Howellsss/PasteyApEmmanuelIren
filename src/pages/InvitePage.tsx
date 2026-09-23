@@ -93,8 +93,8 @@ export function InvitePage() {
               { num: '03', title: 'Confirmation', desc: 'Once confirmed, the team works with you to prepare for the engagement.' },
             ].map((step, i) => (
               <Reveal key={i} delay={i * 100}>
-                <div className="p-8 rounded-soft border-t-2 border-accent bg-cream/60">
-                  <span className="font-display text-2xl text-accent tabular-nums">{step.num}</span>
+                <div className="p-8 rounded-soft border-t-2 border-brand bg-cream/60">
+                  <span className="font-display text-2xl text-brand tabular-nums">{step.num}</span>
                   <h3 className="font-display text-lg mt-3 mb-2 text-ink">{step.title}</h3>
                   <p className="text-sm text-umber leading-relaxed">{step.desc}</p>
                 </div>

@@ -110,8 +110,8 @@ export function InteractiveTimeline({ milestones, className }: InteractiveTimeli
                 className={cn(
                   'w-4 h-4 rounded-full border-2 transition-all duration-300',
                   i === active
-                    ? 'bg-accent border-accent scale-125'
-                    : 'bg-ink border-line group-hover:border-accent',
+                    ? 'bg-accent border-brand scale-125'
+                    : 'bg-ink border-line group-hover:border-brand',
                 )}
               />
             </button>

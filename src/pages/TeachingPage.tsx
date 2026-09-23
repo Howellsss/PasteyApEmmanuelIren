@@ -468,7 +468,7 @@ export function TeachingPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6">
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="flex items-center justify-center w-10 h-10 rounded-pill border border-accent text-accent">
+                      <span className="flex items-center justify-center w-10 h-10 rounded-pill border border-brand text-accent">
                         <Headphones className="w-5 h-5" />
                       </span>
                       <span className="text-meta uppercase tracking-widest text-white/60">

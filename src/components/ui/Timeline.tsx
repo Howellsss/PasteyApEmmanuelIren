@@ -25,7 +25,7 @@ export function Timeline({ entries, className }: TimelineProps) {
             className="relative grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-4 sm:gap-8"
           >
             <div className="flex items-start gap-4 sm:flex-col sm:items-start">
-              <div className="relative w-4 h-4 rounded-full bg-ink border-2 border-accent mt-1 flex-shrink-0 z-10" />
+              <div className="relative w-4 h-4 rounded-full bg-ink border-2 border-brand mt-1 flex-shrink-0 z-10" />
               <span className="font-display text-xl text-accent tabular-nums sm:mt-2">
                 {entry.year}
               </span>

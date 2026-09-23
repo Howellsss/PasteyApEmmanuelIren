@@ -29,7 +29,7 @@ const SOCIALS = [
 
 export function Footer() {
   return (
-    <footer className="bg-ink-2 text-cream border-t-2 border-accent">
+    <footer className="bg-ink-2 text-cream border-t-2 border-brand">
       <div className="container-wide py-16 lg:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
           {/* Brand column */}
@@ -38,7 +38,7 @@ export function Footer() {
               Emmanuel Iren
             </p>
             <h2 className="font-display text-3xl lg:text-4xl leading-tight text-balance mb-6">
-              Teaching the word, creating with purpose, building the church<span className="text-accent">.</span>
+              Teaching the word, creating with purpose, building the church<span className="text-brand">.</span>
             </h2>
             <p className="text-ash text-sm max-w-md leading-relaxed">
               Apostle, author, and creative leader. Founder of Celebration Church International.
@@ -52,7 +52,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="flex items-center justify-center w-10 h-10 rounded-pill border border-line text-ash hover:text-accent hover:border-accent transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  className="flex items-center justify-center w-10 h-10 rounded-pill border border-line text-ash hover:text-accent hover:border-brand transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 >
                   <social.icon className="w-4 h-4" />
                 </a>
@@ -60,7 +60,7 @@ export function Footer() {
               <Link
                 to="/contact"
                 aria-label="Contact"
-                className="flex items-center justify-center w-10 h-10 rounded-pill border border-line text-ash hover:text-accent hover:border-accent transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                className="flex items-center justify-center w-10 h-10 rounded-pill border border-line text-ash hover:text-accent hover:border-brand transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <Mail className="w-4 h-4" />
               </Link>

@@ -31,7 +31,7 @@ export function CTASection({
     <Reveal variant="scale">
       <section
         className={cn(
-          'rounded-soft border-t-2 border-accent bg-surface px-8 py-14 lg:px-16 lg:py-16 flex flex-col items-center text-center gap-5',
+          'rounded-soft border-t-2 border-brand bg-surface px-8 py-14 lg:px-16 lg:py-16 flex flex-col items-center text-center gap-5',
           className
         )}
       >
