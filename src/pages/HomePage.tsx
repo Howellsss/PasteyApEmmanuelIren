@@ -7,9 +7,8 @@ import {
   MapPin,
   Play,
 } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Player from '@vimeo/player';
 import { Reveal } from '@/components/ui/Reveal';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Button } from '@/components/ui/Button';
@@ -105,9 +104,6 @@ export function HomePage() {
   const [activeTeachingIndex, setActiveTeachingIndex] = useState(0);
   const [isTeachingPaused, setIsTeachingPaused] = useState(false);
   const [isVideoReady, setIsVideoReady] = useState(false);
-  const heroPlayerRef = useRef<Player | null>(null);
-  const heroIframeRef = useRef<HTMLIFrameElement | null>(null);
-  const HERO_VIDEO_CUTOFF = 28;
 
   useEffect(() => {
     if (hasFinishedIntro) return;
@@ -134,37 +130,6 @@ export function HomePage() {
   }, [hasFinishedIntro]);
 
   useEffect(() => {
-    if (!heroIframeRef.current) return;
-
-    const player = new Player(heroIframeRef.current);
-    heroPlayerRef.current = player;
-
-    player.on('loaded', () => {
-      player.setMuted(true).catch(() => {});
-      player.play().catch(() => {});
-    });
-
-    player.on('playing', () => {
-      setIsVideoReady(true);
-    });
-
-    player.on('timeupdate', (data: { seconds: number }) => {
-      if (data.seconds >= HERO_VIDEO_CUTOFF) {
-        player.setCurrentTime(0).then(() => {
-          player.play().catch(() => {});
-        }).catch(() => {});
-      }
-    });
-
-    const readyFallback = window.setTimeout(() => setIsVideoReady(true), 8000);
-
-    return () => {
-      window.clearTimeout(readyFallback);
-      player.destroy().catch(() => {});
-    };
-  }, []);
-
-  useEffect(() => {
     if (isTeachingPaused) return;
 
     const teachingTimer = window.setInterval(() => {
@@ -178,22 +143,22 @@ export function HomePage() {
     <div className="min-h-screen bg-ivory">
       <section className="relative min-h-screen flex items-end overflow-hidden bg-ink">
         <div className="absolute inset-0 overflow-hidden bg-ink">
-          <iframe
-            ref={heroIframeRef}
-            src="https://player.vimeo.com/video/1229309895?autoplay=1&loop=1&autopause=0&controls=0&title=0&byline=0&portrait=0&badge=0&dnt=1&pip=0&keyboard=0&muted=1"
-            allow="autoplay; fullscreen; picture-in-picture"
-            referrerPolicy="strict-origin-when-cross-origin"
-            title="What an explosive time in the word we had on sunday!"
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-0"
-            style={{
-              width: 'max(100%, calc(100vh * 16 / 9))',
-              height: 'max(100%, calc(100vw * 9 / 16))',
-            }}
-          />
-          <div aria-hidden="true" className="pointer-events-none absolute right-0 top-0 h-20 w-56 bg-gradient-to-l from-ink/80 via-ink/35 to-transparent" />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+            onLoadedData={() => setIsVideoReady(true)}
+            className="absolute inset-0 h-full w-full object-cover"
+          >
+            <source src="/videos/hero.webm" type="video/webm" />
+            <source src="/videos/hero.mp4" type="video/mp4" />
+          </video>
           <div
             aria-hidden="true"
-            className={`absolute inset-0 bg-ink z-10 transition-opacity duration-1000 ${isVideoReady ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+            className={`absolute inset-0 bg-ink z-10 transition-opacity duration-500 ${isVideoReady ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-ink/40" />
