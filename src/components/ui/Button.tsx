@@ -4,7 +4,7 @@ import { cn } from '@/lib/cn';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** primary/secondary sit on dark grounds; the -light variants sit on the bone chapter. */
-  variant?: 'primary' | 'secondary' | 'ghost' | 'primary-light' | 'secondary-light';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'primary-light' | 'secondary-light' | 'brand' | 'quiet';
   size?: 'md' | 'lg';
   children: ReactNode;
   withArrow?: boolean;
@@ -27,6 +27,9 @@ export function Button({
     ghost: 'bg-transparent text-cream hover:text-accent',
     'primary-light': 'bg-ink text-cream font-semibold hover:bg-ink-2',
     'secondary-light': 'bg-transparent text-ink border border-ink/30 hover:border-ink',
+    // Hero pair: deep brand red fill, and a quiet dark outline beside it.
+    brand: 'bg-brand text-cream hover:bg-brand-dark',
+    quiet: 'bg-transparent text-cream border border-bark hover:border-cream',
   };
 
   const sizes = {
@@ -38,7 +41,12 @@ export function Button({
     <button className={cn(base, variants[variant], sizes[size], className)} {...props}>
       {children}
       {withArrow && (
-        <ArrowRight className="w-4 h-4 text-accent transition-transform duration-300 group-hover:translate-x-1" />
+        <ArrowRight
+          className={cn(
+            'w-4 h-4 transition-transform duration-300 group-hover:translate-x-1',
+            variant === 'brand' ? 'text-cream' : 'text-accent'
+          )}
+        />
       )}
     </button>
   );

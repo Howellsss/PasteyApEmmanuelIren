@@ -15,6 +15,9 @@ export default {
         bone: '#EEE6DA',
         umber: '#6B6057',
         accent: { DEFAULT: '#DF584C', dark: '#C2443A' },
+        // The deep brand red: hero call-to-action, menu Contact button, hero rules and full stop.
+        brand: { DEFAULT: '#6E1717', dark: '#5A1212' },
+        bark: '#3E352D',
       },
       fontFamily: {
         display: ['"Inter"', 'system-ui', 'sans-serif'],

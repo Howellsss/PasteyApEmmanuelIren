@@ -90,11 +90,11 @@ export function FloatingNav() {
             to="/contact"
             className={({ isActive }) =>
               cn(
-                'hidden lg:inline-flex items-center px-5 py-2 mr-2 text-sm font-medium rounded-button transition-all duration-300',
+                'hidden lg:inline-flex items-center px-5 py-2 mr-2 text-sm font-medium rounded-xl transition-all duration-300',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink',
                 isActive
-                  ? 'bg-white text-ink'
-                  : 'bg-cream text-ink hover:bg-white'
+                  ? 'bg-brand-dark text-cream'
+                  : 'bg-brand text-cream hover:bg-brand-dark'
               )
             }
           >
