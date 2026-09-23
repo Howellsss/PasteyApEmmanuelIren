@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,100..900,0..100;1,9..144,100..900,0..100&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -61,6 +61,11 @@
 }
 
 @layer utilities {
+  /* Fraunces, softened slightly; optical sizing adapts detail to the heading size. */
+  .font-serif {
+    font-optical-sizing: auto;
+    font-variation-settings: 'SOFT' 50;
+  }
   .text-balance {
     text-wrap: balance;
   }

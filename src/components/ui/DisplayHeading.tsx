@@ -14,7 +14,7 @@ interface DisplayHeadingProps {
 }
 
 const TONES = {
-  // Playfair's thin strokes need a heavier weight on dark grounds to stay visible.
+  // Thin serif strokes need a heavier weight on dark grounds to stay visible.
   light: { line: 'bg-rust/70', label: 'text-rust', title: 'text-ink font-medium', accent: 'text-rust' },
   dark: { line: 'bg-rust-light/70', label: 'text-rust-light', title: 'text-cream font-semibold', accent: 'text-rust-light' },
   brown: { line: 'bg-rust-lighter/70', label: 'text-rust-lighter', title: 'text-cream font-semibold', accent: 'text-rust-lighter' },
@@ -26,7 +26,7 @@ const SIZES = {
   sm: 'text-3xl sm:text-4xl lg:text-5xl',
 };
 
-/** Section heading: ruled eyebrow over a Playfair Display title with an accent-red italic ending. */
+/** Section heading: ruled eyebrow over a Fraunces title with an accent-red italic ending. */
 export function DisplayHeading({
   eyebrow,
   title,
