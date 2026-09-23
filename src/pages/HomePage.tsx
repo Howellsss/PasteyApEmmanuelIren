@@ -197,9 +197,9 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="bg-onyx py-20 text-cream lg:py-28">
+      <section className="bg-onyx py-14 md:py-16 lg:py-24 text-cream">
         <div className="container-wide">
-          <div className="mb-12 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+          <div className="mb-10 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
             <Reveal>
               <DisplayHeading eyebrow="Teachings" title="Latest" accent="Teachings" tone="dark" />
             </Reveal>
@@ -305,7 +305,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-36" style={{ backgroundColor: '#E8DFD2' }}>
+      <section className="py-14 md:py-16 lg:py-24" style={{ backgroundColor: '#E8DFD2' }}>
         <div className="container-editorial">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-7">
@@ -347,7 +347,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-32" style={{ backgroundColor: '#F6F2EB' }}>
+      <section className="py-14 md:py-16 lg:py-24" style={{ backgroundColor: '#F6F2EB' }}>
         <div className="container-editorial">
           <Reveal>
             <DisplayHeading eyebrow="Teaching" title="Teach the word." accent="Live the word." />
@@ -355,7 +355,7 @@ export function HomePage() {
               Sermons and conversations for the questions, decisions, and ordinary days that make up a life of faith.
             </p>
           </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 mt-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 mt-10">
             <MediaCard
               image={TEACHING_IMAGE}
               title="The Gospel of Grace — Part 4"
@@ -391,7 +391,7 @@ export function HomePage() {
 
       <CreativeAccordion />
 
-      <section className="py-20 lg:py-32 bg-walnut text-cream overflow-hidden">
+      <section className="py-14 md:py-16 lg:py-24 bg-walnut text-cream overflow-hidden">
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-5 lg:order-2">
@@ -439,12 +439,12 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="py-24 lg:py-36" style={{ backgroundColor: '#E8DFD2' }}>
+      <section className="py-14 md:py-16 lg:py-24" style={{ backgroundColor: '#E8DFD2' }}>
         <div className="container-editorial">
           <Reveal>
             <DisplayHeading eyebrow="Events" title="Where Apostle Emmanuel Iren" accent="is ministering." size="md" />
           </Reveal>
-          <Reveal variant="scale" className="mt-14">
+          <Reveal variant="scale" className="mt-10">
             <article className="grid grid-cols-1 lg:grid-cols-12 rounded-soft overflow-hidden bg-cream border border-stone/20">
               <div className="lg:col-span-7 aspect-[4/5] lg:aspect-auto min-h-[20rem] overflow-hidden">
                 <img
@@ -476,9 +476,9 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="py-20 lg:py-28" style={{ backgroundColor: '#F6F2EB' }}>
+      <section className="py-14 md:py-16 lg:py-24" style={{ backgroundColor: '#F6F2EB' }}>
         <div className="container-editorial">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
             <Reveal>
               <DisplayHeading eyebrow="Current Content" title="A curated" accent="continuation." size="md" />
             </Reveal>
@@ -503,9 +503,9 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="py-28 lg:py-44" style={{ backgroundColor: '#3B2F27' }}>
-        <div className="container-editorial text-center">
-          <Reveal>
+      <section className="py-14 md:py-16 lg:py-24 bg-walnut">
+        <div className="container-editorial">
+          <Reveal className="mb-10">
             <DisplayHeading
               eyebrow="The Invitation"
               title={<>Know Christ.<br />Live purposefully.<br /></>}
@@ -514,11 +514,6 @@ export function HomePage() {
               align="center"
             />
           </Reveal>
-        </div>
-      </section>
-
-      <section className="pb-20 lg:pb-28" style={{ backgroundColor: '#3B2F27' }}>
-        <div className="container-editorial">
           <CTASection
             eyebrow="Invite Emmanuel"
             title="Bring the word to your city, your church, your event."

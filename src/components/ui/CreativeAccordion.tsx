@@ -93,7 +93,7 @@ export function CreativeAccordion() {
   return (
     <section className="ce-section" aria-label="Creative Expression">
       <div className="container-editorial">
-        <Reveal className="mb-12">
+        <Reveal className="mb-10">
           <DisplayHeading eyebrow="Creative Expression" title="More than" accent="the pulpit." />
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-umber text-pretty">
             The message also travels through pages, melodies, images, and stories — each one made to meet people where they are.

@@ -145,7 +145,8 @@
 .ce-section {
   background-color: #E8DFD2;
   color: #1B1714;
-  padding: 110px 24px 90px;
+  /* Matches the home page section rhythm: 96px desktop, 64px tablet, 56px phone. */
+  padding: 96px 24px;
 }
 .ce-section * { box-sizing: border-box; }
 
@@ -361,8 +362,14 @@
   background: #1B1714;
 }
 
+@media (max-width: 1023px) {
+  .ce-section { padding-block: 64px; }
+}
+@media (max-width: 767px) {
+  .ce-section { padding-block: 56px; }
+}
 @media (max-width: 900px) {
-  .ce-section { padding: 70px 20px 60px; }
+  .ce-section { padding-inline: 20px; }
   .ce-accordion { height: 420px; gap: 10px; }
   .ce-card { flex-grow: 0; flex-basis: 70px; flex-shrink: 0; }
   .ce-card.is-active { flex-grow: 1; flex-basis: 70px; }
