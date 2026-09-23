@@ -121,7 +121,7 @@ export function HomePage() {
         window.clearInterval(typeInterval);
         setHasFinishedIntro(true);
       }
-    }, 85);
+    }, 150);
 
     return () => window.clearInterval(typeInterval);
   }, [hasFinishedIntro]);
