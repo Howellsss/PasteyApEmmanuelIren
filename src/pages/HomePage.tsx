@@ -15,7 +15,7 @@ import { Button } from '@/components/ui/Button';
 import { TextLink } from '@/components/ui/TextLink';
 import { MediaCard } from '@/components/ui/MediaCard';
 import { CTASection } from '@/components/ui/CTASection';
-import { SectionHeader } from '@/components/ui/SectionHeader';
+import { DisplayHeading } from '@/components/ui/DisplayHeading';
 import { CreativeAccordion } from '@/components/ui/CreativeAccordion';
 
 const HERO_NAME = 'Apostle Emmanuel Iren';
@@ -198,13 +198,7 @@ export function HomePage() {
         <div className="container-wide">
           <div className="mb-12 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
             <Reveal>
-              <div className="mb-5 flex items-center gap-4">
-                <span className="h-px w-14 bg-rust-light/70" />
-                <span className="text-eyebrow uppercase tracking-[0.2em] text-rust-light">Teachings</span>
-              </div>
-              <h2 className="max-w-3xl font-sans text-4xl font-extrabold uppercase leading-[0.98] tracking-[-0.04em] text-cream sm:text-5xl lg:text-7xl">
-                Latest <span className="text-rust-light">Teachings</span>
-              </h2>
+              <DisplayHeading eyebrow="Teachings" title="Latest" accent="Teachings" tone="dark" />
             </Reveal>
             <Reveal delay={100}>
               <Link to="/teaching">
@@ -326,10 +320,13 @@ export function HomePage() {
             </div>
             <div className="lg:col-span-5 lg:col-start-9">
               <Reveal delay={100}>
-                <Eyebrow tone="rust" className="mb-6">About Emmanuel</Eyebrow>
-                <h2 className="font-display text-3xl lg:text-5xl leading-[1.1] text-ink text-balance mb-6">
-                  A life given to Christ and His purpose.
-                </h2>
+                <DisplayHeading
+                  eyebrow="About Emmanuel"
+                  title="A life given to Christ"
+                  accent="and His purpose."
+                  size="sm"
+                  className="mb-6"
+                />
                 <div className="space-y-5 text-umber leading-relaxed">
                   <p>
                     Apostle Emmanuel Iren is the founder and lead pastor of Celebration Church International, a teacher of God’s Word, author, songwriter, and ministry leader.
@@ -349,14 +346,12 @@ export function HomePage() {
 
       <section className="py-20 lg:py-32" style={{ backgroundColor: '#F6F2EB' }}>
         <div className="container-editorial">
-          <SectionHeader
-            eyebrow="Teaching"
-            title="Teach the word. Live the word."
-            tone="rust"
-            titleClassName="text-ink"
-            descriptionClassName="text-umber"
-            description="Sermons and conversations for the questions, decisions, and ordinary days that make up a life of faith."
-          />
+          <Reveal>
+            <DisplayHeading eyebrow="Teaching" title="Teach the word." accent="Live the word." />
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-umber text-pretty">
+              Sermons and conversations for the questions, decisions, and ordinary days that make up a life of faith.
+            </p>
+          </Reveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 mt-14">
             <MediaCard
               image={TEACHING_IMAGE}
@@ -410,10 +405,14 @@ export function HomePage() {
             </div>
             <div className="lg:col-span-6 lg:order-1">
               <Reveal>
-                <Eyebrow tone="rust-lighter" className="mb-6">Ministry</Eyebrow>
-                <h2 className="font-display text-4xl lg:text-6xl leading-[1.05] text-balance mb-6">
-                  One calling. Many expressions.
-                </h2>
+                <DisplayHeading
+                  eyebrow="Ministry"
+                  title="One calling."
+                  accent="Many expressions."
+                  tone="brown"
+                  size="md"
+                  className="mb-6"
+                />
                 <p className="text-taupe leading-relaxed max-w-xl mb-10">
                   A growing family of ministry expressions, each carrying the same invitation to know Christ, live purposefully, and make Him known.
                 </p>
@@ -439,12 +438,9 @@ export function HomePage() {
 
       <section className="py-24 lg:py-36" style={{ backgroundColor: '#E8DFD2' }}>
         <div className="container-editorial">
-          <SectionHeader
-            eyebrow="Events"
-            tone="rust"
-            titleClassName="text-ink"
-            title="Where Apostle Emmanuel Iren is ministering."
-          />
+          <Reveal>
+            <DisplayHeading eyebrow="Events" title="Where Apostle Emmanuel Iren" accent="is ministering." size="md" />
+          </Reveal>
           <Reveal variant="scale" className="mt-14">
             <article className="grid grid-cols-1 lg:grid-cols-12 rounded-soft overflow-hidden bg-cream border border-stone/20">
               <div className="lg:col-span-7 aspect-[4/5] lg:aspect-auto min-h-[20rem] overflow-hidden">
@@ -481,8 +477,7 @@ export function HomePage() {
         <div className="container-editorial">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
             <Reveal>
-              <Eyebrow tone="rust" className="mb-5">Current Content</Eyebrow>
-              <h2 className="font-display text-3xl lg:text-5xl leading-[1.1] text-ink">A curated continuation.</h2>
+              <DisplayHeading eyebrow="Current Content" title="A curated" accent="continuation." size="md" />
             </Reveal>
             <Reveal delay={100}>
               <p className="text-sm text-umber max-w-xs leading-relaxed">Teaching, conversation, and worship for the week you are living.</p>
@@ -508,12 +503,13 @@ export function HomePage() {
       <section className="py-28 lg:py-44" style={{ backgroundColor: '#3B2F27' }}>
         <div className="container-editorial text-center">
           <Reveal>
-            <p className="text-eyebrow uppercase tracking-[0.3em] text-rust-lighter mb-8">The Invitation</p>
-            <h2 className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-7xl leading-[0.98] tracking-[-0.04em] text-cream text-balance">
-              Know Christ.<br />
-              Live purposefully.<br />
-              Make Him known.
-            </h2>
+            <DisplayHeading
+              eyebrow="The Invitation"
+              title={<>Know Christ.<br />Live purposefully.<br /></>}
+              accent="Make Him known."
+              tone="brown"
+              align="center"
+            />
           </Reveal>
         </div>
       </section>

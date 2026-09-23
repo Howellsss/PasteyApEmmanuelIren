@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { ArrowLeft, ArrowRight, BookOpen, Film, Mic2, Music2, Sparkles } from 'lucide-react';
-import { SectionHeader } from './SectionHeader';
+import { DisplayHeading } from './DisplayHeading';
+import { Reveal } from './Reveal';
 
 type Card = {
   tag: string;
@@ -92,15 +93,12 @@ export function CreativeAccordion() {
   return (
     <section className="ce-section" aria-label="Creative Expression">
       <div className="container-editorial">
-        <SectionHeader
-          eyebrow="Creative Expression"
-          title="More than the pulpit."
-          description="The message also travels through pages, melodies, images, and stories — each one made to meet people where they are."
-          tone="rust"
-          titleClassName="text-ink"
-          descriptionClassName="text-umber"
-          className="mb-12"
-        />
+        <Reveal className="mb-12">
+          <DisplayHeading eyebrow="Creative Expression" title="More than" accent="the pulpit." />
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-umber text-pretty">
+            The message also travels through pages, melodies, images, and stories — each one made to meet people where they are.
+          </p>
+        </Reveal>
       </div>
 
       <div className="ce-accordion-wrap">
