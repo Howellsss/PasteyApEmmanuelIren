@@ -20,8 +20,8 @@
   }
 
   ::selection {
-    background-color: #DF584C;
-    color: #13100E;
+    background-color: #6E1717;
+    color: #F3EEE8;
   }
 
   ::-webkit-scrollbar {
@@ -194,7 +194,7 @@
 .ce-card.is-active {
   flex-grow: 2.6;
   /* A single accent rule along the bottom marks the open card. */
-  box-shadow: inset 0 -3px 0 var(--ce-accent, #DF584C);
+  box-shadow: inset 0 -3px 0 var(--ce-accent, #6E1717);
 }
 .ce-card-image {
   position: absolute;
@@ -224,8 +224,8 @@
   right: 18px;
   width: 34px;
   height: 34px;
-  border-top: 1.5px solid var(--ce-accent, #DF584C);
-  border-right: 1.5px solid var(--ce-accent, #DF584C);
+  border-top: 1.5px solid var(--ce-accent, #6E1717);
+  border-right: 1.5px solid var(--ce-accent, #6E1717);
   opacity: 0;
   transition: opacity 0.5s ease 0.1s;
 }
@@ -259,7 +259,7 @@
   font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--ce-accent, #DF584C);
+  color: var(--ce-accent, #6E1717);
   margin: 0;
 }
 .ce-card-title {

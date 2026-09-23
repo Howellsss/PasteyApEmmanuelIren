@@ -20,7 +20,7 @@ const cards: Card[] = [
     description: 'Words that make the life of faith practical, clear, and lived.',
     icon: BookOpen,
     image: '/images/creative/image copy 2.webp',
-    accent: '#DF584C',
+    accent: '#6E1717',
   },
   {
     tag: 'Music',
@@ -28,7 +28,7 @@ const cards: Card[] = [
     description: 'Songs of worship, conviction, and the joy of knowing Christ.',
     icon: Music2,
     image: '/images/creative/image.webp',
-    accent: '#DF584C',
+    accent: '#6E1717',
   },
   {
     tag: 'Film & Media',
@@ -36,7 +36,7 @@ const cards: Card[] = [
     description: 'Stories and conversations that carry the message beyond the pulpit.',
     icon: Film,
     image: '/images/creative/image copy.webp',
-    accent: '#DF584C',
+    accent: '#6E1717',
     objectPosition: 'center top',
   },
   {
@@ -45,7 +45,7 @@ const cards: Card[] = [
     description: 'Conversations and teachings that explore faith, purpose, leadership, and the Christian life.',
     icon: Mic2,
     image: '/images/creative/image copy 3.webp',
-    accent: '#DF584C',
+    accent: '#6E1717',
   },
   {
     tag: 'Speaking',
@@ -53,7 +53,7 @@ const cards: Card[] = [
     description: 'Biblical teaching and conversations that bring clarity to faith, purpose, leadership, and culture.',
     icon: Sparkles,
     image: '/images/creative/image copy 4.webp',
-    accent: '#DF584C',
+    accent: '#6E1717',
   },
 ];
 
