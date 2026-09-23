@@ -40,12 +40,12 @@ export function FloatingNav() {
       <nav
         className={cn(
           'fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-out-quart',
-          scrolled ? 'w-[calc(100%-3rem)] max-w-[72rem]' : 'w-[calc(100%-3rem)] max-w-[72rem]'
+          'w-[calc(100%-2rem)] max-w-[80rem]'
         )}
       >
         <div
           className={cn(
-            'flex min-h-[72px] items-center justify-between rounded-pill px-3 transition-all duration-500 ease-out-quart',
+            'flex min-h-[80px] items-center justify-between rounded-pill px-3 transition-all duration-500 ease-out-quart',
             // Glass: see-through fill with a light blur, and a visible edge so the container still reads.
             'backdrop-blur-[6px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]',
             scrolled ? 'bg-charcoal/15' : 'bg-white/5'
