@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/cn';
@@ -16,6 +16,34 @@ export function FloatingNav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const listRef = useRef<HTMLUListElement>(null);
+  const labelRefs = useRef<(HTMLSpanElement | null)[]>([]);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [bar, setBar] = useState<{ left: number; top: number; width: number } | null>(null);
+
+  const activeIndex = NAV_ITEMS.findIndex((item) =>
+    item.path === '/' ? location.pathname === '/' : location.pathname.startsWith(item.path)
+  );
+  // The underline sits under the hovered link, and returns to the current page's link on leave.
+  const barIndex = hoveredIndex ?? (activeIndex >= 0 ? activeIndex : null);
+
+  useLayoutEffect(() => {
+    const measure = () => {
+      const label = barIndex === null ? null : labelRefs.current[barIndex];
+      const list = listRef.current;
+      if (!label || !list) {
+        setBar(null);
+        return;
+      }
+      const l = label.getBoundingClientRect();
+      const r = list.getBoundingClientRect();
+      setBar({ left: l.left - r.left, top: l.bottom - r.top + 3, width: l.width });
+    };
+    measure();
+    document.fonts?.ready.then(measure);
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [barIndex]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -51,9 +79,18 @@ export function FloatingNav() {
             scrolled ? 'bg-ink/40' : 'bg-white/5'
           )}
         >
-          <ul className="hidden lg:flex flex-1 items-center justify-evenly gap-1 px-4">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.path}>
+          <ul
+            ref={listRef}
+            className="relative hidden lg:flex flex-1 items-center justify-evenly gap-1 px-4"
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            {NAV_ITEMS.map((item, index) => (
+              <li
+                key={item.path}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onFocus={() => setHoveredIndex(index)}
+                onBlur={() => setHoveredIndex(null)}
+              >
                 <NavLink
                   to={item.path}
                   end={item.path === '/'}
@@ -67,22 +104,27 @@ export function FloatingNav() {
                     )
                   }
                 >
-                  {({ isActive }) => (
-                    <span className="group/link relative inline-block">
-                      {item.label}
-                      <span
-                        className={cn(
-                          'absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-px bg-brand transition-all duration-300',
-                          isActive
-                            ? 'w-4 opacity-100'
-                            : 'w-0 opacity-0 group-hover/link:w-4 group-hover/link:opacity-100'
-                        )}
-                      />
-                    </span>
-                  )}
+                  <span
+                    ref={(el) => {
+                      labelRefs.current[index] = el;
+                    }}
+                    className="relative inline-block"
+                  >
+                    {item.label}
+                  </span>
                 </NavLink>
               </li>
             ))}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute h-0.5 rounded-pill bg-brand transition-all duration-300 ease-out-quart"
+              style={{
+                left: bar?.left ?? 0,
+                top: bar?.top ?? 0,
+                width: bar?.width ?? 0,
+                opacity: bar ? 1 : 0,
+              }}
+            />
           </ul>
 
           {/* Contact CTA — contained within the nav */}
