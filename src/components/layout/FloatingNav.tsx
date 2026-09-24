@@ -103,13 +103,12 @@ export function FloatingNav() {
                 <NavLink
                   to={item.path}
                   end={item.path === '/'}
-                  className={({ isActive }) =>
-                    cn(
-                      'relative px-3 py-2 text-base font-medium rounded-pill transition-colors duration-300',
-                      'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink',
-                      isActive ? 'text-accent' : 'text-cream hover:text-accent'
-                    )
-                  }
+                  className={cn(
+                    'relative px-3 py-2 text-base font-medium rounded-pill transition-colors duration-300',
+                    'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink',
+                    // The red travels with the underline: only the link it sits under is highlighted.
+                    index === barIndex ? 'text-accent' : 'text-cream'
+                  )}
                 >
                   <span
                     ref={(el) => {
