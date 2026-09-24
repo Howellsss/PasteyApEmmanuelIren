@@ -93,7 +93,7 @@ export function CreativeAccordion() {
   return (
     <section className="ce-section" aria-label="Creative Expression">
       <div className="container-editorial">
-        <Reveal className="mb-10">
+        <Reveal variant="left" className="mb-10">
           <DisplayHeading number="04" eyebrow="Creative Expression" title="More than" accent="the pulpit." accentClassName="text-[#D35455]" tone="light" />
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-umber text-pretty">
             The message also travels through pages, melodies, images, and stories — each one made to meet people where they are.
@@ -101,7 +101,7 @@ export function CreativeAccordion() {
         </Reveal>
       </div>
 
-      <div className="ce-accordion-wrap">
+      <Reveal variant="right" delay={150} className="ce-accordion-wrap">
         <div className="ce-accordion" role="tablist" aria-label="Creative expressions">
           {cards.map((card, i) => {
             const Icon = card.icon;
@@ -173,7 +173,7 @@ export function CreativeAccordion() {
             <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
           </button>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

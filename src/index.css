@@ -109,27 +109,42 @@
     transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
-  /* About photo: curtain wipe from the bottom plus a zoom that settles. */
-  /* About photo: slides in from the left while the image settles from a slow zoom. */
-  .about-reveal {
+  /* Image entrance (first used on the About photo): the frame slides in from its side of the
+     layout while the picture settles from a slow zoom; it eases in again on hover. */
+  .media-reveal {
     opacity: 0;
     transform: translateX(-4rem);
     transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
   }
-  .about-reveal.is-visible {
+  .media-reveal.from-right {
+    transform: translateX(4rem);
+  }
+  .media-reveal.from-none {
+    transform: none;
+  }
+  .media-reveal.is-visible {
     opacity: 1;
     transform: translateX(0);
   }
-  .about-reveal-img {
+  .media-reveal-img {
     transform: scale(1.18);
     transition: transform 1.8s cubic-bezier(0.25, 1, 0.5, 1);
   }
-  .about-reveal.is-visible .about-reveal-img {
+  .media-reveal.is-visible .media-reveal-img {
     transform: scale(1);
   }
-  .about-reveal.is-visible:hover .about-reveal-img {
+  .media-reveal.is-visible:hover .media-reveal-img {
     transform: scale(1.04);
     transition-duration: 1.2s;
+  }
+
+  /* Hero video: the same slow zoom settling once the first frame is ready. */
+  .hero-settle {
+    transform: scale(1.18);
+    transition: transform 2.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .hero-settle.is-visible {
+    transform: scale(1);
   }
 
   .reveal-from-left {
@@ -168,7 +183,7 @@
     scroll-behavior: auto !important;
   }
   .reveal-hidden, .reveal-scale-hidden, .reveal-left-hidden, .reveal-right-hidden,
-  .about-reveal, .about-reveal-img {
+  .media-reveal, .media-reveal-img, .hero-settle {
     opacity: 1 !important;
     transform: none !important;
   }

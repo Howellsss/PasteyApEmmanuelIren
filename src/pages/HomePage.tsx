@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/Button';
 import { TextLink } from '@/components/ui/TextLink';
 import { DisplayHeading } from '@/components/ui/DisplayHeading';
 import { CreativeAccordion } from '@/components/ui/CreativeAccordion';
+import { MediaReveal } from '@/components/ui/MediaReveal';
 import { useReveal } from '@/lib/useReveal';
 import { cn } from '@/lib/cn';
 import { attachHeroVideo, detachHeroVideo, setHeroInView } from '@/lib/heroSound';
@@ -115,32 +116,6 @@ const ministryExpressions = [
   },
 ];
 
-/** About photo: slides in from the left while settling from a slow zoom; eases in again on hover. */
-function AboutImage() {
-  const { ref, visible } = useReveal<HTMLDivElement>(0.2);
-
-  // Observe the static wrapper so the moving element's offset does not affect when it triggers.
-  return (
-    <div ref={ref}>
-      <div
-        className={cn(
-          'about-reveal relative aspect-[4/5] overflow-hidden rounded-soft bg-ink sm:aspect-[4/3]',
-          visible && 'is-visible'
-        )}
-      >
-        <img
-          src={ABOUT_IMAGE}
-          alt="Emmanuel Iren speaking on stage"
-          className="about-reveal-img h-full w-full object-cover"
-          style={{ objectPosition: 'center 35%' }}
-          loading="eager"
-          decoding="async"
-        />
-      </div>
-    </div>
-  );
-}
-
 export function HomePage() {
   const [typedHeroName, setTypedHeroName] = useState('');
   const [hasFinishedIntro, setHasFinishedIntro] = useState(false);
@@ -203,7 +178,7 @@ export function HomePage() {
   const activeTeaching = latestTeachings[activeTeachingIndex];
 
   return (
-    <div className="min-h-screen bg-ink">
+    <div className="min-h-screen overflow-x-clip bg-ink">
       <section ref={heroRef} className="relative min-h-screen flex items-end overflow-hidden bg-ink">
         <div className="absolute inset-0 overflow-hidden bg-ink">
           <video
@@ -213,7 +188,7 @@ export function HomePage() {
             preload="auto"
             aria-hidden="true"
             onLoadedData={() => setIsVideoReady(true)}
-            className="absolute inset-0 h-full w-full object-cover"
+            className={cn('hero-settle absolute inset-0 h-full w-full object-cover', isVideoReady && 'is-visible')}
           >
             <source src="/videos/hero.webm" type="video/webm" />
             <source src="/videos/hero.mp4" type="video/mp4" />
@@ -225,22 +200,24 @@ export function HomePage() {
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-ink/55" />
         <div className="relative z-20 w-full px-6 sm:px-8 lg:px-16 pb-16 lg:pb-24 pt-32 flex justify-center text-center">
-          <Reveal className="w-full max-w-4xl flex flex-col items-center">
-            <div className="mb-8 flex items-center justify-center gap-4">
+          <div className="w-full max-w-4xl flex flex-col items-center">
+            <Reveal variant="right" className="mb-8 flex items-center justify-center gap-4">
               <span aria-hidden="true" className="h-0.5 w-10 bg-brand sm:w-14" />
               <span className="text-eyebrow font-sans uppercase tracking-widest text-cream">
                 Apostle · Teacher · Author
               </span>
               <span aria-hidden="true" className="h-0.5 w-10 bg-brand sm:w-14" />
-            </div>
+            </Reveal>
+            <Reveal variant="right" delay={150}>
             <h1 className="font-sans text-5xl sm:text-6xl lg:text-8xl font-extrabold leading-[0.98] text-cream text-balance mb-8 tracking-[-0.04em] min-h-[0.98em]">
               {typedHeroName}
               {hasFinishedIntro && <span className="text-brand">.</span>}
             </h1>
-            <p className="text-lg sm:text-xl lg:text-2xl text-ash leading-relaxed max-w-2xl mb-10 text-pretty font-light">
+            </Reveal>
+            <Reveal variant="right" delay={300} as="p" className="text-lg sm:text-xl lg:text-2xl text-ash leading-relaxed max-w-2xl mb-10 text-pretty font-light">
               A teaching minister, author, songwriter, and founder of Celebration Church International.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 items-center">
+            </Reveal>
+            <Reveal variant="right" delay={450} className="flex flex-col sm:flex-row gap-4 items-center">
               <Link to="/teaching">
                 <Button variant="brand" size="lg" withArrow className="rounded-pill">
                   Explore Teachings
@@ -251,27 +228,26 @@ export function HomePage() {
                   Discover Emmanuel
                 </Button>
               </Link>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
 
       <section className="bg-ink py-14 md:py-16 lg:py-24">
         <div className="container-wide">
           <div className="mb-10 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-            <Reveal>
+            <Reveal variant="left">
               <DisplayHeading number="01" eyebrow="Teachings" title="Latest" accent="Teachings" />
             </Reveal>
-            <Reveal delay={100}>
+            <Reveal variant="right" delay={150}>
               <Link to="/teaching">
                 <TextLink tone="plain">Browse the library</TextLink>
               </Link>
             </Reveal>
           </div>
 
-          <Reveal variant="scale">
-            <article className="grid border-t-2 border-brand lg:grid-cols-[0.92fr_1.08fr]">
-              <div className="order-2 flex min-h-[26rem] flex-col py-8 sm:py-10 lg:order-1 lg:min-h-[32rem] lg:py-12 lg:pr-12">
+          <article className="grid border-t-2 border-brand lg:grid-cols-[0.92fr_1.08fr]">
+              <Reveal variant="left" delay={150} className="order-2 flex min-h-[26rem] flex-col py-8 sm:py-10 lg:order-1 lg:min-h-[32rem] lg:py-12 lg:pr-12">
                 <div className="flex-1 space-y-5 lg:flex lg:flex-col lg:justify-center">
                   <p className="text-eyebrow uppercase tracking-[0.16em] text-accent">{activeTeaching.series}</p>
                   <h3 className="max-w-lg font-display text-2xl leading-[1.15] text-cream lg:text-[1.875rem]">
@@ -325,9 +301,14 @@ export function HomePage() {
                     </button>
                   </div>
                 </div>
-              </div>
+              </Reveal>
+              <MediaReveal
+                from="right"
+                className="order-1 lg:order-2 lg:mt-8"
+                frameClassName="h-full min-h-[24rem] rounded-soft bg-surface lg:min-h-[32rem]"
+              >
               <div
-                className="order-1 relative min-h-[24rem] overflow-hidden rounded-soft bg-surface lg:order-2 lg:mt-8 lg:min-h-[32rem]"
+                className="absolute inset-0"
                 onMouseEnter={() => setIsTeachingPaused(true)}
                 onMouseLeave={() => setIsTeachingPaused(false)}
                 onFocus={() => setIsTeachingPaused(true)}
@@ -337,7 +318,7 @@ export function HomePage() {
                   key={activeTeaching.image}
                   src={activeTeaching.image}
                   alt={`Apostle Emmanuel Iren — ${activeTeaching.title}`}
-                  className="absolute inset-0 h-full w-full object-cover transition-opacity duration-500"
+                  className="media-reveal-img absolute inset-0 h-full w-full object-cover"
                   style={{ objectPosition: activeTeaching.imagePosition }}
                 />
                 <a
@@ -350,8 +331,8 @@ export function HomePage() {
                   <Play className="ml-1 h-6 w-6" fill="currentColor" />
                 </a>
               </div>
+              </MediaReveal>
             </article>
-          </Reveal>
         </div>
       </section>
 
@@ -359,7 +340,16 @@ export function HomePage() {
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             <div className="lg:col-span-8">
-              <AboutImage />
+              <MediaReveal frameClassName="aspect-[4/5] rounded-soft bg-ink sm:aspect-[4/3]">
+                <img
+                  src={ABOUT_IMAGE}
+                  alt="Emmanuel Iren speaking on stage"
+                  className="media-reveal-img h-full w-full object-cover"
+                  style={{ objectPosition: 'center 35%' }}
+                  loading="eager"
+                  decoding="async"
+                />
+              </MediaReveal>
             </div>
             <div className="lg:col-span-4">
               <Reveal variant="right">
@@ -393,7 +383,7 @@ export function HomePage() {
 
       <section className="bg-ink py-14 md:py-16 lg:py-24">
         <div className="container-wide">
-          <Reveal className="mb-8">
+          <Reveal variant="left" className="mb-8">
             <DisplayHeading number="03" eyebrow="Teaching" title="Teach the word." accent="Live the word." />
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-ash text-pretty">
               Sermons and conversations for the questions, decisions, and ordinary days that make up a life of faith.
@@ -402,13 +392,13 @@ export function HomePage() {
 
           {/* One featured teaching beside a numbered list; both columns end on the same line. */}
           <div className="grid grid-cols-1 gap-10 border-t-2 border-brand pt-8 lg:grid-cols-12 lg:gap-12">
-            <Reveal variant="scale" className="lg:col-span-7">
+            <div className="lg:col-span-7">
               <Link to="/teaching" className="group block">
-                <div className="relative aspect-[16/10] overflow-hidden rounded-soft bg-surface">
+                <MediaReveal frameClassName="aspect-[16/10] rounded-soft bg-surface">
                   <img
                     src={featuredTeaching.image}
                     alt={featuredTeaching.title}
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out-quart group-hover:scale-[1.03]"
+                    className="media-reveal-img h-full w-full object-cover"
                     style={{ objectPosition: 'center 25%' }}
                   />
                   <span className="absolute right-3 top-3 rounded-subtle bg-ink/80 px-2.5 py-1 text-meta text-cream backdrop-blur-sm">
@@ -417,18 +407,20 @@ export function HomePage() {
                   <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-cream/90 text-ink transition-transform duration-500 group-hover:scale-110">
                     <Play className="ml-1 h-6 w-6" fill="currentColor" />
                   </span>
-                </div>
+                </MediaReveal>
+                <Reveal variant="left" delay={150}>
                 <p className="mt-5 text-eyebrow uppercase tracking-[0.16em] text-accent">{featuredTeaching.type} · Featured</p>
                 <h3 className="mt-2 font-sans text-2xl font-semibold leading-tight tracking-[-0.02em] text-cream transition-colors duration-300 group-hover:text-accent lg:text-[1.875rem]">
                   {featuredTeaching.title}
                 </h3>
                 <p className="mt-2 text-sm text-ash">{featuredTeaching.meta}</p>
+                </Reveal>
               </Link>
-            </Reveal>
+            </div>
 
             <div className="flex flex-col justify-between gap-6 lg:col-span-5">
               {moreTeachings.map((teaching, index) => (
-                <Reveal key={teaching.title} delay={(index + 1) * 100}>
+                <Reveal key={teaching.title} variant="right" delay={(index + 1) * 150}>
                   <Link
                     to="/teaching"
                     className="group grid grid-cols-[2.5rem_7.5rem_1fr] items-center gap-4 border-b border-line pb-6 sm:grid-cols-[2.5rem_12.5rem_1fr] sm:gap-5"
@@ -460,7 +452,7 @@ export function HomePage() {
                   </Link>
                 </Reveal>
               ))}
-              <Reveal delay={300}>
+              <Reveal variant="right" delay={450}>
                 <Link
                   to="/teaching"
                   className="group flex items-center justify-between gap-4 border-b border-line pb-6 text-sm"
@@ -483,19 +475,17 @@ export function HomePage() {
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-5 lg:order-2">
-              <Reveal variant="scale">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-soft">
-                  <img
-                    src={MINISTRY_IMAGE}
-                    alt="Emmanuel Iren in ministry"
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out-quart hover:scale-[1.02]"
-                    style={{ objectPosition: 'center top' }}
-                  />
-                </div>
-              </Reveal>
+              <MediaReveal from="right" frameClassName="aspect-[4/5] rounded-soft">
+                <img
+                  src={MINISTRY_IMAGE}
+                  alt="Emmanuel Iren in ministry"
+                  className="media-reveal-img w-full h-full object-cover"
+                  style={{ objectPosition: 'center top' }}
+                />
+              </MediaReveal>
             </div>
             <div className="lg:col-span-7 lg:order-1">
-              <Reveal>
+              <Reveal variant="left">
                 <DisplayHeading
                   number="05"
                   eyebrow="Ministry"
@@ -503,20 +493,22 @@ export function HomePage() {
                   accent="Many expressions."
                   className="mb-6"
                 />
-                <p className="text-ash leading-relaxed max-w-xl mb-8">
+              </Reveal>
+              <Reveal variant="left" delay={150} as="p" className="text-ash leading-relaxed max-w-xl mb-8">
                   A growing family of ministry expressions, each carrying the same invitation to know Christ, live purposefully, and make Him known.
-                </p>
+              </Reveal>
                 <div className="border-t border-line">
                   {ministryExpressions.map((expression, index) => (
-                    <div key={expression.name} className="grid grid-cols-[3rem_1fr] gap-2 py-5 border-b border-line">
+                    <Reveal key={expression.name} variant="left" delay={300 + index * 100} className="grid grid-cols-[3rem_1fr] gap-2 py-5 border-b border-line">
                       <span className="font-sans text-[1.75rem] font-extrabold leading-none text-brand">{index + 1}</span>
                       <div>
                         <h3 className="font-display text-xl text-cream mb-1">{expression.name}</h3>
                         <p className="text-sm text-ash leading-relaxed max-w-md">{expression.description}</p>
                       </div>
-                    </div>
+                    </Reveal>
                   ))}
                 </div>
+              <Reveal variant="left" delay={300 + ministryExpressions.length * 100}>
                 <Link to="/ministry" className="inline-block mt-8">
                   <TextLink>Explore Ministry</TextLink>
                 </Link>
@@ -529,17 +521,17 @@ export function HomePage() {
       <section className="bg-ink-2 py-14 md:py-16 lg:py-24">
         <div className="container-editorial">
           <div className="mb-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-            <Reveal>
+            <Reveal variant="left">
               <DisplayHeading number="06" eyebrow="Events" title="Where Apostle Emmanuel Iren" accent="is ministering." />
             </Reveal>
-            <Reveal delay={100}>
+            <Reveal variant="right" delay={150}>
               <Link to="/events">
                 <TextLink tone="plain">All events</TextLink>
               </Link>
             </Reveal>
           </div>
           {/* A schedule list rather than promo cards: date, image, event, details. */}
-          <Reveal className="border-t border-line">
+          <Reveal variant="right" delay={300} className="border-t border-line">
             <Link
               to="/events"
               className="group grid grid-cols-[5rem_1fr] items-center gap-x-6 gap-y-4 border-b border-line py-6 sm:grid-cols-[7rem_12rem_1fr_auto] sm:gap-x-8"
@@ -569,10 +561,10 @@ export function HomePage() {
       <section className="bg-ink py-14 md:py-16 lg:py-24">
         <div className="container-editorial">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
-            <Reveal>
+            <Reveal variant="left">
               <DisplayHeading number="07" eyebrow="Current Content" title="A curated" accent="continuation." />
             </Reveal>
-            <Reveal delay={100}>
+            <Reveal variant="right" delay={150}>
               <p className="text-sm text-ash max-w-xs leading-relaxed">Teaching, conversation, and worship for the week you are living.</p>
             </Reveal>
           </div>
@@ -581,9 +573,9 @@ export function HomePage() {
               { to: '/teaching', label: 'YouTube', title: 'Led by the Spirit', text: 'A short teaching for the journey.' },
               { to: '/teaching', label: 'Podcast', title: 'The Creative Calling', text: 'A conversation about making with purpose.' },
               { to: '/ministry', label: 'Social Highlight', title: 'Make room for the work.', text: '' },
-            ].map((item) => (
+            ].map((item, index) => (
+              <Reveal key={item.title} variant="right" delay={300 + index * 150}>
               <Link
-                key={item.title}
                 to={item.to}
                 className="group flex min-h-[15rem] flex-col justify-between rounded-soft border-t-2 border-brand bg-surface p-6 transition-colors duration-500 hover:bg-line"
               >
@@ -596,22 +588,26 @@ export function HomePage() {
                   {item.text && <p className="mt-2 text-sm text-ash">{item.text}</p>}
                 </div>
               </Link>
+              </Reveal>
             ))}
           </div>
         </div>
       </section>
 
       <section className="relative overflow-hidden bg-ink py-20 lg:py-32">
-        <img
-          src={CREATIVE_IMAGE}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover opacity-35"
-          style={{ objectPosition: 'center 30%' }}
-        />
+        <MediaReveal from="none" className="absolute inset-0" frameClassName="h-full w-full">
+          <img
+            src={CREATIVE_IMAGE}
+            alt=""
+            aria-hidden="true"
+            className="media-reveal-img absolute inset-0 h-full w-full object-cover opacity-35"
+            style={{ objectPosition: 'center 30%' }}
+          />
+        </MediaReveal>
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
         <div className="container-wide relative">
-          <Reveal className="max-w-3xl">
+          <div className="max-w-3xl">
+            <Reveal variant="right">
             <DisplayHeading
               number="08"
               eyebrow="The Invitation"
@@ -619,10 +615,11 @@ export function HomePage() {
               accent="Make Him known."
               size="lg"
             />
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-ash">
+            </Reveal>
+            <Reveal variant="right" delay={150} as="p" className="mt-6 max-w-xl text-base leading-relaxed text-ash">
               Bring the word to your city, your church, your event. Submit an invitation for a speaking engagement, conference, or interview.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            </Reveal>
+            <Reveal variant="right" delay={300} className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link to="/invite">
                 <Button variant="primary" size="lg" withArrow>
                   Invite Emmanuel
@@ -633,8 +630,8 @@ export function HomePage() {
                   Contact Directly
                 </Button>
               </Link>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
     </div>
