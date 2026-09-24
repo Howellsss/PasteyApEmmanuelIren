@@ -1,5 +1,5 @@
-import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, Play } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, Play, Volume2, VolumeX } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Reveal } from '@/components/ui/Reveal';
 import { Button } from '@/components/ui/Button';
@@ -146,6 +146,40 @@ export function HomePage() {
   const [activeTeachingIndex, setActiveTeachingIndex] = useState(0);
   const [isTeachingPaused, setIsTeachingPaused] = useState(false);
   const [isVideoReady, setIsVideoReady] = useState(false);
+  const [isSoundOn, setIsSoundOn] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Browsers only autoplay muted video, so sound is the visitor's choice.
+  // Turning it on restarts the clip so the whole message is heard from the top.
+  const toggleSound = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    const next = !isSoundOn;
+    video.muted = !next;
+    if (next) {
+      video.currentTime = 0;
+      void video.play();
+    }
+    setIsSoundOn(next);
+  };
+
+  // Scrolling away from the hero mutes it again, so the audio never plays behind the rest of the page.
+  useEffect(() => {
+    const hero = heroRef.current;
+    if (!hero || !isSoundOn) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting && videoRef.current) {
+          videoRef.current.muted = true;
+          setIsSoundOn(false);
+        }
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, [isSoundOn]);
 
   useEffect(() => {
     if (hasFinishedIntro) return;
@@ -185,9 +219,10 @@ export function HomePage() {
 
   return (
     <div className="min-h-screen bg-ink">
-      <section className="relative min-h-screen flex items-end overflow-hidden bg-ink">
+      <section ref={heroRef} className="relative min-h-screen flex items-end overflow-hidden bg-ink">
         <div className="absolute inset-0 overflow-hidden bg-ink">
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop
@@ -206,6 +241,16 @@ export function HomePage() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-ink/55" />
+        <button
+          type="button"
+          onClick={toggleSound}
+          aria-pressed={isSoundOn}
+          aria-label={isSoundOn ? 'Turn sound off' : 'Turn sound on'}
+          className="absolute bottom-5 right-5 z-30 inline-flex h-11 items-center gap-2 rounded-pill border border-white/15 bg-ink-2/60 px-3.5 text-sm font-medium text-cream backdrop-blur-md transition-colors duration-300 hover:bg-ink-2/85 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:bottom-8 sm:right-8 sm:px-4"
+        >
+          {isSoundOn ? <Volume2 className="h-4 w-4" /> : <VolumeX className="h-4 w-4" />}
+          <span className="hidden sm:inline">{isSoundOn ? 'Mute' : 'Play with sound'}</span>
+        </button>
         <div className="relative z-20 w-full px-6 sm:px-8 lg:px-16 pb-16 lg:pb-24 pt-32 flex justify-center text-center">
           <Reveal className="w-full max-w-4xl flex flex-col items-center">
             <div className="mb-8 flex items-center justify-center gap-4">
