@@ -114,11 +114,11 @@ const ministryExpressions = [
   },
 ];
 
-/** About photo: wipes up into view while settling from a slow zoom; eases in again on hover. */
+/** About photo: slides in from the left while settling from a slow zoom; eases in again on hover. */
 function AboutImage() {
   const { ref, visible } = useReveal<HTMLDivElement>(0.2);
 
-  // Observe the unclipped wrapper: a fully clipped element never reports as intersecting.
+  // Observe the static wrapper so the moving element's offset does not affect when it triggers.
   return (
     <div ref={ref}>
       <div
@@ -337,17 +337,17 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="bg-ink-2 py-14 md:py-16 lg:py-24">
+      <section className="bg-ink-2 py-14 md:py-16 lg:py-24 overflow-hidden">
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             <div className="lg:col-span-8">
               <AboutImage />
             </div>
             <div className="lg:col-span-4">
-              <Reveal>
+              <Reveal variant="right">
                 <DisplayHeading
                   number="02"
-                  eyebrow="About Emmanuel"
+                  eyebrow="About Apostle Emmanuel Iren"
                   title="A life given to Christ"
                   accent="and His purpose."
                   accentClassName="text-[#D35455]"
@@ -356,14 +356,14 @@ export function HomePage() {
                 />
               </Reveal>
               <div className="space-y-5 text-ash leading-relaxed">
-                <Reveal delay={150} as="p">
+                <Reveal variant="right" delay={150} as="p">
                   Apostle Emmanuel Iren is the founder and lead pastor of Celebration Church International, a teacher of God’s Word, author, songwriter, and ministry leader.
                 </Reveal>
-                <Reveal delay={300} as="p">
+                <Reveal variant="right" delay={300} as="p">
                   His work brings together sound teaching, creative expression, and a deep commitment to helping people live their faith with clarity and purpose.
                 </Reveal>
               </div>
-              <Reveal delay={450}>
+              <Reveal variant="right" delay={450}>
                 <Link to="/about" className="inline-block mt-8">
                   <TextLink>Read His Story</TextLink>
                 </Link>

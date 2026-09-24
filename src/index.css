@@ -85,6 +85,20 @@
     transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
   }
 
+  .reveal-left-hidden {
+    opacity: 0;
+    transform: translateX(-3rem);
+  }
+  .reveal-right-hidden {
+    opacity: 0;
+    transform: translateX(3rem);
+  }
+  .reveal-side-visible {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
   .reveal-scale-hidden {
     opacity: 0;
     transform: scale(1.05);
@@ -96,12 +110,15 @@
   }
 
   /* About photo: curtain wipe from the bottom plus a zoom that settles. */
+  /* About photo: slides in from the left while the image settles from a slow zoom. */
   .about-reveal {
-    clip-path: inset(100% 0 0 0);
-    transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+    opacity: 0;
+    transform: translateX(-4rem);
+    transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
   }
   .about-reveal.is-visible {
-    clip-path: inset(0 0 0 0);
+    opacity: 1;
+    transform: translateX(0);
   }
   .about-reveal-img {
     transform: scale(1.18);
@@ -150,12 +167,10 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .reveal-hidden, .reveal-scale-hidden, .about-reveal-img {
+  .reveal-hidden, .reveal-scale-hidden, .reveal-left-hidden, .reveal-right-hidden,
+  .about-reveal, .about-reveal-img {
     opacity: 1 !important;
     transform: none !important;
-  }
-  .about-reveal {
-    clip-path: none !important;
   }
 }
 
