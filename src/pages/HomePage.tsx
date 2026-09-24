@@ -208,8 +208,6 @@ export function HomePage() {
         <div className="absolute inset-0 overflow-hidden bg-ink">
           <video
             ref={videoRef}
-            autoPlay
-            muted
             loop
             playsInline
             preload="auto"

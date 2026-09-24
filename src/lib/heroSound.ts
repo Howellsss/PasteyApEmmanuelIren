@@ -12,6 +12,8 @@ type HeroSoundState = { available: boolean; muted: boolean };
 let state: HeroSoundState = { available: false, muted: true };
 let video: HTMLVideoElement | null = null;
 let unlocked = false;
+// True while the first play-with-sound attempt is still pending; nothing may mute the video meanwhile.
+let attempting = false;
 let userMuted = false;
 let inView = true;
 const listeners = new Set<() => void>();
@@ -26,7 +28,7 @@ function sync() {
 }
 
 function apply() {
-  if (!video) return sync();
+  if (!video || attempting) return sync();
   video.muted = userMuted || !inView || !unlocked;
   if (video.paused) void video.play().catch(() => {});
   sync();
@@ -48,16 +50,22 @@ export function attachHeroVideo(element: HTMLVideoElement) {
   video = element;
   userMuted = false;
   inView = true;
+  unlocked = false;
+  attempting = true;
+  // First attempt: play with sound, exactly as a plain unmuted <video autoplay> would.
   element.muted = false;
   element
     .play()
     .then(() => {
+      if (video !== element) return;
+      attempting = false;
       unlocked = true;
       apply();
     })
     .catch(() => {
-      // Autoplay with sound was blocked: keep the picture moving and wait for a gesture.
+      // The browser refused sound: keep the picture moving silently and turn sound on at the first gesture.
       if (video !== element) return;
+      attempting = false;
       element.muted = true;
       void element.play().catch(() => {});
       GESTURES.forEach((type) => document.addEventListener(type, onGesture, true));
