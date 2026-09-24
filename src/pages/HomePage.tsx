@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { Reveal } from '@/components/ui/Reveal';
 import { Button } from '@/components/ui/Button';
 import { TextLink } from '@/components/ui/TextLink';
-import { MediaCard } from '@/components/ui/MediaCard';
 import { DisplayHeading } from '@/components/ui/DisplayHeading';
 import { CreativeAccordion } from '@/components/ui/CreativeAccordion';
 import { useReveal } from '@/lib/useReveal';
@@ -68,6 +67,31 @@ const latestTeachings = [
     image: '/images/teachings/image copy 7.webp',
     imagePosition: 'center top',
     watchUrl: 'https://www.youtube.com/watch?v=x71RhblDHdE',
+  },
+];
+
+const featuredTeaching = {
+  image: TEACHING_IMAGE,
+  title: 'The Gospel of Grace — Part 4',
+  meta: 'The Gospel of Grace · Sep 12, 2026',
+  duration: '42 min',
+  type: 'Sermon',
+};
+
+const moreTeachings = [
+  {
+    image: TEACHING_IMAGE_2,
+    title: 'What It Means to Be Led by the Spirit',
+    meta: 'Faith in Practice · Sep 05, 2026',
+    duration: '34 min',
+    type: 'Teaching',
+  },
+  {
+    image: TEACHING_IMAGE_3,
+    title: 'The Creative Calling',
+    meta: 'Conversations · Aug 29, 2026',
+    duration: '52 min',
+    type: 'Podcast',
   },
 ];
 
@@ -349,44 +373,88 @@ export function HomePage() {
       </section>
 
       <section className="bg-ink py-14 md:py-16 lg:py-24">
-        <div className="container-editorial">
-          <Reveal>
+        <div className="container-wide">
+          <Reveal className="mb-8">
             <DisplayHeading number="03" eyebrow="Teaching" title="Teach the word." accent="Live the word." />
             <p className="mt-4 max-w-2xl text-base leading-relaxed text-ash text-pretty">
               Sermons and conversations for the questions, decisions, and ordinary days that make up a life of faith.
             </p>
           </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 mt-10">
-            <MediaCard
-              image={TEACHING_IMAGE}
-              title="The Gospel of Grace — Part 4"
-              meta="The Gospel of Grace · Sep 12, 2026"
-              duration="42 min"
-              type="Sermon"
-              className="lg:col-span-8"
-            />
-            <MediaCard
-              image={TEACHING_IMAGE_2}
-              title="What It Means to Be Led by the Spirit"
-              meta="Faith in Practice · Sep 05, 2026"
-              duration="34 min"
-              type="Teaching"
-              className="lg:col-span-4"
-            />
-            <MediaCard
-              image={TEACHING_IMAGE_3}
-              title="The Creative Calling"
-              meta="Conversations · Aug 29, 2026"
-              duration="52 min"
-              type="Podcast"
-              className="lg:col-span-4"
-            />
+
+          {/* One featured teaching beside a numbered list; both columns end on the same line. */}
+          <div className="grid grid-cols-1 gap-10 border-t-2 border-brand pt-8 lg:grid-cols-12 lg:gap-12">
+            <Reveal variant="scale" className="lg:col-span-7">
+              <Link to="/teaching" className="group block">
+                <div className="relative aspect-[16/10] overflow-hidden rounded-soft bg-surface">
+                  <img
+                    src={featuredTeaching.image}
+                    alt={featuredTeaching.title}
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out-quart group-hover:scale-[1.03]"
+                    style={{ objectPosition: 'center 25%' }}
+                  />
+                  <span className="absolute right-3 top-3 rounded-subtle bg-ink/80 px-2.5 py-1 text-meta text-cream backdrop-blur-sm">
+                    {featuredTeaching.duration}
+                  </span>
+                  <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-cream/90 text-ink transition-transform duration-500 group-hover:scale-110">
+                    <Play className="ml-1 h-6 w-6" fill="currentColor" />
+                  </span>
+                </div>
+                <p className="mt-5 text-eyebrow uppercase tracking-[0.16em] text-accent">{featuredTeaching.type} · Featured</p>
+                <h3 className="mt-2 font-sans text-2xl font-semibold leading-tight tracking-[-0.02em] text-cream transition-colors duration-300 group-hover:text-accent lg:text-[1.875rem]">
+                  {featuredTeaching.title}
+                </h3>
+                <p className="mt-2 text-sm text-ash">{featuredTeaching.meta}</p>
+              </Link>
+            </Reveal>
+
+            <div className="flex flex-col justify-between gap-6 lg:col-span-5">
+              {moreTeachings.map((teaching, index) => (
+                <Reveal key={teaching.title} delay={(index + 1) * 100}>
+                  <Link
+                    to="/teaching"
+                    className="group grid grid-cols-[2.5rem_7.5rem_1fr] items-center gap-4 border-b border-line pb-6 sm:grid-cols-[2.5rem_12.5rem_1fr] sm:gap-5"
+                  >
+                    <span className="font-sans text-[1.75rem] font-extrabold leading-none tracking-[-0.04em] text-brand">
+                      {String(index + 2).padStart(2, '0')}
+                    </span>
+                    <div className="relative aspect-[16/10] overflow-hidden rounded-soft bg-surface">
+                      <img
+                        src={teaching.image}
+                        alt={teaching.title}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-700 ease-out-quart group-hover:scale-[1.05]"
+                        style={{ objectPosition: 'center 20%' }}
+                      />
+                      <span className="absolute left-1/2 top-1/2 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-cream/90 text-ink">
+                        <Play className="ml-0.5 h-3.5 w-3.5" fill="currentColor" />
+                      </span>
+                    </div>
+                    <div>
+                      <p className="text-eyebrow uppercase tracking-[0.16em] text-accent">
+                        {teaching.type} · {teaching.duration}
+                      </p>
+                      <h4 className="mt-1.5 font-sans text-lg font-semibold leading-snug tracking-[-0.02em] text-cream transition-colors duration-300 group-hover:text-accent">
+                        {teaching.title}
+                      </h4>
+                      <p className="mt-1 text-sm text-ash">{teaching.meta}</p>
+                    </div>
+                  </Link>
+                </Reveal>
+              ))}
+              <Reveal delay={300}>
+                <Link
+                  to="/teaching"
+                  className="group flex items-center justify-between gap-4 border-b border-line pb-6 text-sm"
+                >
+                  <span className="text-ash">Sermons, series, podcasts and more</span>
+                  <span className="inline-flex items-center gap-1.5 font-semibold text-cream transition-colors duration-300 group-hover:text-accent">
+                    Browse the full library
+                    <ArrowRight className="h-3.5 w-3.5 text-accent transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                </Link>
+              </Reveal>
+            </div>
           </div>
-          <Reveal className="mt-10">
-            <Link to="/teaching">
-              <TextLink>Explore Teachings</TextLink>
-            </Link>
-          </Reveal>
         </div>
       </section>
 
