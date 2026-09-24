@@ -25,7 +25,7 @@ const SIZES = {
   sm: 'text-3xl lg:text-4xl',
 };
 
-/** Section heading: numbered chapter marker over a bold, uppercase title with an accent ending. */
+/** Section heading: numbered chapter marker over a bold title (set like the hero name) with an accent ending. */
 export function DisplayHeading({
   eyebrow,
   number,
