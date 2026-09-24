@@ -57,23 +57,59 @@ const cards: Card[] = [
   },
 ];
 
+// Below this width the accordion becomes a swipeable row of full cards instead of squeezing all five.
+const MOBILE_QUERY = '(max-width: 767px)';
+
 export function CreativeAccordion() {
   const [active, setActive] = useState(0);
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(MOBILE_QUERY).matches
+  );
   const directionRef = useRef(1);
-
-  const goTo = useCallback((index: number) => {
-    setActive(index);
-  }, []);
-
-  const prev = useCallback(() => {
-    setActive((i) => (i - 1 + cards.length) % cards.length);
-  }, []);
-
-  const next = useCallback(() => {
-    setActive((i) => (i + 1) % cards.length);
-  }, []);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const query = window.matchMedia(MOBILE_QUERY);
+    const onChange = () => setIsMobile(query.matches);
+    query.addEventListener('change', onChange);
+    return () => query.removeEventListener('change', onChange);
+  }, []);
+
+  // On phones, choosing a card scrolls the row to it; the scroll handler then marks it active.
+  const goTo = useCallback(
+    (index: number) => {
+      const track = trackRef.current;
+      const card = track?.children[index] as HTMLElement | undefined;
+      if (isMobile && track && card) {
+        track.scrollTo({ left: card.offsetLeft - track.offsetLeft - parseFloat(getComputedStyle(track).paddingLeft), behavior: 'smooth' });
+        return;
+      }
+      setActive(index);
+    },
+    [isMobile]
+  );
+
+  const prev = useCallback(() => {
+    goTo((active - 1 + cards.length) % cards.length);
+  }, [active, goTo]);
+
+  const next = useCallback(() => {
+    goTo((active + 1) % cards.length);
+  }, [active, goTo]);
+
+  const onTrackScroll = useCallback(() => {
+    const track = trackRef.current;
+    if (!isMobile || !track) return;
+    const first = track.children[0] as HTMLElement | undefined;
+    if (!first) return;
+    const step = first.offsetWidth + parseFloat(getComputedStyle(track).columnGap || '0');
+    const index = Math.min(cards.length - 1, Math.max(0, Math.round(track.scrollLeft / step)));
+    setActive(index);
+  }, [isMobile]);
+
+  useEffect(() => {
+    // The row is left for the visitor to swipe on phones; it only cycles by itself on larger screens.
+    if (isMobile) return;
     const id = setInterval(() => {
       setActive((currentIndex) => {
         let nextIndex = currentIndex + directionRef.current;
@@ -88,7 +124,7 @@ export function CreativeAccordion() {
       });
     }, 2200);
     return () => clearInterval(id);
-  }, []);
+  }, [isMobile]);
 
   return (
     <section className="ce-section" aria-label="Creative Expression">
@@ -102,7 +138,13 @@ export function CreativeAccordion() {
       </div>
 
       <Reveal variant="right" delay={150} className="ce-accordion-wrap">
-        <div className="ce-accordion" role="tablist" aria-label="Creative expressions">
+        <div
+          ref={trackRef}
+          className="ce-accordion"
+          role="tablist"
+          aria-label="Creative expressions"
+          onScroll={onTrackScroll}
+        >
           {cards.map((card, i) => {
             const Icon = card.icon;
             const isActive = i === active;
@@ -115,7 +157,7 @@ export function CreativeAccordion() {
                 aria-selected={isActive}
                 aria-controls={`ce-panel-${i}`}
                 tabIndex={isActive ? 0 : -1}
-                onMouseEnter={() => goTo(i)}
+                onMouseEnter={() => !isMobile && goTo(i)}
                 onClick={() => goTo(i)}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
@@ -133,7 +175,7 @@ export function CreativeAccordion() {
                 />
                 <div className="ce-gradient" />
                 <div className="ce-corner" aria-hidden="true" />
-                {isActive && (
+                {(isActive || isMobile) && (
                   <div className="ce-body" id={`ce-panel-${i}`}>
                     <span className="ce-icon"><Icon className="w-5 h-5" strokeWidth={1.5} /></span>
                     <p className="ce-tag">{card.tag}</p>
@@ -142,7 +184,7 @@ export function CreativeAccordion() {
                     <span className="ce-explore">Explore →</span>
                   </div>
                 )}
-                {!isActive && (
+                {!isActive && !isMobile && (
                   <div className="ce-collapsed">
                     <span className="ce-collapsed-icon"><Icon className="w-4 h-4" strokeWidth={1.5} /></span>
                     <span className="ce-collapsed-title">{card.title}</span>

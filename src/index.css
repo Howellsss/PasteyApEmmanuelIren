@@ -429,6 +429,29 @@
   .ce-desc { font-size: 0.875rem; }
 }
 
+/* Phones: one full card per swipe, the next one peeking in, instead of five squeezed strips. */
+@media (max-width: 767px) {
+  .ce-accordion {
+    height: 460px;
+    gap: 12px;
+    margin-inline: -20px;
+    padding-inline: 20px;
+    scroll-padding-inline: 20px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .ce-accordion::-webkit-scrollbar { display: none; }
+  .ce-card,
+  .ce-card.is-active {
+    flex: 0 0 84%;
+    scroll-snap-align: start;
+  }
+  .ce-gradient { opacity: 1; }
+  .ce-card-title { font-size: 1.625rem; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .ce-card, .ce-card-image, .ce-gradient, .ce-corner {
     transition-duration: 0.01ms !important;
