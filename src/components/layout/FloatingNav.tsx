@@ -1,7 +1,8 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { ArrowRight, Menu, X } from 'lucide-react';
+import { ArrowRight, Menu, Volume2, VolumeX, X } from 'lucide-react';
 import { cn } from '@/lib/cn';
+import { toggleHeroSound, useHeroSound } from '@/lib/heroSound';
 
 const NAV_ITEMS = [
   { label: 'Home', path: '/' },
@@ -16,6 +17,7 @@ export function FloatingNav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const heroSound = useHeroSound();
   const listRef = useRef<HTMLUListElement>(null);
   const labelRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -133,29 +135,46 @@ export function FloatingNav() {
             />
           </ul>
 
-          {/* Contact CTA — contained within the nav */}
-          <NavLink
-            to="/contact"
-            className={({ isActive }) =>
-              cn(
-                'hidden lg:inline-flex items-center px-7 py-3.5 text-base font-semibold rounded-pill transition-colors duration-300',
-                'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink',
-                isActive
-                  ? 'bg-brand-dark text-cream'
-                  : 'bg-brand text-cream hover:bg-brand-dark'
-              )
-            }
-          >
-            Contact
-          </NavLink>
+          <div className="flex items-center gap-2">
+            {/* Hero video sound: a quiet round toggle, shown only while the home video is on the page. */}
+            {heroSound.available && (
+              <button
+                type="button"
+                data-hero-sound-toggle
+                onClick={toggleHeroSound}
+                aria-pressed={!heroSound.muted}
+                aria-label={heroSound.muted ? 'Unmute video' : 'Mute video'}
+                title={heroSound.muted ? 'Unmute' : 'Mute'}
+                className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border border-white/15 text-cream transition-colors duration-300 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                {heroSound.muted ? <VolumeX className="h-5 w-5" /> : <Volume2 className="h-5 w-5" />}
+              </button>
+            )}
 
-          <button
-            onClick={() => setMenuOpen(true)}
-            className="lg:hidden flex items-center justify-center w-11 h-11 mr-1 text-cream rounded-pill hover:bg-white/10 transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-            aria-label="Open menu"
-          >
-            <Menu className="w-5 h-5" />
-          </button>
+            {/* Contact CTA — contained within the nav */}
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                cn(
+                  'hidden lg:inline-flex items-center px-7 py-3.5 text-base font-semibold rounded-pill transition-colors duration-300',
+                  'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink',
+                  isActive
+                    ? 'bg-brand-dark text-cream'
+                    : 'bg-brand text-cream hover:bg-brand-dark'
+                )
+              }
+            >
+              Contact
+            </NavLink>
+
+            <button
+              onClick={() => setMenuOpen(true)}
+              className="lg:hidden flex items-center justify-center w-11 h-11 mr-1 text-cream rounded-pill hover:bg-white/10 transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              aria-label="Open menu"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </nav>
 
