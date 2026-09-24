@@ -37,7 +37,8 @@ export function FloatingNav() {
       }
       const l = label.getBoundingClientRect();
       const r = list.getBoundingClientRect();
-      setBar({ left: l.left - r.left, top: l.bottom - r.top + 3, width: l.width });
+      // The line runs a little wider than the word, sitting near the bar's lower edge.
+      setBar({ left: l.left - r.left - 10, top: l.bottom - r.top + 12, width: l.width + 20 });
     };
     measure();
     document.fonts?.ready.then(measure);
@@ -73,12 +74,20 @@ export function FloatingNav() {
       >
         <div
           className={cn(
-            'flex min-h-[80px] items-center justify-between rounded-pill px-3 transition-all duration-500 ease-out-quart',
-            // Glass: see-through fill with a light blur, and a visible edge so the container still reads.
-            'backdrop-blur-[6px] border border-white/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]',
-            scrolled ? 'bg-ink/40' : 'bg-white/5'
+            'flex min-h-[80px] items-center justify-between gap-4 rounded-pill pl-3 pr-2 transition-colors duration-500 ease-out-quart',
+            // A darker, more solid bar with a soft edge; it deepens a little once the page scrolls.
+            'backdrop-blur-md border border-white/10',
+            scrolled ? 'bg-ink-2/90' : 'bg-ink-2/70'
           )}
         >
+          <NavLink
+            to="/"
+            aria-label="Apostle Emmanuel Iren — home"
+            className="flex h-14 w-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-full ring-1 ring-white/15 transition-transform duration-300 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+          >
+            <img src="/favicon.svg" alt="" className="h-full w-full" />
+          </NavLink>
+
           <ul
             ref={listRef}
             className="relative hidden lg:flex flex-1 items-center justify-evenly gap-1 px-4"
@@ -96,11 +105,9 @@ export function FloatingNav() {
                   end={item.path === '/'}
                   className={({ isActive }) =>
                     cn(
-                      'relative px-3.5 py-2 text-sm font-medium rounded-pill transition-all duration-300',
+                      'relative px-3 py-2 text-base font-medium rounded-pill transition-colors duration-300',
                       'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink',
-                      isActive
-                        ? 'text-cream'
-                        : 'text-white/70 hover:text-cream'
+                      isActive ? 'text-accent' : 'text-cream hover:text-accent'
                     )
                   }
                 >
@@ -132,7 +139,7 @@ export function FloatingNav() {
             to="/contact"
             className={({ isActive }) =>
               cn(
-                'hidden lg:inline-flex items-center px-5 py-2 mr-2 text-sm font-medium rounded-xl transition-all duration-300',
+                'hidden lg:inline-flex items-center px-7 py-3.5 text-base font-semibold rounded-pill transition-colors duration-300',
                 'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink',
                 isActive
                   ? 'bg-brand-dark text-cream'
@@ -145,7 +152,7 @@ export function FloatingNav() {
 
           <button
             onClick={() => setMenuOpen(true)}
-            className="lg:hidden flex items-center justify-center w-11 h-11 mr-2 text-cream rounded-pill hover:bg-white/10 transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="lg:hidden flex items-center justify-center w-11 h-11 mr-1 text-cream rounded-pill hover:bg-white/10 transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             aria-label="Open menu"
           >
             <Menu className="w-5 h-5" />
