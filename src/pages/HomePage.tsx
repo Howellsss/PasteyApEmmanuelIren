@@ -199,32 +199,33 @@ export function HomePage() {
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-ink/55" />
-        <div className="relative z-20 w-full px-6 sm:px-8 lg:px-16 pb-16 lg:pb-24 pt-32 flex justify-center text-center">
+        <div aria-hidden="true" className="absolute inset-0 bg-ink/35 sm:hidden" />
+        <div className="relative z-20 w-full px-5 sm:px-8 lg:px-16 pb-14 sm:pb-16 lg:pb-24 pt-32 flex justify-center text-center">
           <div className="w-full max-w-4xl flex flex-col items-center">
-            <Reveal variant="right" className="mb-8 flex items-center justify-center gap-4">
-              <span aria-hidden="true" className="h-0.5 w-10 bg-brand sm:w-14" />
+            <Reveal variant="right" className="mb-5 sm:mb-8 flex items-center justify-center gap-3 sm:gap-4">
+              <span aria-hidden="true" className="h-0.5 w-8 bg-brand sm:w-14" />
               <span className="text-eyebrow font-sans uppercase tracking-widest text-cream">
                 Apostle · Teacher · Author
               </span>
-              <span aria-hidden="true" className="h-0.5 w-10 bg-brand sm:w-14" />
+              <span aria-hidden="true" className="h-0.5 w-8 bg-brand sm:w-14" />
             </Reveal>
             <Reveal variant="right" delay={150}>
-            <h1 className="font-sans text-5xl sm:text-6xl lg:text-8xl font-extrabold leading-[0.98] text-cream text-balance mb-8 tracking-[-0.04em] min-h-[0.98em]">
+            <h1 className="font-sans text-[length:min(calc((100vw_-_2.5rem)/11.3),2.25rem)] whitespace-nowrap sm:whitespace-normal sm:text-6xl lg:text-8xl font-extrabold leading-[1.1] sm:leading-[0.98] text-cream sm:text-balance mb-4 sm:mb-8 tracking-[-0.04em] min-h-[1.1em] sm:min-h-[0.98em]">
               {typedHeroName}
               {hasFinishedIntro && <span className="text-brand">.</span>}
             </h1>
             </Reveal>
-            <Reveal variant="right" delay={300} as="p" className="text-lg sm:text-xl lg:text-2xl text-ash leading-relaxed max-w-2xl mb-10 text-pretty font-light">
+            <Reveal variant="right" delay={300} as="p" className="text-[1.0625rem] sm:text-xl lg:text-2xl text-cream/90 sm:text-ash leading-relaxed max-w-2xl mb-8 sm:mb-10 text-pretty font-light">
               A teaching minister, author, songwriter, and founder of Celebration Church International.
             </Reveal>
-            <Reveal variant="right" delay={450} className="flex flex-col sm:flex-row gap-4 items-center">
-              <Link to="/teaching">
-                <Button variant="brand" size="lg" withArrow className="rounded-pill">
+            <Reveal variant="right" delay={450} className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4 sm:items-center">
+              <Link to="/teaching" className="block w-full sm:w-auto">
+                <Button variant="brand" size="lg" withArrow className="h-14 w-full rounded-pill sm:w-auto">
                   Explore Teachings
                 </Button>
               </Link>
-              <Link to="/about">
-                <Button variant="quiet" size="lg" className="rounded-pill">
+              <Link to="/about" className="block w-full sm:w-auto">
+                <Button variant="quiet" size="lg" className="h-14 w-full rounded-pill sm:w-auto">
                   Discover Emmanuel
                 </Button>
               </Link>
@@ -258,8 +259,8 @@ export function HomePage() {
                     {activeTeaching.date} <span className="text-accent">·</span> {activeTeaching.type}
                   </p>
                   <div className="pt-2">
-                    <a href={activeTeaching.watchUrl} target="_blank" rel="noopener noreferrer">
-                      <Button variant="secondary" size="md" withArrow>
+                    <a href={activeTeaching.watchUrl} target="_blank" rel="noopener noreferrer" className="block sm:inline-block">
+                      <Button variant="secondary" size="md" withArrow className="h-12 w-full sm:h-auto sm:w-auto">
                         Watch Now
                       </Button>
                     </a>
@@ -594,7 +595,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-ink py-20 lg:py-32">
+      <section className="relative overflow-hidden bg-ink py-14 md:py-20 lg:py-32">
         <MediaReveal from="none" className="absolute inset-0" frameClassName="h-full w-full">
           <img
             src={CREATIVE_IMAGE}
@@ -620,13 +621,13 @@ export function HomePage() {
               Bring the word to your city, your church, your event. Submit an invitation for a speaking engagement, conference, or interview.
             </Reveal>
             <Reveal variant="right" delay={300} className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link to="/invite">
-                <Button variant="primary" size="lg" withArrow>
+              <Link to="/invite" className="block w-full sm:w-auto">
+                <Button variant="primary" size="lg" withArrow className="h-14 w-full sm:h-auto sm:w-auto">
                   Invite Emmanuel
                 </Button>
               </Link>
-              <Link to="/contact">
-                <Button variant="secondary" size="lg">
+              <Link to="/contact" className="block w-full sm:w-auto">
+                <Button variant="secondary" size="lg" className="h-14 w-full sm:h-auto sm:w-auto">
                   Contact Directly
                 </Button>
               </Link>

@@ -71,7 +71,7 @@ export function FloatingNav() {
       <nav
         className={cn(
           'fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ease-out-quart',
-          'w-[calc(100%-2rem)] max-w-[80rem]'
+          'w-[calc(100%-2.5rem)] sm:w-[calc(100%-2rem)] max-w-[80rem]'
         )}
       >
         <div
