@@ -350,6 +350,7 @@ export function HomePage() {
                   eyebrow="About Emmanuel"
                   title="A life given to Christ"
                   accent="and His purpose."
+                  accentClassName="text-[#D35455]"
                   size="sm"
                   className="mb-6"
                 />

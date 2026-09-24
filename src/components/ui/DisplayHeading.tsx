@@ -9,6 +9,8 @@ interface DisplayHeadingProps {
   title: ReactNode;
   /** Trailing words set in the accent, e.g. "Teachings" in "Latest Teachings". */
   accent?: string;
+  /** Overrides the accent colour class for a specific heading (default: the brand red). */
+  accentClassName?: string;
   /** dark: the default near-black sections; light: the bone chapter. */
   tone?: 'dark' | 'light';
   size?: 'lg' | 'md' | 'sm';
@@ -29,6 +31,7 @@ export function DisplayHeading({
   number,
   title,
   accent,
+  accentClassName = 'text-brand',
   tone = 'dark',
   size = 'md',
   align = 'left',
@@ -48,7 +51,7 @@ export function DisplayHeading({
         )}
       >
         {title}
-        {accent && <> <span className="text-brand">{accent}</span></>}
+        {accent && <> <span className={accentClassName}>{accent}</span></>}
       </h2>
     </div>
   );
