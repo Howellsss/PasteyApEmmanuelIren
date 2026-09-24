@@ -3,31 +3,25 @@ import { useSyncExternalStore } from 'react';
 /**
  * Shared sound state for the home hero video, so the mute button can live in the nav bar.
  *
- * The video tries to start with sound. When the browser refuses (it only allows sound after the
- * visitor has pressed something on the site), `needsEntry` turns on and the home page shows its
- * welcome screen; pressing Enter, or any first tap, click or key press, restarts the video from the
- * top with sound. Scrolling away from the hero silences it; coming back restores it unless muted.
+ * The video tries to start with sound. Browsers refuse that for most first visits, so when
+ * they do it plays muted and the sound comes on with the visitor's first tap, click or key press.
+ * Scrolling away from the hero silences it; coming back restores it unless the visitor muted it.
  */
-type HeroSoundState = { available: boolean; muted: boolean; needsEntry: boolean };
+type HeroSoundState = { available: boolean; muted: boolean };
 
-let state: HeroSoundState = { available: false, muted: true, needsEntry: false };
+let state: HeroSoundState = { available: false, muted: true };
 let video: HTMLVideoElement | null = null;
 let unlocked = false;
 // True while the first play-with-sound attempt is still pending; nothing may mute the video meanwhile.
 let attempting = false;
-let needsEntry = false;
 let userMuted = false;
 let inView = true;
 const listeners = new Set<() => void>();
 const GESTURES = ['pointerdown', 'keydown', 'touchend'] as const;
 
 function sync() {
-  const next = { available: video !== null, muted: video ? video.muted : true, needsEntry };
-  if (
-    next.available !== state.available ||
-    next.muted !== state.muted ||
-    next.needsEntry !== state.needsEntry
-  ) {
+  const next = { available: video !== null, muted: video ? video.muted : true };
+  if (next.available !== state.available || next.muted !== state.muted) {
     state = next;
     listeners.forEach((listener) => listener());
   }
@@ -40,24 +34,16 @@ function apply() {
   sync();
 }
 
-function removeGestureListeners() {
-  GESTURES.forEach((type) => document.removeEventListener(type, onGesture, true));
-}
-
 function onGesture(event: Event) {
   // A press on the mute button itself is handled by toggleHeroSound.
   if ((event.target as Element | null)?.closest?.('[data-hero-sound-toggle]')) return;
-  enterWithSound();
+  unlocked = true;
+  removeGestureListeners();
+  apply();
 }
 
-/** The visitor's first press: sound on, and the message starts again from the top so none of it is missed. */
-export function enterWithSound() {
-  removeGestureListeners();
-  unlocked = true;
-  userMuted = false;
-  if (video && needsEntry) video.currentTime = 0;
-  needsEntry = false;
-  apply();
+function removeGestureListeners() {
+  GESTURES.forEach((type) => document.removeEventListener(type, onGesture, true));
 }
 
 export function attachHeroVideo(element: HTMLVideoElement) {
@@ -65,7 +51,6 @@ export function attachHeroVideo(element: HTMLVideoElement) {
   userMuted = false;
   inView = true;
   unlocked = false;
-  needsEntry = false;
   attempting = true;
   // First attempt: play with sound, exactly as a plain unmuted <video autoplay> would.
   element.muted = false;
@@ -78,10 +63,9 @@ export function attachHeroVideo(element: HTMLVideoElement) {
       apply();
     })
     .catch(() => {
-      // The browser refused sound: keep the picture moving silently behind the welcome screen.
+      // The browser refused sound: keep the picture moving silently and turn sound on at the first gesture.
       if (video !== element) return;
       attempting = false;
-      needsEntry = true;
       element.muted = true;
       void element.play().catch(() => {});
       GESTURES.forEach((type) => document.addEventListener(type, onGesture, true));
@@ -94,7 +78,6 @@ export function detachHeroVideo(element: HTMLVideoElement) {
   if (video !== element) return;
   removeGestureListeners();
   video = null;
-  needsEntry = false;
   sync();
 }
 
@@ -106,11 +89,13 @@ export function setHeroInView(visible: boolean) {
 export function toggleHeroSound() {
   if (!video) return;
   if (video.muted) {
-    enterWithSound();
+    userMuted = false;
+    unlocked = true;
+    removeGestureListeners();
   } else {
     userMuted = true;
-    apply();
   }
+  apply();
 }
 
 function subscribe(listener: () => void) {

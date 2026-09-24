@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, Play, Volume2 } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Reveal } from '@/components/ui/Reveal';
@@ -8,13 +8,7 @@ import { DisplayHeading } from '@/components/ui/DisplayHeading';
 import { CreativeAccordion } from '@/components/ui/CreativeAccordion';
 import { useReveal } from '@/lib/useReveal';
 import { cn } from '@/lib/cn';
-import {
-  attachHeroVideo,
-  detachHeroVideo,
-  enterWithSound,
-  setHeroInView,
-  useHeroSound,
-} from '@/lib/heroSound';
+import { attachHeroVideo, detachHeroVideo, setHeroInView } from '@/lib/heroSound';
 
 const HERO_NAME = 'Apostle Emmanuel Iren';
 const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.webp';
@@ -153,9 +147,6 @@ export function HomePage() {
   const [activeTeachingIndex, setActiveTeachingIndex] = useState(0);
   const [isTeachingPaused, setIsTeachingPaused] = useState(false);
   const [isVideoReady, setIsVideoReady] = useState(false);
-  const heroSound = useHeroSound();
-  // Once the welcome screen has appeared it stays mounted so it can fade away after Enter.
-  const [hasShownEntry, setHasShownEntry] = useState(false);
   const heroRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -176,20 +167,7 @@ export function HomePage() {
   }, []);
 
   useEffect(() => {
-    if (heroSound.needsEntry) setHasShownEntry(true);
-    document.body.style.overflow = heroSound.needsEntry ? 'hidden' : '';
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [heroSound.needsEntry]);
-
-  useEffect(() => {
     if (hasFinishedIntro) return;
-    // Behind the welcome screen the name waits, so it types out once the visitor has entered.
-    if (heroSound.needsEntry) {
-      setTypedHeroName('');
-      return;
-    }
 
     let characterIndex = 0;
     let typeInterval: number | undefined;
@@ -210,7 +188,7 @@ export function HomePage() {
       window.clearTimeout(startDelay);
       window.clearInterval(typeInterval);
     };
-  }, [hasFinishedIntro, heroSound.needsEntry]);
+  }, [hasFinishedIntro]);
 
   useEffect(() => {
     if (isTeachingPaused) return;
@@ -226,38 +204,6 @@ export function HomePage() {
 
   return (
     <div className="min-h-screen bg-ink">
-      {hasShownEntry && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label="Welcome"
-          className={cn(
-            'fixed inset-0 z-[60] flex items-center justify-center bg-ink/90 px-6 backdrop-blur-md transition-opacity duration-700 ease-out-quart',
-            heroSound.needsEntry ? 'opacity-100' : 'pointer-events-none opacity-0'
-          )}
-        >
-          <div className="flex flex-col items-center text-center">
-            <img src="/favicon.svg" alt="" className="mb-8 h-16 w-16 rounded-full ring-1 ring-white/15" />
-            <div className="mb-5 flex items-center justify-center gap-4">
-              <span aria-hidden="true" className="h-0.5 w-10 bg-brand sm:w-14" />
-              <span className="text-eyebrow font-sans uppercase tracking-widest text-cream">Welcome</span>
-              <span aria-hidden="true" className="h-0.5 w-10 bg-brand sm:w-14" />
-            </div>
-            <p className="mb-10 font-sans text-4xl font-extrabold leading-[1.02] tracking-[-0.04em] text-cream sm:text-5xl">
-              Apostle Emmanuel Iren<span className="text-brand">.</span>
-            </p>
-            <Button
-              variant="brand"
-              size="lg"
-              className="rounded-pill"
-              onClick={enterWithSound}
-              autoFocus={heroSound.needsEntry}
-            >
-              <Volume2 className="h-5 w-5" /> Enter
-            </Button>
-          </div>
-        </div>
-      )}
       <section ref={heroRef} className="relative min-h-screen flex items-end overflow-hidden bg-ink">
         <div className="absolute inset-0 overflow-hidden bg-ink">
           <video
