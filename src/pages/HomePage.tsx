@@ -56,8 +56,8 @@ const latestTeachings = [
     description: 'A powerful message on the nature of God as the One who blesses — and what it means to walk in His covenant promises.',
     date: 'September 2025',
     type: 'Video',
-    image: '/images/teachings/image copy 6.webp',
-    imagePosition: 'center top',
+    image: '/images/teachings/god-who-blesses.webp',
+    imagePosition: 'center 22%',
     watchUrl: 'https://youtu.be/WWDlFiYpBOY',
   },
   {
@@ -66,8 +66,8 @@ const latestTeachings = [
     description: 'Rekindling the flame of spiritual fervency and learning how to maintain a burning heart in every season of life.',
     date: 'September 2025',
     type: 'Video',
-    image: '/images/teachings/image copy 7.webp',
-    imagePosition: 'center top',
+    image: '/images/teachings/fervent-in-spirit.webp',
+    imagePosition: 'center 30%',
     watchUrl: 'https://www.youtube.com/watch?v=x71RhblDHdE',
   },
 ];
