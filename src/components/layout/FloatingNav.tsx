@@ -85,9 +85,9 @@ export function FloatingNav() {
           <NavLink
             to="/"
             aria-label="Apostle Emmanuel Iren — home"
-            className="flex h-14 w-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-full ring-1 ring-white/15 transition-transform duration-300 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="flex h-14 w-14 flex-shrink-0 items-center justify-center overflow-hidden rounded-full bg-ink ring-1 ring-white/15 transition-transform duration-300 hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
           >
-            <img src="/favicon.svg" alt="" className="h-full w-full" />
+            <img src="/logo-mark.png" alt="" className="h-6 w-auto" />
           </NavLink>
 
           <ul
