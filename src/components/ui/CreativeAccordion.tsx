@@ -179,7 +179,7 @@ export function CreativeAccordion() {
                   <div className="ce-body" id={`ce-panel-${i}`}>
                     <span className="ce-icon"><Icon className="w-5 h-5" strokeWidth={1.5} /></span>
                     <p className="ce-tag">{card.tag}</p>
-                    <h3 className="ce-card-title">{card.title}</h3>
+                    <h3 className="font-display ce-card-title">{card.title}</h3>
                     <p className="ce-desc">{card.description}</p>
                     <span className="ce-explore">Explore →</span>
                   </div>

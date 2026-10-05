@@ -18,7 +18,7 @@ export function InvitePage() {
             <Eyebrow className="mb-6">
               Invite
             </Eyebrow>
-            <h1 className="font-sans text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[0.98] text-cream text-balance tracking-[-0.04em] mb-6 max-w-4xl">
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.98] text-cream text-balance tracking-[-0.01em] mb-6 max-w-4xl">
               Bring the word to your city, your church, your event.
             </h1>
             <p className="text-lg text-ash leading-relaxed max-w-xl text-pretty">

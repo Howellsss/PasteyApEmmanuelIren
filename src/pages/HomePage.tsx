@@ -210,7 +210,7 @@ export function HomePage() {
               <span aria-hidden="true" className="h-0.5 w-8 bg-brand sm:w-14" />
             </Reveal>
             <Reveal variant="right" delay={150}>
-            <h1 className="font-sans text-[length:min(calc((100vw_-_2.5rem)/11.3),2.25rem)] whitespace-nowrap sm:whitespace-normal sm:text-6xl lg:text-8xl font-extrabold leading-[1.1] sm:leading-[0.98] text-cream sm:text-balance mb-4 sm:mb-8 tracking-[-0.04em] min-h-[1.1em] sm:min-h-[0.98em]">
+            <h1 className="font-display text-[length:min(calc((100vw_-_2.5rem)/11.7),2.25rem)] whitespace-nowrap sm:whitespace-normal sm:text-6xl lg:text-8xl leading-[1.1] sm:leading-[0.98] text-cream sm:text-balance mb-4 sm:mb-8 tracking-[-0.01em] min-h-[1.1em] sm:min-h-[0.98em]">
               {typedHeroName}
               {hasFinishedIntro && <span className="text-brand">.</span>}
             </h1>
@@ -411,7 +411,7 @@ export function HomePage() {
                 </MediaReveal>
                 <Reveal variant="left" delay={150}>
                 <p className="mt-5 text-eyebrow uppercase tracking-[0.16em] text-accent">{featuredTeaching.type} · Featured</p>
-                <h3 className="mt-2 font-sans text-2xl font-semibold leading-tight tracking-[-0.02em] text-cream transition-colors duration-300 group-hover:text-accent lg:text-[1.875rem]">
+                <h3 className="mt-2 font-display text-2xl leading-tight tracking-[-0.01em] text-cream transition-colors duration-300 group-hover:text-accent lg:text-[1.875rem]">
                   {featuredTeaching.title}
                 </h3>
                 <p className="mt-2 text-sm text-ash">{featuredTeaching.meta}</p>
@@ -445,7 +445,7 @@ export function HomePage() {
                       <p className="text-eyebrow uppercase tracking-[0.16em] text-accent">
                         {teaching.type} · {teaching.duration}
                       </p>
-                      <h4 className="mt-1.5 font-sans text-lg font-semibold leading-snug tracking-[-0.02em] text-cream transition-colors duration-300 group-hover:text-accent">
+                      <h4 className="mt-1.5 font-display text-lg leading-snug tracking-[-0.01em] text-cream transition-colors duration-300 group-hover:text-accent">
                         {teaching.title}
                       </h4>
                       <p className="mt-1 text-sm text-ash">{teaching.meta}</p>

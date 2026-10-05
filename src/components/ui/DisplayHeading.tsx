@@ -25,7 +25,7 @@ const SIZES = {
   sm: 'text-3xl lg:text-4xl',
 };
 
-/** Section heading: numbered chapter marker over a bold title (set like the hero name) with an accent ending. */
+/** Section heading: numbered chapter marker over a bold title (set in the display face, like the hero name) with an accent ending. */
 export function DisplayHeading({
   eyebrow,
   number,
@@ -44,7 +44,7 @@ export function DisplayHeading({
       <ChapterMarker label={eyebrow} number={number} tone={tone} centered={centered} />
       <h2
         className={cn(
-          'font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance',
+          'font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance',
           SIZES[size],
           tone === 'light' ? 'text-ink' : 'text-cream',
           centered ? 'mx-auto max-w-4xl' : 'max-w-3xl'

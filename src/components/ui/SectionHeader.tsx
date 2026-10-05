@@ -36,7 +36,7 @@ export function SectionHeader({
       {eyebrow && <ChapterMarker label={eyebrow} number={numbered} tone={surface} centered={centered} className="w-full" />}
       <h2
         className={cn(
-          'font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance',
+          'font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance',
           'text-3xl sm:text-4xl lg:text-[2.5rem]',
           light ? 'text-ink' : 'text-cream',
           centered ? 'max-w-3xl' : 'max-w-4xl',

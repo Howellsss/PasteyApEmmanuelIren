@@ -62,7 +62,7 @@ export function EventsPage() {
                 <Eyebrow className="mb-6">
                   Events
                 </Eyebrow>
-                <h1 className="font-sans text-5xl sm:text-6xl lg:text-8xl font-extrabold leading-[0.98] text-cream text-balance tracking-[-0.04em] mb-8">
+                <h1 className="font-display text-5xl sm:text-6xl lg:text-8xl leading-[0.98] text-cream text-balance tracking-[-0.01em] mb-8">
                   Where Emmanuel Is Ministering
                 </h1>
               </Reveal>
@@ -94,7 +94,7 @@ export function EventsPage() {
               </div>
               <div className="lg:col-span-5 py-8 lg:py-12 lg:pl-14 flex flex-col justify-center">
                 <p className="mb-5 text-eyebrow uppercase tracking-[0.16em] text-accent">Next gathering</p>
-                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-3xl lg:text-[2.5rem] text-cream mb-5 text-balance">
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-3xl lg:text-[2.5rem] text-cream mb-5 text-balance">
                   Triumph30 — Lagos
                 </h2>
                 <p className="text-ash leading-relaxed mb-8">
@@ -206,7 +206,7 @@ export function EventsPage() {
             <div className="lg:col-span-8">
               <Reveal>
                 <ChapterMarker tone="light" number="03" label="Speaking Engagements" />
-                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-ink mb-6">
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-ink mb-6">
                   Want to invite Emmanuel to minister at your gathering?
                 </h2>
                 <p className="text-lg text-umber leading-relaxed max-w-xl text-pretty">

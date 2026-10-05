@@ -62,7 +62,7 @@ export function MinistryPage() {
                 <Eyebrow className="mb-6">
                   Ministry
                 </Eyebrow>
-                <h1 className="font-sans text-5xl sm:text-6xl lg:text-8xl font-extrabold leading-[0.98] text-cream text-balance tracking-[-0.04em] mb-8">
+                <h1 className="font-display text-5xl sm:text-6xl lg:text-8xl leading-[0.98] text-cream text-balance tracking-[-0.01em] mb-8">
                   One Calling.<br />Many Expressions.
                 </h1>
               </Reveal>
@@ -90,7 +90,7 @@ export function MinistryPage() {
               </div>
               <div className="lg:col-span-4 p-8 sm:p-10 lg:p-14 flex flex-col justify-center">
                 <ChapterMarker number="01" label="The Church" />
-                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-5">
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-5">
                   Celebration Church International
                 </h2>
                 <p className="text-white/65 leading-relaxed mb-8">
@@ -126,7 +126,7 @@ export function MinistryPage() {
             <div className="lg:col-span-5 lg:col-start-8">
               <Reveal delay={100}>
                 <ChapterMarker number="02" label="Bible Course" />
-                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   Manifest
                 </h2>
                 <p className="text-lg text-ash leading-relaxed mb-8 text-pretty">
@@ -159,7 +159,7 @@ export function MinistryPage() {
             <div className="lg:col-span-4 lg:col-start-9">
               <Reveal delay={100}>
                 <ChapterMarker number="03" label="Devotional" />
-                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   Triumph30
                 </h2>
                 <p className="text-lg text-ash leading-relaxed mb-6 text-pretty">
@@ -188,7 +188,7 @@ export function MinistryPage() {
             <div className="lg:col-span-6">
               <Reveal>
                 <ChapterMarker number="04" label="Music &amp; Creative" />
-                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   Outburst
                 </h2>
                 <p className="text-lg text-white/65 leading-relaxed mb-8 text-pretty">
@@ -257,7 +257,7 @@ export function MinistryPage() {
         <div className="container-editorial text-center">
           <Reveal>
             <ChapterMarker tone="light" label="One Calling" centered className="mb-8" />
-            <h2 className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-7xl leading-[0.98] tracking-[-0.04em] text-ink text-balance">
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-7xl leading-[0.98] tracking-[-0.01em] text-ink text-balance">
               Different platforms.<br />
               Same conviction.<br />
               <span className="text-brand">One Gospel.</span>

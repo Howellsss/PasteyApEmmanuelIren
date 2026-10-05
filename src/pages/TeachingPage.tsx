@@ -286,7 +286,7 @@ export function TeachingPage() {
             <Eyebrow className="mb-6">
               Teachings
             </Eyebrow>
-            <h1 className="font-sans text-5xl sm:text-6xl lg:text-8xl font-extrabold leading-[0.98] text-cream text-balance tracking-[-0.04em] mb-8">
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-8xl leading-[0.98] text-cream text-balance tracking-[-0.01em] mb-8">
               Teachings
             </h1>
             <p className="text-lg sm:text-xl text-ash leading-relaxed max-w-2xl font-light text-pretty">
@@ -485,7 +485,7 @@ export function TeachingPage() {
             <div className="lg:col-span-6 lg:col-start-7">
               <Reveal delay={100}>
                 <ChapterMarker number="01" label="The Podcast" />
-                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   Endless Life with Emmanuel Iren
                 </h2>
                 <p className="text-lg text-white/65 leading-relaxed mb-8 text-pretty">
@@ -557,7 +557,7 @@ export function TeachingPage() {
             <div className="lg:col-span-6 lg:col-start-7">
               <Reveal delay={100}>
                 <ChapterMarker tone="light" number="02" label="Written Teaching" />
-                <h2 className="font-sans font-extrabold leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.04em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-ink mb-6">
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-ink mb-6">
                   The word also travels through pages.
                 </h2>
                 <p className="text-lg text-umber leading-relaxed mb-8 text-pretty">

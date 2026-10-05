@@ -22,7 +22,8 @@ export default {
         bark: '#3E352D',
       },
       fontFamily: {
-        display: ['"Inter"', 'system-ui', 'sans-serif'],
+        // Headings: MADE Kenfolg (served from /fonts), a classic display serif; Inter carries the text.
+        display: ['"Kenfolg"', 'Georgia', 'serif'],
         sans: ['"Inter"', 'system-ui', 'sans-serif'],
       },
       fontSize: {
