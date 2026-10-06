@@ -198,8 +198,9 @@ export function HomePage() {
             className={`absolute inset-0 bg-ink z-10 transition-opacity duration-500 ${isVideoReady ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-ink/55" />
-        <div aria-hidden="true" className="absolute inset-0 bg-ink/35 sm:hidden" />
+        {/* A clear navy tint over the video (it lets the gold read), fading into the warm black below. */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_top,#13100E_0%,rgba(0,36,53,0.58)_40%,rgba(0,36,53,0.78)_100%)]" />
+        <div aria-hidden="true" className="absolute inset-0 bg-navy/35 sm:hidden" />
         <div className="relative z-20 w-full px-5 sm:px-8 lg:px-16 pb-14 sm:pb-16 lg:pb-24 pt-32 flex justify-center text-center">
           <div className="w-full max-w-4xl flex flex-col items-center">
             <Reveal variant="right" className="mb-5 sm:mb-8 flex items-center justify-center gap-3 sm:gap-4">
@@ -215,7 +216,7 @@ export function HomePage() {
               {hasFinishedIntro && <span className="text-brand">.</span>}
             </h1>
             </Reveal>
-            <Reveal variant="right" delay={300} as="p" className="text-[1.0625rem] sm:text-xl lg:text-2xl text-cream/90 sm:text-ash leading-relaxed max-w-2xl mb-8 sm:mb-10 text-pretty font-light">
+            <Reveal variant="right" delay={300} as="p" className="text-[1.0625rem] sm:text-xl lg:text-2xl text-cream/85 leading-relaxed max-w-2xl mb-8 sm:mb-10 text-pretty font-light">
               A teaching minister, author, songwriter, and founder of Celebration Church International.
             </Reveal>
             <Reveal variant="right" delay={450} className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4 sm:items-center">
@@ -595,7 +596,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* The one gold band: the closing invitation, over his portrait tinted in the same gold. */}
+      {/* The one gold band: the closing invitation, set left beside his portrait tinted in the same gold. */}
       <section className="relative overflow-hidden bg-brand py-16 md:py-24 lg:py-32">
         <MediaReveal from="none" className="absolute inset-0" frameClassName="h-full w-full bg-brand">
           <img
@@ -606,9 +607,9 @@ export function HomePage() {
             style={{ objectPosition: 'center 30%' }}
           />
         </MediaReveal>
-        <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(152,105,0,0.55),rgba(152,105,0,0)_70%)]" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-brand from-20% via-brand/55 via-45% to-brand/0 to-70%" />
         <div className="container-wide relative">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="max-w-3xl">
             <Reveal variant="right">
             <DisplayHeading
               number="08"
@@ -617,14 +618,13 @@ export function HomePage() {
               accent="Make Him known."
               accentClassName="text-ink"
               tone="gold"
-              align="center"
               size="lg"
             />
             </Reveal>
-            <Reveal variant="right" delay={150} as="p" className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-cream">
+            <Reveal variant="right" delay={150} as="p" className="mt-6 max-w-xl text-base leading-relaxed text-cream">
               Bring the word to your city, your church, your event. Submit an invitation for a speaking engagement, conference, or interview.
             </Reveal>
-            <Reveal variant="right" delay={300} className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
+            <Reveal variant="right" delay={300} className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link to="/invite" className="block w-full sm:w-auto">
                 <Button variant="ink" size="lg" withArrow className="h-14 w-full sm:h-auto sm:w-auto">
                   Invite Emmanuel
