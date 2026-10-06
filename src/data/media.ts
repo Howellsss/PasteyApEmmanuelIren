@@ -118,6 +118,7 @@ export interface MediaSection {
 export const mediaSections: MediaSection[] = [
   { label: 'Overview', path: '/media', blurb: 'Everything in one place.' },
   { label: 'Reels', path: '/media/reels', blurb: 'Short moments from recent messages.' },
+  { label: 'Gallery', path: '/media/gallery', blurb: 'Photographs from the pulpit, the studio and beyond.' },
   { label: 'Messages', path: '/media/messages', blurb: 'Full sermons and teachings to watch.' },
   { label: 'Message Resources', path: '/media/resources', blurb: 'Notes, scriptures and study guides.' },
   { label: 'The Irens', path: '/media/the-irens', blurb: 'Emmanuel and Laju Iren, and their family.' },
@@ -138,4 +139,37 @@ export const archiveSeries = [
   { title: 'Endless Life', kind: 'Podcast', description: 'Conversations on faith, purpose and the Christian life.' },
   { title: 'Triumph30', kind: 'Gathering', description: 'Thirty days of prayer, fasting and spiritual renewal.' },
   { title: 'Manifest', kind: 'Conference', description: 'Worship and the word for a generation seeking God.' },
+];
+
+export type GalleryCategory = 'On stage' | 'Portraits' | 'Studio';
+
+export interface GalleryPhoto {
+  src: string;
+  alt: string;
+  category: GalleryCategory;
+}
+
+/** Photographs for the Gallery, in display order. */
+export const galleryPhotos: GalleryPhoto[] = [
+  { src: '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.webp', alt: 'Emmanuel Iren preaching, one finger raised', category: 'On stage' },
+  { src: '/images/about/image.webp', alt: 'Emmanuel Iren in a blue suit, smiling', category: 'Portraits' },
+  { src: '/images/creative/image copy 2.webp', alt: 'Emmanuel Iren at a podcast desk with a microphone', category: 'Studio' },
+  { src: '/images/teachings/god-who-blesses.webp', alt: 'Emmanuel Iren preaching in a red suit', category: 'On stage' },
+  { src: '/images/creative/e5.webp', alt: 'Emmanuel Iren seated, hand on his chin', category: 'Portraits' },
+  { src: '/images/hero/image copy 11.webp', alt: 'Emmanuel Iren reaching out to a full congregation', category: 'On stage' },
+  { src: '/images/creative/image copy 3.webp', alt: 'Emmanuel Iren speaking into a microphone in a conversation', category: 'Studio' },
+  { src: '/images/teachings/image copy.webp', alt: 'Emmanuel Iren in a plum suit against a pink backdrop', category: 'Portraits' },
+  { src: '/images/about/image copy.webp', alt: 'Emmanuel Iren on stage in black and white', category: 'On stage' },
+  { src: '/images/creative/image copy.webp', alt: 'Emmanuel Iren in a green knit, seated', category: 'Portraits' },
+  { src: '/images/teachings/fervent-in-spirit.webp', alt: 'Emmanuel Iren preaching in a white shirt', category: 'On stage' },
+  { src: '/images/hero/image copy 3.webp', alt: 'Emmanuel Iren at a desk with a tablet', category: 'Studio' },
+  { src: '/images/teachings/image copy 2.webp', alt: 'Emmanuel Iren in a navy suit against wood panelling', category: 'Portraits' },
+  { src: '/images/hero/image copy 12.webp', alt: 'Emmanuel Iren on a pink-lit stage', category: 'On stage' },
+  { src: '/images/creative/image.webp', alt: 'Emmanuel Iren in a grey jacket, seated', category: 'Portraits' },
+  { src: '/images/teachings/image copy 4.webp', alt: 'Emmanuel Iren mid-sermon, hand raised', category: 'On stage' },
+  { src: '/images/ministry/e6.webp', alt: 'Emmanuel Iren in a pinstripe suit and red tie', category: 'Portraits' },
+  { src: '/images/hero/image copy 13.webp', alt: 'Emmanuel Iren on a red-lit stage', category: 'On stage' },
+  { src: '/images/creative/image copy 4.webp', alt: 'Emmanuel Iren under a spotlight in black and white', category: 'On stage' },
+  { src: '/images/teachings/image copy 5.webp', alt: 'Emmanuel Iren preaching to the congregation', category: 'On stage' },
+  { src: '/images/hero/image copy 10.webp', alt: 'Emmanuel Iren on stage in black and white, wide', category: 'On stage' },
 ];

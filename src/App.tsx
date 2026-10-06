@@ -12,6 +12,7 @@ import { ContactPage } from '@/pages/ContactPage';
 import {
   ArchivePage,
   BooksPage,
+  GalleryPage,
   IrensPage,
   MediaOverviewPage,
   MessagesPage,
@@ -45,6 +46,10 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   '/media/reels': {
     title: `Reels — ${SITE}`,
     description: 'Short moments from recent messages by Apostle Emmanuel Iren.',
+  },
+  '/media/gallery': {
+    title: `Gallery — ${SITE}`,
+    description: 'Photographs of Apostle Emmanuel Iren from the pulpit, the studio and beyond.',
   },
   '/media/messages': {
     title: `Messages — ${SITE}`,
@@ -106,6 +111,7 @@ function App() {
         <Route path="/ministry" element={<MinistryPage />} />
         <Route path="/media" element={<MediaOverviewPage />} />
         <Route path="/media/reels" element={<ReelsPage />} />
+        <Route path="/media/gallery" element={<GalleryPage />} />
         <Route path="/media/messages" element={<MessagesPage />} />
         <Route path="/media/resources" element={<ResourcesPage />} />
         <Route path="/media/the-irens" element={<IrensPage />} />

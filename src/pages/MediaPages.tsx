@@ -1,18 +1,28 @@
-import { type ReactNode } from 'react';
+import { useCallback, useEffect, useState, type ReactNode } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, BookOpen, FileText, ListChecks, MessageSquareQuote, Play } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, BookOpen, ChevronLeft, ChevronRight, FileText, ListChecks, MessageSquareQuote, Play, X } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 import { Button } from '@/components/ui/Button';
 import { TextLink } from '@/components/ui/TextLink';
 import { DisplayHeading } from '@/components/ui/DisplayHeading';
 import { MediaReveal } from '@/components/ui/MediaReveal';
-import { archiveSeries, books, mediaSections, messages, type Book, type Message } from '@/data/media';
+import {
+  archiveSeries,
+  books,
+  galleryPhotos,
+  mediaSections,
+  messages,
+  type Book,
+  type GalleryCategory,
+  type Message,
+} from '@/data/media';
 import { cn } from '@/lib/cn';
 
 const FAMILY_IMAGE = '/images/about/image.webp';
 const REEL_POSTER = '/images/creative/e5.webp';
 const SECTION_IMAGES: Record<string, string> = {
   '/media/reels': '/images/creative/image copy 3.webp',
+  '/media/gallery': '/images/hero/image copy 11.webp',
   '/media/messages': '/images/teachings/god-who-blesses.webp',
   '/media/resources': '/images/teachings/image copy 2.webp',
   '/media/the-irens': FAMILY_IMAGE,
@@ -79,7 +89,7 @@ function MoreFromMedia({ current }: { current: string }) {
         <Reveal variant="left" className="mb-10">
           <DisplayHeading eyebrow="Keep exploring" title="More from" accent="Media." tone="light" />
         </Reveal>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {others.map((section, index) => (
             <Reveal key={section.path} variant="right" delay={index * 100}>
               <Link
@@ -198,13 +208,13 @@ export function MediaOverviewPage() {
       <section className="bg-ink-2 py-14 md:py-16 lg:py-24">
         <div className="container-wide">
           <Reveal variant="left" className="mb-10">
-            <DisplayHeading number="02" eyebrow="In Media" title="Six ways" accent="in." />
+            <DisplayHeading number="02" eyebrow="In Media" title="Seven ways" accent="in." />
           </Reveal>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {sections.map((section, index) => (
-              <Reveal key={section.path} variant="right" delay={(index % 3) * 120}>
+              <Reveal key={section.path} variant="right" delay={(index % 4) * 120}>
                 <Link to={section.path} className="group block">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-soft bg-surface">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-soft bg-surface">
                     <img
                       src={SECTION_IMAGES[section.path]}
                       alt=""
@@ -309,6 +319,128 @@ export function ReelsPage() {
         </div>
       </section>
       <MoreFromMedia current="/media/reels" />
+    </div>
+  );
+}
+
+/* ── Gallery ───────────────────────────────────────────────────────────── */
+
+const GALLERY_FILTERS: ('All' | GalleryCategory)[] = ['All', 'On stage', 'Portraits', 'Studio'];
+
+export function GalleryPage() {
+  const [filter, setFilter] = useState<'All' | GalleryCategory>('All');
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const photos = filter === 'All' ? galleryPhotos : galleryPhotos.filter((p) => p.category === filter);
+
+  const step = useCallback(
+    (delta: number) => setOpenIndex((i) => (i === null ? i : (i + delta + photos.length) % photos.length)),
+    [photos.length]
+  );
+
+  // The viewer: Escape closes, arrow keys move, and the page behind does not scroll.
+  useEffect(() => {
+    if (openIndex === null) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpenIndex(null);
+      if (event.key === 'ArrowRight') step(1);
+      if (event.key === 'ArrowLeft') step(-1);
+    };
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', onKey);
+    };
+  }, [openIndex, step]);
+
+  const open = openIndex === null ? null : photos[openIndex];
+
+  return (
+    <div className="min-h-screen overflow-x-clip bg-ink">
+      <MediaHero
+        title="Gallery."
+        accent="In pictures."
+        intro="Photographs from the pulpit, the studio and the quieter moments in between."
+      />
+      <MediaSubnav />
+      <section className="py-14 md:py-16 lg:py-24">
+        <div className="container-wide">
+          <div className="mb-8 flex flex-wrap gap-2" role="group" aria-label="Filter photographs">
+            {GALLERY_FILTERS.map((name) => (
+              <button
+                key={name}
+                type="button"
+                aria-pressed={filter === name}
+                onClick={() => setFilter(name)}
+                className={cn(
+                  'rounded-pill border px-4 py-2 text-sm transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+                  filter === name ? 'border-brand bg-brand text-cream' : 'border-line text-ash hover:border-cream/40 hover:text-cream'
+                )}
+              >
+                {name}
+              </button>
+            ))}
+          </div>
+          <div className="columns-2 gap-3 sm:gap-4 lg:columns-3">
+            {photos.map((photo, index) => (
+              <button
+                key={photo.src}
+                type="button"
+                onClick={() => setOpenIndex(index)}
+                aria-label={`Open photograph: ${photo.alt}`}
+                className="group relative mb-3 block w-full overflow-hidden rounded-soft bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:mb-4 [break-inside:avoid]"
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  loading="lazy"
+                  className="w-full transition-transform duration-700 ease-out-quart group-hover:scale-[1.03]"
+                />
+                <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent px-4 pb-3 pt-10 text-left text-eyebrow uppercase tracking-[0.16em] text-cream opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  {photo.category}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {open && (
+        <div role="dialog" aria-modal="true" aria-label={open.alt} className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/95 p-4 backdrop-blur-sm sm:p-10">
+          <button type="button" className="absolute inset-0" aria-label="Close" onClick={() => setOpenIndex(null)} />
+          <img src={open.src} alt={open.alt} className="relative max-h-full max-w-full rounded-soft object-contain shadow-2xl shadow-black/60" />
+          <button
+            type="button"
+            onClick={() => setOpenIndex(null)}
+            aria-label="Close"
+            className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-ink text-cream hover:bg-ink-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:right-6 sm:top-6"
+          >
+            <X className="h-5 w-5" />
+          </button>
+          {[
+            { delta: -1, label: 'Previous photograph', Icon: ChevronLeft, side: 'left-3 sm:left-6' },
+            { delta: 1, label: 'Next photograph', Icon: ChevronRight, side: 'right-3 sm:right-6' },
+          ].map(({ delta, label, Icon, side }) => (
+            <button
+              key={label}
+              type="button"
+              onClick={() => step(delta)}
+              aria-label={label}
+              className={cn(
+                'absolute top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-ink/80 text-cream hover:bg-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+                side
+              )}
+            >
+              <Icon className="h-6 w-6" />
+            </button>
+          ))}
+          <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-ash tabular-nums">
+            {(openIndex ?? 0) + 1} / {photos.length}
+          </p>
+        </div>
+      )}
+
+      <MoreFromMedia current="/media/gallery" />
     </div>
   );
 }
