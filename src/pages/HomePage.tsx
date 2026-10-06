@@ -8,7 +8,6 @@ import { DisplayHeading } from '@/components/ui/DisplayHeading';
 import { CreativeAccordion } from '@/components/ui/CreativeAccordion';
 import { MediaReveal } from '@/components/ui/MediaReveal';
 import { messages as latestTeachings } from '@/data/media';
-import { useReveal } from '@/lib/useReveal';
 import { cn } from '@/lib/cn';
 import { attachHeroVideo, detachHeroVideo, setHeroInView } from '@/lib/heroSound';
 
@@ -159,12 +158,12 @@ export function HomePage() {
               <span aria-hidden="true" className="h-0.5 w-8 bg-brand sm:w-14" />
             </Reveal>
             <Reveal variant="right" delay={150}>
-            <h1 className="font-display text-[length:min(calc((100vw_-_2.5rem)/11.7),2.25rem)] whitespace-nowrap sm:whitespace-normal sm:text-6xl lg:text-8xl leading-[1.1] sm:leading-[0.98] text-cream sm:text-balance mb-4 sm:mb-8 tracking-[-0.01em] min-h-[1.1em] sm:min-h-[0.98em]">
+            <h1 className="font-display text-[length:min(calc((100vw_-_2.5rem)/11.45),2.25rem)] whitespace-nowrap sm:whitespace-normal sm:text-6xl lg:text-8xl leading-[1.1] sm:leading-[0.98] text-cream sm:text-balance mb-4 sm:mb-8 tracking-[-0.01em] min-h-[1.1em] sm:min-h-[0.98em]">
               {typedHeroName}
               {hasFinishedIntro && <span className="text-brand">.</span>}
             </h1>
             </Reveal>
-            <Reveal variant="right" delay={300} as="p" className="text-[1.0625rem] sm:text-xl lg:text-2xl text-cream/85 leading-relaxed max-w-2xl mb-8 sm:mb-10 text-pretty font-light">
+            <Reveal variant="right" delay={300} as="p" className="text-[0.9375rem] sm:text-xl lg:text-2xl text-cream/85 leading-relaxed max-w-2xl mb-8 sm:mb-10 text-pretty font-light">
               A teaching minister, author, songwriter, and founder of Celebration Church International.
             </Reveal>
             <Reveal variant="right" delay={450} className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4 sm:items-center">

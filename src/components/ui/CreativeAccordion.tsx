@@ -67,6 +67,15 @@ export function CreativeAccordion() {
   );
   const directionRef = useRef(1);
   const trackRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const activeRef = useRef(0);
+  // Phones: the row advances by itself, but waits while someone is swiping and while it is off screen.
+  const pauseUntilRef = useRef(0);
+  const inViewRef = useRef(false);
+
+  useEffect(() => {
+    activeRef.current = active;
+  }, [active]);
 
   useEffect(() => {
     const query = window.matchMedia(MOBILE_QUERY);
@@ -108,7 +117,27 @@ export function CreativeAccordion() {
   }, [isMobile]);
 
   useEffect(() => {
-    // The row is left for the visitor to swipe on phones; it only cycles by itself on larger screens.
+    const section = sectionRef.current;
+    if (!section) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      inViewRef.current = entry.isIntersecting;
+    }, { threshold: 0.4 });
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    // Phones: one card every 3 seconds, wrapping back to the first after the last.
+    if (!isMobile || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const id = setInterval(() => {
+      if (!inViewRef.current || document.hidden || Date.now() < pauseUntilRef.current) return;
+      goTo((activeRef.current + 1) % cards.length);
+    }, 3000);
+    return () => clearInterval(id);
+  }, [isMobile, goTo]);
+
+  useEffect(() => {
+    // Larger screens: the open card moves along the row and back.
     if (isMobile) return;
     const id = setInterval(() => {
       setActive((currentIndex) => {
@@ -127,7 +156,7 @@ export function CreativeAccordion() {
   }, [isMobile]);
 
   return (
-    <section className="ce-section" aria-label="Creative Expression">
+    <section ref={sectionRef} className="ce-section" aria-label="Creative Expression">
       <div className="container-editorial">
         <Reveal variant="left" className="mb-10">
           <DisplayHeading number="04" eyebrow="Creative Expression" title="More than" accent="the pulpit." accentClassName="text-accent" tone="light" />
@@ -144,6 +173,12 @@ export function CreativeAccordion() {
           role="tablist"
           aria-label="Creative expressions"
           onScroll={onTrackScroll}
+          onPointerDown={() => {
+            pauseUntilRef.current = Date.now() + 6000;
+          }}
+          onTouchStart={() => {
+            pauseUntilRef.current = Date.now() + 6000;
+          }}
         >
           {cards.map((card, i) => {
             const Icon = card.icon;
