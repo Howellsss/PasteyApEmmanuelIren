@@ -13,6 +13,7 @@ import { Reveal } from '@/components/ui/Reveal';
 import { ChapterMarker } from '@/components/ui/ChapterMarker';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Button } from '@/components/ui/Button';
+import { LatestMessages, SeriesList, StudyNotes } from '@/components/teaching/TeachingSections';
 
 const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.webp';
 const ABOUT_IMAGE = '/images/about/image.webp';
@@ -275,10 +276,8 @@ export function TeachingPage() {
     return result;
   }, [activeCategory, sortOption, searchQuery]);
 
-  const featured = teachings[0];
-
   return (
-    <div className="min-h-screen bg-ink">
+    <div className="min-h-screen overflow-x-clip bg-ink">
       {/* HERO */}
       <section className="relative pt-32 pb-16 lg:pt-44 lg:pb-24 overflow-hidden">
         <div className="container-editorial">
@@ -297,65 +296,11 @@ export function TeachingPage() {
         </div>
       </section>
 
-      {/* FEATURED TEACHING */}
-      <section className="pb-16 lg:pb-24">
-        <div className="container-wide">
-          <Reveal variant="scale">
-            <article className="grid grid-cols-1 lg:grid-cols-12 bg-ink-2 rounded-soft overflow-hidden group">
-              <div className="relative lg:col-span-7 aspect-[4/5] lg:aspect-[4/3] min-h-[22rem] overflow-hidden">
-                <img
-                  src={featured.image}
-                  alt={featured.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out-quart group-hover:scale-[1.03]"
-                  style={{ objectPosition: 'center top' }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/50 to-transparent" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="flex items-center justify-center w-16 h-16 rounded-pill bg-cream/90 text-ink transition-transform duration-500 group-hover:scale-110">
-                    <Play className="w-6 h-6 ml-1" fill="currentColor" />
-                  </span>
-                </div>
-              </div>
-              <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-center text-cream">
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="px-3 py-1 rounded-pill bg-accent/20 text-accent text-meta font-sans uppercase tracking-widest">
-                    Featured
-                  </span>
-                  <span className="text-meta text-white/50 uppercase tracking-widest">
-                    {featured.category}
-                  </span>
-                </div>
-                <p className="text-eyebrow uppercase tracking-widest text-accent mb-4">
-                  {featured.series}
-                </p>
-                <h2 className="font-display text-2xl lg:text-3xl leading-tight mb-5 text-balance">
-                  {featured.title}
-                </h2>
-                <p className="text-white/65 leading-relaxed mb-8">
-                  {featured.description}
-                </p>
-                <div className="flex flex-wrap items-center gap-4 text-meta text-white/50 mb-8">
-                  <span>{featured.date}</span>
-                  <span className="w-1 h-1 rounded-pill bg-accent" />
-                  <span>{featured.duration}</span>
-                </div>
-                <div className="flex flex-wrap gap-4">
-                  <Button variant="secondary" size="md" withArrow>
-                    Watch
-                  </Button>
-                  <button className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-accent transition-colors duration-300">
-                    <Headphones className="w-4 h-4" />
-                    Listen
-                  </button>
-                </div>
-              </div>
-            </article>
-          </Reveal>
-        </div>
-      </section>
+      {/* LATEST — the recent messages, each opening on YouTube */}
+      <LatestMessages number="01" />
 
       {/* DISCOVERY — search + filters */}
-      <section className="pb-8">
+      <section id="library" className="scroll-mt-28 pb-8">
         <div className="container-editorial">
           <Reveal>
             <div className="flex flex-col gap-6">
@@ -451,6 +396,10 @@ export function TeachingPage() {
         </div>
       </section>
 
+      {/* SERIES and STUDY NOTES */}
+      <SeriesList number="02" />
+      <StudyNotes number="03" />
+
       {/* PODCAST SECTION */}
       <section className="py-20 lg:py-32 bg-ink-2 text-cream overflow-hidden">
         <div className="container-wide">
@@ -484,7 +433,7 @@ export function TeachingPage() {
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <Reveal delay={100}>
-                <ChapterMarker number="01" label="The Podcast" />
+                <ChapterMarker number="04" label="The Podcast" />
                 <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   Endless Life with Emmanuel Iren
                 </h2>
@@ -556,7 +505,7 @@ export function TeachingPage() {
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <Reveal delay={100}>
-                <ChapterMarker tone="light" number="02" label="Written Teaching" />
+                <ChapterMarker tone="light" number="05" label="Written Teaching" />
                 <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   The word also travels through pages.
                 </h2>

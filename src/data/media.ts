@@ -114,19 +114,16 @@ export interface MediaSection {
   blurb: string;
 }
 
-/** The Media menu, in order. */
+/** The Media menu, in order. Sermons, series and study notes live on the Teaching page. */
 export const mediaSections: MediaSection[] = [
   { label: 'Overview', path: '/media', blurb: 'Everything in one place.' },
   { label: 'Reels', path: '/media/reels', blurb: 'Short moments from recent messages.' },
   { label: 'Gallery', path: '/media/gallery', blurb: 'Photographs from the pulpit, the studio and beyond.' },
-  { label: 'Messages', path: '/media/messages', blurb: 'Full sermons and teachings to watch.' },
-  { label: 'Message Resources', path: '/media/resources', blurb: 'Notes, scriptures and study guides.' },
   { label: 'The Irens', path: '/media/the-irens', blurb: 'Emmanuel and Laju Iren, and their family.' },
   { label: 'The Books', path: '/media/books', blurb: 'Six books for a practical life of faith.' },
-  { label: 'Archive', path: '/media/archive', blurb: 'Past series, gathered in one place.' },
 ];
 
-/** Series in the teaching library, for the Archive. */
+/** Series in the teaching library, listed on the Teaching page. */
 export const archiveSeries = [
   { title: 'The Word', kind: 'Sunday series', description: 'Sunday teachings from Celebration Church International.' },
   { title: 'The Gospel of Grace', kind: 'Series', description: 'Grace as God’s instruction for a life that honours Him.' },

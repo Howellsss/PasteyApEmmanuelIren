@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import { FloatingNav } from '@/components/layout/FloatingNav';
 import { Footer } from '@/components/layout/Footer';
 import { HomePage } from '@/pages/HomePage';
@@ -10,14 +10,11 @@ import { EventsPage } from '@/pages/EventsPage';
 import { InvitePage } from '@/pages/InvitePage';
 import { ContactPage } from '@/pages/ContactPage';
 import {
-  ArchivePage,
   BooksPage,
   GalleryPage,
   IrensPage,
   MediaOverviewPage,
-  MessagesPage,
   ReelsPage,
-  ResourcesPage,
 } from '@/pages/MediaPages';
 
 const SITE = 'Apostle Emmanuel Iren';
@@ -51,14 +48,6 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
     title: `Gallery — ${SITE}`,
     description: 'Photographs of Apostle Emmanuel Iren from the pulpit, the studio and beyond.',
   },
-  '/media/messages': {
-    title: `Messages — ${SITE}`,
-    description: 'Recent sermons and teachings by Apostle Emmanuel Iren, to watch in full.',
-  },
-  '/media/resources': {
-    title: `Message Resources — ${SITE}`,
-    description: 'Sermon notes, scripture references, discussion guides and transcripts, shared on request.',
-  },
   '/media/the-irens': {
     title: `The Irens — ${SITE}`,
     description: 'Emmanuel and Laju Iren, and the family beneath the public work.',
@@ -66,10 +55,6 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   '/media/books': {
     title: `The Books — ${SITE}`,
     description: 'Six books by Emmanuel Iren on leadership, purpose, grace, love, discernment and prayer.',
-  },
-  '/media/archive': {
-    title: `Archive — ${SITE}`,
-    description: 'The series, programmes, podcasts and gatherings behind the teaching of Apostle Emmanuel Iren.',
   },
   '/events': {
     title: `Events — ${SITE}`,
@@ -85,9 +70,16 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
 };
 
-/** Resets scroll and sets the per-page title and description on navigation. */
+/** Resets scroll (or goes to a #section) and sets the per-page title and description on navigation. */
 function RouteEffects() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+    // Wait for the page to render and the top-of-page scroll to run, then go to the section.
+    const id = window.setTimeout(() => document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth' }), 120);
+    return () => window.clearTimeout(id);
+  }, [pathname, hash]);
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
@@ -112,11 +104,12 @@ function App() {
         <Route path="/media" element={<MediaOverviewPage />} />
         <Route path="/media/reels" element={<ReelsPage />} />
         <Route path="/media/gallery" element={<GalleryPage />} />
-        <Route path="/media/messages" element={<MessagesPage />} />
-        <Route path="/media/resources" element={<ResourcesPage />} />
+        {/* Messages, resources and the archive moved to the Teaching page; old links land on the matching section. */}
+        <Route path="/media/messages" element={<Navigate to={{ pathname: '/teaching', hash: '#latest' }} replace />} />
+        <Route path="/media/resources" element={<Navigate to={{ pathname: '/teaching', hash: '#notes' }} replace />} />
         <Route path="/media/the-irens" element={<IrensPage />} />
         <Route path="/media/books" element={<BooksPage />} />
-        <Route path="/media/archive" element={<ArchivePage />} />
+        <Route path="/media/archive" element={<Navigate to={{ pathname: '/teaching', hash: '#series' }} replace />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/invite" element={<InvitePage />} />
         <Route path="/contact" element={<ContactPage />} />
