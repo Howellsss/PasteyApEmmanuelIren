@@ -28,11 +28,11 @@ export function FilterControl({
               onSelect?.(filter);
             }}
             className={cn(
-              'px-4 py-2 rounded-pill text-sm font-medium transition-all duration-300 ease-out-quart',
-              'focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ivory',
+              'px-4 py-2 rounded-button text-sm font-medium transition-all duration-300 ease-out-quart',
+              'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink',
               isActive
-                ? 'bg-charcoal text-soft-white'
-                : 'bg-transparent text-charcoal/70 border border-stone/30 hover:border-charcoal/30 hover:text-charcoal'
+                ? 'bg-cream text-ink border border-cream'
+                : 'bg-transparent text-ash border border-line hover:border-cream/40 hover:text-cream'
             )}
           >
             {filter}

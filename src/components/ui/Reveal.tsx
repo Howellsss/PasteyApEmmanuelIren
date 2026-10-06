@@ -6,8 +6,8 @@ interface RevealProps {
   children: ReactNode;
   className?: string;
   delay?: number;
-  variant?: 'up' | 'scale' | 'fade';
-  as?: 'div' | 'section' | 'article' | 'li' | 'span';
+  variant?: 'up' | 'scale' | 'fade' | 'left' | 'right';
+  as?: 'div' | 'section' | 'article' | 'li' | 'span' | 'p';
 }
 
 export function Reveal({
@@ -19,10 +19,20 @@ export function Reveal({
 }: RevealProps) {
   const { ref, visible } = useReveal();
 
-  const hiddenClass =
-    variant === 'scale' ? 'reveal-scale-hidden' : variant === 'fade' ? 'opacity-0' : 'reveal-hidden';
-  const visibleClass =
-    variant === 'scale' ? 'reveal-scale-visible' : variant === 'fade' ? 'opacity-100' : 'reveal-visible';
+  const hiddenClass = {
+    up: 'reveal-hidden',
+    scale: 'reveal-scale-hidden',
+    fade: 'opacity-0',
+    left: 'reveal-left-hidden',
+    right: 'reveal-right-hidden',
+  }[variant];
+  const visibleClass = {
+    up: 'reveal-visible',
+    scale: 'reveal-scale-visible',
+    fade: 'opacity-100',
+    left: 'reveal-side-visible',
+    right: 'reveal-side-visible',
+  }[variant];
 
   const style: CSSProperties | undefined =
     delay > 0

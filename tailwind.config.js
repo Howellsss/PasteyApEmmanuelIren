@@ -4,49 +4,25 @@ export default {
   theme: {
     extend: {
       colors: {
-        ivory: {
-          DEFAULT: '#EDE3CF',
-          50: '#F4F0E8',
-          100: '#EDE3CF',
-          200: '#E8E0D0',
-          300: '#D9CDB8',
-        },
-        charcoal: {
-          DEFAULT: '#151515',
-          50: '#2A2A2A',
-          100: '#222222',
-          200: '#1A1A1A',
-          300: '#151515',
-          400: '#0E0E0E',
-        },
-        'soft-white': '#FAF9F6',
-        espresso: '#3d2e23',
-        burgundy: {
-          DEFAULT: '#6E1717',
-          light: '#8A2424',
-          dark: '#5A1212',
-          50: '#F5E8E8',
-          100: '#E8D0D0',
-        },
-        gold: {
-          DEFAULT: '#B08A45',
-          light: '#C9A55F',
-          dark: '#9A7637',
-          50: '#F5EEDD',
-        },
-        olive: {
-          DEFAULT: '#5B6250',
-          light: '#6E7563',
-          dark: '#4A5042',
-        },
-        stone: {
-          DEFAULT: '#B8B0A3',
-          light: '#CFC8BC',
-          dark: '#A09889',
-        },
+        // Warm near-blacks carry the page. Gold is the one accent; navy is the one feature chapter per page,
+        // and the Invitation is the single full gold band.
+        ink: { DEFAULT: '#13100E', 2: '#1B1714' },
+        surface: '#1F1A16',
+        line: '#2F2823',
+        cream: '#F3EEE8',
+        ash: '#A0968C',
+        // The feature chapter: navy ground with mist body text (one per page).
+        navy: { DEFAULT: '#002435', 2: '#001B29' },
+        mist: '#B9B0A6',
+        // Two golds of one hue: `brand` (#986900) for fills, rules, large words and the gold band;
+        // `accent` (lighter) only for small text and marks on dark grounds, where #986900 is too faint.
+        accent: { DEFAULT: '#C08A1E', dark: '#A87812' },
+        brand: { DEFAULT: '#986900', dark: '#7C5600' },
+        bark: '#3E352D',
       },
       fontFamily: {
-        display: ['"Inter"', 'system-ui', 'sans-serif'],
+        // Headings: MADE Kenfolg (the original, heavier cut, served from /fonts); Inter carries the text.
+        display: ['"Kenfolg"', 'Georgia', 'serif'],
         sans: ['"Inter"', 'system-ui', 'sans-serif'],
       },
       fontSize: {
@@ -60,8 +36,8 @@ export default {
       },
       borderRadius: {
         'subtle': '0.25rem',
-        'soft': '0.5rem',
-        'button': '0.75rem',
+        'soft': '0.125rem',
+        'button': '0.25rem',
         'pill': '9999px',
       },
       transitionTimingFunction: {

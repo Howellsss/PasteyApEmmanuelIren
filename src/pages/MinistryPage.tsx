@@ -1,30 +1,21 @@
 import { Link } from 'react-router-dom';
 import {
   ArrowUpRight,
-  ArrowRight,
   BookOpen,
-  Users,
   Calendar,
-  Music2,
-  PenLine,
-  Sparkles,
 } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
+import { ChapterMarker } from '@/components/ui/ChapterMarker';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeader } from '@/components/ui/SectionHeader';
-import { TextLink } from '@/components/ui/TextLink';
-import { Button } from '@/components/ui/Button';
 
-const MINISTRY_IMAGE = '/images/ministry/e6.jpeg';
-const ABOUT_IMAGE = '/images/about/image.png';
-const CREATIVE_IMAGE = '/images/creative/e5.jpeg';
-const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.png';
 
-const IMG_CCI = 'IMAGE_REQUIRED — CCI';
-const IMG_MANIFEST = 'IMAGE_REQUIRED — Manifest';
-const IMG_TRIUMPH30 = 'IMAGE_REQUIRED — Triumph30';
-const IMG_OUTBURST = 'IMAGE_REQUIRED — Outburst';
-const IMG_EMMANUEL_MINISTERING = 'IMAGE_REQUIRED — Emmanuel ministering';
+// Portraits of Emmanuel Iren used for each expression until dedicated ministry photography is supplied.
+const IMG_CCI = '/images/hero/image copy 13.webp';
+const IMG_MANIFEST = '/images/hero/image copy 3.webp';
+const IMG_TRIUMPH30 = '/images/hero/image copy 10.webp';
+const IMG_OUTBURST = '/images/hero/image copy 12.webp';
+const IMG_EMMANUEL_MINISTERING = '/images/hero/image copy 11.webp';
 
 const ministryThemes = [
   {
@@ -61,24 +52,24 @@ const ministryThemes = [
 
 export function MinistryPage() {
   return (
-    <div className="min-h-screen bg-ivory">
+    <div className="min-h-screen bg-ink">
       {/* HERO */}
       <section className="relative pt-32 pb-16 lg:pt-44 lg:pb-24 overflow-hidden">
         <div className="container-editorial">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
             <div className="lg:col-span-8">
               <Reveal>
-                <Eyebrow tone="burgundy" className="mb-6">
+                <Eyebrow className="mb-6">
                   Ministry
                 </Eyebrow>
-                <h1 className="font-sans text-5xl sm:text-6xl lg:text-8xl font-extrabold leading-[0.98] text-charcoal text-balance tracking-[-0.04em] mb-8">
+                <h1 className="font-display text-5xl sm:text-6xl lg:text-8xl leading-[0.98] text-cream text-balance tracking-[-0.01em] mb-8">
                   One Calling.<br />Many Expressions.
                 </h1>
               </Reveal>
             </div>
             <div className="lg:col-span-4">
               <Reveal delay={120}>
-                <p className="text-lg text-charcoal/70 leading-relaxed text-pretty">
+                <p className="text-lg text-ash leading-relaxed text-pretty">
                   Emmanuel Iren's ministry extends across teaching, discipleship,
                   church leadership, prayer, music, culture, and Gospel advancement —
                   each expression carrying the same calling to a different context.
@@ -93,19 +84,13 @@ export function MinistryPage() {
       <section className="pb-16 lg:pb-24">
         <div className="container-wide">
           <Reveal variant="scale">
-            <article className="grid grid-cols-1 lg:grid-cols-12 rounded-soft overflow-hidden bg-charcoal text-soft-white">
+            <article className="grid grid-cols-1 lg:grid-cols-12 rounded-soft overflow-hidden bg-ink-2 text-cream">
               <div className="relative lg:col-span-8 aspect-[16/10] lg:aspect-auto min-h-[24rem] overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center bg-charcoal/10">
-                  <span className="text-stone/60 text-sm text-center px-6">
-                    {IMG_CCI}
-                  </span>
-                </div>
+                <img src={IMG_CCI} alt="Emmanuel Iren preaching on stage" loading="lazy" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: '60% 30%' }} />
               </div>
               <div className="lg:col-span-4 p-8 sm:p-10 lg:p-14 flex flex-col justify-center">
-                <span className="text-eyebrow uppercase tracking-widest text-gold mb-5">
-                  01 — The Church
-                </span>
-                <h2 className="font-display text-3xl lg:text-4xl leading-tight mb-5 text-balance">
+                <ChapterMarker number="01" label="The Church" />
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-5">
                   Celebration Church International
                 </h2>
                 <p className="text-white/65 leading-relaxed mb-8">
@@ -116,9 +101,9 @@ export function MinistryPage() {
                 </p>
                 <div className="flex flex-wrap gap-4 text-meta text-white/50">
                   <span>Founded 2012</span>
-                  <span className="w-1 h-1 rounded-pill bg-gold" />
+                  <span className="w-1 h-1 rounded-pill bg-accent" />
                   <span>30 Branches</span>
-                  <span className="w-1 h-1 rounded-pill bg-gold" />
+                  <span className="w-1 h-1 rounded-pill bg-accent" />
                   <span>4 Countries</span>
                 </div>
               </div>
@@ -128,35 +113,28 @@ export function MinistryPage() {
       </section>
 
       {/* MANIFEST — SPLIT LAYOUT */}
-      <section className="py-16 lg:py-24 bg-soft-white">
+      <section className="py-16 lg:py-24 bg-surface">
         <div className="container-editorial">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-6">
               <Reveal variant="scale">
-                <div className="relative aspect-[4/5] max-w-lg overflow-hidden rounded-soft bg-charcoal/5">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-stone/50 text-sm text-center px-6">
-                      {IMG_MANIFEST}
-                    </span>
-                  </div>
+                <div className="relative aspect-[4/5] max-w-lg overflow-hidden rounded-soft bg-surface">
+                  <img src={IMG_MANIFEST} alt="Emmanuel Iren at his desk" loading="lazy" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: '30% center' }} />
                 </div>
               </Reveal>
             </div>
             <div className="lg:col-span-5 lg:col-start-8">
               <Reveal delay={100}>
-                <span className="text-eyebrow uppercase tracking-widest text-burgundy mb-5 block">
-                  02 — Bible Course
-                </span>
-                <h2 className="font-display text-3xl lg:text-5xl leading-[1.1] text-charcoal text-balance mb-6">
+                <ChapterMarker number="02" label="Bible Course" />
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   Manifest
                 </h2>
-                <p className="text-lg text-charcoal/70 leading-relaxed mb-8 text-pretty">
+                <p className="text-lg text-ash leading-relaxed mb-8 text-pretty">
                   An interdenominational Bible course designed to take believers deeper
                   into scripture, regardless of church background. Manifest creates a
                   space for rigorous, accessible teaching that complements the local
                   church.
                 </p>
-                <TextLink tone="burgundy">Learn more about Manifest</TextLink>
               </Reveal>
             </div>
           </div>
@@ -169,42 +147,32 @@ export function MinistryPage() {
           <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             <div className="lg:col-span-7 relative">
               <Reveal variant="scale">
-                <div className="relative aspect-[16/10] overflow-hidden rounded-soft bg-charcoal/5">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-stone/50 text-sm text-center px-6">
-                      {IMG_TRIUMPH30}
-                    </span>
-                  </div>
+                <div className="relative aspect-[16/10] overflow-hidden rounded-soft bg-surface">
+                  <img src={IMG_TRIUMPH30} alt="Emmanuel Iren in worship" loading="lazy" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: 'center 25%' }} />
                 </div>
               </Reveal>
               {/* Overlapping smaller image — offset on desktop */}
-              <div className="hidden lg:block absolute -bottom-8 -right-8 w-40 h-52 rounded-soft overflow-hidden border-4 border-ivory shadow-lg shadow-charcoal/10 bg-charcoal/5">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-stone/50 text-xs text-center px-2">
-                    {IMG_EMMANUEL_MINISTERING}
-                  </span>
-                </div>
+              <div className="hidden lg:block absolute -bottom-8 -right-8 w-40 h-52 rounded-soft overflow-hidden border-4 border-line shadow-lg shadow-black/30 bg-surface">
+                <img src={IMG_EMMANUEL_MINISTERING} alt="Emmanuel Iren ministering" loading="lazy" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: '40% center' }} />
               </div>
             </div>
             <div className="lg:col-span-4 lg:col-start-9">
               <Reveal delay={100}>
-                <span className="text-eyebrow uppercase tracking-widest text-gold mb-5 block">
-                  03 — Devotional
-                </span>
-                <h2 className="font-display text-3xl lg:text-5xl leading-[1.1] text-charcoal text-balance mb-6">
+                <ChapterMarker number="03" label="Devotional" />
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   Triumph30
                 </h2>
-                <p className="text-lg text-charcoal/70 leading-relaxed mb-6 text-pretty">
+                <p className="text-lg text-ash leading-relaxed mb-6 text-pretty">
                   A daily devotional platform building a culture of prayer and Bible
                   study. Through daily write-ups and live devotionals streamed to a
                   global audience, Triumph30 partners with believers to develop a
                   consistent, rooted devotional life.
                 </p>
-                <div className="flex flex-wrap gap-4 text-meta text-stone">
+                <div className="flex flex-wrap gap-4 text-meta text-ash">
                   <span>Daily Devotionals</span>
-                  <span className="w-1 h-1 rounded-pill bg-burgundy" />
+                  <span className="w-1 h-1 rounded-pill bg-accent" />
                   <span>Live Prayer</span>
-                  <span className="w-1 h-1 rounded-pill bg-burgundy" />
+                  <span className="w-1 h-1 rounded-pill bg-accent" />
                   <span>Global Reach</span>
                 </div>
               </Reveal>
@@ -214,15 +182,13 @@ export function MinistryPage() {
       </section>
 
       {/* OUTBURST — TYPOGRAPHY-LED DARK SECTION */}
-      <section className="py-24 lg:py-36 bg-charcoal text-soft-white overflow-hidden">
+      <section className="py-24 lg:py-36 bg-ink-2 text-cream overflow-hidden">
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-6">
               <Reveal>
-                <span className="text-eyebrow uppercase tracking-widest text-gold mb-6 block">
-                  04 — Music &amp; Creative
-                </span>
-                <h2 className="font-display text-4xl lg:text-6xl leading-[1.05] text-balance mb-6">
+                <ChapterMarker number="04" label="Music &amp; Creative" />
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   Outburst
                 </h2>
                 <p className="text-lg text-white/65 leading-relaxed mb-8 text-pretty">
@@ -246,11 +212,7 @@ export function MinistryPage() {
             <div className="lg:col-span-5 lg:col-start-8">
               <Reveal variant="scale" delay={100}>
                 <div className="relative aspect-[4/5] overflow-hidden rounded-soft bg-white/5">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-white/30 text-sm text-center px-6">
-                      {IMG_OUTBURST}
-                    </span>
-                  </div>
+                  <img src={IMG_OUTBURST} alt="Emmanuel Iren on stage with a microphone" loading="lazy" className="absolute inset-0 h-full w-full object-cover" style={{ objectPosition: '45% center' }} />
                 </div>
               </Reveal>
             </div>
@@ -262,25 +224,26 @@ export function MinistryPage() {
       <section className="py-24 lg:py-36">
         <div className="container-editorial">
           <SectionHeader
+            numbered="05"
             eyebrow="Recurrent Themes"
-            tone="burgundy"
+           
             title="The same emphases, across every expression."
             description="Not official core values, but documented and observable areas that surface repeatedly across Emmanuel's teaching, leadership, and creative output."
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-stone/20 mt-14 rounded-soft overflow-hidden">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-line mt-14 rounded-soft overflow-hidden">
             {ministryThemes.map((theme, i) => (
               <Reveal
                 key={theme.title}
                 delay={(i % 3) * 80}
-                className="bg-ivory p-8 lg:p-10 group hover:bg-soft-white transition-colors duration-300"
+                className="bg-ink p-8 lg:p-10 group hover:bg-surface transition-colors duration-300"
               >
-                <span className="font-display text-5xl text-burgundy/15 tabular-nums leading-none block mb-4">
+                <span className="font-display text-5xl text-brand tabular-nums leading-none block mb-4">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <h3 className="font-display text-2xl text-charcoal mb-3 leading-tight">
+                <h3 className="font-display text-2xl text-cream mb-3 leading-tight">
                   {theme.title}
                 </h3>
-                <p className="text-charcoal/60 leading-relaxed text-pretty">
+                <p className="text-ash leading-relaxed text-pretty">
                   {theme.description}
                 </p>
               </Reveal>
@@ -290,16 +253,14 @@ export function MinistryPage() {
       </section>
 
       {/* CLOSING STATEMENT */}
-      <section className="py-28 lg:py-44 bg-soft-white">
+      <section className="py-24 lg:py-36 bg-navy">
         <div className="container-editorial text-center">
           <Reveal>
-            <p className="text-eyebrow uppercase tracking-[0.3em] text-burgundy mb-8">
-              One Calling
-            </p>
-            <h2 className="font-sans font-extrabold text-4xl sm:text-5xl lg:text-7xl leading-[0.98] tracking-[-0.04em] text-charcoal text-balance">
+            <ChapterMarker tone="light" label="One Calling" centered className="mb-8" />
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-7xl leading-[0.98] tracking-[-0.01em] text-cream text-balance">
               Different platforms.<br />
               Same conviction.<br />
-              One Gospel.
+              <span className="text-brand">One Gospel.</span>
             </h2>
           </Reveal>
         </div>
@@ -312,9 +273,9 @@ export function MinistryPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
               <Link
                 to="/teaching"
-                className="group relative overflow-hidden rounded-soft bg-charcoal text-soft-white p-10 lg:p-14 min-h-[16rem] flex flex-col justify-between hover:bg-burgundy transition-colors duration-500"
+                className="group relative overflow-hidden rounded-soft bg-ink-2 text-cream p-10 lg:p-14 min-h-[16rem] flex flex-col justify-between border-t-2 border-brand hover:bg-line transition-colors duration-500"
               >
-                <BookOpen className="w-6 h-6 text-gold mb-6" />
+                <BookOpen className="w-6 h-6 text-accent mb-6" />
                 <div>
                   <h3 className="font-display text-3xl mb-3 leading-tight">
                     Explore Teaching
@@ -323,22 +284,22 @@ export function MinistryPage() {
                     Sermons, series, and conversations for the journey of faith.
                   </p>
                 </div>
-                <ArrowUpRight className="absolute top-10 right-10 w-6 h-6 text-white/30 group-hover:text-gold transition-colors duration-500" />
+                <ArrowUpRight className="absolute top-10 right-10 w-6 h-6 text-white/30 group-hover:text-accent transition-colors duration-500" />
               </Link>
               <Link
                 to="/invite"
-                className="group relative overflow-hidden rounded-soft border border-stone/30 bg-ivory text-charcoal p-10 lg:p-14 min-h-[16rem] flex flex-col justify-between hover:border-burgundy transition-colors duration-500"
+                className="group relative overflow-hidden rounded-soft border border-line bg-ink text-cream p-10 lg:p-14 min-h-[16rem] flex flex-col justify-between hover:border-brand transition-colors duration-500"
               >
-                <Calendar className="w-6 h-6 text-burgundy mb-6" />
+                <Calendar className="w-6 h-6 text-accent mb-6" />
                 <div>
                   <h3 className="font-display text-3xl mb-3 leading-tight">
                     Invite Emmanuel
                   </h3>
-                  <p className="text-charcoal/60 leading-relaxed max-w-xs">
+                  <p className="text-ash leading-relaxed max-w-xs">
                     Bring the word to your city, your church, or your event.
                   </p>
                 </div>
-                <ArrowUpRight className="absolute top-10 right-10 w-6 h-6 text-stone/40 group-hover:text-burgundy transition-colors duration-500" />
+                <ArrowUpRight className="absolute top-10 right-10 w-6 h-6 text-ash group-hover:text-accent transition-colors duration-500" />
               </Link>
             </div>
           </Reveal>

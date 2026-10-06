@@ -1,5 +1,5 @@
 import { type ReactNode } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { cn } from '@/lib/cn';
 import { Reveal } from './Reveal';
 import { Button } from './Button';
@@ -10,77 +10,46 @@ interface CTASectionProps {
   title: ReactNode;
   description?: ReactNode;
   primaryLabel?: string;
+  primaryTo?: string;
   secondaryLabel?: string;
-  variant?: 'light' | 'dark' | 'burgundy';
+  secondaryTo?: string;
   className?: string;
 }
 
+/** Closing call-to-action block: dark surface with a thin accent rule along the top. */
 export function CTASection({
   eyebrow,
   title,
   description,
   primaryLabel = 'Invite Emmanuel',
+  primaryTo = '/invite',
   secondaryLabel,
-  variant = 'dark',
+  secondaryTo = '/contact',
   className,
 }: CTASectionProps) {
-  const variants = {
-    light: 'bg-soft-white border border-stone/20',
-    dark: 'bg-charcoal text-soft-white',
-    burgundy: 'bg-burgundy text-soft-white',
-  };
-
-  const eyebrowTone = variant === 'light' ? 'gold' : 'gold';
-
   return (
     <Reveal variant="scale">
       <section
         className={cn(
-          'rounded-soft px-8 py-16 lg:px-16 lg:py-20 flex flex-col items-center text-center gap-6',
-          variants[variant],
+          'rounded-soft border-t-2 border-brand bg-surface px-8 py-14 lg:px-16 lg:py-16 flex flex-col items-center text-center gap-5',
           className
         )}
       >
-        {eyebrow && (
-          <Eyebrow tone={eyebrowTone} className="justify-center">
-            {eyebrow}
-          </Eyebrow>
-        )}
-        <h2 className="font-display text-3xl lg:text-5xl leading-[1.15] text-balance max-w-3xl">
-          {title}
-        </h2>
-        {description && (
-          <p
-            className={cn(
-              'text-lg leading-relaxed max-w-xl text-pretty',
-              variant === 'light' ? 'text-charcoal/70' : 'text-white/70'
-            )}
-          >
-            {description}
-          </p>
-        )}
-        <div className="flex flex-col sm:flex-row items-center gap-4 mt-4">
-          <Button
-            variant={variant === 'light' ? 'primary' : 'secondary'}
-            size="lg"
-            withArrow
-            className={cn(
-              variant !== 'light' &&
-                'border-white/20 text-soft-white hover:bg-soft-white hover:text-charcoal'
-            )}
-          >
-            {primaryLabel}
-          </Button>
-          {secondaryLabel && (
-            <Button
-              variant="ghost"
-              size="lg"
-              className={cn(
-                variant !== 'light' && 'text-soft-white hover:text-gold'
-              )}
-            >
-              {secondaryLabel}
+        {eyebrow && <Eyebrow centered>{eyebrow}</Eyebrow>}
+        <h2 className="font-display text-2xl lg:text-4xl leading-[1.15] text-balance max-w-3xl text-cream">{title}</h2>
+        {description && <p className="text-base leading-relaxed max-w-xl text-pretty text-ash">{description}</p>}
+        <div className="flex flex-col sm:flex-row items-center gap-3 mt-3">
+          <Link to={primaryTo}>
+            <Button variant="primary" size="lg" withArrow>
+              {primaryLabel}
             </Button>
+          </Link>
+          {secondaryLabel && (
+            <Link to={secondaryTo}>
+              <Button variant="secondary" size="lg">
+                {secondaryLabel}
+              </Button>
+            </Link>
           )}
         </div>
       </section>

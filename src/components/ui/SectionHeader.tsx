@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 import { cn } from '@/lib/cn';
-import { Eyebrow } from './Eyebrow';
+import { ChapterMarker } from './ChapterMarker';
 import { Reveal } from './Reveal';
 
 interface SectionHeaderProps {
@@ -9,36 +9,38 @@ interface SectionHeaderProps {
   description?: ReactNode;
   align?: 'left' | 'center';
   numbered?: string;
-  tone?: 'gold' | 'burgundy' | 'stone' | 'olive';
+  /** dark: the default near-black sections; light: the navy feature chapter. */
+  surface?: 'dark' | 'light';
   className?: string;
+  titleClassName?: string;
+  descriptionClassName?: string;
 }
 
+/** Section heading in the site style: chapter marker, bold uppercase title, short description. */
 export function SectionHeader({
   eyebrow,
   title,
   description,
   align = 'left',
   numbered,
-  tone = 'gold',
+  surface = 'dark',
   className,
+  titleClassName,
+  descriptionClassName,
 }: SectionHeaderProps) {
+  const centered = align === 'center';
+  const light = surface === 'light';
+
   return (
-    <Reveal
-      className={cn(
-        'flex flex-col gap-4',
-        align === 'center' ? 'items-center text-center' : 'items-start text-left',
-        className
-      )}
-    >
-      {eyebrow && (
-        <Eyebrow tone={tone} numbered={numbered}>
-          {eyebrow}
-        </Eyebrow>
-      )}
+    <Reveal className={cn('flex flex-col', centered ? 'items-center text-center' : 'items-start text-left', className)}>
+      {eyebrow && <ChapterMarker label={eyebrow} number={numbered} tone={surface} centered={centered} className="w-full" />}
       <h2
         className={cn(
-          'font-display text-3xl sm:text-4xl lg:text-5xl leading-[1.15] text-balance',
-          align === 'center' ? 'max-w-3xl' : 'max-w-4xl'
+          'font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance',
+          'text-3xl sm:text-4xl lg:text-[2.5rem]',
+          'text-cream',
+          centered ? 'max-w-3xl' : 'max-w-4xl',
+          titleClassName
         )}
       >
         {title}
@@ -46,8 +48,8 @@ export function SectionHeader({
       {description && (
         <p
           className={cn(
-            'text-lg text-charcoal/70 leading-relaxed text-pretty',
-            align === 'center' ? 'max-w-2xl' : 'max-w-2xl'
+            'mt-4 max-w-2xl text-base leading-relaxed text-pretty',
+            descriptionClassName ?? (light ? 'text-mist' : 'text-ash')
           )}
         >
           {description}

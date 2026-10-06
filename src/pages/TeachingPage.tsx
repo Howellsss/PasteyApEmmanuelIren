@@ -5,23 +5,22 @@ import {
   Clock,
   Headphones,
   Search,
-  ArrowRight,
   ArrowUpRight,
-  BookOpen,
   Sparkles,
 } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { Reveal } from '@/components/ui/Reveal';
+import { ChapterMarker } from '@/components/ui/ChapterMarker';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Button } from '@/components/ui/Button';
-import { TextLink } from '@/components/ui/TextLink';
+import { LatestMessages, SeriesList, StudyNotes } from '@/components/teaching/TeachingSections';
 
-const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.png';
-const ABOUT_IMAGE = '/images/about/image.png';
-const CREATIVE_IMAGE = '/images/creative/e5.jpeg';
-const MINISTRY_IMAGE = '/images/ministry/e6.jpeg';
-const TEACHING_IMAGE_2 = '/images/teachings/image copy.png';
-const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.png';
+const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.webp';
+const ABOUT_IMAGE = '/images/about/image.webp';
+const CREATIVE_IMAGE = '/images/creative/e5.webp';
+const MINISTRY_IMAGE = '/images/ministry/e6.webp';
+const TEACHING_IMAGE_2 = '/images/teachings/image copy.webp';
+const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.webp';
 
 const PULPIT_1 = TEACHING_IMAGE_2;
 const PULPIT_2 = TEACHING_IMAGE_3;
@@ -211,7 +210,7 @@ const SORT_OPTIONS: SortOption[] = ['Newest', 'Popular', 'Oldest'];
 function TeachingCard({ item, index }: { item: TeachingItem; index: number }) {
   return (
     <Reveal delay={(index % 3) * 80} className="group cursor-pointer">
-      <div className="relative overflow-hidden rounded-soft aspect-[4/5] bg-charcoal/5 mb-4">
+      <div className="relative overflow-hidden rounded-soft aspect-[4/5] bg-surface mb-4">
         <img
           src={item.image}
           alt={item.title}
@@ -219,30 +218,30 @@ function TeachingCard({ item, index }: { item: TeachingItem; index: number }) {
           className="w-full h-full object-cover transition-transform duration-700 ease-out-quart group-hover:scale-[1.03]"
           style={{ objectPosition: 'center top' }}
         />
-        <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/20 transition-colors duration-500" />
+        <div className="absolute inset-0 bg-ink-2/0 group-hover:bg-surface transition-colors duration-500" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="flex items-center justify-center w-16 h-16 rounded-pill bg-soft-white/90 backdrop-blur-sm transition-all duration-500 group-hover:scale-110 group-hover:bg-burgundy">
-            <Play className="w-6 h-6 text-charcoal group-hover:text-soft-white ml-1 transition-colors duration-500" fill="currentColor" />
+          <span className="flex items-center justify-center w-16 h-16 rounded-pill bg-cream/90 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
+            <Play className="w-6 h-6 text-ink ml-1" fill="currentColor" />
           </span>
         </div>
-        <span className="absolute top-3 left-3 px-3 py-1 rounded-pill bg-charcoal/80 backdrop-blur-sm text-soft-white text-meta font-sans uppercase tracking-widest">
+        <span className="absolute top-3 left-3 px-3 py-1 rounded-pill bg-ink-2/80 backdrop-blur-sm text-cream text-meta font-sans uppercase tracking-widest">
           {item.category}
         </span>
         {item.duration && (
-          <span className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-pill bg-charcoal/80 backdrop-blur-sm text-soft-white text-meta font-sans">
+          <span className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-pill bg-ink-2/80 backdrop-blur-sm text-cream text-meta font-sans">
             <Clock className="w-3 h-3" />
             {item.duration}
           </span>
         )}
       </div>
       <div className="space-y-1.5">
-        <p className="text-meta text-stone uppercase tracking-widest">
+        <p className="text-meta text-ash uppercase tracking-widest">
           {item.series} · {item.date}
         </p>
-        <h3 className="font-display text-xl lg:text-2xl leading-snug text-charcoal group-hover:text-burgundy transition-colors duration-300 text-balance">
+        <h3 className="font-display text-xl lg:text-2xl leading-snug text-cream group-hover:text-accent transition-colors duration-300 text-balance">
           {item.title}
         </h3>
-        <p className="text-sm text-charcoal/60 leading-relaxed line-clamp-2 max-w-md">
+        <p className="text-sm text-ash leading-relaxed line-clamp-2 max-w-md">
           {item.description}
         </p>
       </div>
@@ -277,21 +276,19 @@ export function TeachingPage() {
     return result;
   }, [activeCategory, sortOption, searchQuery]);
 
-  const featured = teachings[0];
-
   return (
-    <div className="min-h-screen bg-ivory">
+    <div className="min-h-screen overflow-x-clip bg-ink">
       {/* HERO */}
       <section className="relative pt-32 pb-16 lg:pt-44 lg:pb-24 overflow-hidden">
         <div className="container-editorial">
           <Reveal>
-            <Eyebrow tone="burgundy" className="mb-6">
+            <Eyebrow className="mb-6">
               Teachings
             </Eyebrow>
-            <h1 className="font-sans text-5xl sm:text-6xl lg:text-8xl font-extrabold leading-[0.98] text-charcoal text-balance tracking-[-0.04em] mb-8">
+            <h1 className="font-display text-5xl sm:text-6xl lg:text-8xl leading-[0.98] text-cream text-balance tracking-[-0.01em] mb-8">
               Teachings
             </h1>
-            <p className="text-lg sm:text-xl text-charcoal/70 leading-relaxed max-w-2xl font-light text-pretty">
+            <p className="text-lg sm:text-xl text-ash leading-relaxed max-w-2xl font-light text-pretty">
               Explore messages, series and conversations designed to help you know
               Christ, grow in faith and live purposefully.
             </p>
@@ -299,82 +296,23 @@ export function TeachingPage() {
         </div>
       </section>
 
-      {/* FEATURED TEACHING */}
-      <section className="pb-16 lg:pb-24">
-        <div className="container-wide">
-          <Reveal variant="scale">
-            <article className="grid grid-cols-1 lg:grid-cols-12 bg-charcoal rounded-soft overflow-hidden group">
-              <div className="relative lg:col-span-7 aspect-[4/5] lg:aspect-[4/3] min-h-[22rem] overflow-hidden">
-                <img
-                  src={featured.image}
-                  alt={featured.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out-quart group-hover:scale-[1.03]"
-                  style={{ objectPosition: 'center top' }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 to-transparent" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="flex items-center justify-center w-16 h-16 rounded-pill bg-soft-white/90 text-charcoal transition-transform duration-500 group-hover:scale-110 group-hover:bg-burgundy group-hover:text-soft-white">
-                    <Play className="w-6 h-6 ml-1" fill="currentColor" />
-                  </span>
-                </div>
-              </div>
-              <div className="lg:col-span-5 p-8 sm:p-10 lg:p-12 flex flex-col justify-center text-soft-white">
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="px-3 py-1 rounded-pill bg-gold/20 text-gold text-meta font-sans uppercase tracking-widest">
-                    Featured
-                  </span>
-                  <span className="text-meta text-white/50 uppercase tracking-widest">
-                    {featured.category}
-                  </span>
-                </div>
-                <p className="text-eyebrow uppercase tracking-widest text-gold mb-4">
-                  {featured.series}
-                </p>
-                <h2 className="font-display text-2xl lg:text-3xl leading-tight mb-5 text-balance">
-                  {featured.title}
-                </h2>
-                <p className="text-white/65 leading-relaxed mb-8">
-                  {featured.description}
-                </p>
-                <div className="flex flex-wrap items-center gap-4 text-meta text-white/50 mb-8">
-                  <span>{featured.date}</span>
-                  <span className="w-1 h-1 rounded-pill bg-gold" />
-                  <span>{featured.duration}</span>
-                </div>
-                <div className="flex flex-wrap gap-4">
-                  <Button
-                    variant="secondary"
-                    size="md"
-                    withArrow
-                    className="border-white/20 text-soft-white hover:bg-soft-white hover:text-charcoal"
-                  >
-                    Watch
-                  </Button>
-                  <button className="inline-flex items-center gap-2 text-sm text-white/75 hover:text-gold transition-colors duration-300">
-                    <Headphones className="w-4 h-4" />
-                    Listen
-                  </button>
-                </div>
-              </div>
-            </article>
-          </Reveal>
-        </div>
-      </section>
+      {/* LATEST — the recent messages, each opening on YouTube */}
+      <LatestMessages number="01" />
 
       {/* DISCOVERY — search + filters */}
-      <section className="pb-8">
+      <section id="library" className="scroll-mt-28 pb-8">
         <div className="container-editorial">
           <Reveal>
             <div className="flex flex-col gap-6">
               {/* Search bar */}
               <div className="relative max-w-xl">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-stone pointer-events-none" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-ash pointer-events-none" />
                 <input
                   type="search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search teachings, series, or topics…"
-                  className="w-full pl-11 pr-4 py-3.5 rounded-pill border border-stone/30 bg-soft-white text-sm text-charcoal placeholder:text-stone/60 transition-all duration-300 ease-out-quart focus:outline-none focus:border-burgundy/40 focus:ring-1 focus:ring-burgundy/10 hover:border-stone/50"
+                  className="w-full pl-11 pr-4 py-3.5 rounded-pill border border-line bg-surface text-sm text-cream placeholder:text-ash transition-all duration-300 ease-out-quart focus:outline-none focus:border-accent/40 focus:ring-1 focus:ring-accent/10 hover:border-line"
                 />
               </div>
 
@@ -389,10 +327,10 @@ export function TeachingPage() {
                         onClick={() => setActiveCategory(cat)}
                         className={cn(
                           'px-4 py-2 rounded-pill text-sm font-medium transition-all duration-300 ease-out-quart',
-                          'focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ivory',
+                          'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink',
                           isActive
-                            ? 'bg-charcoal text-soft-white'
-                            : 'bg-transparent text-charcoal/60 border border-stone/25 hover:border-charcoal/30 hover:text-charcoal',
+                            ? 'bg-ink-2 text-cream'
+                            : 'bg-transparent text-ash border border-line hover:border-line hover:text-cream',
                         )}
                       >
                         {cat}
@@ -403,10 +341,10 @@ export function TeachingPage() {
 
                 {/* Sort control */}
                 <div className="flex items-center gap-2">
-                  <span className="text-meta text-stone uppercase tracking-widest hidden sm:inline">
+                  <span className="text-meta text-ash uppercase tracking-widest hidden sm:inline">
                     Sort
                   </span>
-                  <div className="flex items-center gap-1 p-1 rounded-pill border border-stone/25 bg-soft-white/50">
+                  <div className="flex items-center gap-1 p-1 rounded-pill border border-line bg-surface/50">
                     {SORT_OPTIONS.map((opt) => {
                       const isActive = sortOption === opt;
                       return (
@@ -416,8 +354,8 @@ export function TeachingPage() {
                           className={cn(
                             'px-3 py-1.5 rounded-pill text-xs font-medium transition-all duration-300',
                             isActive
-                              ? 'bg-burgundy text-soft-white'
-                              : 'text-charcoal/50 hover:text-charcoal',
+                              ? 'bg-cream text-ink'
+                              : 'text-ash hover:text-cream',
                           )}
                         >
                           {opt}
@@ -437,13 +375,13 @@ export function TeachingPage() {
         <div className="container-editorial">
           {filtered.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-lg text-charcoal/50">No teachings match your search.</p>
+              <p className="text-lg text-ash">No teachings match your search.</p>
               <button
                 onClick={() => {
                   setSearchQuery('');
                   setActiveCategory('All');
                 }}
-                className="mt-4 text-sm text-burgundy hover:text-burgundy-dark transition-colors duration-300"
+                className="mt-4 text-sm text-accent hover:text-accent transition-colors duration-300"
               >
                 Clear filters
               </button>
@@ -458,8 +396,12 @@ export function TeachingPage() {
         </div>
       </section>
 
+      {/* SERIES and STUDY NOTES */}
+      <SeriesList number="02" />
+      <StudyNotes number="03" />
+
       {/* PODCAST SECTION */}
-      <section className="py-20 lg:py-32 bg-charcoal text-soft-white overflow-hidden">
+      <section className="py-20 lg:py-32 bg-ink-2 text-cream overflow-hidden">
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-5">
@@ -472,10 +414,10 @@ export function TeachingPage() {
                     className="w-full h-full object-cover"
                     style={{ objectPosition: 'center top' }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
                   <div className="absolute bottom-6 left-6 right-6">
                     <div className="flex items-center gap-3 mb-3">
-                      <span className="flex items-center justify-center w-10 h-10 rounded-pill bg-gold text-charcoal">
+                      <span className="flex items-center justify-center w-10 h-10 rounded-pill border border-brand text-accent">
                         <Headphones className="w-5 h-5" />
                       </span>
                       <span className="text-meta uppercase tracking-widest text-white/60">
@@ -491,10 +433,8 @@ export function TeachingPage() {
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <Reveal delay={100}>
-                <Eyebrow tone="gold" className="mb-6">
-                  The Podcast
-                </Eyebrow>
-                <h2 className="font-display text-3xl lg:text-5xl leading-[1.1] text-balance mb-6">
+                <ChapterMarker number="04" label="The Podcast" />
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   Endless Life with Emmanuel Iren
                 </h2>
                 <p className="text-lg text-white/65 leading-relaxed mb-8 text-pretty">
@@ -508,10 +448,10 @@ export function TeachingPage() {
                     href="https://podcasts.apple.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between p-4 rounded-soft border border-white/15 hover:border-gold/40 hover:bg-white/5 transition-all duration-300"
+                    className="group flex items-center justify-between p-4 rounded-soft border border-white/15 hover:border-accent/40 hover:bg-white/5 transition-all duration-300"
                   >
                     <div className="flex items-center gap-4">
-                      <span className="flex items-center justify-center w-10 h-10 rounded-pill bg-white/10 text-gold">
+                      <span className="flex items-center justify-center w-10 h-10 rounded-pill bg-white/10 text-accent">
                         <Headphones className="w-5 h-5" />
                       </span>
                       <div>
@@ -519,16 +459,16 @@ export function TeachingPage() {
                         <p className="text-meta text-white/50">Listen on Apple</p>
                       </div>
                     </div>
-                    <ArrowUpRight className="w-5 h-5 text-white/40 group-hover:text-gold transition-colors duration-300" />
+                    <ArrowUpRight className="w-5 h-5 text-white/40 group-hover:text-accent transition-colors duration-300" />
                   </a>
                   <a
                     href="https://spotify.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group flex items-center justify-between p-4 rounded-soft border border-white/15 hover:border-gold/40 hover:bg-white/5 transition-all duration-300"
+                    className="group flex items-center justify-between p-4 rounded-soft border border-white/15 hover:border-accent/40 hover:bg-white/5 transition-all duration-300"
                   >
                     <div className="flex items-center gap-4">
-                      <span className="flex items-center justify-center w-10 h-10 rounded-pill bg-white/10 text-gold">
+                      <span className="flex items-center justify-center w-10 h-10 rounded-pill bg-white/10 text-accent">
                         <Sparkles className="w-5 h-5" />
                       </span>
                       <div>
@@ -536,7 +476,7 @@ export function TeachingPage() {
                         <p className="text-meta text-white/50">Listen or subscribe</p>
                       </div>
                     </div>
-                    <ArrowUpRight className="w-5 h-5 text-white/40 group-hover:text-gold transition-colors duration-300" />
+                    <ArrowUpRight className="w-5 h-5 text-white/40 group-hover:text-accent transition-colors duration-300" />
                   </a>
                 </div>
               </Reveal>
@@ -546,7 +486,7 @@ export function TeachingPage() {
       </section>
 
       {/* BOOK / CROSSOVER */}
-      <section className="py-24 lg:py-36">
+      <section className="py-24 lg:py-36 bg-navy">
         <div className="container-editorial">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-5">
@@ -559,25 +499,23 @@ export function TeachingPage() {
                     className="w-full h-full object-cover image-warm"
                     style={{ objectPosition: 'center top' }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/30 to-transparent" />
                 </div>
               </Reveal>
             </div>
             <div className="lg:col-span-6 lg:col-start-7">
               <Reveal delay={100}>
-                <Eyebrow tone="burgundy" className="mb-6">
-                  Written Teaching
-                </Eyebrow>
-                <h2 className="font-display text-3xl lg:text-5xl leading-[1.1] text-charcoal text-balance mb-6">
+                <ChapterMarker tone="light" number="05" label="Written Teaching" />
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   The word also travels through pages.
                 </h2>
-                <p className="text-lg text-charcoal/70 leading-relaxed mb-8 text-pretty">
+                <p className="text-lg text-mist leading-relaxed mb-8 text-pretty">
                   Beyond the pulpit and the podcast, Emmanuel Iren's teaching lives in
                   books — Leading Seeks You, Purposefully, Saving Grace, LoveCode, and
                   more. Each one makes the life of faith practical, clear, and lived.
                 </p>
                 <Link to="/about">
-                  <Button variant="primary" size="lg" withArrow className="rounded-pill">
+                  <Button variant="primary-light" size="lg" withArrow>
                     Explore Books
                   </Button>
                 </Link>
