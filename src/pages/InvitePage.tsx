@@ -77,7 +77,7 @@ export function InvitePage() {
       </section>
 
       {/* Process info */}
-      <section className="py-16 lg:py-24 bg-bone">
+      <section className="py-16 lg:py-24 bg-navy">
         <div className="container-editorial">
           <SectionHeader
             surface="light"
@@ -93,10 +93,10 @@ export function InvitePage() {
               { num: '03', title: 'Confirmation', desc: 'Once confirmed, the team works with you to prepare for the engagement.' },
             ].map((step, i) => (
               <Reveal key={i} delay={i * 100}>
-                <div className="p-8 rounded-soft border-t-2 border-brand bg-cream/60">
+                <div className="p-8 rounded-soft border-t-2 border-brand bg-navy-2">
                   <span className="font-display text-2xl text-brand tabular-nums">{step.num}</span>
-                  <h3 className="font-display text-lg mt-3 mb-2 text-ink">{step.title}</h3>
-                  <p className="text-sm text-umber leading-relaxed">{step.desc}</p>
+                  <h3 className="font-display text-lg mt-3 mb-2 text-cream">{step.title}</h3>
+                  <p className="text-sm text-mist leading-relaxed">{step.desc}</p>
                 </div>
               </Reveal>
             ))}

@@ -9,7 +9,7 @@ interface SectionHeaderProps {
   description?: ReactNode;
   align?: 'left' | 'center';
   numbered?: string;
-  /** dark: the default near-black sections; light: the bone chapter. */
+  /** dark: the default near-black sections; light: the navy feature chapter. */
   surface?: 'dark' | 'light';
   className?: string;
   titleClassName?: string;
@@ -38,7 +38,7 @@ export function SectionHeader({
         className={cn(
           'font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance',
           'text-3xl sm:text-4xl lg:text-[2.5rem]',
-          light ? 'text-ink' : 'text-cream',
+          'text-cream',
           centered ? 'max-w-3xl' : 'max-w-4xl',
           titleClassName
         )}
@@ -49,7 +49,7 @@ export function SectionHeader({
         <p
           className={cn(
             'mt-4 max-w-2xl text-base leading-relaxed text-pretty',
-            descriptionClassName ?? (light ? 'text-umber' : 'text-ash')
+            descriptionClassName ?? (light ? 'text-mist' : 'text-ash')
           )}
         >
           {description}

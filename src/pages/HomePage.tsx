@@ -359,7 +359,7 @@ export function HomePage() {
                   eyebrow="About Apostle Emmanuel Iren"
                   title="A life given to Christ"
                   accent="and His purpose."
-                  accentClassName="text-[#D35455]"
+                  accentClassName="text-accent"
                   size="sm"
                   className="mb-6"
                 />
@@ -595,39 +595,43 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-ink py-14 md:py-20 lg:py-32">
-        <MediaReveal from="none" className="absolute inset-0" frameClassName="h-full w-full">
+      {/* The one gold band: the closing invitation, over his portrait tinted in the same gold. */}
+      <section className="relative overflow-hidden bg-brand py-16 md:py-24 lg:py-32">
+        <MediaReveal from="none" className="absolute inset-0" frameClassName="h-full w-full bg-brand">
           <img
             src={CREATIVE_IMAGE}
             alt=""
             aria-hidden="true"
-            className="media-reveal-img absolute inset-0 h-full w-full object-cover opacity-35"
+            className="media-reveal-img absolute inset-0 h-full w-full object-cover opacity-50 mix-blend-multiply grayscale"
             style={{ objectPosition: 'center 30%' }}
           />
         </MediaReveal>
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/85 to-ink/40" />
+        <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(152,105,0,0.55),rgba(152,105,0,0)_70%)]" />
         <div className="container-wide relative">
-          <div className="max-w-3xl">
+          <div className="mx-auto max-w-3xl text-center">
             <Reveal variant="right">
             <DisplayHeading
               number="08"
               eyebrow="The Invitation"
               title={<>Know Christ.<br />Live purposefully.<br /></>}
               accent="Make Him known."
+              accentClassName="text-ink"
+              tone="gold"
+              align="center"
               size="lg"
             />
             </Reveal>
-            <Reveal variant="right" delay={150} as="p" className="mt-6 max-w-xl text-base leading-relaxed text-ash">
+            <Reveal variant="right" delay={150} as="p" className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-cream">
               Bring the word to your city, your church, your event. Submit an invitation for a speaking engagement, conference, or interview.
             </Reveal>
-            <Reveal variant="right" delay={300} className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Reveal variant="right" delay={300} className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
               <Link to="/invite" className="block w-full sm:w-auto">
-                <Button variant="primary" size="lg" withArrow className="h-14 w-full sm:h-auto sm:w-auto">
+                <Button variant="ink" size="lg" withArrow className="h-14 w-full sm:h-auto sm:w-auto">
                   Invite Emmanuel
                 </Button>
               </Link>
               <Link to="/contact" className="block w-full sm:w-auto">
-                <Button variant="secondary" size="lg" className="h-14 w-full sm:h-auto sm:w-auto">
+                <Button variant="on-gold" size="lg" className="h-14 w-full sm:h-auto sm:w-auto">
                   Contact Directly
                 </Button>
               </Link>

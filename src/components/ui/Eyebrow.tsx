@@ -4,7 +4,7 @@ import { cn } from '@/lib/cn';
 interface EyebrowProps {
   children: ReactNode;
   className?: string;
-  /** accent: small red label; muted: quiet grey label; light: for the bone chapter. */
+  /** accent: small gold label; muted: quiet grey label; light: for the navy chapter. */
   tone?: 'accent' | 'muted' | 'light';
   numbered?: string;
   centered?: boolean;
@@ -13,7 +13,7 @@ interface EyebrowProps {
 const TONES = {
   accent: 'text-accent',
   muted: 'text-ash',
-  light: 'text-umber',
+  light: 'text-mist',
 };
 
 /** Small uppercase label for cards and inline metadata. Section openers use ChapterMarker. */

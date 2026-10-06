@@ -4,25 +4,24 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Palette "B": warm near-blacks with one accent. Rule: the accent is for small marks
-        // (words, numbers, rules, arrows) and never for large fills; buttons are cream.
+        // Warm near-blacks carry the page. Gold is the one accent; navy is the one feature chapter per page,
+        // and the Invitation is the single full gold band.
         ink: { DEFAULT: '#13100E', 2: '#1B1714' },
         surface: '#1F1A16',
         line: '#2F2823',
         cream: '#F3EEE8',
         ash: '#A0968C',
-        // The one light "chapter" per page: bone background with umber body text.
-        bone: '#EEE6DA',
-        umber: '#6B6057',
-        // Two reds: `brand` (deep) for fills, heading accents, big numbers, rules and anything on bone;
-        // `accent` (brighter) only for small text and marks on dark grounds, where the deep red gets lost.
-        accent: { DEFAULT: '#DF584C', dark: '#C2443A' },
-        // The deep brand red: hero call-to-action, menu Contact button, hero rules and full stop.
-        brand: { DEFAULT: '#6E1717', dark: '#5A1212' },
+        // The feature chapter: navy ground with mist body text (one per page).
+        navy: { DEFAULT: '#002435', 2: '#001B29' },
+        mist: '#B9B0A6',
+        // Two golds of one hue: `brand` (#986900) for fills, rules, large words and the gold band;
+        // `accent` (lighter) only for small text and marks on dark grounds, where #986900 is too faint.
+        accent: { DEFAULT: '#C08A1E', dark: '#A87812' },
+        brand: { DEFAULT: '#986900', dark: '#7C5600' },
         bark: '#3E352D',
       },
       fontFamily: {
-        // Headings: MADE Kenfolg (served from /fonts), a classic display serif; Inter carries the text.
+        // Headings: MADE Kenfolg (the original, heavier cut, served from /fonts); Inter carries the text.
         display: ['"Kenfolg"', 'Georgia', 'serif'],
         sans: ['"Inter"', 'system-ui', 'sans-serif'],
       },

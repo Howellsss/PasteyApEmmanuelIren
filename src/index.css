@@ -28,7 +28,7 @@
   }
 
   ::selection {
-    background-color: #6E1717;
+    background-color: #986900;
     color: #F3EEE8;
   }
 
@@ -199,9 +199,9 @@
 
 /* ── Creative Expression accordion (scoped) ────────────────────────────── */
 .ce-section {
-  /* The page's one light chapter (bone). */
-  background-color: #EEE6DA;
-  color: #13100E;
+  /* The page's navy feature chapter. */
+  background-color: #002435;
+  color: #F3EEE8;
   /* Matches the home page section rhythm: 96px desktop, 64px tablet, 56px phone. */
   padding: 96px 24px;
 }
@@ -227,12 +227,12 @@
   cursor: pointer;
   transition: flex-grow 0.75s cubic-bezier(0.22, 1, 0.36, 1),
               box-shadow 0.5s ease;
-  background: #13100E;
+  background: #001B29;
 }
 .ce-card.is-active {
   flex-grow: 2.6;
   /* A single accent rule along the bottom marks the open card. */
-  box-shadow: inset 0 -3px 0 #6E1717;
+  box-shadow: inset 0 -3px 0 #986900;
 }
 .ce-card-image {
   position: absolute;
@@ -262,8 +262,8 @@
   right: 18px;
   width: 34px;
   height: 34px;
-  border-top: 1.5px solid var(--ce-accent, #DF584C);
-  border-right: 1.5px solid var(--ce-accent, #DF584C);
+  border-top: 1.5px solid var(--ce-accent, #C08A1E);
+  border-right: 1.5px solid var(--ce-accent, #C08A1E);
   opacity: 0;
   transition: opacity 0.5s ease 0.1s;
 }
@@ -297,7 +297,7 @@
   font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--ce-accent, #DF584C);
+  color: var(--ce-accent, #C08A1E);
   margin: 0;
 }
 .ce-card-title {
@@ -388,16 +388,16 @@
   width: 44px;
   height: 44px;
   border-radius: 4px;
-  border: 1px solid rgba(19, 16, 14, 0.25);
+  border: 1px solid rgba(243, 238, 232, 0.25);
   background: transparent;
-  color: #13100E;
+  color: #F3EEE8;
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 .ce-nav:hover {
-  background: #13100E;
+  background: #986900;
   color: #F3EEE8;
-  border-color: #13100E;
+  border-color: #986900;
 }
 .ce-dots {
   display: flex;
@@ -409,7 +409,7 @@
   height: 8px;
   border-radius: 50%;
   border: none;
-  background: rgba(19, 16, 14, 0.25);
+  background: rgba(243, 238, 232, 0.25);
   cursor: pointer;
   padding: 0;
   transition: width 0.4s ease, background 0.3s ease;
@@ -417,7 +417,7 @@
 .ce-dot.is-active {
   width: 26px;
   border-radius: 999px;
-  background: #13100E;
+  background: #C08A1E;
 }
 
 @media (max-width: 1023px) {

@@ -11,8 +11,8 @@ interface DisplayHeadingProps {
   accent?: string;
   /** Overrides the accent colour class for a specific heading (default: the brand red). */
   accentClassName?: string;
-  /** dark: the default near-black sections; light: the bone chapter. */
-  tone?: 'dark' | 'light';
+  /** dark: the default near-black sections; light: the navy feature chapter; gold: the gold band. */
+  tone?: 'dark' | 'light' | 'gold';
   size?: 'lg' | 'md' | 'sm';
   align?: 'left' | 'center';
   className?: string;
@@ -46,7 +46,7 @@ export function DisplayHeading({
         className={cn(
           'font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance',
           SIZES[size],
-          tone === 'light' ? 'text-ink' : 'text-cream',
+          'text-cream',
           centered ? 'mx-auto max-w-4xl' : 'max-w-3xl'
         )}
       >

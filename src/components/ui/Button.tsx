@@ -3,8 +3,8 @@ import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  /** primary/secondary sit on dark grounds; the -light variants sit on the bone chapter. */
-  variant?: 'primary' | 'secondary' | 'ghost' | 'primary-light' | 'secondary-light' | 'brand' | 'quiet';
+  /** primary/secondary sit on dark grounds; -light on the navy chapter; ink/on-gold on the gold band. */
+  variant?: 'primary' | 'secondary' | 'ghost' | 'primary-light' | 'secondary-light' | 'brand' | 'quiet' | 'ink' | 'on-gold';
   size?: 'md' | 'lg';
   children: ReactNode;
   withArrow?: boolean;
@@ -25,11 +25,14 @@ export function Button({
     primary: 'bg-cream text-ink font-semibold hover:bg-white',
     secondary: 'bg-transparent text-cream border border-cream/30 hover:border-cream',
     ghost: 'bg-transparent text-cream hover:text-accent',
-    'primary-light': 'bg-ink text-cream font-semibold hover:bg-ink-2',
-    'secondary-light': 'bg-transparent text-ink border border-ink/30 hover:border-ink',
-    // Hero pair: deep brand red fill, and a quiet dark outline beside it.
+    'primary-light': 'bg-cream text-ink font-semibold hover:bg-white',
+    'secondary-light': 'bg-transparent text-cream border border-cream/30 hover:border-cream',
+    // Hero pair: gold fill, and a quiet dark outline beside it.
     brand: 'bg-brand text-cream hover:bg-brand-dark',
     quiet: 'bg-transparent text-cream border border-bark hover:border-cream',
+    // The gold band: an ink button and a cream outline.
+    ink: 'bg-ink text-cream font-semibold hover:bg-ink-2',
+    'on-gold': 'bg-transparent text-cream border border-cream/70 hover:border-cream',
   };
 
   const sizes = {

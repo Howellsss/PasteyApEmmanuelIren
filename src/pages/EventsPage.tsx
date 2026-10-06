@@ -200,16 +200,16 @@ export function EventsPage() {
       </section>
 
       {/* SPEAKING / INVITATION CTA */}
-      <section className="py-24 lg:py-36 bg-bone overflow-hidden">
+      <section className="py-24 lg:py-36 bg-navy overflow-hidden">
         <div className="container-editorial">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-8">
               <Reveal>
                 <ChapterMarker tone="light" number="03" label="Speaking Engagements" />
-                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-ink mb-6">
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   Want to invite Emmanuel to minister at your gathering?
                 </h2>
-                <p className="text-lg text-umber leading-relaxed max-w-xl text-pretty">
+                <p className="text-lg text-mist leading-relaxed max-w-xl text-pretty">
                   Submit an invitation for a speaking engagement, conference, or
                   interview. Each request is reviewed carefully.
                 </p>

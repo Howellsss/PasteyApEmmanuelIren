@@ -253,11 +253,11 @@ export function MinistryPage() {
       </section>
 
       {/* CLOSING STATEMENT */}
-      <section className="py-24 lg:py-36 bg-bone">
+      <section className="py-24 lg:py-36 bg-navy">
         <div className="container-editorial text-center">
           <Reveal>
             <ChapterMarker tone="light" label="One Calling" centered className="mb-8" />
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-7xl leading-[0.98] tracking-[-0.01em] text-ink text-balance">
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-7xl leading-[0.98] tracking-[-0.01em] text-cream text-balance">
               Different platforms.<br />
               Same conviction.<br />
               <span className="text-brand">One Gospel.</span>

@@ -470,7 +470,7 @@ export function AboutPage() {
       </section>
 
       {/* FAMILY */}
-      <section className="py-24 lg:py-36 bg-bone">
+      <section className="py-24 lg:py-36 bg-navy">
         <div className="container-editorial">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             <div className="lg:col-span-5">
@@ -490,10 +490,10 @@ export function AboutPage() {
             <div className="lg:col-span-6 lg:col-start-7">
               <Reveal delay={100}>
                 <ChapterMarker tone="light" number="06" label="Family" />
-                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-ink mb-6">
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
                   A life grounded in home.
                 </h2>
-                <div className="space-y-4 text-umber leading-relaxed">
+                <div className="space-y-4 text-mist leading-relaxed">
                   <p>
                     Emmanuel Iren married Laju Iren (née Arenyeka) in November 2014.
                     Together they are parents to three daughters and one son.

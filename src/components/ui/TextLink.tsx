@@ -6,7 +6,7 @@ interface TextLinkProps {
   children: ReactNode;
   href?: string;
   className?: string;
-  /** accent: red link; plain: cream link with a red arrow; light: ink link for the bone chapter. */
+  /** accent: gold link; plain: cream link with a gold arrow; light: cream link for the navy chapter. */
   tone?: 'accent' | 'plain' | 'light';
   withArrow?: boolean;
 }
@@ -14,7 +14,7 @@ interface TextLinkProps {
 const TONES = {
   accent: 'text-accent hover:text-cream',
   plain: 'text-cream hover:text-accent',
-  light: 'text-ink hover:text-accent',
+  light: 'text-cream hover:text-accent',
 };
 
 /** Inline arrow link. Without `href` it renders a span, for use inside a router <Link>. */
