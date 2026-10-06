@@ -9,6 +9,15 @@ import { MinistryPage } from '@/pages/MinistryPage';
 import { EventsPage } from '@/pages/EventsPage';
 import { InvitePage } from '@/pages/InvitePage';
 import { ContactPage } from '@/pages/ContactPage';
+import {
+  ArchivePage,
+  BooksPage,
+  IrensPage,
+  MediaOverviewPage,
+  MessagesPage,
+  ReelsPage,
+  ResourcesPage,
+} from '@/pages/MediaPages';
 
 const SITE = 'Apostle Emmanuel Iren';
 
@@ -28,6 +37,34 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   '/ministry': {
     title: `Ministry — ${SITE}`,
     description: 'Celebration Church International, Manifest, Triumph30, and Outburst — one calling, many expressions.',
+  },
+  '/media': {
+    title: `Media — ${SITE}`,
+    description: 'Sermons, reels, resources, books and family — the message of Apostle Emmanuel Iren in every form.',
+  },
+  '/media/reels': {
+    title: `Reels — ${SITE}`,
+    description: 'Short moments from recent messages by Apostle Emmanuel Iren.',
+  },
+  '/media/messages': {
+    title: `Messages — ${SITE}`,
+    description: 'Recent sermons and teachings by Apostle Emmanuel Iren, to watch in full.',
+  },
+  '/media/resources': {
+    title: `Message Resources — ${SITE}`,
+    description: 'Sermon notes, scripture references, discussion guides and transcripts, shared on request.',
+  },
+  '/media/the-irens': {
+    title: `The Irens — ${SITE}`,
+    description: 'Emmanuel and Laju Iren, and the family beneath the public work.',
+  },
+  '/media/books': {
+    title: `The Books — ${SITE}`,
+    description: 'Six books by Emmanuel Iren on leadership, purpose, grace, love, discernment and prayer.',
+  },
+  '/media/archive': {
+    title: `Archive — ${SITE}`,
+    description: 'The series, programmes, podcasts and gatherings behind the teaching of Apostle Emmanuel Iren.',
   },
   '/events': {
     title: `Events — ${SITE}`,
@@ -67,6 +104,13 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/teaching" element={<TeachingPage />} />
         <Route path="/ministry" element={<MinistryPage />} />
+        <Route path="/media" element={<MediaOverviewPage />} />
+        <Route path="/media/reels" element={<ReelsPage />} />
+        <Route path="/media/messages" element={<MessagesPage />} />
+        <Route path="/media/resources" element={<ResourcesPage />} />
+        <Route path="/media/the-irens" element={<IrensPage />} />
+        <Route path="/media/books" element={<BooksPage />} />
+        <Route path="/media/archive" element={<ArchivePage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/invite" element={<InvitePage />} />
         <Route path="/contact" element={<ContactPage />} />

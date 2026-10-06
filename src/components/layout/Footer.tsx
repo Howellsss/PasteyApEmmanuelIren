@@ -6,6 +6,7 @@ const FOOTER_LINKS = {
     { label: 'Home', to: '/' },
     { label: 'About', to: '/about' },
     { label: 'Teaching', to: '/teaching' },
+    { label: 'Media', to: '/media' },
     { label: 'Events', to: '/events' },
   ],
   Ministry: [

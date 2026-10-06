@@ -7,6 +7,7 @@ import { TextLink } from '@/components/ui/TextLink';
 import { DisplayHeading } from '@/components/ui/DisplayHeading';
 import { CreativeAccordion } from '@/components/ui/CreativeAccordion';
 import { MediaReveal } from '@/components/ui/MediaReveal';
+import { messages as latestTeachings } from '@/data/media';
 import { useReveal } from '@/lib/useReveal';
 import { cn } from '@/lib/cn';
 import { attachHeroVideo, detachHeroVideo, setHeroInView } from '@/lib/heroSound';
@@ -18,59 +19,6 @@ const CREATIVE_IMAGE = '/images/creative/e5.webp';
 const MINISTRY_IMAGE = '/images/ministry/e6.webp';
 const TEACHING_IMAGE_2 = '/images/teachings/image copy.webp';
 const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.webp';
-
-const latestTeachings = [
-  {
-    series: 'The Word',
-    title: 'Vigour: Stewarding the Body',
-    description: 'A life-changing teaching on how God calls us to honour Him through the careful stewardship of our physical bodies.',
-    date: 'September 2025',
-    type: 'Video',
-    image: '/images/teachings/image copy 3.webp',
-    imagePosition: 'center center',
-    watchUrl: 'https://www.youtube.com/watch?v=iZAt3VZMJAI',
-  },
-  {
-    series: 'The Word',
-    title: "God's Good Design",
-    description: "Discover the intentionality behind God's design for your life — purpose, pattern, and the beauty of His sovereign plan.",
-    date: 'September 2025',
-    type: 'Video',
-    image: '/images/teachings/image copy 4.webp',
-    imagePosition: 'center center',
-    watchUrl: 'https://www.youtube.com/live/qsTHhh7f8pQ',
-  },
-  {
-    series: 'The Word',
-    title: 'The Grace of Giving',
-    description: 'Understanding giving not as an obligation but as a grace — a reflection of the generosity God has already shown us.',
-    date: 'September 2025',
-    type: 'Video',
-    image: '/images/teachings/image copy 5.webp',
-    imagePosition: 'center center',
-    watchUrl: 'https://youtu.be/53oy7e5CTKQ',
-  },
-  {
-    series: 'The Word',
-    title: 'The God Who Blesses',
-    description: 'A powerful message on the nature of God as the One who blesses — and what it means to walk in His covenant promises.',
-    date: 'September 2025',
-    type: 'Video',
-    image: '/images/teachings/god-who-blesses.webp',
-    imagePosition: 'center 22%',
-    watchUrl: 'https://youtu.be/WWDlFiYpBOY',
-  },
-  {
-    series: 'The Word',
-    title: 'Fervent in Spirit',
-    description: 'Rekindling the flame of spiritual fervency and learning how to maintain a burning heart in every season of life.',
-    date: 'September 2025',
-    type: 'Video',
-    image: '/images/teachings/fervent-in-spirit.webp',
-    imagePosition: 'center 30%',
-    watchUrl: 'https://www.youtube.com/watch?v=x71RhblDHdE',
-  },
-];
 
 const featuredTeaching = {
   image: TEACHING_IMAGE,

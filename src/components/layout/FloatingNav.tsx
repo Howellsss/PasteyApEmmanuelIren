@@ -1,14 +1,18 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { ArrowRight, Menu, Volume2, VolumeX, X } from 'lucide-react';
+import { ChevronDown, Menu, Volume2, VolumeX, X } from 'lucide-react';
 import { cn } from '@/lib/cn';
+import { mediaSections } from '@/data/media';
 import { toggleHeroSound, useHeroSound } from '@/lib/heroSound';
 
-const NAV_ITEMS = [
+type NavItem = { label: string; path: string; children?: { label: string; path: string }[] };
+
+const NAV_ITEMS: NavItem[] = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
   { label: 'Teaching', path: '/teaching' },
   { label: 'Ministry', path: '/ministry' },
+  { label: 'Media', path: '/media', children: mediaSections },
   { label: 'Events', path: '/events' },
   { label: 'Invite', path: '/invite' },
 ];
@@ -22,6 +26,9 @@ export function FloatingNav() {
   const labelRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [bar, setBar] = useState<{ left: number; top: number; width: number } | null>(null);
+  // Desktop: which dropdown is open. Phone: whether the Media group is expanded in the menu card.
+  const [dropdownPath, setDropdownPath] = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState(false);
 
   const activeIndex = NAV_ITEMS.findIndex((item) =>
     item.path === '/' ? location.pathname === '/' : location.pathname.startsWith(item.path)
@@ -57,7 +64,19 @@ export function FloatingNav() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setDropdownPath(null);
+    setMobileExpanded(location.pathname.startsWith('/media'));
   }, [location.pathname]);
+
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      setDropdownPath(null);
+      setMenuOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
@@ -93,22 +112,38 @@ export function FloatingNav() {
           <ul
             ref={listRef}
             className="relative hidden lg:flex flex-1 items-center justify-evenly gap-1 px-4"
-            onMouseLeave={() => setHoveredIndex(null)}
+            onMouseLeave={() => {
+              setHoveredIndex(null);
+              setDropdownPath(null);
+            }}
           >
             {NAV_ITEMS.map((item, index) => (
               <li
                 key={item.path}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onFocus={() => setHoveredIndex(index)}
-                onBlur={() => setHoveredIndex(null)}
+                className={cn(item.children && 'relative')}
+                onMouseEnter={() => {
+                  setHoveredIndex(index);
+                  setDropdownPath(item.children ? item.path : null);
+                }}
+                onFocus={() => {
+                  setHoveredIndex(index);
+                  if (item.children) setDropdownPath(item.path);
+                }}
+                onBlur={(event) => {
+                  if (event.currentTarget.contains(event.relatedTarget as Node | null)) return;
+                  setHoveredIndex(null);
+                  setDropdownPath(null);
+                }}
               >
                 <NavLink
                   to={item.path}
                   end={item.path === '/'}
+                  aria-haspopup={item.children ? 'true' : undefined}
+                  aria-expanded={item.children ? dropdownPath === item.path : undefined}
                   className={cn(
-                    'relative px-3 py-2 text-base font-medium rounded-pill transition-colors duration-300',
+                    'relative inline-flex items-center gap-1 px-3 py-2 text-base font-medium rounded-pill transition-colors duration-300',
                     'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink',
-                    // The red travels with the underline: only the link it sits under is highlighted.
+                    // The gold travels with the underline: only the link it sits under is highlighted.
                     index === barIndex ? 'text-accent' : 'text-cream'
                   )}
                 >
@@ -120,7 +155,41 @@ export function FloatingNav() {
                   >
                     {item.label}
                   </span>
+                  {item.children && (
+                    <ChevronDown
+                      aria-hidden="true"
+                      className={cn('h-4 w-4 transition-transform duration-300', dropdownPath === item.path && 'rotate-180')}
+                    />
+                  )}
                 </NavLink>
+                {item.children && (
+                  // The padding bridges the gap to the panel so the pointer can travel down without closing it.
+                  <div
+                    className={cn(
+                      'absolute left-1/2 top-full z-10 -translate-x-1/2 pt-7 transition-all duration-300 ease-out-quart',
+                      dropdownPath === item.path ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-1 opacity-0'
+                    )}
+                  >
+                    <ul className="min-w-[15rem] rounded-2xl border border-white/10 bg-ink-2 p-2 shadow-2xl shadow-black/50">
+                      {item.children.map((child) => (
+                        <li key={child.path}>
+                          <NavLink
+                            to={child.path}
+                            end
+                            className={({ isActive }) =>
+                              cn(
+                                'block rounded-xl px-4 py-2.5 text-[0.9375rem] transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+                                isActive ? 'bg-white/5 text-accent' : 'text-cream hover:bg-white/5 hover:text-accent'
+                              )
+                            }
+                          >
+                            {child.label}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </li>
             ))}
             <span
@@ -178,62 +247,100 @@ export function FloatingNav() {
         </div>
       </nav>
 
-      {/* Mobile menu overlay */}
+      {/* Phone menu: a floating card over the blurred page, with the current page highlighted. */}
       <div
         className={cn(
-          'fixed inset-0 z-50 lg:hidden transition-all duration-500 ease-out-quart',
+          'fixed inset-0 z-[60] lg:hidden transition-opacity duration-300 ease-out-quart',
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         )}
+        aria-hidden={!menuOpen}
       >
-        <div
-          className="absolute inset-0 bg-ink-2/95 backdrop-blur-xl"
-          onClick={() => setMenuOpen(false)}
-        />
-        <div
-          className={cn(
-            'absolute right-0 top-0 bottom-0 w-full max-w-sm bg-ink flex flex-col transition-transform duration-500 ease-out-quart',
-            menuOpen ? 'translate-x-0' : 'translate-x-full'
-          )}
-        >
-          <div className="flex items-center justify-between px-6 py-5 border-b border-line">
-            <span className="text-eyebrow uppercase tracking-[0.2em] text-ash">Menu</span>
+        <div className="absolute inset-0 bg-ink/60 backdrop-blur-md" onClick={() => setMenuOpen(false)} />
+        <div className="relative flex h-full flex-col overflow-y-auto px-5 pb-8 pt-5">
+          <div className="flex items-center justify-between">
+            <NavLink to="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-ink ring-1 ring-white/15">
+                <img src="/logo-mark.png" alt="" className="h-5 w-auto" />
+              </span>
+              <span className="font-display text-2xl text-cream">
+                Emmanuel <span className="text-brand">Iren</span>
+              </span>
+            </NavLink>
             <button
               onClick={() => setMenuOpen(false)}
-              className="flex items-center justify-center w-10 h-10 text-cream rounded-pill hover:bg-surface transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-ink text-cream transition-colors duration-300 hover:bg-ink-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               aria-label="Close menu"
             >
-              <X className="w-5 h-5" />
+              <X className="h-6 w-6" />
             </button>
           </div>
-          <ul className="flex flex-col px-6 py-4 overflow-y-auto">
-            {[...NAV_ITEMS, { label: 'Contact', path: '/contact' }].map((item, index) => (
-              <li key={item.path}>
-                <NavLink
-                  to={item.path}
-                  end={item.path === '/'}
-                  onClick={() => setMenuOpen(false)}
-                  className={({ isActive }) =>
-                    cn(
-                      'flex items-baseline gap-4 border-b border-line py-4 font-sans text-2xl font-extrabold tracking-[-0.03em] transition-colors duration-300 focus:outline-none focus-visible:text-accent',
-                      isActive ? 'text-accent' : 'text-cream hover:text-accent'
-                    )
-                  }
-                >
-                  <span className="text-[0.8125rem] font-semibold tabular-nums tracking-normal text-accent">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                  {item.label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-auto border-t border-line p-6">
+
+          <div
+            className={cn(
+              'mt-6 rounded-[2rem] border border-white/10 bg-ink/95 p-3 shadow-2xl shadow-black/50 transition-all duration-500 ease-out-quart',
+              menuOpen ? 'translate-y-0 scale-100' : '-translate-y-2 scale-[0.98]'
+            )}
+          >
+            <ul className="space-y-1">
+              {NAV_ITEMS.map((item) => {
+                const active = item.path === '/' ? location.pathname === '/' : location.pathname.startsWith(item.path);
+                return (
+                  <li key={item.path}>
+                    <div className={cn('flex items-center rounded-[1.25rem] transition-colors duration-300', active ? 'bg-surface' : 'hover:bg-white/5')}>
+                      <NavLink
+                        to={item.path}
+                        end={item.path === '/'}
+                        onClick={() => setMenuOpen(false)}
+                        className={cn(
+                          'flex-1 px-6 py-4 text-[1.375rem] transition-colors duration-300 focus:outline-none focus-visible:text-accent',
+                          active ? 'text-cream' : 'text-cream/85'
+                        )}
+                      >
+                        {item.label}
+                      </NavLink>
+                      {item.children && (
+                        <button
+                          type="button"
+                          onClick={() => setMobileExpanded((open) => !open)}
+                          aria-expanded={mobileExpanded}
+                          aria-label={mobileExpanded ? 'Hide media pages' : 'Show media pages'}
+                          className="mr-3 flex h-11 w-11 items-center justify-center rounded-full text-cream/85 transition-colors duration-300 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                        >
+                          <ChevronDown className={cn('h-6 w-6 transition-transform duration-300', mobileExpanded && 'rotate-180')} />
+                        </button>
+                      )}
+                    </div>
+                    {item.children && mobileExpanded && (
+                      <ul className="mb-2 ml-6 mt-1 border-l border-line pl-4">
+                        {item.children.map((child) => (
+                          <li key={child.path}>
+                            <NavLink
+                              to={child.path}
+                              end
+                              onClick={() => setMenuOpen(false)}
+                              className={({ isActive }) =>
+                                cn(
+                                  'block rounded-xl px-3 py-2.5 text-lg transition-colors duration-300',
+                                  isActive ? 'text-accent' : 'text-ash hover:text-cream'
+                                )
+                              }
+                            >
+                              {child.label}
+                            </NavLink>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
             <NavLink
-              to="/invite"
+              to="/contact"
               onClick={() => setMenuOpen(false)}
-              className="flex items-center justify-center gap-2.5 rounded-button bg-cream px-6 py-4 text-base font-semibold text-ink transition-colors duration-300 hover:bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="mt-3 block rounded-[1.25rem] bg-brand py-5 text-center text-xl font-semibold text-cream transition-colors duration-300 hover:bg-brand-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
-              Invite Emmanuel <ArrowRight className="h-4 w-4 text-accent" />
+              Get in Touch
             </NavLink>
           </div>
         </div>
