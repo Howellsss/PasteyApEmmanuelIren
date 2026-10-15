@@ -485,3 +485,56 @@
             mask-composite: intersect;
   }
 }
+
+/* ── The Irens photo album ─────────────────────────────────────────────── */
+/* Each photograph opens like a curtain from the bottom while the picture settles from a slow zoom. */
+.album-curtain {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.4s cubic-bezier(0.77, 0, 0.18, 1) var(--album-delay, 0ms);
+}
+.album-img {
+  transform: scale(1.18);
+  transition: transform 2.2s cubic-bezier(0.25, 1, 0.5, 1) var(--album-delay, 0ms);
+}
+.album-frame.is-visible .album-curtain { clip-path: inset(0 0 0 0); }
+.album-frame.is-visible .album-img { transform: scale(1); }
+.album-frame.is-visible:hover .album-img { transform: scale(1.04); transition-duration: 1.2s; transition-delay: 0ms; }
+.album-frame > span:last-child {
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition-delay: calc(var(--album-delay, 0ms) + 700ms);
+}
+.album-frame.is-visible > span:last-child { opacity: 1; transform: none; }
+
+/* Chapter titles rise line by line. */
+.album-title .album-title-line {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.album-title.is-visible .album-title-line { opacity: 1; transform: none; }
+
+/* The quote between chapters: its gold rules draw out from the centre. */
+.album-quote .album-quote-rule { transform: scaleX(0); transition: transform 1.2s cubic-bezier(0.77, 0, 0.18, 1); }
+.album-quote p { opacity: 0; transition: opacity 1.4s ease 300ms; }
+.album-quote.is-visible .album-quote-rule { transform: scaleX(1); }
+.album-quote.is-visible p { opacity: 1; }
+
+/* The film strip drifts endlessly; pointing at it holds it still. */
+@keyframes album-strip { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.album-strip-track { animation: album-strip 90s linear infinite; }
+.album-strip:hover .album-strip-track, .album-strip:focus-within .album-strip-track { animation-play-state: paused; }
+
+/* Photo viewer: each picture fades up as it changes. */
+@keyframes viewer-in { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: none; } }
+.viewer-photo { animation: viewer-in 0.45s cubic-bezier(0.25, 1, 0.5, 1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .album-curtain, .album-img, .album-frame > span:last-child, .album-title .album-title-line,
+  .album-quote .album-quote-rule, .album-quote p {
+    clip-path: none !important; opacity: 1 !important; transform: none !important; transition: none !important;
+  }
+  .album-strip { overflow-x: auto; }
+  .album-strip-track, .viewer-photo { animation: none; }
+}

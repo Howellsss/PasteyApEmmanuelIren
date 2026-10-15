@@ -1,12 +1,14 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { ArrowUpRight, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 import { Button } from '@/components/ui/Button';
 import { TextLink } from '@/components/ui/TextLink';
 import { DisplayHeading } from '@/components/ui/DisplayHeading';
 import { MediaReveal } from '@/components/ui/MediaReveal';
 import { PlayBadge, WatchLink } from '@/components/teaching/TeachingSections';
+import { IrensAlbum } from '@/components/media/IrensAlbum';
+import { PhotoViewer } from '@/components/media/PhotoViewer';
 import {
   books,
   galleryPhotos,
@@ -17,12 +19,11 @@ import {
 } from '@/data/media';
 import { cn } from '@/lib/cn';
 
-const FAMILY_IMAGE = '/images/about/image.webp';
 const REEL_POSTER = '/images/creative/e5.webp';
 const SECTION_IMAGES: Record<string, string> = {
   '/media/reels': '/images/creative/image copy 3.webp',
   '/media/gallery': '/images/hero/image copy 11.webp',
-  '/media/the-irens': FAMILY_IMAGE,
+  '/media/the-irens': '/images/irens/irens-13.webp',
   '/media/books': '/images/creative/image copy 2.webp',
 };
 
@@ -307,29 +308,6 @@ export function GalleryPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const photos = filter === 'All' ? galleryPhotos : galleryPhotos.filter((p) => p.category === filter);
 
-  const step = useCallback(
-    (delta: number) => setOpenIndex((i) => (i === null ? i : (i + delta + photos.length) % photos.length)),
-    [photos.length]
-  );
-
-  // The viewer: Escape closes, arrow keys move, and the page behind does not scroll.
-  useEffect(() => {
-    if (openIndex === null) return;
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpenIndex(null);
-      if (event.key === 'ArrowRight') step(1);
-      if (event.key === 'ArrowLeft') step(-1);
-    };
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', onKey);
-    return () => {
-      document.body.style.overflow = '';
-      window.removeEventListener('keydown', onKey);
-    };
-  }, [openIndex, step]);
-
-  const open = openIndex === null ? null : photos[openIndex];
-
   return (
     <div className="min-h-screen overflow-x-clip bg-ink">
       <MediaHero
@@ -380,40 +358,7 @@ export function GalleryPage() {
         </div>
       </section>
 
-      {open && (
-        <div role="dialog" aria-modal="true" aria-label={open.alt} className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/95 p-4 backdrop-blur-sm sm:p-10">
-          <button type="button" className="absolute inset-0" aria-label="Close" onClick={() => setOpenIndex(null)} />
-          <img src={open.src} alt={open.alt} className="relative max-h-full max-w-full rounded-soft object-contain shadow-2xl shadow-black/60" />
-          <button
-            type="button"
-            onClick={() => setOpenIndex(null)}
-            aria-label="Close"
-            className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-ink text-cream hover:bg-ink-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:right-6 sm:top-6"
-          >
-            <X className="h-5 w-5" />
-          </button>
-          {[
-            { delta: -1, label: 'Previous photograph', Icon: ChevronLeft, side: 'left-3 sm:left-6' },
-            { delta: 1, label: 'Next photograph', Icon: ChevronRight, side: 'right-3 sm:right-6' },
-          ].map(({ delta, label, Icon, side }) => (
-            <button
-              key={label}
-              type="button"
-              onClick={() => step(delta)}
-              aria-label={label}
-              className={cn(
-                'absolute top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-ink/80 text-cream hover:bg-brand focus:outline-none focus-visible:ring-2 focus-visible:ring-accent',
-                side
-              )}
-            >
-              <Icon className="h-6 w-6" />
-            </button>
-          ))}
-          <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-ash tabular-nums">
-            {(openIndex ?? 0) + 1} / {photos.length}
-          </p>
-        </div>
-      )}
+      <PhotoViewer photos={photos} index={openIndex} onChange={setOpenIndex} />
 
       <MoreFromMedia current="/media/gallery" />
     </div>
@@ -431,47 +376,36 @@ export function IrensPage() {
         intro="Emmanuel and Laju Iren, and the family that sits quietly beneath the public work."
       />
       <MediaSubnav />
-      <section className="py-14 md:py-16 lg:py-24">
-        <div className="container-wide">
-          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="lg:col-span-6">
-              <MediaReveal frameClassName="aspect-[4/5] rounded-soft bg-surface sm:aspect-[4/3]">
-                <img
-                  src={FAMILY_IMAGE}
-                  alt="Emmanuel Iren"
-                  className="media-reveal-img h-full w-full object-cover"
-                  style={{ objectPosition: 'center 30%' }}
-                />
-              </MediaReveal>
-            </div>
-            <div className="lg:col-span-6">
-              <Reveal variant="right">
-                <DisplayHeading number="01" eyebrow="Family" title="Emmanuel" accent="& Laju Iren." size="sm" className="mb-6" />
+      <section className="pt-14 md:pt-16 lg:pt-24">
+        <div className="container-wide grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+          <div className="lg:col-span-6">
+            <Reveal variant="left">
+              <DisplayHeading number="01" eyebrow="Family" title="Emmanuel" accent="& Laju Iren." size="sm" className="mb-6" />
+            </Reveal>
+            <div className="space-y-5 leading-relaxed text-ash">
+              <Reveal variant="left" delay={150} as="p">
+                Emmanuel Iren married Laju Iren (née Arenyeka) in November 2014. Together they are parents to three daughters and one son.
               </Reveal>
-              <div className="space-y-5 leading-relaxed text-ash">
-                <Reveal variant="right" delay={150} as="p">
-                  Emmanuel Iren married Laju Iren (née Arenyeka) in November 2014. Together they are parents to three daughters and one son.
-                </Reveal>
-                <Reveal variant="right" delay={300} as="p">
-                  The family remains a quiet foundation beneath the public work — a reminder that the ministry, for all its reach, is carried by a man who is also a husband and a father.
-                </Reveal>
-              </div>
-              <Reveal variant="right" delay={450} className="mt-8 grid grid-cols-3 border-t border-line pt-6">
-                {[
-                  ['2014', 'Married'],
-                  ['4', 'Children'],
-                  ['1', 'Home, first'],
-                ].map(([value, label]) => (
-                  <div key={label}>
-                    <p className="font-display text-3xl text-brand">{value}</p>
-                    <p className="mt-1 text-eyebrow uppercase tracking-[0.16em] text-ash">{label}</p>
-                  </div>
-                ))}
+              <Reveal variant="left" delay={300} as="p">
+                The family remains a quiet foundation beneath the public work — a reminder that the ministry, for all its reach, is carried by a man who is also a husband and a father.
               </Reveal>
             </div>
           </div>
+          <Reveal variant="right" delay={450} className="grid grid-cols-3 self-end border-t border-line pt-6 lg:col-span-5 lg:col-start-8">
+            {[
+              ['2014', 'Married'],
+              ['4', 'Children'],
+              ['1', 'Home, first'],
+            ].map(([value, label]) => (
+              <div key={label}>
+                <p className="font-display text-3xl text-brand">{value}</p>
+                <p className="mt-1 text-eyebrow uppercase tracking-[0.16em] text-ash">{label}</p>
+              </div>
+            ))}
+          </Reveal>
         </div>
       </section>
+      <IrensAlbum />
       <section className="bg-ink-2 py-14 md:py-16 lg:py-24">
         <div className="container-wide grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
           <Reveal variant="left" className="lg:col-span-7">
