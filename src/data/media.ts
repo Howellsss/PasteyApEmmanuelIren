@@ -43,7 +43,7 @@ export const messages: Message[] = [
     date: 'September 2025',
     type: 'Video',
     image: '/images/teachings/grace-of-giving.webp',
-    imagePosition: 'center 20%',
+    imagePosition: 'center 34%',
     watchUrl: 'https://youtu.be/53oy7e5CTKQ',
   },
   {
@@ -63,7 +63,7 @@ export const messages: Message[] = [
     date: 'September 2025',
     type: 'Video',
     image: '/images/teachings/fervent-in-spirit-2.webp',
-    imagePosition: 'center 15%',
+    imagePosition: 'center 36%',
     watchUrl: 'https://www.youtube.com/watch?v=x71RhblDHdE',
   },
 ];
