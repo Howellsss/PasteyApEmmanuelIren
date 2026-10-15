@@ -30,6 +30,7 @@ const MUSIC_IMG = CREATIVE_IMAGE;
 const FILM_IMG = TEACHING_IMAGE_2;
 const LEADERSHIP_IMG = TEACHING_IMAGE_3;
 const FAMILY_IMG = ABOUT_IMAGE;
+const JOURNEY_IMG = '/images/about/journey-interview.webp';
 
 const milestones: TimelineMilestone[] = [
   {
@@ -231,29 +232,35 @@ export function AboutPage() {
       </section>
 
       {/* THE JOURNEY */}
-      <section className="py-24 lg:py-36">
-        <div className="container-editorial">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
-            <div className="lg:col-span-7">
-              <Reveal>
-                <ChapterMarker number="01" label="The Journey" />
-                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream">
-                  From a campus fellowship to a global church.
-                </h2>
-              </Reveal>
-            </div>
-            <div className="lg:col-span-4 lg:col-start-9">
-              <Reveal delay={120}>
-                <p className="text-lg text-ash leading-relaxed text-pretty">
-                  The story of Emmanuel Iren's ministry is one of steady, faithful
-                  growth — from a small gathering of students to a church with branches
-                  across four countries.
-                </p>
-              </Reveal>
-            </div>
+      <section className="relative overflow-hidden py-24 lg:py-36">
+        {/* The interview photo sits inside the background: its black blends into the page and its edges fade out. */}
+        <div className="journey-photo pointer-events-none absolute bg-ink inset-x-0 top-0 h-[34rem] sm:h-[40rem] lg:inset-y-0 lg:left-auto lg:right-0 lg:h-auto lg:w-[52%]" aria-hidden="true">
+          <img
+            src={JOURNEY_IMG}
+            alt=""
+            loading="lazy"
+            className="h-full w-full object-cover object-[50%_22%] lg:object-[50%_30%] grayscale mix-blend-lighten opacity-70 lg:opacity-75"
+          />
+          <div className="absolute inset-0 bg-brand/10 mix-blend-color" />
+        </div>
+        <div className="container-editorial relative">
+          <div className="max-w-3xl pt-72 sm:pt-80 lg:pt-0 lg:max-w-[46%] mb-12 lg:mb-14">
+            <Reveal>
+              <ChapterMarker number="01" label="The Journey" />
+              <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream">
+                From a campus fellowship to a global church.
+              </h2>
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="mt-8 text-lg text-cream/85 leading-relaxed text-pretty">
+                The story of Emmanuel Iren's ministry is one of steady, faithful
+                growth — from a small gathering of students to a church with branches
+                across four countries.
+              </p>
+            </Reveal>
           </div>
 
-          <div className="space-y-6 max-w-3xl">
+          <div className="space-y-6 max-w-3xl lg:max-w-[46%]">
             <Reveal>
               <p className="text-lg text-ash leading-relaxed">
                 In 2008, as an undergraduate at Covenant University in Ota, Nigeria,
