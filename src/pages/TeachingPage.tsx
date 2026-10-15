@@ -1,251 +1,83 @@
-import { useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Play,
-  Clock,
   Headphones,
   Search,
   ArrowUpRight,
   Sparkles,
 } from 'lucide-react';
 import { cn } from '@/lib/cn';
+import { sermons, type Sermon, type SermonTag } from '@/data/sermons';
 import { Reveal } from '@/components/ui/Reveal';
 import { ChapterMarker } from '@/components/ui/ChapterMarker';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Button } from '@/components/ui/Button';
 import { LatestMessages, SeriesList, StudyNotes } from '@/components/teaching/TeachingSections';
 
-const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.webp';
-const ABOUT_IMAGE = '/images/about/image.webp';
-const CREATIVE_IMAGE = '/images/creative/e5.webp';
-const MINISTRY_IMAGE = '/images/ministry/e6.webp';
 const TEACHING_IMAGE_2 = '/images/teachings/image copy.webp';
 const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.webp';
 
-const PULPIT_1 = TEACHING_IMAGE_2;
-const PULPIT_2 = TEACHING_IMAGE_3;
-const WORSHIP_1 = TEACHING_IMAGE;
-const CONGREGATION_1 = MINISTRY_IMAGE;
 const PODCAST_IMG = TEACHING_IMAGE_3;
 const BIBLE_IMG = TEACHING_IMAGE_2;
 
-type Category = 'All' | 'Sermons' | 'Series' | 'Podcast' | 'Bible Teaching';
+type Category = 'All' | 'Faith & Prayer' | 'Purpose & Living' | 'Marriage & Love' | 'Conferences';
 type SortOption = 'Newest' | 'Popular' | 'Oldest';
 
-interface TeachingItem {
-  id: number;
-  title: string;
-  category: Exclude<Category, 'All'>;
-  series: string;
-  date: string;
-  dateValue: number;
-  duration: string;
-  description: string;
-  image: string;
-  plays: number;
+const CATEGORIES: Category[] = ['All', 'Faith & Prayer', 'Purpose & Living', 'Marriage & Love', 'Conferences'];
+const CATEGORY_TAG: Record<Exclude<Category, 'All'>, SermonTag> = {
+  'Faith & Prayer': 'Faith',
+  'Purpose & Living': 'Purpose',
+  'Marriage & Love': 'Marriage',
+  Conferences: 'Conferences',
+};
+const SORT_OPTIONS: SortOption[] = ['Newest', 'Popular', 'Oldest'];
+// Messages shown at first, and added by each "Load more".
+const PAGE_SIZE = 24;
+
+function formatViews(views: number) {
+  if (views >= 1_000_000) return `${+(views / 1_000_000).toFixed(1)}M views`;
+  if (views >= 1_000) return `${+(views / 1_000).toFixed(views >= 10_000 ? 0 : 1)}K views`;
+  return `${views} views`;
 }
 
-const teachings: TeachingItem[] = [
-  {
-    id: 1,
-    title: 'Grace That Teaches Us How to Live',
-    category: 'Sermons',
-    series: 'The Gospel of Grace',
-    date: 'Sep 12, 2026',
-    dateValue: 20260912,
-    duration: '42 min',
-    description:
-      'A clear and practical teaching on the grace of God — not as an excuse for sin, but as the instruction for a life that honours God.',
-    image: TEACHING_IMAGE,
-    plays: 124000,
-  },
-  {
-    id: 2,
-    title: 'What It Means to Be Led by the Spirit',
-    category: 'Sermons',
-    series: 'Faith in Practice',
-    date: 'Sep 05, 2026',
-    dateValue: 20260905,
-    duration: '34 min',
-    description:
-      'How does the Spirit actually guide believers? A careful walk through Romans 8 and the practical evidence of a Spirit-led life.',
-    image: ABOUT_IMAGE,
-    plays: 98000,
-  },
-  {
-    id: 3,
-    title: 'The Gospel of Grace — Full Series',
-    category: 'Series',
-    series: 'The Gospel of Grace',
-    date: 'Aug 2026',
-    dateValue: 20260801,
-    duration: '6 parts',
-    description:
-      'A six-part series working through the doctrine of grace — from justification to the daily obedience it produces.',
-    image: MINISTRY_IMAGE,
-    plays: 310000,
-  },
-  {
-    id: 4,
-    title: 'The Creative Calling — A Conversation',
-    category: 'Podcast',
-    series: 'Endless Life',
-    date: 'Aug 29, 2026',
-    dateValue: 20260829,
-    duration: '52 min',
-    description:
-      'A conversation about making with purpose — why excellence in creative work is a matter of faith, not preference.',
-    image: CREATIVE_IMAGE,
-    plays: 76000,
-  },
-  {
-    id: 5,
-    title: 'Purpose: Discovering, Developing, Deploying',
-    category: 'Bible Teaching',
-    series: 'Purposefully',
-    date: 'Aug 22, 2026',
-    dateValue: 20260822,
-    duration: '46 min',
-    description:
-      'A teaching drawn from the book Purposefully on the three movements of a purposeful life — discovery, development, and deployment.',
-    image: PULPIT_1,
-    plays: 142000,
-  },
-  {
-    id: 6,
-    title: 'Faith That Works — Triumph30 Live',
-    category: 'Sermons',
-    series: 'Triumph30',
-    date: 'Aug 15, 2026',
-    dateValue: 20260815,
-    duration: '38 min',
-    description:
-      'A live teaching during Triumph30 on the kind of faith that produces evidence — practical, enduring, and rooted in the word.',
-    image: WORSHIP_1,
-    plays: 89000,
-  },
-  {
-    id: 7,
-    title: '100 Days of Discipleship — Week 1',
-    category: 'Series',
-    series: '100 Days of Discipleship',
-    date: 'Aug 10, 2026',
-    dateValue: 20260810,
-    duration: '5 parts',
-    description:
-      'The opening week of the online discipleship programme, covering the foundations of the Christian life and daily Bible study.',
-    image: BIBLE_IMG,
-    plays: 205000,
-  },
-  {
-    id: 8,
-    title: 'Leading Seeks You — A Teaching',
-    category: 'Bible Teaching',
-    series: 'Leading Seeks You',
-    date: 'Aug 03, 2026',
-    dateValue: 20260803,
-    duration: '40 min',
-    description:
-      'A teaching from the book Leading Seeks You on what it means to be found by leadership — and why God seeks leaders before they seek Him.',
-    image: PULPIT_2,
-    plays: 67000,
-  },
-  {
-    id: 9,
-    title: 'The Grace Advantage — Session 1',
-    category: 'Sermons',
-    series: 'The Grace Advantage',
-    date: 'Jul 27, 2026',
-    dateValue: 20260727,
-    duration: '48 min',
-    description:
-      'The opening session of a conference teaching on the advantage grace gives the believer — in suffering, in service, and in everyday decisions.',
-    image: CONGREGATION_1,
-    plays: 115000,
-  },
-  {
-    id: 10,
-    title: 'Endless Life — Episode 42',
-    category: 'Podcast',
-    series: 'Endless Life',
-    date: 'Jul 20, 2026',
-    dateValue: 20260720,
-    duration: '36 min',
-    description:
-      'A short conversation on the daily devotional life — how Triumph30 builds a culture of prayer and Bible study, one day at a time.',
-    image: PODCAST_IMG,
-    plays: 54000,
-  },
-  {
-    id: 11,
-    title: 'Saving Grace — A Verse-by-Verse Study',
-    category: 'Bible Teaching',
-    series: 'Saving Grace',
-    date: 'Jul 13, 2026',
-    dateValue: 20260713,
-    duration: '44 min',
-    description:
-      'A verse-by-verse study through Ephesians 2, examining the grammar of salvation by grace through faith and its practical implications.',
-    image: BIBLE_IMG,
-    plays: 91000,
-  },
-  {
-    id: 12,
-    title: 'Manifest 2026 — Conference Highlights',
-    category: 'Series',
-    series: 'Manifest',
-    date: 'Jul 06, 2026',
-    dateValue: 20260706,
-    duration: '4 parts',
-    description:
-      'Highlights from the Manifest conference — a creative and worship expression drawing together artists, musicians, and teachers.',
-    image: CREATIVE_IMAGE,
-    plays: 178000,
-  },
-];
+/** "3 days ago", "2 months ago", "1 year ago", worked out on the day the page is viewed. */
+function timeAgo(published: string) {
+  const days = Math.max(0, Math.round((Date.now() - new Date(published).getTime()) / 86_400_000));
+  const unit = (n: number, word: string) => `${n} ${word}${n === 1 ? '' : 's'} ago`;
+  if (days < 1) return 'today';
+  if (days < 7) return unit(days, 'day');
+  if (days < 30) return unit(Math.floor(days / 7), 'week');
+  if (days < 365) return unit(Math.floor(days / 30), 'month');
+  return unit(Math.floor(days / 365), 'year');
+}
 
-const CATEGORIES: Category[] = ['All', 'Sermons', 'Series', 'Podcast', 'Bible Teaching'];
-const SORT_OPTIONS: SortOption[] = ['Newest', 'Popular', 'Oldest'];
-
-function TeachingCard({ item, index }: { item: TeachingItem; index: number }) {
+/** One message as YouTube shows it: thumbnail with its length, then the title as written; it opens the video on YouTube. */
+function SermonCard({ sermon }: { sermon: Sermon }) {
   return (
-    <Reveal delay={(index % 3) * 80} className="group cursor-pointer">
-      <div className="relative overflow-hidden rounded-soft aspect-[4/5] bg-surface mb-4">
+    <a
+      href={`https://www.youtube.com/watch?v=${sermon.id}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 focus-visible:ring-offset-ink rounded-md"
+    >
+      <div className="relative aspect-video overflow-hidden rounded-md bg-surface">
         <img
-          src={item.image}
-          alt={item.title}
+          src={`https://i.ytimg.com/vi/${sermon.id}/hqdefault.jpg`}
+          alt=""
           loading="lazy"
-          className="w-full h-full object-cover transition-transform duration-700 ease-out-quart group-hover:scale-[1.03]"
-          style={{ objectPosition: 'center top' }}
+          className="h-full w-full object-cover transition-transform duration-500 ease-out-quart group-hover:scale-[1.03]"
         />
-        <div className="absolute inset-0 bg-ink-2/0 group-hover:bg-surface transition-colors duration-500" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="flex items-center justify-center w-16 h-16 rounded-pill bg-cream/90 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
-            <Play className="w-6 h-6 text-ink ml-1" fill="currentColor" />
-          </span>
-        </div>
-        <span className="absolute top-3 left-3 px-3 py-1 rounded-pill bg-ink-2/80 backdrop-blur-sm text-cream text-meta font-sans uppercase tracking-widest">
-          {item.category}
+        <span className="absolute bottom-2 right-2 rounded bg-black/80 px-1.5 py-0.5 text-xs font-medium tabular-nums text-white">
+          {sermon.duration}
         </span>
-        {item.duration && (
-          <span className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-pill bg-ink-2/80 backdrop-blur-sm text-cream text-meta font-sans">
-            <Clock className="w-3 h-3" />
-            {item.duration}
-          </span>
-        )}
       </div>
-      <div className="space-y-1.5">
-        <p className="text-meta text-ash uppercase tracking-widest">
-          {item.series} · {item.date}
-        </p>
-        <h3 className="font-display text-xl lg:text-2xl leading-snug text-cream group-hover:text-accent transition-colors duration-300 text-balance">
-          {item.title}
-        </h3>
-        <p className="text-sm text-ash leading-relaxed line-clamp-2 max-w-md">
-          {item.description}
-        </p>
-      </div>
-    </Reveal>
+      <h3 className="mt-3 line-clamp-2 text-[0.9375rem] font-semibold leading-snug text-cream transition-colors duration-300 group-hover:text-accent">
+        {sermon.title}
+      </h3>
+      <p className="mt-1 text-sm text-ash">
+        {formatViews(sermon.views)} · {timeAgo(sermon.published)}
+      </p>
+    </a>
   );
 }
 
@@ -253,28 +85,23 @@ export function TeachingPage() {
   const [activeCategory, setActiveCategory] = useState<Category>('All');
   const [sortOption, setSortOption] = useState<SortOption>('Newest');
   const [searchQuery, setSearchQuery] = useState('');
+  const [shown, setShown] = useState(PAGE_SIZE);
 
   const filtered = useMemo(() => {
-    let result = teachings.filter((t) => {
-      const matchesCategory = activeCategory === 'All' || t.category === activeCategory;
-      const matchesSearch =
-        !searchQuery ||
-        t.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        t.series.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        t.description.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesSearch;
-    });
-
-    if (sortOption === 'Newest') {
-      result = [...result].sort((a, b) => b.dateValue - a.dateValue);
-    } else if (sortOption === 'Oldest') {
-      result = [...result].sort((a, b) => a.dateValue - b.dateValue);
-    } else if (sortOption === 'Popular') {
-      result = [...result].sort((a, b) => b.plays - a.plays);
-    }
-
+    const query = searchQuery.trim().toLowerCase();
+    // The data is already newest first, as on the channel.
+    const result = sermons.filter(
+      (s) =>
+        (activeCategory === 'All' || s.tags.includes(CATEGORY_TAG[activeCategory])) &&
+        (!query || s.title.toLowerCase().includes(query))
+    );
+    if (sortOption === 'Oldest') return [...result].reverse();
+    if (sortOption === 'Popular') return [...result].sort((a, b) => b.views - a.views);
     return result;
   }, [activeCategory, sortOption, searchQuery]);
+
+  // A new search, filter or sort starts again from the first page.
+  useEffect(() => setShown(PAGE_SIZE), [activeCategory, sortOption, searchQuery]);
 
   return (
     <div className="min-h-screen overflow-x-clip bg-ink">
@@ -311,7 +138,7 @@ export function TeachingPage() {
                   type="search"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search teachings, series, or topics…"
+                  placeholder="Search messages…"
                   className="w-full pl-11 pr-4 py-3.5 rounded-pill border border-line bg-surface text-sm text-cream placeholder:text-ash transition-all duration-300 ease-out-quart focus:outline-none focus:border-accent/40 focus:ring-1 focus:ring-accent/10 hover:border-line"
                 />
               </div>
@@ -387,11 +214,24 @@ export function TeachingPage() {
               </button>
             </div>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-              {filtered.map((item, i) => (
-                <TeachingCard key={item.id} item={item} index={i} />
-              ))}
-            </div>
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-9">
+                {filtered.slice(0, shown).map((sermon) => (
+                  <SermonCard key={sermon.id} sermon={sermon} />
+                ))}
+              </div>
+              {shown < filtered.length && (
+                <div className="mt-14 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setShown((n) => n + PAGE_SIZE)}
+                    className="rounded-pill border border-line px-7 py-3 text-sm font-medium text-cream transition-colors duration-300 hover:border-accent hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                  >
+                    Load more messages ({filtered.length - shown} more)
+                  </button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
