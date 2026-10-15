@@ -63,7 +63,7 @@ export function FloatingNav() {
   }, []);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     setDropdownPath(null);
     setMobileExpanded(location.pathname.startsWith('/media'));
   }, [location.pathname]);

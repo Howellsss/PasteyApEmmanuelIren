@@ -42,8 +42,8 @@ export const messages: Message[] = [
     description: 'Understanding giving not as an obligation but as a grace — a reflection of the generosity God has already shown us.',
     date: 'September 2025',
     type: 'Video',
-    image: '/images/teachings/image copy 5.webp',
-    imagePosition: 'center center',
+    image: '/images/teachings/grace-of-giving.webp',
+    imagePosition: 'center 20%',
     watchUrl: 'https://youtu.be/53oy7e5CTKQ',
   },
   {
@@ -52,8 +52,8 @@ export const messages: Message[] = [
     description: 'A powerful message on the nature of God as the One who blesses — and what it means to walk in His covenant promises.',
     date: 'September 2025',
     type: 'Video',
-    image: '/images/teachings/god-who-blesses.webp',
-    imagePosition: 'center 22%',
+    image: '/images/teachings/god-who-blesses-2.webp',
+    imagePosition: '60% 50%',
     watchUrl: 'https://youtu.be/WWDlFiYpBOY',
   },
   {
@@ -62,8 +62,8 @@ export const messages: Message[] = [
     description: 'Rekindling the flame of spiritual fervency and learning how to maintain a burning heart in every season of life.',
     date: 'September 2025',
     type: 'Video',
-    image: '/images/teachings/fervent-in-spirit.webp',
-    imagePosition: 'center 30%',
+    image: '/images/teachings/fervent-in-spirit-2.webp',
+    imagePosition: 'center 15%',
     watchUrl: 'https://www.youtube.com/watch?v=x71RhblDHdE',
   },
 ];

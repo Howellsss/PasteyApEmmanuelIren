@@ -82,7 +82,8 @@ function RouteEffects() {
   }, [pathname, hash]);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    // 'instant', not 'auto': the page sets scroll-behavior: smooth, which would otherwise animate this.
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     const meta = PAGE_META[pathname] ?? PAGE_META['/'];
     document.title = meta.title;
     document.querySelector('meta[name="description"]')?.setAttribute('content', meta.description);

@@ -295,9 +295,9 @@ export function AboutPage() {
             eyebrow="Milestones"
            
             title="A timeline of the work."
-            description="Tap a year to explore the moments that shaped the journey — from a campus fellowship to a global ministry."
+            description="Hover or tap a year to explore the moments that shaped the journey — from a campus fellowship to a global ministry."
           />
-          <Reveal variant="scale" className="mt-14">
+          <Reveal className="mt-14">
             <InteractiveTimeline milestones={milestones} />
           </Reveal>
         </div>
