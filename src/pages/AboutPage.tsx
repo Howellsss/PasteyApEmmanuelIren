@@ -8,7 +8,6 @@ import {
   Mic,
 } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
-import { MediaReveal } from '@/components/ui/MediaReveal';
 import { ChapterMarker } from '@/components/ui/ChapterMarker';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeader } from '@/components/ui/SectionHeader';
@@ -30,7 +29,7 @@ const BOOK_IMG = TEACHING_IMAGE_3;
 const MUSIC_IMG = CREATIVE_IMAGE;
 const FILM_IMG = TEACHING_IMAGE_2;
 const LEADERSHIP_IMG = TEACHING_IMAGE_3;
-const FAMILY_IMG = ABOUT_IMAGE;
+const FAMILY_IMG = '/images/creative/image copy.webp';
 const JOURNEY_IMG = '/images/about/journey-interview.webp';
 
 const milestones: TimelineMilestone[] = [
@@ -235,7 +234,7 @@ export function AboutPage() {
       {/* THE JOURNEY */}
       <section className="relative overflow-hidden py-24 lg:py-36">
         {/* The interview photo sits inside the background: its black blends into the page and its edges fade out. */}
-        <div className="journey-photo pointer-events-none absolute bg-ink inset-x-0 top-0 h-[34rem] sm:h-[40rem] lg:inset-y-0 lg:left-auto lg:right-0 lg:h-auto lg:w-[52%]" aria-hidden="true">
+        <div className="photo-melt pointer-events-none absolute bg-ink inset-x-0 top-0 h-[34rem] sm:h-[40rem] lg:inset-y-0 lg:left-auto lg:right-0 lg:h-auto lg:w-[52%]" aria-hidden="true">
           <img
             src={JOURNEY_IMG}
             alt=""
@@ -477,23 +476,18 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* FAMILY: set like the home Invitation, with his portrait tinted into the navy behind the text. */}
+      {/* FAMILY: set like the home Invitation, with his portrait tinted into the navy beside the text. */}
       <section className="relative overflow-hidden bg-navy py-20 md:py-28 lg:py-36">
-        <MediaReveal from="none" className="absolute inset-0" frameClassName="h-full w-full bg-navy">
+        <div className="photo-melt pointer-events-none absolute bg-navy inset-x-0 top-0 h-[30rem] sm:h-[36rem] lg:inset-y-0 lg:left-auto lg:right-0 lg:h-auto lg:w-[55%]" aria-hidden="true">
           <img
             src={FAMILY_IMG}
             alt=""
-            aria-hidden="true"
             loading="lazy"
-            className="media-reveal-img absolute inset-0 h-full w-full object-cover opacity-55 mix-blend-luminosity grayscale"
-            style={{ objectPosition: '70% 20%' }}
+            className="h-full w-full object-cover object-[50%_18%] opacity-75 mix-blend-luminosity grayscale"
           />
-        </MediaReveal>
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-navy from-20% via-navy/60 via-45% to-navy/0 to-75%" />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-navy/50 to-transparent to-40%" />
-        <div aria-hidden="true" className="absolute inset-0 bg-navy/45 lg:hidden" />
+        </div>
         <div className="container-wide relative">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl pt-60 sm:pt-72 lg:pt-0 lg:max-w-[42%]">
             <Reveal variant="right">
               <ChapterMarker tone="light" number="06" label="Family" />
               <h2 className="font-display leading-[1.02] tracking-[-0.01em] text-balance text-4xl sm:text-5xl lg:text-6xl text-cream mb-8">

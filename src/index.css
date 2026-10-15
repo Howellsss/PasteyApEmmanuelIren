@@ -468,13 +468,13 @@
   }
 }
 
-/* About › The Journey: the interview photo melts into the page instead of sitting on it as a box. */
-.journey-photo {
+/* About › The Journey and Family: the photo melts into the page instead of sitting on it as a box. */
+.photo-melt {
   -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
           mask-image: linear-gradient(to bottom, #000 45%, transparent 100%);
 }
 @media (min-width: 1024px) {
-  .journey-photo {
+  .photo-melt {
     -webkit-mask-image:
       linear-gradient(to right, transparent 0%, #000 38%),
       linear-gradient(to bottom, transparent 0%, #000 14%, #000 80%, transparent 100%);
