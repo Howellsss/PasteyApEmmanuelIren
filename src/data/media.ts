@@ -52,8 +52,8 @@ export const messages: Message[] = [
     description: 'A powerful message on the nature of God as the One who blesses — and what it means to walk in His covenant promises.',
     date: 'September 2025',
     type: 'Video',
-    image: '/images/teachings/god-who-blesses-2.webp',
-    imagePosition: '60% 50%',
+    image: '/images/teachings/god-who-blesses-3.webp',
+    imagePosition: 'center 70%',
     watchUrl: 'https://youtu.be/WWDlFiYpBOY',
   },
   {
