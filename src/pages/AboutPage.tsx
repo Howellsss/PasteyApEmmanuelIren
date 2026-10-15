@@ -8,6 +8,7 @@ import {
   Mic,
 } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
+import { MediaReveal } from '@/components/ui/MediaReveal';
 import { ChapterMarker } from '@/components/ui/ChapterMarker';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeader } from '@/components/ui/SectionHeader';
@@ -476,43 +477,40 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* FAMILY */}
-      <section className="py-24 lg:py-36 bg-navy">
-        <div className="container-editorial">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            <div className="lg:col-span-5">
-              <Reveal variant="scale">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-soft">
-                  <img
-                    src={FAMILY_IMG}
-                    alt="Family at sunset"
-                    loading="lazy"
-                    className="w-full h-full object-cover image-warm"
-                    style={{ objectPosition: 'center top' }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/20 to-transparent" />
-                </div>
-              </Reveal>
-            </div>
-            <div className="lg:col-span-6 lg:col-start-7">
-              <Reveal delay={100}>
-                <ChapterMarker tone="light" number="06" label="Family" />
-                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream mb-6">
-                  A life grounded in home.
-                </h2>
-                <div className="space-y-4 text-mist leading-relaxed">
-                  <p>
-                    Emmanuel Iren married Laju Iren (née Arenyeka) in November 2014.
-                    Together they are parents to three daughters and one son.
-                  </p>
-                  <p>
-                    The family remains a quiet foundation beneath the public work — a
-                    reminder that the ministry, for all its reach, is carried by a man
-                    who is also a husband and a father.
-                  </p>
-                </div>
-              </Reveal>
-            </div>
+      {/* FAMILY: set like the home Invitation, with his portrait tinted into the navy behind the text. */}
+      <section className="relative overflow-hidden bg-navy py-20 md:py-28 lg:py-36">
+        <MediaReveal from="none" className="absolute inset-0" frameClassName="h-full w-full bg-navy">
+          <img
+            src={FAMILY_IMG}
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            className="media-reveal-img absolute inset-0 h-full w-full object-cover opacity-55 mix-blend-luminosity grayscale"
+            style={{ objectPosition: '70% 20%' }}
+          />
+        </MediaReveal>
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-navy from-20% via-navy/60 via-45% to-navy/0 to-75%" />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-navy/50 to-transparent to-40%" />
+        <div aria-hidden="true" className="absolute inset-0 bg-navy/45 lg:hidden" />
+        <div className="container-wide relative">
+          <div className="max-w-2xl">
+            <Reveal variant="right">
+              <ChapterMarker tone="light" number="06" label="Family" />
+              <h2 className="font-display leading-[1.02] tracking-[-0.01em] text-balance text-4xl sm:text-5xl lg:text-6xl text-cream mb-8">
+                A life grounded <span className="text-brand">in home.</span>
+              </h2>
+            </Reveal>
+            <Reveal variant="right" delay={150} className="max-w-xl space-y-4 text-base sm:text-lg leading-relaxed text-cream/85">
+              <p>
+                Emmanuel Iren married Laju Iren (née Arenyeka) in November 2014.
+                Together they are parents to three daughters and one son.
+              </p>
+              <p>
+                The family remains a quiet foundation beneath the public work — a
+                reminder that the ministry, for all its reach, is carried by a man
+                who is also a husband and a father.
+              </p>
+            </Reveal>
           </div>
         </div>
       </section>
