@@ -62,8 +62,8 @@ export function EventsPage() {
                 <Eyebrow className="mb-6">
                   Events
                 </Eyebrow>
-                <h1 className="font-display text-5xl sm:text-6xl lg:text-8xl leading-[0.98] text-cream text-balance tracking-[-0.01em] mb-8">
-                  Where Emmanuel Is Ministering
+                <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.98] text-cream text-balance tracking-[-0.01em] mb-8">
+                  Where is Apostle Emmanuel Iren <span className="text-brand">ministering?</span>
                 </h1>
               </Reveal>
             </div>

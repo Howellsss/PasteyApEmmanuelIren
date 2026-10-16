@@ -479,7 +479,7 @@ export function HomePage() {
         <div className="container-editorial">
           <div className="mb-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
             <Reveal variant="left">
-              <DisplayHeading number="06" eyebrow="Events" title="Where Apostle Emmanuel Iren" accent="is ministering." />
+              <DisplayHeading number="06" eyebrow="Events" title="Where is Apostle Emmanuel Iren" accent="ministering?" />
             </Reveal>
             <Reveal variant="right" delay={150}>
               <Link to="/events">
