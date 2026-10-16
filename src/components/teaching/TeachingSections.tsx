@@ -23,7 +23,15 @@ export function PlayBadge({ size = 'md' }: { size?: 'sm' | 'md' }) {
   );
 }
 
-export function WatchLink({ message, children, className }: { message: Message; children: ReactNode; className?: string }) {
+export function WatchLink({
+  message,
+  children,
+  className,
+}: {
+  message: Message;
+  children: ReactNode;
+  className?: string;
+}) {
   return (
     <a href={message.watchUrl} target="_blank" rel="noopener noreferrer" className={className}>
       {children}
@@ -80,7 +88,9 @@ export function LatestMessages({ number }: { number: string }) {
                     <PlayBadge size="sm" />
                   </div>
                   <div>
-                    <p className="text-eyebrow uppercase tracking-[0.16em] text-accent">{message.series} · {message.date}</p>
+                    <p className="text-eyebrow uppercase tracking-[0.16em] text-accent">
+                      {message.series} · {message.date}
+                    </p>
                     <h3 className="mt-1.5 font-display text-lg leading-snug text-cream transition-colors duration-300 group-hover:text-accent">
                       {message.title}
                     </h3>
@@ -121,7 +131,9 @@ export function SeriesList({ number }: { number: string }) {
               >
                 <span className="font-display text-2xl text-brand">{String(index + 1).padStart(2, '0')}</span>
                 <div>
-                  <h3 className="font-display text-xl text-cream transition-colors duration-300 group-hover:text-accent">{series.title}</h3>
+                  <h3 className="font-display text-xl text-cream transition-colors duration-300 group-hover:text-accent">
+                    {series.title}
+                  </h3>
                   <p className="mt-0.5 text-eyebrow uppercase tracking-[0.16em] text-ash">{series.kind}</p>
                 </div>
                 <p className="hidden text-sm leading-relaxed text-ash sm:block">{series.description}</p>
@@ -136,10 +148,26 @@ export function SeriesList({ number }: { number: string }) {
 }
 
 const resourceTypes = [
-  { icon: FileText, title: 'Sermon notes', text: 'The outline of each message, with its main points, to revisit what was taught.' },
-  { icon: BookOpen, title: 'Scripture references', text: 'Every passage read in the message, in order, for your own study.' },
-  { icon: ListChecks, title: 'Discussion guides', text: 'Questions for small groups and families to talk the message through together.' },
-  { icon: MessageSquareQuote, title: 'Transcripts', text: 'The full text of selected messages, for reading and reference.' },
+  {
+    icon: FileText,
+    title: 'Sermon notes',
+    text: 'The outline of each message, with its main points, to revisit what was taught.',
+  },
+  {
+    icon: BookOpen,
+    title: 'Scripture references',
+    text: 'Every passage read in the message, in order, for your own study.',
+  },
+  {
+    icon: ListChecks,
+    title: 'Discussion guides',
+    text: 'Questions for small groups and families to talk the message through together.',
+  },
+  {
+    icon: MessageSquareQuote,
+    title: 'Transcripts',
+    text: 'The full text of selected messages, for reading and reference.',
+  },
 ];
 
 /** Study material for a message, shared on request. */
@@ -151,7 +179,8 @@ export function StudyNotes({ number }: { number: string }) {
           <DisplayHeading number={number} eyebrow="Study notes" title="Take it" accent="beyond Sunday." />
         </Reveal>
         <Reveal variant="left" delay={100} as="p" className="mb-10 max-w-2xl leading-relaxed text-ash">
-          Notes, scriptures, discussion guides and transcripts for personal study, small groups and families — shared on request.
+          Notes, scriptures, discussion guides and transcripts for personal study, small groups and families — shared on
+          request.
         </Reveal>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {resourceTypes.map(({ icon: Icon, title, text }, index) => (
@@ -168,9 +197,13 @@ export function StudyNotes({ number }: { number: string }) {
           {messages.map((message, index) => (
             <Reveal key={message.title} variant="right" delay={index * 80}>
               <div className="grid grid-cols-1 items-center gap-3 border-b border-line py-5 sm:grid-cols-[3rem_1fr_auto] sm:gap-6">
-                <span className="hidden font-display text-2xl text-brand sm:block">{String(index + 1).padStart(2, '0')}</span>
+                <span className="hidden font-display text-2xl text-brand sm:block">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
                 <div>
-                  <p className="text-eyebrow uppercase tracking-[0.16em] text-accent">{message.series} · {message.date}</p>
+                  <p className="text-eyebrow uppercase tracking-[0.16em] text-accent">
+                    {message.series} · {message.date}
+                  </p>
                   <h3 className="mt-1 font-display text-xl text-cream">{message.title}</h3>
                 </div>
                 <div className="flex items-center gap-5 text-sm">

@@ -4,7 +4,16 @@ import { cn } from '@/lib/cn';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** primary/secondary sit on dark grounds; -light on the navy chapter; ink/on-gold on the gold band. */
-  variant?: 'primary' | 'secondary' | 'ghost' | 'primary-light' | 'secondary-light' | 'brand' | 'quiet' | 'ink' | 'on-gold';
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'ghost'
+    | 'primary-light'
+    | 'secondary-light'
+    | 'brand'
+    | 'quiet'
+    | 'ink'
+    | 'on-gold';
   size?: 'md' | 'lg';
   children: ReactNode;
   withArrow?: boolean;

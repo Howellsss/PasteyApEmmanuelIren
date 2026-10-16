@@ -51,7 +51,12 @@ export function DisplayHeading({
         )}
       >
         {title}
-        {accent && <> <span className={accentClassName}>{accent}</span></>}
+        {accent && (
+          <>
+            {' '}
+            <span className={accentClassName}>{accent}</span>
+          </>
+        )}
       </h2>
     </div>
   );

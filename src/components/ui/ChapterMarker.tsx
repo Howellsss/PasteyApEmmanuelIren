@@ -28,7 +28,12 @@ export function ChapterMarker({ label, number, tone = 'dark', centered, classNam
           {number}
         </span>
       )}
-      <span className={cn('text-eyebrow uppercase tracking-[0.2em]', light ? 'text-mist' : gold ? 'text-cream' : number ? 'text-ash' : 'text-accent')}>
+      <span
+        className={cn(
+          'text-eyebrow uppercase tracking-[0.2em]',
+          light ? 'text-mist' : gold ? 'text-cream' : number ? 'text-ash' : 'text-accent'
+        )}
+      >
         {label}
       </span>
     </div>

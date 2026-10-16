@@ -9,14 +9,7 @@ interface TextareaFieldProps extends TextareaHTMLAttributes<HTMLTextAreaElement>
   className?: string;
 }
 
-export function TextareaField({
-  label,
-  hint,
-  error,
-  required = false,
-  className,
-  ...props
-}: TextareaFieldProps) {
+export function TextareaField({ label, hint, error, required = false, className, ...props }: TextareaFieldProps) {
   const [focused, setFocused] = useState(false);
 
   return (
@@ -29,7 +22,7 @@ export function TextareaField({
         {hint && <span className="text-meta text-ash">{hint}</span>}
       </div>
       <textarea
-          required={required}
+        required={required}
         {...props}
         onFocus={(e) => {
           setFocused(true);
@@ -45,8 +38,8 @@ export function TextareaField({
           error
             ? 'border-accent focus:border-accent'
             : focused
-            ? 'border-line ring-1 ring-accent/10'
-            : 'border-line hover:border-line'
+              ? 'border-line ring-1 ring-accent/10'
+              : 'border-line hover:border-line'
         )}
       />
       {error && <p className="text-meta text-accent mt-0.5">{error}</p>}

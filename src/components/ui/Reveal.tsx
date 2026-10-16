@@ -10,13 +10,7 @@ interface RevealProps {
   as?: 'div' | 'section' | 'article' | 'li' | 'span' | 'p';
 }
 
-export function Reveal({
-  children,
-  className,
-  delay = 0,
-  variant = 'up',
-  as: Tag = 'div',
-}: RevealProps) {
+export function Reveal({ children, className, delay = 0, variant = 'up', as: Tag = 'div' }: RevealProps) {
   const { ref, visible } = useReveal();
 
   const hiddenClass = {
@@ -34,17 +28,10 @@ export function Reveal({
     right: 'reveal-side-visible',
   }[variant];
 
-  const style: CSSProperties | undefined =
-    delay > 0
-      ? { transitionDelay: `${delay}ms` }
-      : undefined;
+  const style: CSSProperties | undefined = delay > 0 ? { transitionDelay: `${delay}ms` } : undefined;
 
   return (
-    <Tag
-      ref={ref as never}
-      className={cn(visible ? visibleClass : hiddenClass, className)}
-      style={style}
-    >
+    <Tag ref={ref as never} className={cn(visible ? visibleClass : hiddenClass, className)} style={style}>
       {children}
     </Tag>
   );

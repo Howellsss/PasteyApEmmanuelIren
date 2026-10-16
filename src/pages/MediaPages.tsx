@@ -49,7 +49,12 @@ function MediaHero({ title, accent, intro }: { title: string; accent?: string; i
           </div>
           <h1 className="font-display text-5xl leading-[0.98] tracking-[-0.01em] text-cream text-balance sm:text-6xl lg:text-7xl">
             {title}
-            {accent && <> <span className="text-brand">{accent}</span></>}
+            {accent && (
+              <>
+                {' '}
+                <span className="text-brand">{accent}</span>
+              </>
+            )}
           </h1>
           <p className="mt-6 max-w-2xl text-lg font-light leading-relaxed text-ash text-pretty sm:text-xl">{intro}</p>
         </Reveal>
@@ -167,7 +172,9 @@ export function MediaOverviewPage() {
               </MediaReveal>
             </WatchLink>
             <Reveal variant="right" delay={150} className="flex flex-col justify-center lg:col-span-5">
-              <p className="text-eyebrow uppercase tracking-[0.16em] text-accent">{latest.series} · {latest.date}</p>
+              <p className="text-eyebrow uppercase tracking-[0.16em] text-accent">
+                {latest.series} · {latest.date}
+              </p>
               <h2 className="mt-3 font-display text-3xl leading-tight text-cream lg:text-4xl">{latest.title}</h2>
               <p className="mt-4 max-w-md leading-relaxed text-ash">{latest.description}</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -205,7 +212,9 @@ export function MediaOverviewPage() {
                       style={{ objectPosition: 'center 25%' }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
-                    <span className="absolute left-3.5 top-3 font-display text-lg text-cream [text-shadow:0_1px_8px_rgba(0,0,0,0.6)] sm:left-5 sm:top-4 sm:text-2xl">{String(index + 1).padStart(2, '0')}</span>
+                    <span className="absolute left-3.5 top-3 font-display text-lg text-cream [text-shadow:0_1px_8px_rgba(0,0,0,0.6)] sm:left-5 sm:top-4 sm:text-2xl">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
                     <div className="absolute inset-x-3.5 bottom-3.5 sm:inset-x-5 sm:bottom-5">
                       <h3 className="font-display text-lg leading-tight text-cream sm:text-2xl">{section.label}</h3>
                       <p className="mt-1 hidden text-sm text-cream/75 sm:block">{section.blurb}</p>
@@ -235,7 +244,11 @@ export function MediaOverviewPage() {
             {books.slice(0, 4).map((book, index) => (
               <Reveal key={book.title} variant="right" delay={index * 120}>
                 <Link to="/media/books" className="group block">
-                  <BookCover book={book} onNavy className="transition-transform duration-500 group-hover:-translate-y-1" />
+                  <BookCover
+                    book={book}
+                    onNavy
+                    className="transition-transform duration-500 group-hover:-translate-y-1"
+                  />
                 </Link>
               </Reveal>
             ))}
@@ -274,7 +287,9 @@ export function GalleryPage() {
                 onClick={() => setFilter(name)}
                 className={cn(
                   'rounded-pill border px-4 py-2 text-sm transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent',
-                  filter === name ? 'border-brand bg-brand text-cream' : 'border-line text-ash hover:border-cream/40 hover:text-cream'
+                  filter === name
+                    ? 'border-brand bg-brand text-cream'
+                    : 'border-line text-ash hover:border-cream/40 hover:text-cream'
                 )}
               >
                 {name}
@@ -327,18 +342,31 @@ export function IrensPage() {
         <div className="container-wide grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-6">
             <Reveal variant="left">
-              <DisplayHeading number="01" eyebrow="Family" title="Emmanuel" accent="& Laju Iren." size="sm" className="mb-6" />
+              <DisplayHeading
+                number="01"
+                eyebrow="Family"
+                title="Emmanuel"
+                accent="& Laju Iren."
+                size="sm"
+                className="mb-6"
+              />
             </Reveal>
             <div className="space-y-5 leading-relaxed text-ash">
               <Reveal variant="left" delay={150} as="p">
-                Emmanuel Iren married Laju Iren (née Arenyeka) in November 2014. Together they are parents to three daughters and one son.
+                Emmanuel Iren married Laju Iren (née Arenyeka) in November 2014. Together they are parents to three
+                daughters and one son.
               </Reveal>
               <Reveal variant="left" delay={300} as="p">
-                The family remains a quiet foundation beneath the public work — a reminder that the ministry, for all its reach, is carried by a man who is also a husband and a father.
+                The family remains a quiet foundation beneath the public work — a reminder that the ministry, for all
+                its reach, is carried by a man who is also a husband and a father.
               </Reveal>
             </div>
           </div>
-          <Reveal variant="right" delay={450} className="grid grid-cols-3 self-end border-t border-line pt-6 lg:col-span-5 lg:col-start-8">
+          <Reveal
+            variant="right"
+            delay={450}
+            className="grid grid-cols-3 self-end border-t border-line pt-6 lg:col-span-5 lg:col-start-8"
+          >
             {[
               ['2014', 'Married'],
               ['4', 'Children'],
@@ -358,7 +386,8 @@ export function IrensPage() {
           <Reveal variant="left" className="lg:col-span-7">
             <DisplayHeading number="02" eyebrow="On love & family" title="Love, as" accent="God designed it." />
             <p className="mt-5 max-w-xl leading-relaxed text-ash">
-              Much of what Emmanuel Iren teaches on friendship, courtship and marriage is gathered in LoveCode — written for relationships built to last.
+              Much of what Emmanuel Iren teaches on friendship, courtship and marriage is gathered in LoveCode — written
+              for relationships built to last.
             </p>
             <Link to="/media/books" className="mt-8 inline-block">
               <TextLink>See the books</TextLink>
@@ -377,7 +406,15 @@ export function IrensPage() {
 /* ── Films ─────────────────────────────────────────────────────────────── */
 
 /** An outbound link styled like the site's text links, with the arrow that marks a new tab. */
-function OutLink({ href, children, tone = 'accent' }: { href: string; children: ReactNode; tone?: 'accent' | 'light' }) {
+function OutLink({
+  href,
+  children,
+  tone = 'accent',
+}: {
+  href: string;
+  children: ReactNode;
+  tone?: 'accent' | 'light';
+}) {
   return (
     <a
       href={href}
@@ -411,7 +448,12 @@ export function FilmsPage() {
           <div className="grid grid-cols-1 gap-x-8 gap-y-14 lg:grid-cols-2">
             {films.map((film, index) => (
               <Reveal key={film.title} variant={index % 2 ? 'right' : 'left'} delay={(index % 2) * 120}>
-                <a href={youtubeWatch(film.videoId)} target="_blank" rel="noopener noreferrer" className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                <a
+                  href={youtubeWatch(film.videoId)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
                   <div className="relative aspect-video overflow-hidden rounded-soft bg-surface">
                     <img
                       src={youtubeThumb(film.videoId, film.hiRes)}
@@ -430,7 +472,9 @@ export function FilmsPage() {
                     {film.year && ' · '}
                     {film.role}
                   </p>
-                  <h3 className="mt-2 font-display text-3xl text-cream transition-colors duration-300 group-hover:text-accent">{film.title}</h3>
+                  <h3 className="mt-2 font-display text-3xl text-cream transition-colors duration-300 group-hover:text-accent">
+                    {film.title}
+                  </h3>
                   <p className="mt-3 max-w-xl leading-relaxed text-ash">{film.description}</p>
                 </a>
               </Reveal>
@@ -489,12 +533,19 @@ export function MusicPage() {
                   rel="noopener noreferrer"
                   className="group flex h-full items-center gap-4 rounded-soft bg-ink-2 p-4 transition-colors duration-300 hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:gap-6 sm:p-6"
                 >
-                  <img src={profile.art} alt={profile.artAlt} loading="lazy" className="aspect-square w-28 flex-shrink-0 rounded-[3px] object-cover shadow-[0_18px_40px_-14px_rgba(0,0,0,0.7)] sm:w-40" />
+                  <img
+                    src={profile.art}
+                    alt={profile.artAlt}
+                    loading="lazy"
+                    className="aspect-square w-28 flex-shrink-0 rounded-[3px] object-cover shadow-[0_18px_40px_-14px_rgba(0,0,0,0.7)] sm:w-40"
+                  />
                   <div>
                     <p className="flex items-center gap-2 text-eyebrow uppercase tracking-[0.16em] text-accent">
                       <Music2 className="h-4 w-4" /> {profile.name}
                     </p>
-                    <p className="mt-2 max-w-sm text-sm leading-relaxed text-ash sm:mt-3 sm:text-base">{profile.description}</p>
+                    <p className="mt-2 max-w-sm text-sm leading-relaxed text-ash sm:mt-3 sm:text-base">
+                      {profile.description}
+                    </p>
                     <span className="mt-3 inline-flex sm:mt-5 items-center gap-1.5 text-sm font-medium text-cream transition-colors duration-300 group-hover:text-accent">
                       {profile.action} <ArrowUpRight className="h-4 w-4 text-accent" />
                     </span>
@@ -513,12 +564,26 @@ export function MusicPage() {
           <div className="grid grid-cols-2 gap-x-3 gap-y-7 sm:gap-x-5 sm:gap-y-9 lg:grid-cols-4">
             {musicVideos.map((video, index) => (
               <Reveal key={video.id} variant="up" delay={(index % 4) * 80}>
-                <a href={youtubeWatch(video.id)} target="_blank" rel="noopener noreferrer" className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                <a
+                  href={youtubeWatch(video.id)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
                   <div className="relative aspect-video overflow-hidden rounded-md bg-surface">
-                    <img src={youtubeThumb(video.id, video.hiRes)} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-500 ease-out-quart group-hover:scale-[1.04]" />
-                    <span className="absolute bottom-2 right-2 rounded bg-black/80 px-1.5 py-0.5 text-xs font-medium tabular-nums text-white">{video.duration}</span>
+                    <img
+                      src={youtubeThumb(video.id, video.hiRes)}
+                      alt=""
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 ease-out-quart group-hover:scale-[1.04]"
+                    />
+                    <span className="absolute bottom-2 right-2 rounded bg-black/80 px-1.5 py-0.5 text-xs font-medium tabular-nums text-white">
+                      {video.duration}
+                    </span>
                   </div>
-                  <h3 className="mt-2.5 font-display text-base leading-snug text-cream transition-colors duration-300 group-hover:text-accent sm:mt-3 sm:text-lg">{video.title}</h3>
+                  <h3 className="mt-2.5 font-display text-base leading-snug text-cream transition-colors duration-300 group-hover:text-accent sm:mt-3 sm:text-lg">
+                    {video.title}
+                  </h3>
                   {video.featuring && <p className="mt-0.5 text-xs text-ash sm:text-sm">feat. {video.featuring}</p>}
                 </a>
               </Reveal>
@@ -546,20 +611,37 @@ export function PodcastPage() {
         <div className="container-wide">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-16">
             <MediaReveal className="lg:col-span-5" frameClassName="aspect-square max-w-md rounded-soft bg-surface">
-              <img src={podcast.art} alt={`${podcast.name} cover`} className="media-reveal-img h-full w-full object-cover" />
+              <img
+                src={podcast.art}
+                alt={`${podcast.name} cover`}
+                className="media-reveal-img h-full w-full object-cover"
+              />
             </MediaReveal>
             <div className="lg:col-span-7">
               <Reveal variant="right">
                 <span className="inline-flex items-center gap-2 rounded-pill border border-brand/60 px-3 py-1 text-eyebrow uppercase tracking-[0.16em] text-accent">
                   <Headphones className="h-3.5 w-3.5" /> {podcast.tag}
                 </span>
-                <h2 className="mt-6 font-display text-4xl leading-[1.05] text-cream text-balance sm:text-5xl">{podcast.name}</h2>
+                <h2 className="mt-6 font-display text-4xl leading-[1.05] text-cream text-balance sm:text-5xl">
+                  {podcast.name}
+                </h2>
                 <p className="mt-5 max-w-xl text-lg leading-relaxed text-ash">{podcast.description}</p>
               </Reveal>
               <Reveal variant="right" delay={150} className="mt-8 flex flex-col gap-3 sm:flex-row">
                 {podcast.links.map((link, index) => (
-                  <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="block w-full sm:w-auto">
-                    <Button variant={index ? 'secondary' : 'brand'} size="lg" withArrow={!index} className="h-14 w-full rounded-pill sm:h-auto sm:w-auto">
+                  <a
+                    key={link.url}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full sm:w-auto"
+                  >
+                    <Button
+                      variant={index ? 'secondary' : 'brand'}
+                      size="lg"
+                      withArrow={!index}
+                      className="h-14 w-full rounded-pill sm:h-auto sm:w-auto"
+                    >
                       {link.label}
                     </Button>
                   </a>
@@ -590,20 +672,41 @@ export function BooksPage() {
           <div className="grid grid-cols-2 gap-x-4 gap-y-12 sm:gap-x-6 lg:grid-cols-3 lg:gap-y-16">
             {books.map((book, index) => (
               <Reveal key={book.title} variant="up" delay={(index % 3) * 120}>
-                <a href={book.url} target="_blank" rel="noopener noreferrer" className="group flex h-full flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-                  <BookCover book={book} className="w-full max-w-[20rem] transition-transform duration-500 ease-out-quart group-hover:-translate-y-1.5" />
-                  <p className="mt-5 text-[0.6875rem] uppercase tracking-[0.16em] text-accent sm:mt-6 sm:text-eyebrow">{book.theme}</p>
-                  <h3 className="mt-1.5 font-display text-xl leading-tight text-cream transition-colors duration-300 group-hover:text-accent sm:text-2xl">{book.title}</h3>
-                  <p className="mt-2 line-clamp-3 max-w-sm text-sm leading-relaxed text-ash sm:line-clamp-none">{book.description}</p>
+                <a
+                  href={book.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-full flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
+                  <BookCover
+                    book={book}
+                    className="w-full max-w-[20rem] transition-transform duration-500 ease-out-quart group-hover:-translate-y-1.5"
+                  />
+                  <p className="mt-5 text-[0.6875rem] uppercase tracking-[0.16em] text-accent sm:mt-6 sm:text-eyebrow">
+                    {book.theme}
+                  </p>
+                  <h3 className="mt-1.5 font-display text-xl leading-tight text-cream transition-colors duration-300 group-hover:text-accent sm:text-2xl">
+                    {book.title}
+                  </h3>
+                  <p className="mt-2 line-clamp-3 max-w-sm text-sm leading-relaxed text-ash sm:line-clamp-none">
+                    {book.description}
+                  </p>
                   <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-medium text-cream">
-                    Get the book <ArrowUpRight className="h-4 w-4 text-accent transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    Get the book{' '}
+                    <ArrowUpRight className="h-4 w-4 text-accent transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </span>
                 </a>
               </Reveal>
             ))}
           </div>
-          <Reveal variant="left" className="mt-14 flex flex-col items-start gap-4 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-lg text-ash">All six books are in the online store. For bulk orders for churches and groups, or interviews about the books, get in touch.</p>
+          <Reveal
+            variant="left"
+            className="mt-14 flex flex-col items-start gap-4 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between"
+          >
+            <p className="max-w-lg text-ash">
+              All six books are in the online store. For bulk orders for churches and groups, or interviews about the
+              books, get in touch.
+            </p>
             <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
               <a href={BOOK_STORE_URL} target="_blank" rel="noopener noreferrer" className="block w-full sm:w-auto">
                 <Button variant="brand" size="lg" withArrow className="h-14 w-full rounded-pill sm:h-auto sm:w-auto">

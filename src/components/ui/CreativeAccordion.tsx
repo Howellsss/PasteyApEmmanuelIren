@@ -99,7 +99,10 @@ export function CreativeAccordion() {
       const track = trackRef.current;
       const card = track?.children[index] as HTMLElement | undefined;
       if (isMobile && track && card) {
-        track.scrollTo({ left: card.offsetLeft - track.offsetLeft - parseFloat(getComputedStyle(track).paddingLeft), behavior: 'smooth' });
+        track.scrollTo({
+          left: card.offsetLeft - track.offsetLeft - parseFloat(getComputedStyle(track).paddingLeft),
+          behavior: 'smooth',
+        });
         return;
       }
       setActive(index);
@@ -128,9 +131,12 @@ export function CreativeAccordion() {
   useEffect(() => {
     const section = sectionRef.current;
     if (!section) return;
-    const observer = new IntersectionObserver(([entry]) => {
-      inViewRef.current = entry.isIntersecting;
-    }, { threshold: 0.4 });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inViewRef.current = entry.isIntersecting;
+      },
+      { threshold: 0.4 }
+    );
     observer.observe(section);
     return () => observer.disconnect();
   }, []);
@@ -168,9 +174,17 @@ export function CreativeAccordion() {
     <section ref={sectionRef} className="ce-section" aria-label="Creative Expression">
       <div className="container-editorial">
         <Reveal variant="left" className="mb-10">
-          <DisplayHeading number="04" eyebrow="Creative Expression" title="More than" accent="the pulpit." accentClassName="text-accent" tone="light" />
+          <DisplayHeading
+            number="04"
+            eyebrow="Creative Expression"
+            title="More than"
+            accent="the pulpit."
+            accentClassName="text-accent"
+            tone="light"
+          />
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-mist text-pretty">
-            The message also travels through pages, melodies, images, and stories — each one made to meet people where they are.
+            The message also travels through pages, melodies, images, and stories — each one made to meet people where
+            they are.
           </p>
         </Reveal>
       </div>
@@ -223,16 +237,22 @@ export function CreativeAccordion() {
                 <div className="ce-corner" aria-hidden="true" />
                 {(isActive || isMobile) && (
                   <div className="ce-body" id={`ce-panel-${i}`}>
-                    <span className="ce-icon"><Icon className="w-5 h-5" strokeWidth={1.5} /></span>
+                    <span className="ce-icon">
+                      <Icon className="w-5 h-5" strokeWidth={1.5} />
+                    </span>
                     <p className="ce-tag">{card.tag}</p>
                     <h3 className="font-display ce-card-title">{card.title}</h3>
                     <p className="ce-desc">{card.description}</p>
-                    <Link to={card.to} className="ce-explore" onClick={(e) => e.stopPropagation()}>Explore →</Link>
+                    <Link to={card.to} className="ce-explore" onClick={(e) => e.stopPropagation()}>
+                      Explore →
+                    </Link>
                   </div>
                 )}
                 {!isActive && !isMobile && (
                   <div className="ce-collapsed">
-                    <span className="ce-collapsed-icon"><Icon className="w-4 h-4" strokeWidth={1.5} /></span>
+                    <span className="ce-collapsed-icon">
+                      <Icon className="w-4 h-4" strokeWidth={1.5} />
+                    </span>
                     <span className="ce-collapsed-title">{card.title}</span>
                   </div>
                 )}

@@ -19,7 +19,8 @@ export const messages: Message[] = [
   {
     series: 'The Word',
     title: 'Vigour: Stewarding the Body',
-    description: 'A life-changing teaching on how God calls us to honour Him through the careful stewardship of our physical bodies.',
+    description:
+      'A life-changing teaching on how God calls us to honour Him through the careful stewardship of our physical bodies.',
     date: 'September 2025',
     type: 'Video',
     image: '/images/teachings/vigour.webp',
@@ -29,7 +30,8 @@ export const messages: Message[] = [
   {
     series: 'The Word',
     title: "God's Good Design",
-    description: "Discover the intentionality behind God's design for your life — purpose, pattern, and the beauty of His sovereign plan.",
+    description:
+      "Discover the intentionality behind God's design for your life — purpose, pattern, and the beauty of His sovereign plan.",
     date: 'September 2025',
     type: 'Video',
     image: '/images/teachings/gods-good-design.webp',
@@ -39,7 +41,8 @@ export const messages: Message[] = [
   {
     series: 'The Word',
     title: 'The Grace of Giving',
-    description: 'Understanding giving not as an obligation but as a grace — a reflection of the generosity God has already shown us.',
+    description:
+      'Understanding giving not as an obligation but as a grace — a reflection of the generosity God has already shown us.',
     date: 'September 2025',
     type: 'Video',
     image: '/images/teachings/the-grace-of-giving.webp',
@@ -49,7 +52,8 @@ export const messages: Message[] = [
   {
     series: 'The Word',
     title: 'The God Who Blesses',
-    description: 'A powerful message on the nature of God as the One who blesses — and what it means to walk in His covenant promises.',
+    description:
+      'A powerful message on the nature of God as the One who blesses — and what it means to walk in His covenant promises.',
     date: 'September 2025',
     type: 'Video',
     image: '/images/teachings/the-god-who-blesses.webp',
@@ -59,10 +63,11 @@ export const messages: Message[] = [
   {
     series: 'The Word',
     title: 'Fervent in Spirit',
-    description: 'Rekindling the flame of spiritual fervency and learning how to maintain a burning heart in every season of life.',
+    description:
+      'Rekindling the flame of spiritual fervency and learning how to maintain a burning heart in every season of life.',
     date: 'September 2025',
     type: 'Video',
-    image: '/images/teachings/fervent-in-spirit.webp',
+    image: '/images/photos/stage-preaching-white-shirt.webp',
     imagePosition: 'center 36%',
     watchUrl: 'https://www.youtube.com/watch?v=x71RhblDHdE',
   },
@@ -84,14 +89,16 @@ export const books: Book[] = [
   {
     title: 'Leading Seeks You',
     theme: 'Leadership',
-    description: 'On the call to lead — why leadership is not a title to chase but a responsibility that finds the faithful.',
+    description:
+      'On the call to lead — why leadership is not a title to chase but a responsibility that finds the faithful.',
     cover: '/images/books/leading-seeks-you.webp',
     url: BOOK_STORE_URL,
   },
   {
     title: 'Purposefully',
     theme: 'Purpose',
-    description: 'On discovering, developing and deploying the purpose God placed in you, one deliberate step at a time.',
+    description:
+      'On discovering, developing and deploying the purpose God placed in you, one deliberate step at a time.',
     cover: '/images/books/purposefully.webp',
     url: BOOK_STORE_URL,
   },
@@ -145,10 +152,18 @@ export const mediaSections: MediaSection[] = [
 /** Series in the teaching library, listed on the Teaching page. */
 export const archiveSeries = [
   { title: 'The Word', kind: 'Sunday series', description: 'Sunday teachings from Celebration Church International.' },
-  { title: 'The Gospel of Grace', kind: 'Series', description: 'Grace as God’s instruction for a life that honours Him.' },
+  {
+    title: 'The Gospel of Grace',
+    kind: 'Series',
+    description: 'Grace as God’s instruction for a life that honours Him.',
+  },
   { title: 'Faith in Practice', kind: 'Series', description: 'What it looks like to walk by faith on ordinary days.' },
   { title: 'The Grace Advantage', kind: 'Series', description: 'Living from the advantage grace gives the believer.' },
-  { title: '100 Days of Discipleship', kind: 'Programme', description: 'A hundred days of guided growth in following Christ.' },
+  {
+    title: '100 Days of Discipleship',
+    kind: 'Programme',
+    description: 'A hundred days of guided growth in following Christ.',
+  },
   { title: 'Purposefully', kind: 'Series', description: 'Discovering, developing and deploying purpose.' },
   { title: 'Leading Seeks You', kind: 'Teaching', description: 'Leadership as a call to faithfulness.' },
   { title: 'Saving Grace', kind: 'Bible study', description: 'A verse-by-verse study on the grace that saves.' },
@@ -167,27 +182,99 @@ export interface GalleryPhoto {
 
 /** Photographs for the Gallery, in display order. */
 export const galleryPhotos: GalleryPhoto[] = [
-  { src: '/images/photos/stage-preaching-finger-raised.webp', alt: 'Emmanuel Iren preaching, one finger raised', category: 'On stage' },
-  { src: '/images/photos/portrait-blue-suit-smiling.webp', alt: 'Emmanuel Iren in a blue suit, smiling', category: 'Portraits' },
-  { src: '/images/photos/studio-podcast-desk.webp', alt: 'Emmanuel Iren at a podcast desk with a microphone', category: 'Studio' },
-  { src: '/images/photos/stage-preaching-red-suit.webp', alt: 'Emmanuel Iren preaching in a red suit', category: 'On stage' },
-  { src: '/images/photos/portrait-navy-suit-hand-on-chin.webp', alt: 'Emmanuel Iren seated, hand on his chin', category: 'Portraits' },
-  { src: '/images/photos/stage-full-congregation.webp', alt: 'Emmanuel Iren reaching out to a full congregation', category: 'On stage' },
-  { src: '/images/photos/studio-conversation.webp', alt: 'Emmanuel Iren speaking into a microphone in a conversation', category: 'Studio' },
-  { src: '/images/photos/portrait-plum-suit-pink.webp', alt: 'Emmanuel Iren in a plum suit against a pink backdrop', category: 'Portraits' },
-  { src: '/images/photos/stage-black-and-white.webp', alt: 'Emmanuel Iren on stage in black and white', category: 'On stage' },
-  { src: '/images/photos/portrait-green-knit-seated.webp', alt: 'Emmanuel Iren in a green knit, seated', category: 'Portraits' },
-  { src: '/images/photos/stage-preaching-white-shirt.webp', alt: 'Emmanuel Iren preaching in a white shirt', category: 'On stage' },
+  {
+    src: '/images/photos/stage-preaching-finger-raised.webp',
+    alt: 'Emmanuel Iren preaching, one finger raised',
+    category: 'On stage',
+  },
+  {
+    src: '/images/photos/portrait-blue-suit-smiling.webp',
+    alt: 'Emmanuel Iren in a blue suit, smiling',
+    category: 'Portraits',
+  },
+  {
+    src: '/images/photos/studio-podcast-desk.webp',
+    alt: 'Emmanuel Iren at a podcast desk with a microphone',
+    category: 'Studio',
+  },
+  {
+    src: '/images/photos/stage-preaching-red-suit.webp',
+    alt: 'Emmanuel Iren preaching in a red suit',
+    category: 'On stage',
+  },
+  {
+    src: '/images/photos/portrait-navy-suit-hand-on-chin.webp',
+    alt: 'Emmanuel Iren seated, hand on his chin',
+    category: 'Portraits',
+  },
+  {
+    src: '/images/photos/stage-full-congregation.webp',
+    alt: 'Emmanuel Iren reaching out to a full congregation',
+    category: 'On stage',
+  },
+  {
+    src: '/images/photos/studio-conversation.webp',
+    alt: 'Emmanuel Iren speaking into a microphone in a conversation',
+    category: 'Studio',
+  },
+  {
+    src: '/images/photos/portrait-plum-suit-pink.webp',
+    alt: 'Emmanuel Iren in a plum suit against a pink backdrop',
+    category: 'Portraits',
+  },
+  {
+    src: '/images/photos/stage-black-and-white.webp',
+    alt: 'Emmanuel Iren on stage in black and white',
+    category: 'On stage',
+  },
+  {
+    src: '/images/photos/portrait-green-knit-seated.webp',
+    alt: 'Emmanuel Iren in a green knit, seated',
+    category: 'Portraits',
+  },
+  {
+    src: '/images/photos/stage-preaching-white-shirt.webp',
+    alt: 'Emmanuel Iren preaching in a white shirt',
+    category: 'On stage',
+  },
   { src: '/images/photos/studio-desk-tablet.webp', alt: 'Emmanuel Iren at a desk with a tablet', category: 'Studio' },
-  { src: '/images/photos/portrait-navy-suit-wood-panel.webp', alt: 'Emmanuel Iren in a navy suit against wood panelling', category: 'Portraits' },
+  {
+    src: '/images/photos/portrait-navy-suit-wood-panel.webp',
+    alt: 'Emmanuel Iren in a navy suit against wood panelling',
+    category: 'Portraits',
+  },
   { src: '/images/photos/stage-pink-light.webp', alt: 'Emmanuel Iren on a pink-lit stage', category: 'On stage' },
-  { src: '/images/photos/portrait-grey-jacket-seated.webp', alt: 'Emmanuel Iren in a grey jacket, seated', category: 'Portraits' },
-  { src: '/images/teachings/gods-good-design.webp', alt: 'Emmanuel Iren mid-sermon, hand raised', category: 'On stage' },
-  { src: '/images/photos/portrait-pinstripe-red-tie.webp', alt: 'Emmanuel Iren in a pinstripe suit and red tie', category: 'Portraits' },
+  {
+    src: '/images/photos/portrait-grey-jacket-seated.webp',
+    alt: 'Emmanuel Iren in a grey jacket, seated',
+    category: 'Portraits',
+  },
+  {
+    src: '/images/teachings/gods-good-design.webp',
+    alt: 'Emmanuel Iren mid-sermon, hand raised',
+    category: 'On stage',
+  },
+  {
+    src: '/images/photos/portrait-pinstripe-red-tie.webp',
+    alt: 'Emmanuel Iren in a pinstripe suit and red tie',
+    category: 'Portraits',
+  },
   { src: '/images/photos/stage-red-light.webp', alt: 'Emmanuel Iren on a red-lit stage', category: 'On stage' },
-  { src: '/images/photos/stage-spotlight-black-and-white.webp', alt: 'Emmanuel Iren under a spotlight in black and white', category: 'On stage' },
-  { src: '/images/photos/stage-preaching-congregation.webp', alt: 'Emmanuel Iren preaching to the congregation', category: 'On stage' },
-  { src: '/images/photos/stage-black-and-white-wide.webp', alt: 'Emmanuel Iren on stage in black and white, wide', category: 'On stage' },
+  {
+    src: '/images/photos/stage-spotlight-black-and-white.webp',
+    alt: 'Emmanuel Iren under a spotlight in black and white',
+    category: 'On stage',
+  },
+  {
+    src: '/images/photos/stage-preaching-congregation.webp',
+    alt: 'Emmanuel Iren preaching to the congregation',
+    category: 'On stage',
+  },
+  {
+    src: '/images/photos/stage-black-and-white-wide.webp',
+    alt: 'Emmanuel Iren on stage in black and white, wide',
+    category: 'On stage',
+  },
 ];
 
 /** Where enquiries, invitations and messages from the site go. */
@@ -233,7 +320,8 @@ export const films: Film[] = [
     title: 'Meltdown',
     year: '2026',
     role: 'Story & executive producer',
-    description: 'A drama exploring anger, trauma, identity and emotional healing, with a spotlight on men’s mental health.',
+    description:
+      'A drama exploring anger, trauma, identity and emotional healing, with a spotlight on men’s mental health.',
     videoId: 'zA3eOjLtUic',
     watchLabel: 'Watch the official trailer',
     hiRes: true,
@@ -242,7 +330,8 @@ export const films: Film[] = [
     title: 'Nigerian Son',
     year: '2020',
     role: 'Executive producer',
-    description: 'An eight-minute Nigerian drama written and directed by Laju Iren, starring Ifeanyi Kalu and Uche Leona.',
+    description:
+      'An eight-minute Nigerian drama written and directed by Laju Iren, starring Ifeanyi Kalu and Uche Leona.',
     videoId: 'jmsoYq6Yy1o',
     watchLabel: 'Watch the full film',
     hiRes: true,
@@ -252,12 +341,14 @@ export const films: Film[] = [
 export const filmChannels = [
   {
     name: 'Emmanuel Iren Live',
-    description: 'Sermons, worship sessions, music videos, Bible teaching, Q&A sessions and conversations about relationships and Christian living.',
+    description:
+      'Sermons, worship sessions, music videos, Bible teaching, Q&A sessions and conversations about relationships and Christian living.',
     url: 'https://www.youtube.com/@pst_iren',
   },
   {
     name: 'Narrative Entertainment',
-    description: 'His film production venture, telling culturally relevant stories about relationships, family and human experience.',
+    description:
+      'His film production venture, telling culturally relevant stories about relationships, family and human experience.',
     url: 'https://www.youtube.com/@thenarrativentertainment',
   },
 ];
@@ -316,7 +407,10 @@ export const podcast = {
     'The official Celebration Church International audio feed: Apostle Emmanuel Iren’s sermons, Bible teachings and messages for Christian living, updated twice weekly.',
   art: '/images/podcast/endless-life.webp',
   links: [
-    { label: 'Listen on Apple Podcasts', url: 'https://podcasts.apple.com/us/podcast/celebration-church-international/id1482679477' },
+    {
+      label: 'Listen on Apple Podcasts',
+      url: 'https://podcasts.apple.com/us/podcast/celebration-church-international/id1482679477',
+    },
     { label: 'Listen on Spotify', url: 'https://open.spotify.com/show/72UnJcDWdTnhHnYw25mvGS' },
   ],
 };
@@ -330,5 +424,6 @@ export const ministryLinks: Record<string, { url: string; label: string }> = {
 };
 
 /** A YouTube thumbnail for a video id, at the best size the video has. */
-export const youtubeThumb = (id: string, hiRes = false) => `https://i.ytimg.com/vi/${id}/${hiRes ? 'maxresdefault' : 'hqdefault'}.jpg`;
+export const youtubeThumb = (id: string, hiRes = false) =>
+  `https://i.ytimg.com/vi/${id}/${hiRes ? 'maxresdefault' : 'hqdefault'}.jpg`;
 export const youtubeWatch = (id: string) => `https://www.youtube.com/watch?v=${id}`;
