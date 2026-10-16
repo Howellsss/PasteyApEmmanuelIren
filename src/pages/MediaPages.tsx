@@ -28,12 +28,12 @@ import {
 import { cn } from '@/lib/cn';
 
 const SECTION_IMAGES: Record<string, string> = {
-  '/media/gallery': '/images/hero/image copy 11.webp',
+  '/media/gallery': '/images/photos/stage-full-congregation.webp',
   '/media/the-irens': '/images/irens/irens-13.webp',
-  '/media/books': '/images/creative/image copy 2.webp',
+  '/media/books': '/images/photos/studio-podcast-desk.webp',
   '/media/films': 'https://i.ytimg.com/vi/RHHZdMU9-m0/maxresdefault.jpg',
   '/media/music': '/images/music/spirituals.webp',
-  '/media/podcast': '/images/music/endless-life-podcast.webp',
+  '/media/podcast': '/images/podcast/endless-life.webp',
 };
 
 /* ── Shared pieces ─────────────────────────────────────────────────────── */

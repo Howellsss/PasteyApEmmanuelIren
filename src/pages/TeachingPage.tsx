@@ -15,8 +15,8 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Button } from '@/components/ui/Button';
 import { LatestMessages, SeriesList, StudyNotes } from '@/components/teaching/TeachingSections';
 
-const TEACHING_IMAGE_2 = '/images/teachings/image copy.webp';
-const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.webp';
+const TEACHING_IMAGE_2 = '/images/photos/portrait-plum-suit-pink.webp';
+const TEACHING_IMAGE_3 = '/images/photos/portrait-navy-suit-wood-panel.webp';
 
 const PODCAST_IMG = TEACHING_IMAGE_3;
 const BIBLE_IMG = TEACHING_IMAGE_2;

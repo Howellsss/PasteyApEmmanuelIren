@@ -12,12 +12,12 @@ import { cn } from '@/lib/cn';
 import { attachHeroVideo, detachHeroVideo, setHeroInView } from '@/lib/heroSound';
 
 const HERO_NAME = 'Apostle Emmanuel Iren';
-const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.webp';
-const ABOUT_IMAGE = '/images/about/image copy.webp';
-const CREATIVE_IMAGE = '/images/creative/e5.webp';
-const MINISTRY_IMAGE = '/images/ministry/e6.webp';
-const TEACHING_IMAGE_2 = '/images/teachings/image copy.webp';
-const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.webp';
+const TEACHING_IMAGE = '/images/photos/stage-preaching-finger-raised.webp';
+const ABOUT_IMAGE = '/images/photos/stage-black-and-white.webp';
+const CREATIVE_IMAGE = '/images/photos/portrait-navy-suit-hand-on-chin.webp';
+const MINISTRY_IMAGE = '/images/photos/portrait-pinstripe-red-tie.webp';
+const TEACHING_IMAGE_2 = '/images/photos/portrait-plum-suit-pink.webp';
+const TEACHING_IMAGE_3 = '/images/photos/portrait-navy-suit-wood-panel.webp';
 
 const featuredTeaching = {
   image: TEACHING_IMAGE,

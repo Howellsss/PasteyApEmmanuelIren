@@ -6,7 +6,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Button } from '@/components/ui/Button';
 
-const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.webp';
+const TEACHING_IMAGE = '/images/photos/stage-preaching-finger-raised.webp';
 
 interface ScheduledEvent {
   day: string;

@@ -15,13 +15,13 @@ import { CTASection } from '@/components/ui/CTASection';
 import { InteractiveTimeline, type TimelineMilestone } from '@/components/ui/InteractiveTimeline';
 import { ministryLinks } from '@/data/media';
 
-const PORTRAIT_HERO = '/images/hero/image copy.webp';
-const ABOUT_IMAGE = '/images/about/image.webp';
-const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.webp';
-const CREATIVE_IMAGE = '/images/creative/e5.webp';
-const MINISTRY_IMAGE = '/images/ministry/e6.webp';
-const TEACHING_IMAGE_2 = '/images/teachings/image copy.webp';
-const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.webp';
+const PORTRAIT_HERO = '/images/photos/portrait-about-hero.webp';
+const ABOUT_IMAGE = '/images/photos/portrait-blue-suit-smiling.webp';
+const TEACHING_IMAGE = '/images/photos/stage-preaching-finger-raised.webp';
+const CREATIVE_IMAGE = '/images/photos/portrait-navy-suit-hand-on-chin.webp';
+const MINISTRY_IMAGE = '/images/photos/portrait-pinstripe-red-tie.webp';
+const TEACHING_IMAGE_2 = '/images/photos/portrait-plum-suit-pink.webp';
+const TEACHING_IMAGE_3 = '/images/photos/portrait-navy-suit-wood-panel.webp';
 
 const CAMPUS_IMG = TEACHING_IMAGE_2;
 const WORSHIP_IMG = TEACHING_IMAGE;
@@ -30,8 +30,8 @@ const BOOK_IMG = TEACHING_IMAGE_3;
 const MUSIC_IMG = CREATIVE_IMAGE;
 const FILM_IMG = TEACHING_IMAGE_2;
 const LEADERSHIP_IMG = TEACHING_IMAGE_3;
-const FAMILY_IMG = '/images/creative/image copy.webp';
-const JOURNEY_IMG = '/images/about/journey-interview.webp';
+const FAMILY_IMG = '/images/photos/portrait-green-knit-seated.webp';
+const JOURNEY_IMG = '/images/photos/interview-tvc-news.webp';
 
 const milestones: TimelineMilestone[] = [
   {

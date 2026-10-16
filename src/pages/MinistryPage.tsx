@@ -12,11 +12,11 @@ import { SectionHeader } from '@/components/ui/SectionHeader';
 
 
 // Portraits of Emmanuel Iren used for each expression until dedicated ministry photography is supplied.
-const IMG_CCI = '/images/hero/image copy 13.webp';
-const IMG_MANIFEST = '/images/hero/image copy 3.webp';
-const IMG_TRIUMPH30 = '/images/hero/image copy 10.webp';
-const IMG_OUTBURST = '/images/hero/image copy 12.webp';
-const IMG_EMMANUEL_MINISTERING = '/images/hero/image copy 11.webp';
+const IMG_CCI = '/images/photos/stage-red-light.webp';
+const IMG_MANIFEST = '/images/photos/studio-desk-tablet.webp';
+const IMG_TRIUMPH30 = '/images/photos/stage-black-and-white-wide.webp';
+const IMG_OUTBURST = '/images/photos/stage-pink-light.webp';
+const IMG_EMMANUEL_MINISTERING = '/images/photos/stage-full-congregation.webp';
 
 const ministryThemes = [
   {
