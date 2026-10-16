@@ -40,7 +40,7 @@ export function ImageFeature({
   return (
     <Reveal
       variant="scale"
-      className={cn('relative overflow-hidden rounded-soft bg-charcoal/5', ratioClass[ratio], className)}
+      className={cn('relative overflow-hidden rounded-soft bg-surface', ratioClass[ratio], className)}
     >
       <img
         src={src}
@@ -53,7 +53,7 @@ export function ImageFeature({
         )}
       />
       {treatment === 'dark-overlay' && (
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-charcoal/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/60 via-ink/10 to-transparent" />
       )}
     </Reveal>
   );

@@ -21,17 +21,17 @@ export function NumberedList({ items, className }: NumberedListProps) {
           as="li"
           key={index}
           delay={index * 80}
-          className="group grid grid-cols-[auto_1fr] gap-6 sm:gap-8 py-6 border-t border-stone/25 first:border-t-0"
+          className="group grid grid-cols-[auto_1fr] gap-6 sm:gap-8 py-6 border-t border-line first:border-t-0"
         >
-          <span className="font-display text-2xl lg:text-3xl text-gold tabular-nums leading-none pt-1">
+          <span className="font-display text-2xl lg:text-3xl text-accent tabular-nums leading-none pt-1">
             {item.number}
           </span>
           <div>
-            <h3 className="font-display text-lg lg:text-xl leading-snug text-charcoal group-hover:text-burgundy transition-colors duration-300 mb-2">
+            <h3 className="font-display text-lg lg:text-xl leading-snug text-cream group-hover:text-accent transition-colors duration-300 mb-2">
               {item.title}
             </h3>
             {item.description && (
-              <p className="text-charcoal/70 leading-relaxed max-w-xl">{item.description}</p>
+              <p className="text-ash leading-relaxed max-w-xl">{item.description}</p>
             )}
           </div>
         </Reveal>

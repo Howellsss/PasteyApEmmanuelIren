@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { cn } from '@/lib/cn';
 import {
   BookOpen,
@@ -7,25 +6,22 @@ import {
   Film,
   Users,
   Mic,
-  PenLine,
-  ArrowUpRight,
-  ArrowRight,
-  Play,
-  Quote,
 } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
+import { ChapterMarker } from '@/components/ui/ChapterMarker';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { CTASection } from '@/components/ui/CTASection';
 import { InteractiveTimeline, type TimelineMilestone } from '@/components/ui/InteractiveTimeline';
+import { ministryLinks } from '@/data/media';
 
-const PORTRAIT_HERO = '/images/hero/image copy.png';
-const ABOUT_IMAGE = '/images/about/image.png';
-const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.png';
-const CREATIVE_IMAGE = '/images/creative/e5.jpeg';
-const MINISTRY_IMAGE = '/images/ministry/e6.jpeg';
-const TEACHING_IMAGE_2 = '/images/teachings/image copy.png';
-const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.png';
+const PORTRAIT_HERO = '/images/hero/image copy.webp';
+const ABOUT_IMAGE = '/images/about/image.webp';
+const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.webp';
+const CREATIVE_IMAGE = '/images/creative/e5.webp';
+const MINISTRY_IMAGE = '/images/ministry/e6.webp';
+const TEACHING_IMAGE_2 = '/images/teachings/image copy.webp';
+const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.webp';
 
 const CAMPUS_IMG = TEACHING_IMAGE_2;
 const WORSHIP_IMG = TEACHING_IMAGE;
@@ -34,7 +30,8 @@ const BOOK_IMG = TEACHING_IMAGE_3;
 const MUSIC_IMG = CREATIVE_IMAGE;
 const FILM_IMG = TEACHING_IMAGE_2;
 const LEADERSHIP_IMG = TEACHING_IMAGE_3;
-const FAMILY_IMG = ABOUT_IMAGE;
+const FAMILY_IMG = '/images/creative/image copy.webp';
+const JOURNEY_IMG = '/images/about/journey-interview.webp';
 
 const milestones: TimelineMilestone[] = [
   {
@@ -204,9 +201,9 @@ export function AboutPage() {
   const [activeTheme, setActiveTheme] = useState(0);
 
   return (
-    <div className="min-h-screen bg-ivory">
+    <div className="min-h-screen bg-ink">
       {/* PAGE HERO */}
-      <section className="relative min-h-[80vh] flex items-end overflow-hidden bg-charcoal">
+      <section className="relative min-h-[80vh] flex items-end overflow-hidden bg-ink-2">
         <div className="absolute inset-0">
           <img
             src={PORTRAIT_HERO}
@@ -215,14 +212,14 @@ export function AboutPage() {
             style={{ objectPosition: 'center top' }}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-charcoal/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/50" />
         <div className="relative w-full px-6 sm:px-8 lg:px-16 pb-16 lg:pb-24 pt-32">
           <div className="container-wide">
             <Reveal className="max-w-3xl">
-              <Eyebrow tone="gold" className="mb-6">
+              <Eyebrow className="mb-6">
                 About Emmanuel Iren
               </Eyebrow>
-              <h1 className="font-sans text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.02] text-soft-white text-balance tracking-[-0.04em] mb-6">
+              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl leading-[1.02] text-cream text-balance tracking-[-0.01em] mb-6">
                 About Emmanuel Iren
               </h1>
               <p className="text-lg sm:text-xl text-white/85 leading-relaxed max-w-2xl font-light text-pretty">
@@ -236,33 +233,37 @@ export function AboutPage() {
       </section>
 
       {/* THE JOURNEY */}
-      <section className="py-24 lg:py-36">
-        <div className="container-editorial">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-16">
-            <div className="lg:col-span-7">
-              <Reveal>
-                <Eyebrow tone="burgundy" className="mb-6">
-                  The Journey
-                </Eyebrow>
-                <h2 className="font-display text-4xl lg:text-6xl leading-[1.05] text-charcoal text-balance">
-                  From a campus fellowship to a global church.
-                </h2>
-              </Reveal>
-            </div>
-            <div className="lg:col-span-4 lg:col-start-9">
-              <Reveal delay={120}>
-                <p className="text-lg text-charcoal/70 leading-relaxed text-pretty">
-                  The story of Emmanuel Iren's ministry is one of steady, faithful
-                  growth — from a small gathering of students to a church with branches
-                  across four countries.
-                </p>
-              </Reveal>
-            </div>
+      <section className="relative overflow-hidden py-24 lg:py-36">
+        {/* The interview photo sits inside the background: its black blends into the page and its edges fade out. */}
+        <div className="photo-melt pointer-events-none absolute bg-ink inset-x-0 top-0 h-[34rem] sm:h-[40rem] lg:inset-y-0 lg:left-auto lg:right-0 lg:h-auto lg:w-[52%]" aria-hidden="true">
+          <img
+            src={JOURNEY_IMG}
+            alt=""
+            loading="lazy"
+            className="h-full w-full object-cover object-[50%_22%] lg:object-[50%_30%] grayscale mix-blend-lighten opacity-70 lg:opacity-75"
+          />
+          <div className="absolute inset-0 bg-brand/10 mix-blend-color" />
+        </div>
+        <div className="container-editorial relative">
+          <div className="max-w-3xl pt-72 sm:pt-80 lg:pt-0 lg:max-w-[46%] mb-12 lg:mb-14">
+            <Reveal>
+              <ChapterMarker number="01" label="The Journey" />
+              <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream">
+                From a campus fellowship to a global church.
+              </h2>
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="mt-8 text-lg text-cream/85 leading-relaxed text-pretty">
+                The story of Emmanuel Iren's ministry is one of steady, faithful
+                growth — from a small gathering of students to a church with branches
+                across four countries.
+              </p>
+            </Reveal>
           </div>
 
-          <div className="space-y-6 max-w-3xl">
+          <div className="space-y-6 max-w-3xl lg:max-w-[46%]">
             <Reveal>
-              <p className="text-lg text-charcoal/80 leading-relaxed">
+              <p className="text-lg text-ash leading-relaxed">
                 In 2008, as an undergraduate at Covenant University in Ota, Nigeria,
                 Emmanuel Iren started a Christian campus fellowship called the
                 Triumphal Youth Fellowship. What began as a student gathering soon grew
@@ -272,7 +273,7 @@ export function AboutPage() {
               </p>
             </Reveal>
             <Reveal delay={80}>
-              <p className="text-lg text-charcoal/80 leading-relaxed">
+              <p className="text-lg text-ash leading-relaxed">
                 On 11 November 2012, the fellowship became Life Triumphal Church,
                 opening its doors in Lagos. Two years later, in 2014, it was renamed
                 Celebration Church International — a name that reflected a widening
@@ -280,7 +281,7 @@ export function AboutPage() {
               </p>
             </Reveal>
             <Reveal delay={160}>
-              <p className="text-lg text-charcoal/80 leading-relaxed">
+              <p className="text-lg text-ash leading-relaxed">
                 In the years since, CCI has grown to over 100,000 members across 30
                 branches in Nigeria, the United Kingdom, Canada, and the United States.
                 Alongside the local church, Emmanuel Iren has built creative and
@@ -295,32 +296,31 @@ export function AboutPage() {
       </section>
 
       {/* INTERACTIVE TIMELINE */}
-      <section className="py-20 lg:py-32 bg-soft-white">
+      <section className="py-20 lg:py-32 bg-surface">
         <div className="container-wide">
           <SectionHeader
+            numbered="02"
             eyebrow="Milestones"
-            tone="burgundy"
+           
             title="A timeline of the work."
-            description="Tap a year to explore the moments that shaped the journey — from a campus fellowship to a global ministry."
+            description="Hover or tap a year to explore the moments that shaped the journey — from a campus fellowship to a global ministry."
           />
-          <Reveal variant="scale" className="mt-14">
+          <Reveal className="mt-14">
             <InteractiveTimeline milestones={milestones} />
           </Reveal>
         </div>
       </section>
 
       {/* THE CALLING */}
-      <section className="py-28 lg:py-44 bg-charcoal text-soft-white overflow-hidden">
+      <section className="py-28 lg:py-44 bg-ink-2 text-cream overflow-hidden">
         <div className="container-editorial">
           <Reveal>
-            <Eyebrow tone="gold" className="mb-8">
-              The Calling
-            </Eyebrow>
+            <ChapterMarker number="03" label="The Calling" className="mb-8" />
           </Reveal>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-8">
               <Reveal>
-                <h2 className="font-display text-4xl sm:text-5xl lg:text-7xl leading-[1.02] text-balance font-light">
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[3.25rem] text-cream">
                   To teach the word faithfully, to create with purpose, and to build
                   people who will carry the message forward.
                 </h2>
@@ -345,6 +345,7 @@ export function AboutPage() {
       <section className="py-24 lg:py-36">
         <div className="container-editorial">
           <SectionHeader
+            numbered="04"
             eyebrow="The Ministry"
             title="Recurrent themes in the work."
             description="Not official core values, but documented and observable areas that surface repeatedly across his teaching, leadership, and creative output."
@@ -353,17 +354,17 @@ export function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-16">
             {/* Theme list */}
             <div className="lg:col-span-5">
-              <div className="border-t border-stone/30">
+              <div className="border-t border-line">
                 {ministryThemes.map((theme, i) => (
                   <button
                     key={theme.number}
                     onClick={() => setActiveTheme(i)}
-                    className="group w-full text-left grid grid-cols-[2.5rem_1fr] gap-4 py-6 border-b border-stone/30 transition-colors duration-300"
+                    className="group w-full text-left grid grid-cols-[2.5rem_1fr] gap-4 py-6 border-b border-line transition-colors duration-300"
                   >
                     <span
                       className={
                         'text-meta font-sans tabular-nums transition-colors duration-300 ' +
-                        (activeTheme === i ? 'text-burgundy' : 'text-stone')
+                        (activeTheme === i ? 'text-accent' : 'text-ash')
                       }
                     >
                       {theme.number}
@@ -372,7 +373,7 @@ export function AboutPage() {
                       <h3
                         className={
                           'font-display text-2xl leading-tight transition-colors duration-300 ' +
-                          (activeTheme === i ? 'text-charcoal' : 'text-charcoal/50')
+                          (activeTheme === i ? 'text-cream' : 'text-ash')
                         }
                       >
                         {theme.title}
@@ -390,13 +391,13 @@ export function AboutPage() {
                   key={activeTheme}
                   className="reveal-from-right"
                 >
-                  <span className="font-display text-7xl lg:text-8xl text-burgundy/15 tabular-nums leading-none block mb-4">
+                  <span className="font-display text-7xl lg:text-8xl text-brand tabular-nums leading-none block mb-4">
                     {ministryThemes[activeTheme].number}
                   </span>
-                  <h3 className="font-display text-3xl lg:text-4xl text-charcoal mb-6 leading-tight">
+                  <h3 className="font-display text-3xl lg:text-4xl text-cream mb-6 leading-tight">
                     {ministryThemes[activeTheme].title}
                   </h3>
-                  <p className="text-lg text-charcoal/70 leading-relaxed text-pretty">
+                  <p className="text-lg text-ash leading-relaxed text-pretty">
                     {ministryThemes[activeTheme].description}
                   </p>
                 </div>
@@ -407,22 +408,20 @@ export function AboutPage() {
       </section>
 
       {/* BEYOND THE PULPIT */}
-      <section className="py-24 lg:py-36 bg-soft-white overflow-hidden">
+      <section className="py-24 lg:py-36 bg-surface overflow-hidden">
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end mb-14">
             <div className="lg:col-span-7">
               <Reveal>
-                <Eyebrow tone="gold" className="mb-6">
-                  Beyond the Pulpit
-                </Eyebrow>
-                <h2 className="font-display text-4xl lg:text-6xl leading-[1.05] text-charcoal text-balance">
+                <ChapterMarker number="05" label="Beyond the Pulpit" />
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream">
                   The message travels through pages, melodies, and stories.
                 </h2>
               </Reveal>
             </div>
             <div className="lg:col-span-4 lg:col-start-9">
               <Reveal delay={100}>
-                <p className="text-charcoal/65 leading-relaxed text-pretty">
+                <p className="text-ash leading-relaxed text-pretty">
                   Books, music, film, media, and leadership — each a different medium
                   carrying the same conviction that faith is not just believed but
                   lived, and that the creative gifts of God's people are meant to be
@@ -443,7 +442,7 @@ export function AboutPage() {
                   delay={i * 80}
                   variant="scale"
                   className={cn(
-                    'group relative overflow-hidden rounded-soft bg-charcoal',
+                    'group relative overflow-hidden rounded-soft bg-ink-2',
                     isLarge ? 'lg:row-span-2 min-h-[24rem]' : 'min-h-[20rem]',
                   )}
                 >
@@ -454,10 +453,10 @@ export function AboutPage() {
                     className="absolute inset-0 w-full h-full object-cover opacity-60 transition-all duration-700 ease-out-quart group-hover:opacity-40 group-hover:scale-105"
                     style={{ objectPosition: 'center top' }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/40 to-transparent" />
-                  <div className="relative h-full p-6 sm:p-8 flex flex-col justify-between text-soft-white">
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-transparent" />
+                  <div className="relative h-full p-6 sm:p-8 flex flex-col justify-between text-cream">
                     <div className="flex items-center justify-between">
-                      <Icon className="w-6 h-6 text-gold" />
+                      <Icon className="w-6 h-6 text-accent" />
                       <span className="text-meta uppercase tracking-widest text-white/40">
                         0{i + 1}
                       </span>
@@ -478,59 +477,47 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* FAMILY */}
-      <section className="py-24 lg:py-36">
-        <div className="container-editorial">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            <div className="lg:col-span-5">
-              <Reveal variant="scale">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-soft">
-                  <img
-                    src={FAMILY_IMG}
-                    alt="Family at sunset"
-                    loading="lazy"
-                    className="w-full h-full object-cover image-warm"
-                    style={{ objectPosition: 'center top' }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 to-transparent" />
-                </div>
-              </Reveal>
-            </div>
-            <div className="lg:col-span-6 lg:col-start-7">
-              <Reveal delay={100}>
-                <Eyebrow tone="burgundy" className="mb-6">
-                  Family
-                </Eyebrow>
-                <h2 className="font-display text-3xl lg:text-5xl leading-[1.1] text-charcoal text-balance mb-6">
-                  A life grounded in home.
-                </h2>
-                <div className="space-y-4 text-charcoal/70 leading-relaxed">
-                  <p>
-                    Emmanuel Iren married Laju Iren (née Arenyeka) in November 2014.
-                    Together they are parents to three daughters and one son.
-                  </p>
-                  <p>
-                    The family remains a quiet foundation beneath the public work — a
-                    reminder that the ministry, for all its reach, is carried by a man
-                    who is also a husband and a father.
-                  </p>
-                </div>
-              </Reveal>
-            </div>
+      {/* FAMILY: set like the home Invitation, with his portrait tinted into the navy beside the text. */}
+      <section className="relative overflow-hidden bg-navy py-20 md:py-28 lg:py-36">
+        <div className="photo-melt pointer-events-none absolute bg-navy inset-x-0 top-0 h-[30rem] sm:h-[36rem] lg:inset-y-0 lg:left-auto lg:right-0 lg:h-auto lg:w-[55%]" aria-hidden="true">
+          <img
+            src={FAMILY_IMG}
+            alt=""
+            loading="lazy"
+            className="h-full w-full object-cover object-[50%_18%] opacity-75 mix-blend-luminosity grayscale"
+          />
+        </div>
+        <div className="container-wide relative">
+          <div className="max-w-2xl pt-60 sm:pt-72 lg:pt-0 lg:max-w-[42%]">
+            <Reveal variant="right">
+              <ChapterMarker tone="light" number="06" label="Family" />
+              <h2 className="font-display leading-[1.02] tracking-[-0.01em] text-balance text-4xl sm:text-5xl lg:text-6xl text-cream mb-8">
+                A life grounded <span className="text-brand">in home.</span>
+              </h2>
+            </Reveal>
+            <Reveal variant="right" delay={150} className="max-w-xl space-y-4 text-base sm:text-lg leading-relaxed text-cream/85">
+              <p>
+                Emmanuel Iren married Laju Iren (née Arenyeka) in November 2014.
+                Together they are parents to three daughters and one son.
+              </p>
+              <p>
+                The family remains a quiet foundation beneath the public work — a
+                reminder that the ministry, for all its reach, is carried by a man
+                who is also a husband and a father.
+              </p>
+            </Reveal>
           </div>
         </div>
       </section>
 
       {/* CURRENT EXPRESSION */}
-      <section className="py-24 lg:py-36 bg-charcoal text-soft-white overflow-hidden">
+      <section className="py-24 lg:py-36 bg-ink-2 text-cream overflow-hidden">
         <div className="container-wide">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end mb-14">
             <div className="lg:col-span-7">
               <Reveal>
-                <Eyebrow tone="gold" className="mb-6">
-                  Where the Ministry Is Today
-                </Eyebrow>
-                <h2 className="font-display text-4xl lg:text-6xl leading-[1.05] text-balance">
+                <ChapterMarker number="07" label="Where the Ministry Is Today" />
+                <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[2.5rem] text-cream">
                   One calling, many expressions — all still growing.
                 </h2>
               </Reveal>
@@ -550,19 +537,22 @@ export function AboutPage() {
           <div className="border-t border-white/15">
             {currentExpressions.map((expr, i) => (
               <Reveal key={expr.name}>
-                <div className="grid grid-cols-[2.5rem_1fr] gap-4 sm:gap-8 py-6 border-b border-white/15 group hover:bg-white/5 transition-colors duration-300 px-2 -mx-2 rounded-subtle">
-                  <span className="text-meta text-gold tabular-nums pt-1">
+                <a
+                  href={ministryLinks[expr.name]?.url ?? '/teaching'}
+                  {...(ministryLinks[expr.name] ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  className="grid grid-cols-[2.5rem_1fr] gap-4 sm:gap-8 py-6 border-b border-white/15 group hover:bg-white/5 transition-colors duration-300 px-2 -mx-2 rounded-subtle focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                  <span className="text-meta text-accent tabular-nums pt-1">
                     0{i + 1}
                   </span>
                   <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
-                    <h3 className="font-display text-xl lg:text-2xl leading-tight">
+                    <h3 className="font-display text-xl lg:text-2xl leading-tight transition-colors duration-300 group-hover:text-accent">
                       {expr.name}
                     </h3>
                     <p className="text-sm text-white/55 leading-relaxed max-w-md sm:text-right">
                       {expr.description}
                     </p>
                   </div>
-                </div>
+                </a>
               </Reveal>
             ))}
           </div>
@@ -577,8 +567,9 @@ export function AboutPage() {
             title="Explore His Teachings"
             description="Sermons, conversations, and devotionals for the questions, decisions, and ordinary days that make up a life of faith."
             primaryLabel="Explore Teachings"
+            primaryTo="/teaching"
             secondaryLabel="View Events"
-            variant="dark"
+            secondaryTo="/events"
           />
         </div>
       </section>

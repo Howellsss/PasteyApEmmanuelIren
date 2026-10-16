@@ -6,25 +6,24 @@ interface TextLinkProps {
   children: ReactNode;
   href?: string;
   className?: string;
-  tone?: 'burgundy' | 'gold' | 'charcoal';
+  /** accent: gold link; plain: cream link with a gold arrow; light: cream link for the navy chapter. */
+  tone?: 'accent' | 'plain' | 'light';
   withArrow?: boolean;
 }
 
-export function TextLink({
-  children,
-  href = '#',
-  className,
-  tone = 'burgundy',
-  withArrow = true,
-}: TextLinkProps) {
-  const toneClass = {
-    burgundy: 'text-burgundy hover:text-burgundy-dark',
-    gold: 'text-gold-dark hover:text-gold',
-    charcoal: 'text-charcoal hover:text-burgundy',
-  }[tone];
+const TONES = {
+  accent: 'text-accent hover:text-cream',
+  plain: 'text-cream hover:text-accent',
+  light: 'text-cream hover:text-accent',
+};
+
+/** Inline arrow link. Without `href` it renders a span, for use inside a router <Link>. */
+export function TextLink({ children, href, className, tone = 'accent', withArrow = true }: TextLinkProps) {
+  const toneClass = TONES[tone];
+  const Tag = href ? 'a' : 'span';
 
   return (
-    <a
+    <Tag
       href={href}
       className={cn(
         'group inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-300 focus:outline-none focus-visible:underline focus-visible:underline-offset-4',
@@ -34,8 +33,8 @@ export function TextLink({
     >
       {children}
       {withArrow && (
-        <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+        <ArrowRight className="w-3.5 h-3.5 text-accent transition-transform duration-300 group-hover:translate-x-1" />
       )}
-    </a>
+    </Tag>
   );
 }

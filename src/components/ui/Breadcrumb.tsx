@@ -16,16 +16,16 @@ export function Breadcrumb({ items, className }: BreadcrumbProps) {
             {item.href && !isLast ? (
               <a
                 href={item.href}
-                className="text-meta text-stone hover:text-burgundy transition-colors duration-300"
+                className="text-meta text-ash hover:text-accent transition-colors duration-300"
               >
                 {item.label}
               </a>
             ) : (
-              <span className={cn('text-meta', isLast ? 'text-charcoal font-medium' : 'text-stone')}>
+              <span className={cn('text-meta', isLast ? 'text-cream font-medium' : 'text-ash')}>
                 {item.label}
               </span>
             )}
-            {!isLast && <ChevronRight className="w-3 h-3 text-stone/50" />}
+            {!isLast && <ChevronRight className="w-3 h-3 text-ash" />}
           </span>
         );
       })}
