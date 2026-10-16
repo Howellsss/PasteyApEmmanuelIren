@@ -6,7 +6,7 @@ import { ChapterMarker } from '@/components/ui/ChapterMarker';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { CTASection } from '@/components/ui/CTASection';
-import { InteractiveTimeline, type TimelineMilestone } from '@/components/ui/InteractiveTimeline';
+import { InteractiveTimeline, type TimelineMilestone } from '@/components/about/InteractiveTimeline';
 import { ministryLinks } from '@/data/media';
 
 const PORTRAIT_HERO = '/images/photos/portrait-about-hero.webp';

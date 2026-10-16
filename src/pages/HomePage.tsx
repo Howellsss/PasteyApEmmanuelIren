@@ -5,7 +5,7 @@ import { Reveal } from '@/components/ui/Reveal';
 import { Button } from '@/components/ui/Button';
 import { TextLink } from '@/components/ui/TextLink';
 import { DisplayHeading } from '@/components/ui/DisplayHeading';
-import { CreativeAccordion } from '@/components/ui/CreativeAccordion';
+import { CreativeAccordion } from '@/components/home/CreativeAccordion';
 import { MediaReveal } from '@/components/ui/MediaReveal';
 import { messages as latestTeachings, ministryLinks } from '@/data/media';
 import { cn } from '@/lib/cn';

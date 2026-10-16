@@ -9,15 +9,13 @@ import { MinistryPage } from '@/pages/MinistryPage';
 import { EventsPage } from '@/pages/EventsPage';
 import { InvitePage } from '@/pages/InvitePage';
 import { ContactPage } from '@/pages/ContactPage';
-import {
-  BooksPage,
-  GalleryPage,
-  IrensPage,
-  FilmsPage,
-  MusicPage,
-  PodcastPage,
-  MediaOverviewPage,
-} from '@/pages/MediaPages';
+import { BooksPage } from '@/pages/media/BooksPage';
+import { GalleryPage } from '@/pages/media/GalleryPage';
+import { IrensPage } from '@/pages/media/IrensPage';
+import { FilmsPage } from '@/pages/media/FilmsPage';
+import { MusicPage } from '@/pages/media/MusicPage';
+import { PodcastPage } from '@/pages/media/PodcastPage';
+import { MediaOverviewPage } from '@/pages/media/MediaOverviewPage';
 
 const SITE = 'Apostle Emmanuel Iren';
 

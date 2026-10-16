@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpen, Film, Mic2, Music2, Sparkles } from 'lucide-react';
-import { DisplayHeading } from './DisplayHeading';
-import { Reveal } from './Reveal';
+import { DisplayHeading } from '@/components/ui/DisplayHeading';
+import { Reveal } from '@/components/ui/Reveal';
 
 type Card = {
   tag: string;
