@@ -116,15 +116,19 @@ function MoreFromMedia({ current }: { current: string }) {
   );
 }
 
-/** A book's cover, standing on its shelf line: every cover keeps its own shape, bottoms aligned. */
+/**
+ * A book's cover, standing on its shelf line: every cover keeps its own shape, bottoms aligned.
+ * The cover is placed absolutely so its max height resolves against the frame in every browser
+ * (Safari ignores percentage heights on a flex child inside an aspect-ratio box).
+ */
 function BookCover({ book, className }: { book: Book; onNavy?: boolean; className?: string }) {
   return (
-    <div className={cn('flex aspect-[4/5] items-end justify-center', className)}>
+    <div className={cn('relative aspect-[4/5]', className)}>
       <img
         src={book.cover}
         alt={`${book.title} by Emmanuel Iren, cover`}
         loading="lazy"
-        className="max-h-full max-w-full rounded-[3px] object-contain shadow-[0_24px_48px_-12px_rgba(0,0,0,0.65)] ring-1 ring-white/10"
+        className="absolute bottom-0 left-1/2 max-h-full max-w-full -translate-x-1/2 rounded-[3px] object-contain shadow-[0_24px_48px_-12px_rgba(0,0,0,0.65)] ring-1 ring-white/10"
       />
     </div>
   );
@@ -188,7 +192,7 @@ export function MediaOverviewPage() {
           <Reveal variant="left" className="mb-10">
             <DisplayHeading number="02" eyebrow="In Media" title="Every way" accent="in." />
           </Reveal>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
             {sections.map((section, index) => (
               <Reveal key={section.path} variant="right" delay={(index % 4) * 120}>
                 <Link to={section.path} className="group block">
@@ -201,10 +205,10 @@ export function MediaOverviewPage() {
                       style={{ objectPosition: 'center 25%' }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/20 to-transparent" />
-                    <span className="absolute left-5 top-4 font-display text-2xl text-cream [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">{String(index + 1).padStart(2, '0')}</span>
-                    <div className="absolute inset-x-5 bottom-5">
-                      <h3 className="font-display text-2xl text-cream">{section.label}</h3>
-                      <p className="mt-1 text-sm text-cream/75">{section.blurb}</p>
+                    <span className="absolute left-3.5 top-3 font-display text-lg text-cream [text-shadow:0_1px_8px_rgba(0,0,0,0.6)] sm:left-5 sm:top-4 sm:text-2xl">{String(index + 1).padStart(2, '0')}</span>
+                    <div className="absolute inset-x-3.5 bottom-3.5 sm:inset-x-5 sm:bottom-5">
+                      <h3 className="font-display text-lg leading-tight text-cream sm:text-2xl">{section.label}</h3>
+                      <p className="mt-1 hidden text-sm text-cream/75 sm:block">{section.blurb}</p>
                     </div>
                   </div>
                 </Link>
@@ -483,15 +487,15 @@ export function MusicPage() {
                   href={profile.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex h-full flex-col gap-6 rounded-soft bg-ink-2 p-5 transition-colors duration-300 hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:flex-row sm:items-center sm:p-6"
+                  className="group flex h-full items-center gap-4 rounded-soft bg-ink-2 p-4 transition-colors duration-300 hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-accent sm:gap-6 sm:p-6"
                 >
-                  <img src={profile.art} alt={profile.artAlt} loading="lazy" className="aspect-square w-full rounded-[3px] object-cover shadow-[0_18px_40px_-14px_rgba(0,0,0,0.7)] sm:w-40" />
+                  <img src={profile.art} alt={profile.artAlt} loading="lazy" className="aspect-square w-28 flex-shrink-0 rounded-[3px] object-cover shadow-[0_18px_40px_-14px_rgba(0,0,0,0.7)] sm:w-40" />
                   <div>
                     <p className="flex items-center gap-2 text-eyebrow uppercase tracking-[0.16em] text-accent">
                       <Music2 className="h-4 w-4" /> {profile.name}
                     </p>
-                    <p className="mt-3 max-w-sm leading-relaxed text-ash">{profile.description}</p>
-                    <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-cream transition-colors duration-300 group-hover:text-accent">
+                    <p className="mt-2 max-w-sm text-sm leading-relaxed text-ash sm:mt-3 sm:text-base">{profile.description}</p>
+                    <span className="mt-3 inline-flex sm:mt-5 items-center gap-1.5 text-sm font-medium text-cream transition-colors duration-300 group-hover:text-accent">
                       {profile.action} <ArrowUpRight className="h-4 w-4 text-accent" />
                     </span>
                   </div>
@@ -506,7 +510,7 @@ export function MusicPage() {
           <Reveal variant="left" className="mb-10">
             <DisplayHeading number="02" eyebrow="Official videos" title="Watch" accent="the songs." />
           </Reveal>
-          <div className="grid grid-cols-1 gap-x-5 gap-y-9 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 gap-x-3 gap-y-7 sm:gap-x-5 sm:gap-y-9 lg:grid-cols-4">
             {musicVideos.map((video, index) => (
               <Reveal key={video.id} variant="up" delay={(index % 4) * 80}>
                 <a href={youtubeWatch(video.id)} target="_blank" rel="noopener noreferrer" className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
@@ -514,8 +518,8 @@ export function MusicPage() {
                     <img src={youtubeThumb(video.id, video.hiRes)} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-500 ease-out-quart group-hover:scale-[1.04]" />
                     <span className="absolute bottom-2 right-2 rounded bg-black/80 px-1.5 py-0.5 text-xs font-medium tabular-nums text-white">{video.duration}</span>
                   </div>
-                  <h3 className="mt-3 font-display text-lg leading-snug text-cream transition-colors duration-300 group-hover:text-accent">{video.title}</h3>
-                  {video.featuring && <p className="mt-0.5 text-sm text-ash">feat. {video.featuring}</p>}
+                  <h3 className="mt-2.5 font-display text-base leading-snug text-cream transition-colors duration-300 group-hover:text-accent sm:mt-3 sm:text-lg">{video.title}</h3>
+                  {video.featuring && <p className="mt-0.5 text-xs text-ash sm:text-sm">feat. {video.featuring}</p>}
                 </a>
               </Reveal>
             ))}
@@ -583,15 +587,15 @@ export function BooksPage() {
       <MediaSubnav />
       <section className="py-14 md:py-16 lg:py-24">
         <div className="container-wide">
-          <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-12 sm:gap-x-6 lg:grid-cols-3 lg:gap-y-16">
             {books.map((book, index) => (
-              <Reveal key={book.title} variant="right" delay={(index % 3) * 120}>
-                <a href={book.url} target="_blank" rel="noopener noreferrer" className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-                  <BookCover book={book} className="max-w-[20rem] transition-transform duration-500 ease-out-quart group-hover:-translate-y-1.5" />
-                  <p className="mt-6 text-eyebrow uppercase tracking-[0.16em] text-accent">{book.theme}</p>
-                  <h3 className="mt-1.5 font-display text-2xl text-cream transition-colors duration-300 group-hover:text-accent">{book.title}</h3>
-                  <p className="mt-2 max-w-sm text-sm leading-relaxed text-ash">{book.description}</p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-cream">
+              <Reveal key={book.title} variant="up" delay={(index % 3) * 120}>
+                <a href={book.url} target="_blank" rel="noopener noreferrer" className="group flex h-full flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                  <BookCover book={book} className="w-full max-w-[20rem] transition-transform duration-500 ease-out-quart group-hover:-translate-y-1.5" />
+                  <p className="mt-5 text-[0.6875rem] uppercase tracking-[0.16em] text-accent sm:mt-6 sm:text-eyebrow">{book.theme}</p>
+                  <h3 className="mt-1.5 font-display text-xl leading-tight text-cream transition-colors duration-300 group-hover:text-accent sm:text-2xl">{book.title}</h3>
+                  <p className="mt-2 line-clamp-3 max-w-sm text-sm leading-relaxed text-ash sm:line-clamp-none">{book.description}</p>
+                  <span className="mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-medium text-cream">
                     Get the book <ArrowUpRight className="h-4 w-4 text-accent transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </span>
                 </a>
