@@ -14,7 +14,7 @@ First release from this repository as a maintained project.
 - CI on GitHub Actions: typecheck, lint, format check and build on every push to `master` and every pull request.
 - Strict TypeScript now treats unused code as an error.
 - `npm run sermons:update` regenerates the sermon list from the YouTube channel.
-- Removed the Bolt scaffold, 15 unused components, a stray HTML prototype, 12 unused images (about 17 MB) and the
+- Removed leftover starter-template files, 15 unused components, a stray HTML prototype, 12 unused images (about 17 MB) and the
   unused Supabase dependency.
 - Images renamed descriptively and grouped by purpose under `public/images/`.
 - The Media pages split into one file each under `src/pages/media/`. Page-specific sections moved out of `ui/`.
@@ -41,4 +41,4 @@ First release from this repository as a maintained project.
 - Media section with a dropdown, and the first phone menu.
 - Hero video self-hosted, plays with sound, mute toggle in the header.
 - Scroll-in animation carried through every homepage section; Creative Expression as swipeable cards on phones.
-- Initial site built from a Bolt template.
+- Initial site built on a Vite, React and TypeScript starter.
