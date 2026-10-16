@@ -17,7 +17,6 @@ import {
   MusicPage,
   PodcastPage,
   MediaOverviewPage,
-  ReelsPage,
 } from '@/pages/MediaPages';
 
 const SITE = 'Apostle Emmanuel Iren';
@@ -41,11 +40,7 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
   '/media': {
     title: `Media — ${SITE}`,
-    description: 'Sermons, reels, resources, books and family — the message of Apostle Emmanuel Iren in every form.',
-  },
-  '/media/reels': {
-    title: `Reels — ${SITE}`,
-    description: 'Short moments from recent messages by Apostle Emmanuel Iren.',
+    description: 'Sermons, films, music, books and family — the message of Apostle Emmanuel Iren in every form.',
   },
   '/media/gallery': {
     title: `Gallery — ${SITE}`,
@@ -118,7 +113,7 @@ function App() {
         <Route path="/teaching" element={<TeachingPage />} />
         <Route path="/ministry" element={<MinistryPage />} />
         <Route path="/media" element={<MediaOverviewPage />} />
-        <Route path="/media/reels" element={<ReelsPage />} />
+        <Route path="/media/reels" element={<Navigate to="/media" replace />} />
         <Route path="/media/gallery" element={<GalleryPage />} />
         {/* Messages, resources and the archive moved to the Teaching page; old links land on the matching section. */}
         <Route path="/media/messages" element={<Navigate to={{ pathname: '/teaching', hash: '#latest' }} replace />} />

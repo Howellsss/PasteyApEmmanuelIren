@@ -27,9 +27,7 @@ import {
 } from '@/data/media';
 import { cn } from '@/lib/cn';
 
-const REEL_POSTER = '/images/creative/e5.webp';
 const SECTION_IMAGES: Record<string, string> = {
-  '/media/reels': '/images/creative/image copy 3.webp',
   '/media/gallery': '/images/hero/image copy 11.webp',
   '/media/the-irens': '/images/irens/irens-13.webp',
   '/media/books': '/images/creative/image copy 2.webp',
@@ -143,7 +141,7 @@ export function MediaOverviewPage() {
       <MediaHero
         title="The message,"
         accent="in every form."
-        intro="Sermons, short reels, notes, books and family moments — the same message of Christ, made to reach people wherever they are."
+        intro="Sermons, films, music, books and family moments — the same message of Christ, made to reach people wherever they are."
       />
       <MediaSubnav />
 
@@ -240,65 +238,6 @@ export function MediaOverviewPage() {
           </div>
         </div>
       </section>
-    </div>
-  );
-}
-
-/* ── Reels ─────────────────────────────────────────────────────────────── */
-
-export function ReelsPage() {
-  return (
-    <div className="min-h-screen overflow-x-clip bg-ink">
-      <MediaHero
-        title="Reels."
-        accent="Moments that stay."
-        intro="Short moments from recent messages. Watch a clip here, or open the full message it came from."
-      />
-      <MediaSubnav />
-      <section className="py-14 md:py-16 lg:py-24">
-        <div className="container-wide">
-          <div className="grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3">
-            <Reveal variant="right">
-              <div className="overflow-hidden rounded-soft bg-surface">
-                <video
-                  controls
-                  playsInline
-                  preload="none"
-                  poster={REEL_POSTER}
-                  className="aspect-[9/16] h-full w-full bg-ink object-cover"
-                >
-                  <source src="/videos/hero.webm" type="video/webm" />
-                  <source src="/videos/hero.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <p className="mt-3 text-eyebrow uppercase tracking-[0.16em] text-accent">Clip · Sunday service</p>
-              <h3 className="mt-1 font-display text-lg leading-snug text-cream">From the pulpit</h3>
-            </Reveal>
-            {messages.map((message, index) => (
-              <Reveal key={message.title} variant="right" delay={((index + 1) % 3) * 120}>
-                <WatchLink message={message} className="group block">
-                  <div className="relative aspect-[9/16] overflow-hidden rounded-soft bg-surface">
-                    <img
-                      src={message.image}
-                      alt={message.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 ease-out-quart group-hover:scale-[1.04]"
-                      style={{ objectPosition: message.imagePosition }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent" />
-                    <PlayBadge size="sm" />
-                  </div>
-                  <p className="mt-3 text-eyebrow uppercase tracking-[0.16em] text-accent">{message.series}</p>
-                  <h3 className="mt-1 font-display text-lg leading-snug text-cream transition-colors duration-300 group-hover:text-accent">
-                    {message.title}
-                  </h3>
-                </WatchLink>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-      <MoreFromMedia current="/media/reels" />
     </div>
   );
 }

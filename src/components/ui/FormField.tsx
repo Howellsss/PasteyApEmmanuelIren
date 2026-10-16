@@ -30,6 +30,7 @@ export function FormField({
       </div>
       <input
         {...props}
+        required={required}
         onFocus={(e) => {
           setFocused(true);
           props.onFocus?.(e);

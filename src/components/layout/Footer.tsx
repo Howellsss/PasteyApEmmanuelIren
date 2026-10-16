@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Mail, Instagram, Youtube, Twitter } from 'lucide-react';
-import { ministryLinks } from '@/data/media';
+import { CONTACT_EMAIL, ministryLinks } from '@/data/media';
 
 type FooterLink = { label: string; to?: string; href?: string };
 
@@ -27,8 +27,8 @@ const FOOTER_LINKS: Record<string, FooterLink[]> = {
 // Add each profile URL to show its icon; entries without a URL stay hidden so no icon leads nowhere.
 const SOCIALS = [
   { icon: Instagram, href: '', label: 'Instagram' },
-  { icon: Youtube, href: '', label: 'YouTube' },
-  { icon: Twitter, href: '', label: 'Twitter' },
+  { icon: Youtube, href: 'https://www.youtube.com/@pst_iren', label: 'YouTube' },
+  { icon: Twitter, href: 'https://x.com/pst_iren', label: 'X (Twitter)' },
 ].filter((social) => social.href);
 
 export function Footer() {
@@ -61,14 +61,20 @@ export function Footer() {
                   <social.icon className="w-4 h-4" />
                 </a>
               ))}
-              <Link
-                to="/contact"
-                aria-label="Contact"
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                aria-label={`Email ${CONTACT_EMAIL}`}
                 className="flex items-center justify-center w-10 h-10 rounded-pill border border-line text-ash hover:text-accent hover:border-brand transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <Mail className="w-4 h-4" />
-              </Link>
+              </a>
             </div>
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="mt-5 inline-block break-all text-sm text-cream transition-colors duration-300 hover:text-accent"
+            >
+              {CONTACT_EMAIL}
+            </a>
           </div>
 
           {/* Link columns */}

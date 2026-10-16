@@ -29,6 +29,7 @@ export function TextareaField({
         {hint && <span className="text-meta text-ash">{hint}</span>}
       </div>
       <textarea
+          required={required}
         {...props}
         onFocus={(e) => {
           setFocused(true);

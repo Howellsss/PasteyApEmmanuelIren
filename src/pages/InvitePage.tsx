@@ -5,8 +5,9 @@ import { SectionHeader } from '@/components/ui/SectionHeader';
 import { FormField } from '@/components/ui/FormField';
 import { SelectField } from '@/components/ui/SelectField';
 import { TextareaField } from '@/components/ui/TextareaField';
-import { UploadArea } from '@/components/ui/UploadArea';
 import { Button } from '@/components/ui/Button';
+import { CONTACT_EMAIL } from '@/data/media';
+import { sendByEmail } from '@/lib/mailto';
 
 export function InvitePage() {
   return (
@@ -32,16 +33,35 @@ export function InvitePage() {
       {/* Form */}
       <section className="py-12 lg:py-20">
         <div className="container-standard">
-          <Reveal className="flex flex-col gap-6">
+          <Reveal>
+          <form
+            className="flex flex-col gap-6"
+            onSubmit={(event) => {
+              event.preventDefault();
+              const data = new FormData(event.currentTarget);
+              const type = event.currentTarget.querySelector<HTMLSelectElement>('select[name="type"]');
+              sendByEmail(`Invitation: ${type?.selectedOptions[0]?.text ?? 'Enquiry'} — ${data.get('name')}`, [
+                ['Full name', data.get('name')],
+                ['Email', data.get('email')],
+                ['Phone', data.get('phone')],
+                ['Organization', data.get('organization')],
+                ['Invitation type', type?.selectedOptions[0]?.text ?? null],
+                ['Event date', data.get('date')],
+                ['Expected attendance', data.get('attendance')],
+                ['Message', data.get('message')],
+              ]);
+            }}
+          >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <FormField label="Full Name" placeholder="Your name" required />
-              <FormField label="Email Address" type="email" placeholder="you@example.com" required />
+              <FormField name="name" label="Full Name" placeholder="Your name" autoComplete="name" required />
+              <FormField name="email" label="Email Address" type="email" placeholder="you@example.com" autoComplete="email" required />
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <FormField label="Phone Number" placeholder="+234..." />
-              <FormField label="Organization" placeholder="Church, company, or group" hint="Optional" />
+              <FormField name="phone" label="Phone Number" type="tel" placeholder="+234..." autoComplete="tel" />
+              <FormField name="organization" label="Organization" placeholder="Church, company, or group" hint="Optional" />
             </div>
             <SelectField
+              name="type"
               label="Invitation Type"
               required
               options={[
@@ -52,26 +72,30 @@ export function InvitePage() {
               ]}
             />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <FormField label="Event Date" type="date" />
-              <FormField label="Expected Attendance" type="number" placeholder="500" />
+              <FormField name="date" label="Event Date" type="date" />
+              <FormField name="attendance" label="Expected Attendance" type="number" min={1} placeholder="500" />
             </div>
             <TextareaField
+              name="message"
               label="Message"
               placeholder="Tell us about the invitation — the vision, the audience, and what you're hoping for."
               rows={6}
               required
             />
-            <UploadArea label="Supporting Document" accept=".pdf,.doc,.docx" />
-            <div className="flex items-center gap-4 pt-2">
-              <Button variant="primary" size="lg" withArrow>
+            <div className="flex flex-col gap-4 pt-2 sm:flex-row sm:items-center">
+              <Button type="submit" variant="primary" size="lg" withArrow className="w-full sm:w-auto">
                 Submit Enquiry
               </Button>
-              <Link to="/">
-                <Button variant="ghost" size="lg">
+              <Link to="/" className="block w-full sm:w-auto">
+                <Button type="button" variant="ghost" size="lg" className="w-full sm:w-auto">
                   Cancel
                 </Button>
               </Link>
             </div>
+            <p className="text-meta text-ash">
+              Submitting opens your email app with the enquiry written out, addressed to {CONTACT_EMAIL}. Attach any supporting document there.
+            </p>
+          </form>
           </Reveal>
         </div>
       </section>

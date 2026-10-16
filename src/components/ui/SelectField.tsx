@@ -33,6 +33,9 @@ export function SelectField({
       </div>
       <div className="relative">
         <select
+          required={required}
+          // Start on the "Select…" prompt so a required choice really has to be made.
+          defaultValue=""
           {...props}
           onFocus={(e) => {
             setFocused(true);

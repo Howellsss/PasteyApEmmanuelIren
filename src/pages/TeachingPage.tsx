@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { sermons, type Sermon, type SermonTag } from '@/data/sermons';
+import { podcast } from '@/data/media';
 import { Reveal } from '@/components/ui/Reveal';
 import { ChapterMarker } from '@/components/ui/ChapterMarker';
 import { Eyebrow } from '@/components/ui/Eyebrow';
@@ -285,7 +286,7 @@ export function TeachingPage() {
 
                 <div className="space-y-3">
                   <a
-                    href="https://podcasts.apple.com"
+                    href={podcast.links[0].url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex items-center justify-between p-4 rounded-soft border border-white/15 hover:border-accent/40 hover:bg-white/5 transition-all duration-300"
@@ -302,7 +303,7 @@ export function TeachingPage() {
                     <ArrowUpRight className="w-5 h-5 text-white/40 group-hover:text-accent transition-colors duration-300" />
                   </a>
                   <a
-                    href="https://spotify.com"
+                    href={podcast.links[1].url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group flex items-center justify-between p-4 rounded-soft border border-white/15 hover:border-accent/40 hover:bg-white/5 transition-all duration-300"

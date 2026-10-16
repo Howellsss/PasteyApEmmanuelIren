@@ -134,7 +134,6 @@ export interface MediaSection {
 /** The Media menu, in order. Sermons, series and study notes live on the Teaching page. */
 export const mediaSections: MediaSection[] = [
   { label: 'Overview', path: '/media', blurb: 'Everything in one place.' },
-  { label: 'Reels', path: '/media/reels', blurb: 'Short moments from recent messages.' },
   { label: 'Gallery', path: '/media/gallery', blurb: 'Photographs from the pulpit, the studio and beyond.' },
   { label: 'Films', path: '/media/films', blurb: 'Films he has produced, and where to watch them.' },
   { label: 'Music', path: '/media/music', blurb: 'Albums, singles and official music videos.' },
@@ -190,6 +189,9 @@ export const galleryPhotos: GalleryPhoto[] = [
   { src: '/images/teachings/image copy 5.webp', alt: 'Emmanuel Iren preaching to the congregation', category: 'On stage' },
   { src: '/images/hero/image copy 10.webp', alt: 'Emmanuel Iren on stage in black and white, wide', category: 'On stage' },
 ];
+
+/** Where enquiries, invitations and messages from the site go. */
+export const CONTACT_EMAIL = 'Emmanuelirenassist@gmail.com';
 
 /* ── Films, music and podcast ─────────────────────────────────────────── */
 
