@@ -33,7 +33,9 @@ export function SectionHeader({
 
   return (
     <Reveal className={cn('flex flex-col', centered ? 'items-center text-center' : 'items-start text-left', className)}>
-      {eyebrow && <ChapterMarker label={eyebrow} number={numbered} tone={surface} centered={centered} className="w-full" />}
+      {eyebrow && (
+        <ChapterMarker label={eyebrow} number={numbered} tone={surface} centered={centered} className="w-full" />
+      )}
       <h2
         className={cn(
           'font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance',

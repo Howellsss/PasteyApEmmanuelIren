@@ -38,15 +38,13 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
           {/* Brand column */}
           <div className="lg:col-span-5">
-            <p className="text-eyebrow text-ash uppercase tracking-widest mb-4">
-              Emmanuel Iren
-            </p>
+            <p className="text-eyebrow text-ash uppercase tracking-widest mb-4">Emmanuel Iren</p>
             <h2 className="font-display text-3xl lg:text-4xl leading-tight text-balance mb-6">
               Teaching the word, creating with purpose, building the church<span className="text-brand">.</span>
             </h2>
             <p className="text-ash text-sm max-w-md leading-relaxed">
-              Apostle, author, and creative leader. Founder of Celebration Church International.
-              This is the digital home for the work and the word.
+              Apostle, author, and creative leader. Founder of Celebration Church International. This is the digital
+              home for the work and the word.
             </p>
             <div className="flex items-center gap-3 mt-8">
               {SOCIALS.map((social) => (
@@ -81,9 +79,7 @@ export function Footer() {
           <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-8">
             {Object.entries(FOOTER_LINKS).map(([heading, links]) => (
               <div key={heading}>
-                <p className="text-eyebrow text-ash uppercase tracking-widest mb-5">
-                  {heading}
-                </p>
+                <p className="text-eyebrow text-ash uppercase tracking-widest mb-5">{heading}</p>
                 <ul className="space-y-3">
                   {links.map((link) => (
                     <li key={link.label}>
@@ -115,12 +111,8 @@ export function Footer() {
         </div>
 
         <div className="mt-16 pt-8 border-t border-line flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <p className="text-meta text-ash">
-            © {new Date().getFullYear()} Emmanuel Iren. All rights reserved.
-          </p>
-          <p className="text-meta text-ash">
-            Celebration Church International · Manifest · Triumph30 · Outburst
-          </p>
+          <p className="text-meta text-ash">© {new Date().getFullYear()} Emmanuel Iren. All rights reserved.</p>
+          <p className="text-meta text-ash">Celebration Church International · Manifest · Triumph30 · Outburst</p>
         </div>
       </div>
     </footer>

@@ -11,15 +11,7 @@ interface SelectFieldProps extends SelectHTMLAttributes<HTMLSelectElement> {
   className?: string;
 }
 
-export function SelectField({
-  label,
-  options,
-  hint,
-  error,
-  required = false,
-  className,
-  ...props
-}: SelectFieldProps) {
+export function SelectField({ label, options, hint, error, required = false, className, ...props }: SelectFieldProps) {
   const [focused, setFocused] = useState(false);
 
   return (
@@ -48,11 +40,7 @@ export function SelectField({
           className={cn(
             'w-full appearance-none px-4 py-3 pr-10 rounded-subtle border bg-surface text-cream',
             'transition-all duration-300 ease-out-quart focus:outline-none cursor-pointer',
-            error
-              ? 'border-accent'
-              : focused
-              ? 'border-line ring-1 ring-accent/10'
-              : 'border-line hover:border-line'
+            error ? 'border-accent' : focused ? 'border-line ring-1 ring-accent/10' : 'border-line hover:border-line'
           )}
         >
           <option value="" disabled>

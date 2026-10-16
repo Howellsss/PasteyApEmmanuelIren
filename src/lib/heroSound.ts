@@ -104,5 +104,9 @@ function subscribe(listener: () => void) {
 }
 
 export function useHeroSound() {
-  return useSyncExternalStore(subscribe, () => state, () => state);
+  return useSyncExternalStore(
+    subscribe,
+    () => state,
+    () => state
+  );
 }

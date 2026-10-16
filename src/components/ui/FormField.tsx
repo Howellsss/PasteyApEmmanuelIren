@@ -9,14 +9,7 @@ interface FormFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
 }
 
-export function FormField({
-  label,
-  hint,
-  error,
-  required = false,
-  className,
-  ...props
-}: FormFieldProps) {
+export function FormField({ label, hint, error, required = false, className, ...props }: FormFieldProps) {
   const [focused, setFocused] = useState(false);
 
   return (
@@ -46,13 +39,11 @@ export function FormField({
           error
             ? 'border-accent focus:border-accent'
             : focused
-            ? 'border-line ring-1 ring-accent/10'
-            : 'border-line hover:border-line'
+              ? 'border-line ring-1 ring-accent/10'
+              : 'border-line hover:border-line'
         )}
       />
-      {error && (
-        <p className="text-meta text-accent mt-0.5">{error}</p>
-      )}
+      {error && <p className="text-meta text-accent mt-0.5">{error}</p>}
     </div>
   );
 }

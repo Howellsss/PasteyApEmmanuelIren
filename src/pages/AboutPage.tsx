@@ -1,27 +1,21 @@
 import { useState } from 'react';
 import { cn } from '@/lib/cn';
-import {
-  BookOpen,
-  Music2,
-  Film,
-  Users,
-  Mic,
-} from 'lucide-react';
+import { BookOpen, Music2, Film, Users, Mic } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 import { ChapterMarker } from '@/components/ui/ChapterMarker';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { CTASection } from '@/components/ui/CTASection';
-import { InteractiveTimeline, type TimelineMilestone } from '@/components/ui/InteractiveTimeline';
+import { InteractiveTimeline, type TimelineMilestone } from '@/components/about/InteractiveTimeline';
 import { ministryLinks } from '@/data/media';
 
-const PORTRAIT_HERO = '/images/hero/image copy.webp';
-const ABOUT_IMAGE = '/images/about/image.webp';
-const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.webp';
-const CREATIVE_IMAGE = '/images/creative/e5.webp';
-const MINISTRY_IMAGE = '/images/ministry/e6.webp';
-const TEACHING_IMAGE_2 = '/images/teachings/image copy.webp';
-const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.webp';
+const PORTRAIT_HERO = '/images/photos/portrait-about-hero.webp';
+const ABOUT_IMAGE = '/images/photos/portrait-blue-suit-smiling.webp';
+const TEACHING_IMAGE = '/images/photos/stage-preaching-finger-raised.webp';
+const CREATIVE_IMAGE = '/images/photos/portrait-navy-suit-hand-on-chin.webp';
+const MINISTRY_IMAGE = '/images/photos/portrait-pinstripe-red-tie.webp';
+const TEACHING_IMAGE_2 = '/images/photos/portrait-plum-suit-pink.webp';
+const TEACHING_IMAGE_3 = '/images/photos/portrait-navy-suit-wood-panel.webp';
 
 const CAMPUS_IMG = TEACHING_IMAGE_2;
 const WORSHIP_IMG = TEACHING_IMAGE;
@@ -30,8 +24,8 @@ const BOOK_IMG = TEACHING_IMAGE_3;
 const MUSIC_IMG = CREATIVE_IMAGE;
 const FILM_IMG = TEACHING_IMAGE_2;
 const LEADERSHIP_IMG = TEACHING_IMAGE_3;
-const FAMILY_IMG = '/images/creative/image copy.webp';
-const JOURNEY_IMG = '/images/about/journey-interview.webp';
+const FAMILY_IMG = '/images/photos/portrait-green-knit-seated.webp';
+const JOURNEY_IMG = '/images/photos/interview-tvc-news.webp';
 
 const milestones: TimelineMilestone[] = [
   {
@@ -216,16 +210,13 @@ export function AboutPage() {
         <div className="relative w-full px-6 sm:px-8 lg:px-16 pb-16 lg:pb-24 pt-32">
           <div className="container-wide">
             <Reveal className="max-w-3xl">
-              <Eyebrow className="mb-6">
-                About Emmanuel Iren
-              </Eyebrow>
+              <Eyebrow className="mb-6">About Emmanuel Iren</Eyebrow>
               <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl leading-[1.02] text-cream text-balance tracking-[-0.01em] mb-6">
                 About Emmanuel Iren
               </h1>
               <p className="text-lg sm:text-xl text-white/85 leading-relaxed max-w-2xl font-light text-pretty">
-                A Nigerian preacher, gospel songwriter, and founder of Celebration
-                Church International — teaching the word, creating with purpose, and
-                building a generation to live authentic Christian lives.
+                A Nigerian preacher, gospel songwriter, and founder of Celebration Church International — teaching the
+                word, creating with purpose, and building a generation to live authentic Christian lives.
               </p>
             </Reveal>
           </div>
@@ -235,7 +226,10 @@ export function AboutPage() {
       {/* THE JOURNEY */}
       <section className="relative overflow-hidden py-24 lg:py-36">
         {/* The interview photo sits inside the background: its black blends into the page and its edges fade out. */}
-        <div className="photo-melt pointer-events-none absolute bg-ink inset-x-0 top-0 h-[34rem] sm:h-[40rem] lg:inset-y-0 lg:left-auto lg:right-0 lg:h-auto lg:w-[52%]" aria-hidden="true">
+        <div
+          className="photo-melt pointer-events-none absolute bg-ink inset-x-0 top-0 h-[34rem] sm:h-[40rem] lg:inset-y-0 lg:left-auto lg:right-0 lg:h-auto lg:w-[52%]"
+          aria-hidden="true"
+        >
           <img
             src={JOURNEY_IMG}
             alt=""
@@ -254,9 +248,8 @@ export function AboutPage() {
             </Reveal>
             <Reveal delay={120}>
               <p className="mt-8 text-lg text-cream/85 leading-relaxed text-pretty">
-                The story of Emmanuel Iren's ministry is one of steady, faithful
-                growth — from a small gathering of students to a church with branches
-                across four countries.
+                The story of Emmanuel Iren's ministry is one of steady, faithful growth — from a small gathering of
+                students to a church with branches across four countries.
               </p>
             </Reveal>
           </div>
@@ -264,31 +257,26 @@ export function AboutPage() {
           <div className="space-y-6 max-w-3xl lg:max-w-[46%]">
             <Reveal>
               <p className="text-lg text-ash leading-relaxed">
-                In 2008, as an undergraduate at Covenant University in Ota, Nigeria,
-                Emmanuel Iren started a Christian campus fellowship called the
-                Triumphal Youth Fellowship. What began as a student gathering soon grew
-                beyond the campus walls, drawing young people from surrounding
-                communities and laying the foundation for what would become a
-                full-time ministry.
+                In 2008, as an undergraduate at Covenant University in Ota, Nigeria, Emmanuel Iren started a Christian
+                campus fellowship called the Triumphal Youth Fellowship. What began as a student gathering soon grew
+                beyond the campus walls, drawing young people from surrounding communities and laying the foundation for
+                what would become a full-time ministry.
               </p>
             </Reveal>
             <Reveal delay={80}>
               <p className="text-lg text-ash leading-relaxed">
-                On 11 November 2012, the fellowship became Life Triumphal Church,
-                opening its doors in Lagos. Two years later, in 2014, it was renamed
-                Celebration Church International — a name that reflected a widening
+                On 11 November 2012, the fellowship became Life Triumphal Church, opening its doors in Lagos. Two years
+                later, in 2014, it was renamed Celebration Church International — a name that reflected a widening
                 vision and a congregation that had outgrown its original walls.
               </p>
             </Reveal>
             <Reveal delay={160}>
               <p className="text-lg text-ash leading-relaxed">
-                In the years since, CCI has grown to over 100,000 members across 30
-                branches in Nigeria, the United Kingdom, Canada, and the United States.
-                Alongside the local church, Emmanuel Iren has built creative and
-                discipleship platforms — music, film, books, daily devotionals — that
-                carry the same teaching to a global audience. In June 2025, he was
-                inaugurated as President of the Pentecostal Fellowship of Nigeria (PFN)
-                Youth Wing, a position he holds for four years.
+                In the years since, CCI has grown to over 100,000 members across 30 branches in Nigeria, the United
+                Kingdom, Canada, and the United States. Alongside the local church, Emmanuel Iren has built creative and
+                discipleship platforms — music, film, books, daily devotionals — that carry the same teaching to a
+                global audience. In June 2025, he was inaugurated as President of the Pentecostal Fellowship of Nigeria
+                (PFN) Youth Wing, a position he holds for four years.
               </p>
             </Reveal>
           </div>
@@ -301,7 +289,6 @@ export function AboutPage() {
           <SectionHeader
             numbered="02"
             eyebrow="Milestones"
-           
             title="A timeline of the work."
             description="Hover or tap a year to explore the moments that shaped the journey — from a campus fellowship to a global ministry."
           />
@@ -321,19 +308,17 @@ export function AboutPage() {
             <div className="lg:col-span-8">
               <Reveal>
                 <h2 className="font-display leading-[1.02] sm:leading-[1.02] lg:leading-[1.02] tracking-[-0.01em] text-balance text-3xl sm:text-4xl lg:text-[3.25rem] text-cream">
-                  To teach the word faithfully, to create with purpose, and to build
-                  people who will carry the message forward.
+                  To teach the word faithfully, to create with purpose, and to build people who will carry the message
+                  forward.
                 </h2>
               </Reveal>
             </div>
             <div className="lg:col-span-4">
               <Reveal delay={120}>
                 <p className="text-lg text-white/65 leading-relaxed text-pretty">
-                  The mandate is simple and unwavering: that the word of God, taught
-                  with clarity and lived with integrity, has the power to transform not
-                  just individuals but entire communities. Every expression of the
-                  ministry — the church, the music, the books, the films — flows from
-                  this single conviction.
+                  The mandate is simple and unwavering: that the word of God, taught with clarity and lived with
+                  integrity, has the power to transform not just individuals but entire communities. Every expression of
+                  the ministry — the church, the music, the books, the films — flows from this single conviction.
                 </p>
               </Reveal>
             </div>
@@ -387,10 +372,7 @@ export function AboutPage() {
             {/* Active theme detail */}
             <div className="lg:col-span-6 lg:col-start-7">
               <div className="sticky top-24">
-                <div
-                  key={activeTheme}
-                  className="reveal-from-right"
-                >
+                <div key={activeTheme} className="reveal-from-right">
                   <span className="font-display text-7xl lg:text-8xl text-brand tabular-nums leading-none block mb-4">
                     {ministryThemes[activeTheme].number}
                   </span>
@@ -422,9 +404,8 @@ export function AboutPage() {
             <div className="lg:col-span-4 lg:col-start-9">
               <Reveal delay={100}>
                 <p className="text-ash leading-relaxed text-pretty">
-                  Books, music, film, media, and leadership — each a different medium
-                  carrying the same conviction that faith is not just believed but
-                  lived, and that the creative gifts of God's people are meant to be
+                  Books, music, film, media, and leadership — each a different medium carrying the same conviction that
+                  faith is not just believed but lived, and that the creative gifts of God's people are meant to be
                   deployed with excellence.
                 </p>
               </Reveal>
@@ -443,7 +424,7 @@ export function AboutPage() {
                   variant="scale"
                   className={cn(
                     'group relative overflow-hidden rounded-soft bg-ink-2',
-                    isLarge ? 'lg:row-span-2 min-h-[24rem]' : 'min-h-[20rem]',
+                    isLarge ? 'lg:row-span-2 min-h-[24rem]' : 'min-h-[20rem]'
                   )}
                 >
                   <img
@@ -457,17 +438,11 @@ export function AboutPage() {
                   <div className="relative h-full p-6 sm:p-8 flex flex-col justify-between text-cream">
                     <div className="flex items-center justify-between">
                       <Icon className="w-6 h-6 text-accent" />
-                      <span className="text-meta uppercase tracking-widest text-white/40">
-                        0{i + 1}
-                      </span>
+                      <span className="text-meta uppercase tracking-widest text-white/40">0{i + 1}</span>
                     </div>
                     <div>
-                      <h3 className="font-display text-2xl lg:text-3xl mb-3 leading-tight">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-white/70 leading-relaxed max-w-xs">
-                        {item.description}
-                      </p>
+                      <h3 className="font-display text-2xl lg:text-3xl mb-3 leading-tight">{item.title}</h3>
+                      <p className="text-sm text-white/70 leading-relaxed max-w-xs">{item.description}</p>
                     </div>
                   </div>
                 </Reveal>
@@ -479,7 +454,10 @@ export function AboutPage() {
 
       {/* FAMILY: set like the home Invitation, with his portrait tinted into the navy beside the text. */}
       <section className="relative overflow-hidden bg-navy py-20 md:py-28 lg:py-36">
-        <div className="photo-melt pointer-events-none absolute bg-navy inset-x-0 top-0 h-[30rem] sm:h-[36rem] lg:inset-y-0 lg:left-auto lg:right-0 lg:h-auto lg:w-[55%]" aria-hidden="true">
+        <div
+          className="photo-melt pointer-events-none absolute bg-navy inset-x-0 top-0 h-[30rem] sm:h-[36rem] lg:inset-y-0 lg:left-auto lg:right-0 lg:h-auto lg:w-[55%]"
+          aria-hidden="true"
+        >
           <img
             src={FAMILY_IMG}
             alt=""
@@ -495,15 +473,18 @@ export function AboutPage() {
                 A life grounded <span className="text-brand">in home.</span>
               </h2>
             </Reveal>
-            <Reveal variant="right" delay={150} className="max-w-xl space-y-4 text-base sm:text-lg leading-relaxed text-cream/85">
+            <Reveal
+              variant="right"
+              delay={150}
+              className="max-w-xl space-y-4 text-base sm:text-lg leading-relaxed text-cream/85"
+            >
               <p>
-                Emmanuel Iren married Laju Iren (née Arenyeka) in November 2014.
-                Together they are parents to three daughters and one son.
+                Emmanuel Iren married Laju Iren (née Arenyeka) in November 2014. Together they are parents to three
+                daughters and one son.
               </p>
               <p>
-                The family remains a quiet foundation beneath the public work — a
-                reminder that the ministry, for all its reach, is carried by a man
-                who is also a husband and a father.
+                The family remains a quiet foundation beneath the public work — a reminder that the ministry, for all
+                its reach, is carried by a man who is also a husband and a father.
               </p>
             </Reveal>
           </div>
@@ -525,9 +506,8 @@ export function AboutPage() {
             <div className="lg:col-span-4 lg:col-start-9">
               <Reveal delay={100}>
                 <p className="text-white/65 leading-relaxed text-pretty">
-                  Emmanuel Iren's personal ministry and the platforms of CCI are
-                  inseparable. Each expression carries the same teaching to a different
-                  context — the local church, the creative, the student, and the
+                  Emmanuel Iren's personal ministry and the platforms of CCI are inseparable. Each expression carries
+                  the same teaching to a different context — the local church, the creative, the student, and the
                   searcher.
                 </p>
               </Reveal>
@@ -540,17 +520,14 @@ export function AboutPage() {
                 <a
                   href={ministryLinks[expr.name]?.url ?? '/teaching'}
                   {...(ministryLinks[expr.name] ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  className="grid grid-cols-[2.5rem_1fr] gap-4 sm:gap-8 py-6 border-b border-white/15 group hover:bg-white/5 transition-colors duration-300 px-2 -mx-2 rounded-subtle focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-                  <span className="text-meta text-accent tabular-nums pt-1">
-                    0{i + 1}
-                  </span>
+                  className="grid grid-cols-[2.5rem_1fr] gap-4 sm:gap-8 py-6 border-b border-white/15 group hover:bg-white/5 transition-colors duration-300 px-2 -mx-2 rounded-subtle focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                >
+                  <span className="text-meta text-accent tabular-nums pt-1">0{i + 1}</span>
                   <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
                     <h3 className="font-display text-xl lg:text-2xl leading-tight transition-colors duration-300 group-hover:text-accent">
                       {expr.name}
                     </h3>
-                    <p className="text-sm text-white/55 leading-relaxed max-w-md sm:text-right">
-                      {expr.description}
-                    </p>
+                    <p className="text-sm text-white/55 leading-relaxed max-w-md sm:text-right">{expr.description}</p>
                   </div>
                 </a>
               </Reveal>

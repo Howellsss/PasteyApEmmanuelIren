@@ -71,7 +71,10 @@ function AlbumProgress({ target }: { target: RefObject<HTMLElement> }) {
   }, [target]);
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-[3px]">
-      <div className="h-full origin-left bg-brand transition-transform duration-150" style={{ transform: `scaleX(${progress})` }} />
+      <div
+        className="h-full origin-left bg-brand transition-transform duration-150"
+        style={{ transform: `scaleX(${progress})` }}
+      />
     </div>
   );
 }
@@ -87,12 +90,31 @@ function Frame({ n, onOpen, delay }: { n: number; onOpen: (index: number) => voi
       type="button"
       onClick={() => onOpen(n - 1)}
       aria-label={`Open photograph: ${p.alt}`}
-      className={cn('album-frame group relative min-w-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent', visible && 'is-visible')}
-      style={{ flex: `${ratio} 1 0%`, aspectRatio: `${p.width} / ${p.height}`, '--album-delay': `${delay}ms` } as CSSProperties}
+      className={cn(
+        'album-frame group relative min-w-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+        visible && 'is-visible'
+      )}
+      style={
+        {
+          flex: `${ratio} 1 0%`,
+          aspectRatio: `${p.width} / ${p.height}`,
+          '--album-delay': `${delay}ms`,
+        } as CSSProperties
+      }
     >
       <span className="album-curtain absolute inset-0 overflow-hidden rounded-[3px] bg-surface">
-        <img src={p.src} alt={p.alt} width={p.width} height={p.height} loading="lazy" className="album-img h-full w-full object-cover" />
-        <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <img
+          src={p.src}
+          alt={p.alt}
+          width={p.width}
+          height={p.height}
+          loading="lazy"
+          className="album-img h-full w-full object-cover"
+        />
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-t from-ink/60 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        />
         <span className="absolute bottom-3 left-3 text-[0.6875rem] uppercase tracking-[0.22em] text-cream opacity-0 transition-opacity duration-500 tabular-nums group-hover:opacity-100">
           {String(n).padStart(2, '0')}
         </span>
@@ -109,7 +131,8 @@ function PhotoRows({ rows, onOpen }: { rows: number[][]; onOpen: (index: number)
   const all = rows.flat();
   const phoneRows: number[][] = [];
   for (let i = 0; i < all.length; i += 2) phoneRows.push(all.slice(i, i + 2));
-  if (phoneRows.length > 1 && phoneRows[phoneRows.length - 1].length === 1) phoneRows[phoneRows.length - 2].push(phoneRows.pop()![0]);
+  if (phoneRows.length > 1 && phoneRows[phoneRows.length - 1].length === 1)
+    phoneRows[phoneRows.length - 2].push(phoneRows.pop()![0]);
   const render = (list: number[][], className: string) => (
     <div className={cn('flex-col gap-2 lg:gap-3', className)}>
       {list.map((row) => (
@@ -129,19 +152,46 @@ function PhotoRows({ rows, onOpen }: { rows: number[][]; onOpen: (index: number)
   );
 }
 
-function ChapterTitle({ numeral, title, accent, children, className }: { numeral: string; title: string; accent?: string; children?: ReactNode; className?: string }) {
+function ChapterTitle({
+  numeral,
+  title,
+  accent,
+  children,
+  className,
+}: {
+  numeral: string;
+  title: string;
+  accent?: string;
+  children?: ReactNode;
+  className?: string;
+}) {
   const { ref, visible } = useReveal<HTMLDivElement>(0.3);
   return (
-    <div ref={ref} className={cn('album-title flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-10', visible && 'is-visible', className)}>
+    <div
+      ref={ref}
+      className={cn(
+        'album-title flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between sm:gap-10',
+        visible && 'is-visible',
+        className
+      )}
+    >
       <h2 className="album-title-line flex items-baseline gap-4 font-display text-3xl leading-none tracking-[-0.01em] text-cream sm:text-4xl lg:text-5xl">
         <span className="text-base text-accent sm:text-lg">{numeral}</span>
         <span>
           {title}
-          {accent && <> <span className="text-brand">{accent}</span></>}
+          {accent && (
+            <>
+              {' '}
+              <span className="text-brand">{accent}</span>
+            </>
+          )}
         </span>
       </h2>
       {children && (
-        <p className="album-title-line max-w-sm text-sm leading-relaxed text-ash sm:text-right" style={{ transitionDelay: '150ms' }}>
+        <p
+          className="album-title-line max-w-sm text-sm leading-relaxed text-ash sm:text-right"
+          style={{ transitionDelay: '150ms' }}
+        >
           {children}
         </p>
       )}
@@ -161,21 +211,39 @@ export function IrensAlbum() {
           <ChapterTitle numeral="I" title="Two," accent="before everything." className="mb-6 lg:mb-8">
             Married in November 2014 — the partnership the rest of the work is built on.
           </ChapterTitle>
-          <PhotoRows rows={[[1, 4, 2, 6], [3, 7, 5, 8, 9]]} onOpen={setOpen} />
+          <PhotoRows
+            rows={[
+              [1, 4, 2, 6],
+              [3, 7, 5, 8, 9],
+            ]}
+            onOpen={setOpen}
+          />
         </div>
 
         <div>
           <ChapterTitle numeral="II" title="Then came" accent="the children." className="mb-6 lg:mb-8">
             Three daughters and one son — a full house, and the first congregation.
           </ChapterTitle>
-          <PhotoRows rows={[[10, 13, 11], [12, 14, 15, 16]]} onOpen={setOpen} />
+          <PhotoRows
+            rows={[
+              [10, 13, 11],
+              [12, 14, 15, 16],
+            ]}
+            onOpen={setOpen}
+          />
         </div>
 
         <div>
           <ChapterTitle numeral="III" title="In between" accent="the big days." className="mb-6 lg:mb-8">
             Weddings, garden afternoons and quiet portraits — the ordinary days that hold the rest.
           </ChapterTitle>
-          <PhotoRows rows={[[21, 18, 17], [19, 20, 22, 23]]} onOpen={setOpen} />
+          <PhotoRows
+            rows={[
+              [21, 18, 17],
+              [19, 20, 22, 23],
+            ]}
+            onOpen={setOpen}
+          />
         </div>
 
         <ClosingLine />
@@ -193,7 +261,9 @@ function ClosingLine() {
       <p className="mx-auto mt-8 max-w-3xl font-display text-3xl leading-tight text-cream text-balance sm:text-4xl lg:text-5xl">
         Home, <span className="text-brand">first.</span>
       </p>
-      <p className="mx-auto mt-4 max-w-md text-ash">The man in the pulpit is, before anything else, a husband and a father.</p>
+      <p className="mx-auto mt-4 max-w-md text-ash">
+        The man in the pulpit is, before anything else, a husband and a father.
+      </p>
     </div>
   );
 }

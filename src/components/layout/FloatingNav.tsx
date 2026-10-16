@@ -158,7 +158,10 @@ export function FloatingNav() {
                   {item.children && (
                     <ChevronDown
                       aria-hidden="true"
-                      className={cn('h-4 w-4 transition-transform duration-300', dropdownPath === item.path && 'rotate-180')}
+                      className={cn(
+                        'h-4 w-4 transition-transform duration-300',
+                        dropdownPath === item.path && 'rotate-180'
+                      )}
                     />
                   )}
                 </NavLink>
@@ -167,7 +170,9 @@ export function FloatingNav() {
                   <div
                     className={cn(
                       'absolute left-1/2 top-full z-10 -translate-x-1/2 pt-7 transition-all duration-300 ease-out-quart',
-                      dropdownPath === item.path ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-1 opacity-0'
+                      dropdownPath === item.path
+                        ? 'visible translate-y-0 opacity-100'
+                        : 'invisible -translate-y-1 opacity-0'
                     )}
                   >
                     <ul className="min-w-[15rem] rounded-2xl border border-white/10 bg-ink-2 p-2 shadow-2xl shadow-black/50">
@@ -227,9 +232,7 @@ export function FloatingNav() {
                 cn(
                   'hidden lg:inline-flex items-center px-7 py-3.5 text-base font-semibold rounded-pill transition-colors duration-300',
                   'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink',
-                  isActive
-                    ? 'bg-brand-dark text-cream'
-                    : 'bg-brand text-cream hover:bg-brand-dark'
+                  isActive ? 'bg-brand-dark text-cream' : 'bg-brand text-cream hover:bg-brand-dark'
                 )
               }
             >
@@ -262,7 +265,11 @@ export function FloatingNav() {
         <div className="absolute inset-0 bg-ink/70 backdrop-blur-xl" onClick={() => setMenuOpen(false)} />
         <div className="relative flex h-full flex-col overflow-y-auto overscroll-contain px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[max(1.25rem,env(safe-area-inset-top))]">
           <div className="flex items-center justify-between">
-            <NavLink to="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-3 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+            <NavLink
+              to="/"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center gap-3 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ink ring-1 ring-white/15">
                 <img src="/logo-mark.png" alt="" className="h-5 w-auto" />
               </span>
@@ -275,7 +282,12 @@ export function FloatingNav() {
               className="flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-ink/80 text-cream transition-colors duration-300 hover:bg-ink-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               aria-label="Close menu"
             >
-              <X className={cn('h-6 w-6 transition-transform duration-500 ease-out-quart', menuOpen ? 'rotate-0' : '-rotate-90')} />
+              <X
+                className={cn(
+                  'h-6 w-6 transition-transform duration-500 ease-out-quart',
+                  menuOpen ? 'rotate-0' : '-rotate-90'
+                )}
+              />
             </button>
           </div>
 
@@ -291,11 +303,24 @@ export function FloatingNav() {
                 return (
                   <li
                     key={item.path}
-                    className={cn('transition-all duration-500 ease-out-quart', menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0')}
+                    className={cn(
+                      'transition-all duration-500 ease-out-quart',
+                      menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
+                    )}
                     style={{ transitionDelay: menuOpen ? `${80 + index * 45}ms` : '0ms' }}
                   >
-                    <div className={cn('relative flex items-center rounded-[1.25rem] transition-colors duration-300', active ? 'bg-surface' : 'active:bg-white/5')}>
-                      {active && <span aria-hidden="true" className="absolute left-0 top-1/2 h-6 w-[3px] -translate-y-1/2 rounded-full bg-brand" />}
+                    <div
+                      className={cn(
+                        'relative flex items-center rounded-[1.25rem] transition-colors duration-300',
+                        active ? 'bg-surface' : 'active:bg-white/5'
+                      )}
+                    >
+                      {active && (
+                        <span
+                          aria-hidden="true"
+                          className="absolute left-0 top-1/2 h-6 w-[3px] -translate-y-1/2 rounded-full bg-brand"
+                        />
+                      )}
                       <NavLink
                         to={item.path}
                         end={item.path === '/'}
@@ -316,32 +341,49 @@ export function FloatingNav() {
                           aria-label={mobileExpanded ? 'Hide media pages' : 'Show media pages'}
                           className="mr-2 flex h-11 w-11 items-center justify-center rounded-full text-cream/80 transition-colors duration-300 active:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                         >
-                          <ChevronDown className={cn('h-6 w-6 transition-transform duration-300', mobileExpanded && 'rotate-180')} />
+                          <ChevronDown
+                            className={cn('h-6 w-6 transition-transform duration-300', mobileExpanded && 'rotate-180')}
+                          />
                         </button>
                       )}
                     </div>
                     {item.children && (
-                      <div className={cn('grid transition-[grid-template-rows] duration-500 ease-out-quart', mobileExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]')}>
+                      <div
+                        className={cn(
+                          'grid transition-[grid-template-rows] duration-500 ease-out-quart',
+                          mobileExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                        )}
+                      >
                         {/* "Media" itself opens the overview, so the grid lists the sections: three even rows. */}
-                        <ul className="grid min-h-0 grid-cols-2 gap-1.5 overflow-hidden px-2" aria-hidden={!mobileExpanded}>
-                          {item.children.filter((child) => child.path !== item.path).map((child, childIndex, list) => (
-                            <li key={child.path} className={cn(childIndex < 2 && 'mt-1.5', childIndex >= list.length - 2 && 'mb-2')}>
-                              <NavLink
-                                to={child.path}
-                                end
-                                tabIndex={mobileExpanded ? 0 : -1}
-                                onClick={() => setMenuOpen(false)}
-                                className={({ isActive }) =>
-                                  cn(
-                                    'block rounded-xl border px-3.5 py-2.5 text-[0.9375rem] transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent',
-                                    isActive ? 'border-brand/70 bg-brand/15 text-accent' : 'border-white/[0.06] bg-ink/60 text-ash active:text-cream'
-                                  )
-                                }
+                        <ul
+                          className="grid min-h-0 grid-cols-2 gap-1.5 overflow-hidden px-2"
+                          aria-hidden={!mobileExpanded}
+                        >
+                          {item.children
+                            .filter((child) => child.path !== item.path)
+                            .map((child, childIndex, list) => (
+                              <li
+                                key={child.path}
+                                className={cn(childIndex < 2 && 'mt-1.5', childIndex >= list.length - 2 && 'mb-2')}
                               >
-                                {child.label}
-                              </NavLink>
-                            </li>
-                          ))}
+                                <NavLink
+                                  to={child.path}
+                                  end
+                                  tabIndex={mobileExpanded ? 0 : -1}
+                                  onClick={() => setMenuOpen(false)}
+                                  className={({ isActive }) =>
+                                    cn(
+                                      'block rounded-xl border px-3.5 py-2.5 text-[0.9375rem] transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+                                      isActive
+                                        ? 'border-brand/70 bg-brand/15 text-accent'
+                                        : 'border-white/[0.06] bg-ink/60 text-ash active:text-cream'
+                                    )
+                                  }
+                                >
+                                  {child.label}
+                                </NavLink>
+                              </li>
+                            ))}
                         </ul>
                       </div>
                     )}
@@ -369,7 +411,10 @@ export function FloatingNav() {
             )}
             style={{ transitionDelay: menuOpen ? '450ms' : '0ms' }}
           >
-            <a href={`mailto:${CONTACT_EMAIL}`} className="min-w-0 truncate text-sm text-ash transition-colors duration-300 hover:text-cream">
+            <a
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="min-w-0 truncate text-sm text-ash transition-colors duration-300 hover:text-cream"
+            >
               {CONTACT_EMAIL}
             </a>
             <div className="flex flex-shrink-0 items-center gap-2">

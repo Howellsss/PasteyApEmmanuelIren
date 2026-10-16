@@ -5,19 +5,19 @@ import { Reveal } from '@/components/ui/Reveal';
 import { Button } from '@/components/ui/Button';
 import { TextLink } from '@/components/ui/TextLink';
 import { DisplayHeading } from '@/components/ui/DisplayHeading';
-import { CreativeAccordion } from '@/components/ui/CreativeAccordion';
+import { CreativeAccordion } from '@/components/home/CreativeAccordion';
 import { MediaReveal } from '@/components/ui/MediaReveal';
 import { messages as latestTeachings, ministryLinks } from '@/data/media';
 import { cn } from '@/lib/cn';
 import { attachHeroVideo, detachHeroVideo, setHeroInView } from '@/lib/heroSound';
 
 const HERO_NAME = 'Apostle Emmanuel Iren';
-const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.webp';
-const ABOUT_IMAGE = '/images/about/image copy.webp';
-const CREATIVE_IMAGE = '/images/creative/e5.webp';
-const MINISTRY_IMAGE = '/images/ministry/e6.webp';
-const TEACHING_IMAGE_2 = '/images/teachings/image copy.webp';
-const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.webp';
+const TEACHING_IMAGE = '/images/photos/stage-preaching-finger-raised.webp';
+const ABOUT_IMAGE = '/images/photos/stage-black-and-white.webp';
+const CREATIVE_IMAGE = '/images/photos/portrait-navy-suit-hand-on-chin.webp';
+const MINISTRY_IMAGE = '/images/photos/portrait-pinstripe-red-tie.webp';
+const TEACHING_IMAGE_2 = '/images/photos/portrait-plum-suit-pink.webp';
+const TEACHING_IMAGE_3 = '/images/photos/portrait-navy-suit-wood-panel.webp';
 
 const featuredTeaching = {
   image: TEACHING_IMAGE,
@@ -158,15 +158,24 @@ export function HomePage() {
               <span aria-hidden="true" className="h-0.5 w-8 bg-brand sm:w-14" />
             </Reveal>
             <Reveal variant="right" delay={150}>
-            <h1 className="font-display text-[length:min(calc((100vw_-_2.5rem)/11.45),2.25rem)] whitespace-nowrap sm:whitespace-normal sm:text-6xl lg:text-8xl leading-[1.1] sm:leading-[0.98] text-cream sm:text-balance mb-4 sm:mb-8 tracking-[-0.01em] min-h-[1.1em] sm:min-h-[0.98em]">
-              {typedHeroName}
-              {hasFinishedIntro && <span className="text-brand">.</span>}
-            </h1>
+              <h1 className="font-display text-[length:min(calc((100vw_-_2.5rem)/11.45),2.25rem)] whitespace-nowrap sm:whitespace-normal sm:text-6xl lg:text-8xl leading-[1.1] sm:leading-[0.98] text-cream sm:text-balance mb-4 sm:mb-8 tracking-[-0.01em] min-h-[1.1em] sm:min-h-[0.98em]">
+                {typedHeroName}
+                {hasFinishedIntro && <span className="text-brand">.</span>}
+              </h1>
             </Reveal>
-            <Reveal variant="right" delay={300} as="p" className="text-[0.9375rem] sm:text-xl lg:text-2xl text-cream/85 leading-relaxed max-w-2xl mb-8 sm:mb-10 text-pretty font-light">
+            <Reveal
+              variant="right"
+              delay={300}
+              as="p"
+              className="text-[0.9375rem] sm:text-xl lg:text-2xl text-cream/85 leading-relaxed max-w-2xl mb-8 sm:mb-10 text-pretty font-light"
+            >
               A teaching minister, author, songwriter, and founder of Celebration Church International.
             </Reveal>
-            <Reveal variant="right" delay={450} className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4 sm:items-center">
+            <Reveal
+              variant="right"
+              delay={450}
+              className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:gap-4 sm:items-center"
+            >
               <Link to="/teaching" className="block w-full sm:w-auto">
                 <Button variant="brand" size="lg" withArrow className="h-14 w-full rounded-pill sm:w-auto">
                   Explore Teachings
@@ -196,66 +205,79 @@ export function HomePage() {
           </div>
 
           <article className="grid border-t-2 border-brand lg:grid-cols-[0.92fr_1.08fr]">
-              <Reveal variant="left" delay={150} className="order-2 flex min-h-[26rem] flex-col py-8 sm:py-10 lg:order-1 lg:min-h-[32rem] lg:py-12 lg:pr-12">
-                <div className="flex-1 space-y-5 lg:flex lg:flex-col lg:justify-center">
-                  <p className="text-eyebrow uppercase tracking-[0.16em] text-accent">{activeTeaching.series}</p>
-                  <h3 className="max-w-lg font-display text-2xl leading-[1.15] text-cream lg:text-[1.875rem]">
-                    {activeTeaching.title}
-                  </h3>
-                  <p className="max-w-md text-[0.9375rem] font-light leading-7 text-ash">{activeTeaching.description}</p>
-                  <p className="text-meta text-ash">
-                    {activeTeaching.date} <span className="text-accent">·</span> {activeTeaching.type}
-                  </p>
-                  <div className="pt-2">
-                    <a href={activeTeaching.watchUrl} target="_blank" rel="noopener noreferrer" className="block sm:inline-block">
-                      <Button variant="secondary" size="md" withArrow className="h-12 w-full sm:h-auto sm:w-auto">
-                        Watch Now
-                      </Button>
-                    </a>
-                  </div>
+            <Reveal
+              variant="left"
+              delay={150}
+              className="order-2 flex min-h-[26rem] flex-col py-8 sm:py-10 lg:order-1 lg:min-h-[32rem] lg:py-12 lg:pr-12"
+            >
+              <div className="flex-1 space-y-5 lg:flex lg:flex-col lg:justify-center">
+                <p className="text-eyebrow uppercase tracking-[0.16em] text-accent">{activeTeaching.series}</p>
+                <h3 className="max-w-lg font-display text-2xl leading-[1.15] text-cream lg:text-[1.875rem]">
+                  {activeTeaching.title}
+                </h3>
+                <p className="max-w-md text-[0.9375rem] font-light leading-7 text-ash">{activeTeaching.description}</p>
+                <p className="text-meta text-ash">
+                  {activeTeaching.date} <span className="text-accent">·</span> {activeTeaching.type}
+                </p>
+                <div className="pt-2">
+                  <a
+                    href={activeTeaching.watchUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block sm:inline-block"
+                  >
+                    <Button variant="secondary" size="md" withArrow className="h-12 w-full sm:h-auto sm:w-auto">
+                      Watch Now
+                    </Button>
+                  </a>
                 </div>
-                <div className="mt-10 flex items-center justify-between border-t border-line pt-6">
-                  <div className="flex items-center gap-5" role="tablist" aria-label="Latest teachings">
-                    {latestTeachings.map((teaching, index) => (
-                      <button
-                        key={teaching.title}
-                        type="button"
-                        role="tab"
-                        aria-selected={activeTeachingIndex === index}
-                        aria-label={`Show ${teaching.title}`}
-                        onClick={() => setActiveTeachingIndex(index)}
-                        className={`relative pb-2 text-xs font-semibold tabular-nums tracking-[0.12em] transition-colors ${activeTeachingIndex === index ? 'text-accent' : 'text-white/30 hover:text-white/60'}`}
-                      >
-                        {String(index + 1).padStart(2, '0')}
-                        <span className={`absolute bottom-0 left-0 h-px bg-accent transition-all duration-300 ${activeTeachingIndex === index ? 'w-full' : 'w-0'}`} />
-                      </button>
-                    ))}
-                  </div>
-                  <div className="flex items-center gap-1">
+              </div>
+              <div className="mt-10 flex items-center justify-between border-t border-line pt-6">
+                <div className="flex items-center gap-5" role="tablist" aria-label="Latest teachings">
+                  {latestTeachings.map((teaching, index) => (
                     <button
+                      key={teaching.title}
                       type="button"
-                      aria-label="Previous teaching"
-                      onClick={() => setActiveTeachingIndex((index) => (index - 1 + latestTeachings.length) % latestTeachings.length)}
-                      className="flex h-9 w-9 items-center justify-center text-white/45 transition-colors hover:text-accent"
+                      role="tab"
+                      aria-selected={activeTeachingIndex === index}
+                      aria-label={`Show ${teaching.title}`}
+                      onClick={() => setActiveTeachingIndex(index)}
+                      className={`relative pb-2 text-xs font-semibold tabular-nums tracking-[0.12em] transition-colors ${activeTeachingIndex === index ? 'text-accent' : 'text-white/30 hover:text-white/60'}`}
                     >
-                      <ChevronLeft className="h-5 w-5" />
+                      {String(index + 1).padStart(2, '0')}
+                      <span
+                        className={`absolute bottom-0 left-0 h-px bg-accent transition-all duration-300 ${activeTeachingIndex === index ? 'w-full' : 'w-0'}`}
+                      />
                     </button>
-                    <button
-                      type="button"
-                      aria-label="Next teaching"
-                      onClick={() => setActiveTeachingIndex((index) => (index + 1) % latestTeachings.length)}
-                      className="flex h-9 w-9 items-center justify-center text-white/45 transition-colors hover:text-accent"
-                    >
-                      <ChevronRight className="h-5 w-5" />
-                    </button>
-                  </div>
+                  ))}
                 </div>
-              </Reveal>
-              <MediaReveal
-                from="right"
-                className="order-1 lg:order-2 lg:mt-8"
-                frameClassName="h-full min-h-[24rem] rounded-soft bg-surface lg:min-h-[32rem]"
-              >
+                <div className="flex items-center gap-1">
+                  <button
+                    type="button"
+                    aria-label="Previous teaching"
+                    onClick={() =>
+                      setActiveTeachingIndex((index) => (index - 1 + latestTeachings.length) % latestTeachings.length)
+                    }
+                    className="flex h-9 w-9 items-center justify-center text-white/45 transition-colors hover:text-accent"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Next teaching"
+                    onClick={() => setActiveTeachingIndex((index) => (index + 1) % latestTeachings.length)}
+                    className="flex h-9 w-9 items-center justify-center text-white/45 transition-colors hover:text-accent"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
+                </div>
+              </div>
+            </Reveal>
+            <MediaReveal
+              from="right"
+              className="order-1 lg:order-2 lg:mt-8"
+              frameClassName="h-full min-h-[24rem] rounded-soft bg-surface lg:min-h-[32rem]"
+            >
               <div
                 className="absolute inset-0"
                 onMouseEnter={() => setIsTeachingPaused(true)}
@@ -280,8 +302,8 @@ export function HomePage() {
                   <Play className="ml-1 h-6 w-6" fill="currentColor" />
                 </a>
               </div>
-              </MediaReveal>
-            </article>
+            </MediaReveal>
+          </article>
         </div>
       </section>
 
@@ -314,10 +336,12 @@ export function HomePage() {
               </Reveal>
               <div className="space-y-5 text-ash leading-relaxed">
                 <Reveal variant="right" delay={150} as="p">
-                  Apostle Emmanuel Iren is the founder and lead pastor of Celebration Church International, a teacher of God’s Word, author, songwriter, and ministry leader.
+                  Apostle Emmanuel Iren is the founder and lead pastor of Celebration Church International, a teacher of
+                  God’s Word, author, songwriter, and ministry leader.
                 </Reveal>
                 <Reveal variant="right" delay={300} as="p">
-                  His work brings together sound teaching, creative expression, and a deep commitment to helping people live their faith with clarity and purpose.
+                  His work brings together sound teaching, creative expression, and a deep commitment to helping people
+                  live their faith with clarity and purpose.
                 </Reveal>
               </div>
               <Reveal variant="right" delay={450}>
@@ -358,11 +382,13 @@ export function HomePage() {
                   </span>
                 </MediaReveal>
                 <Reveal variant="left" delay={150}>
-                <p className="mt-5 text-eyebrow uppercase tracking-[0.16em] text-accent">{featuredTeaching.type} · Featured</p>
-                <h3 className="mt-2 font-display text-2xl leading-tight tracking-[-0.01em] text-cream transition-colors duration-300 group-hover:text-accent lg:text-[1.875rem]">
-                  {featuredTeaching.title}
-                </h3>
-                <p className="mt-2 text-sm text-ash">{featuredTeaching.meta}</p>
+                  <p className="mt-5 text-eyebrow uppercase tracking-[0.16em] text-accent">
+                    {featuredTeaching.type} · Featured
+                  </p>
+                  <h3 className="mt-2 font-display text-2xl leading-tight tracking-[-0.01em] text-cream transition-colors duration-300 group-hover:text-accent lg:text-[1.875rem]">
+                    {featuredTeaching.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-ash">{featuredTeaching.meta}</p>
                 </Reveal>
               </Link>
             </div>
@@ -444,27 +470,37 @@ export function HomePage() {
                 />
               </Reveal>
               <Reveal variant="left" delay={150} as="p" className="text-ash leading-relaxed max-w-xl mb-8">
-                  A growing family of ministry expressions, each carrying the same invitation to know Christ, live purposefully, and make Him known.
+                A growing family of ministry expressions, each carrying the same invitation to know Christ, live
+                purposefully, and make Him known.
               </Reveal>
-                <div className="border-t border-line">
-                  {ministryExpressions.map((expression, index) => (
-                    <Reveal key={expression.name} variant="left" delay={300 + index * 100} className="border-b border-line">
-                      <a
-                        href={ministryLinks[expression.name].url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group grid grid-cols-[3rem_1fr_auto] items-start gap-2 py-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
-                      >
-                        <span className="font-sans text-[1.75rem] font-extrabold leading-none text-brand">{index + 1}</span>
-                        <div>
-                          <h3 className="font-display text-xl text-cream mb-1 transition-colors duration-300 group-hover:text-accent">{expression.name}</h3>
-                          <p className="text-sm text-ash leading-relaxed max-w-md">{expression.description}</p>
-                        </div>
-                        <ArrowUpRight className="mt-1 h-5 w-5 text-ash transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
-                      </a>
-                    </Reveal>
-                  ))}
-                </div>
+              <div className="border-t border-line">
+                {ministryExpressions.map((expression, index) => (
+                  <Reveal
+                    key={expression.name}
+                    variant="left"
+                    delay={300 + index * 100}
+                    className="border-b border-line"
+                  >
+                    <a
+                      href={ministryLinks[expression.name].url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group grid grid-cols-[3rem_1fr_auto] items-start gap-2 py-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                    >
+                      <span className="font-sans text-[1.75rem] font-extrabold leading-none text-brand">
+                        {index + 1}
+                      </span>
+                      <div>
+                        <h3 className="font-display text-xl text-cream mb-1 transition-colors duration-300 group-hover:text-accent">
+                          {expression.name}
+                        </h3>
+                        <p className="text-sm text-ash leading-relaxed max-w-md">{expression.description}</p>
+                      </div>
+                      <ArrowUpRight className="mt-1 h-5 w-5 text-ash transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+                    </a>
+                  </Reveal>
+                ))}
+              </div>
               <Reveal variant="left" delay={300 + ministryExpressions.length * 100}>
                 <Link to="/ministry" className="inline-block mt-8">
                   <TextLink>Explore Ministry</TextLink>
@@ -479,7 +515,12 @@ export function HomePage() {
         <div className="container-editorial">
           <div className="mb-8 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
             <Reveal variant="left">
-              <DisplayHeading number="06" eyebrow="Events" title="Where is Apostle Emmanuel Iren" accent="ministering?" />
+              <DisplayHeading
+                number="06"
+                eyebrow="Events"
+                title="Where is Apostle Emmanuel Iren"
+                accent="ministering?"
+              />
             </Reveal>
             <Reveal variant="right" delay={150}>
               <Link to="/events">
@@ -504,11 +545,14 @@ export function HomePage() {
                 style={{ objectPosition: 'center 30%' }}
               />
               <div>
-                <h3 className="font-display text-xl text-cream group-hover:text-accent transition-colors duration-300">Triumph30 — Lagos</h3>
+                <h3 className="font-display text-xl text-cream group-hover:text-accent transition-colors duration-300">
+                  Triumph30 — Lagos
+                </h3>
                 <p className="mt-1 text-sm text-ash">Eko Hotels, Lagos · Prayer &amp; Worship Gathering</p>
               </div>
               <span className="col-span-2 inline-flex items-center gap-1.5 text-sm font-medium text-cream sm:col-span-1">
-                Details &amp; Registration <ArrowRight className="h-3.5 w-3.5 text-accent transition-transform duration-300 group-hover:translate-x-1" />
+                Details &amp; Registration{' '}
+                <ArrowRight className="h-3.5 w-3.5 text-accent transition-transform duration-300 group-hover:translate-x-1" />
               </span>
             </Link>
           </Reveal>
@@ -522,29 +566,41 @@ export function HomePage() {
               <DisplayHeading number="07" eyebrow="Current Content" title="A curated" accent="continuation." />
             </Reveal>
             <Reveal variant="right" delay={150}>
-              <p className="text-sm text-ash max-w-xs leading-relaxed">Teaching, conversation, and worship for the week you are living.</p>
+              <p className="text-sm text-ash max-w-xs leading-relaxed">
+                Teaching, conversation, and worship for the week you are living.
+              </p>
             </Reveal>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { to: '/teaching', label: 'YouTube', title: 'Led by the Spirit', text: 'A short teaching for the journey.' },
-              { to: '/teaching', label: 'Podcast', title: 'The Creative Calling', text: 'A conversation about making with purpose.' },
+              {
+                to: '/teaching',
+                label: 'YouTube',
+                title: 'Led by the Spirit',
+                text: 'A short teaching for the journey.',
+              },
+              {
+                to: '/teaching',
+                label: 'Podcast',
+                title: 'The Creative Calling',
+                text: 'A conversation about making with purpose.',
+              },
               { to: '/ministry', label: 'Social Highlight', title: 'Make room for the work.', text: '' },
             ].map((item, index) => (
               <Reveal key={item.title} variant="right" delay={300 + index * 150}>
-              <Link
-                to={item.to}
-                className="group flex min-h-[15rem] flex-col justify-between rounded-soft border-t-2 border-brand bg-surface p-6 transition-colors duration-500 hover:bg-line"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-eyebrow uppercase tracking-[0.16em] text-accent">{item.label}</span>
-                  <ArrowUpRight className="h-5 w-5 text-ash transition-colors duration-300 group-hover:text-accent" />
-                </div>
-                <div>
-                  <h3 className="font-display text-2xl text-cream">{item.title}</h3>
-                  {item.text && <p className="mt-2 text-sm text-ash">{item.text}</p>}
-                </div>
-              </Link>
+                <Link
+                  to={item.to}
+                  className="group flex min-h-[15rem] flex-col justify-between rounded-soft border-t-2 border-brand bg-surface p-6 transition-colors duration-500 hover:bg-line"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-eyebrow uppercase tracking-[0.16em] text-accent">{item.label}</span>
+                    <ArrowUpRight className="h-5 w-5 text-ash transition-colors duration-300 group-hover:text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-2xl text-cream">{item.title}</h3>
+                    {item.text && <p className="mt-2 text-sm text-ash">{item.text}</p>}
+                  </div>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -562,22 +618,33 @@ export function HomePage() {
             style={{ objectPosition: 'center 30%' }}
           />
         </MediaReveal>
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-brand from-20% via-brand/55 via-45% to-brand/0 to-70%" />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-r from-brand from-20% via-brand/55 via-45% to-brand/0 to-70%"
+        />
         <div className="container-wide relative">
           <div className="max-w-3xl">
             <Reveal variant="right">
-            <DisplayHeading
-              number="08"
-              eyebrow="The Invitation"
-              title={<>Know Christ.<br />Live purposefully.<br /></>}
-              accent="Make Him known."
-              accentClassName="text-ink"
-              tone="gold"
-              size="lg"
-            />
+              <DisplayHeading
+                number="08"
+                eyebrow="The Invitation"
+                title={
+                  <>
+                    Know Christ.
+                    <br />
+                    Live purposefully.
+                    <br />
+                  </>
+                }
+                accent="Make Him known."
+                accentClassName="text-ink"
+                tone="gold"
+                size="lg"
+              />
             </Reveal>
             <Reveal variant="right" delay={150} as="p" className="mt-6 max-w-xl text-base leading-relaxed text-cream">
-              Bring the word to your city, your church, your event. Submit an invitation for a speaking engagement, conference, or interview.
+              Bring the word to your city, your church, your event. Submit an invitation for a speaking engagement,
+              conference, or interview.
             </Reveal>
             <Reveal variant="right" delay={300} className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link to="/invite" className="block w-full sm:w-auto">

@@ -6,7 +6,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { Button } from '@/components/ui/Button';
 
-const TEACHING_IMAGE = '/images/teachings/ee26a11e-6a6d-46ab-8ac2-7450784831e3.webp';
+const TEACHING_IMAGE = '/images/photos/stage-preaching-finger-raised.webp';
 
 interface ScheduledEvent {
   day: string;
@@ -59,9 +59,7 @@ export function EventsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-end">
             <div className="lg:col-span-8">
               <Reveal>
-                <Eyebrow className="mb-6">
-                  Events
-                </Eyebrow>
+                <Eyebrow className="mb-6">Events</Eyebrow>
                 <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.98] text-cream text-balance tracking-[-0.01em] mb-8">
                   Where is Apostle Emmanuel Iren <span className="text-brand">ministering?</span>
                 </h1>
@@ -70,8 +68,8 @@ export function EventsPage() {
             <div className="lg:col-span-4">
               <Reveal delay={120}>
                 <p className="text-lg text-ash leading-relaxed text-pretty">
-                  Upcoming gatherings, speaking engagements, and appearances — in
-                  person and online. Details will be posted as events are confirmed.
+                  Upcoming gatherings, speaking engagements, and appearances — in person and online. Details will be
+                  posted as events are confirmed.
                 </p>
               </Reveal>
             </div>
@@ -147,12 +145,15 @@ export function EventsPage() {
                   to="/contact"
                   className="group col-span-2 inline-flex items-center gap-1.5 text-sm font-medium text-cream hover:text-accent transition-colors duration-300 sm:col-span-1"
                 >
-                  Enquire <ArrowRight className="h-3.5 w-3.5 text-accent transition-transform duration-300 group-hover:translate-x-1" />
+                  Enquire{' '}
+                  <ArrowRight className="h-3.5 w-3.5 text-accent transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </div>
             ))}
             <div className="grid grid-cols-[5rem_1fr] items-center gap-x-6 border-b border-line py-6 sm:grid-cols-[7rem_1fr_auto] sm:gap-x-8">
-              <p className="font-sans text-4xl font-extrabold leading-none text-line" aria-hidden="true">+</p>
+              <p className="font-sans text-4xl font-extrabold leading-none text-line" aria-hidden="true">
+                +
+              </p>
               <div>
                 <h3 className="font-display text-xl text-cream">More dates are being confirmed</h3>
                 <p className="mt-1 text-sm text-ash">New engagements are announced here first.</p>
@@ -161,7 +162,8 @@ export function EventsPage() {
                 to="/invite"
                 className="group col-span-2 inline-flex items-center gap-1.5 text-sm font-medium text-cream hover:text-accent transition-colors duration-300 sm:col-span-1"
               >
-                Invite Emmanuel <ArrowRight className="h-3.5 w-3.5 text-accent transition-transform duration-300 group-hover:translate-x-1" />
+                Invite Emmanuel{' '}
+                <ArrowRight className="h-3.5 w-3.5 text-accent transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
           </Reveal>
@@ -210,20 +212,15 @@ export function EventsPage() {
                   Want to invite Emmanuel to minister at your gathering?
                 </h2>
                 <p className="text-lg text-mist leading-relaxed max-w-xl text-pretty">
-                  Submit an invitation for a speaking engagement, conference, or
-                  interview. Each request is reviewed carefully.
+                  Submit an invitation for a speaking engagement, conference, or interview. Each request is reviewed
+                  carefully.
                 </p>
               </Reveal>
             </div>
             <div className="lg:col-span-4 lg:col-start-9">
               <Reveal delay={100}>
                 <Link to="/invite">
-                  <Button
-                    variant="primary-light"
-                    size="lg"
-                    withArrow
-                    className="w-full sm:w-auto"
-                  >
+                  <Button variant="primary-light" size="lg" withArrow className="w-full sm:w-auto">
                     Invite Emmanuel
                   </Button>
                 </Link>

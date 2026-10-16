@@ -26,19 +26,19 @@ export default {
         sans: ['"Inter"', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        'eyebrow': ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.2em' }],
-        'meta': ['0.875rem', { lineHeight: '1.25rem', letterSpacing: '0.05em' }],
+        eyebrow: ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.2em' }],
+        meta: ['0.875rem', { lineHeight: '1.25rem', letterSpacing: '0.05em' }],
       },
       maxWidth: {
         'prose-narrow': '38rem',
-        'editorial': '72rem',
-        'wide': '90rem',
+        editorial: '72rem',
+        wide: '90rem',
       },
       borderRadius: {
-        'subtle': '0.25rem',
-        'soft': '0.125rem',
-        'button': '0.25rem',
-        'pill': '9999px',
+        subtle: '0.25rem',
+        soft: '0.125rem',
+        button: '0.25rem',
+        pill: '9999px',
       },
       transitionTimingFunction: {
         'ease-out-quart': 'cubic-bezier(0.25, 1, 0.5, 1)',

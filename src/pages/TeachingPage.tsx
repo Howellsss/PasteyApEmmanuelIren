@@ -1,11 +1,6 @@
 import { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Headphones,
-  Search,
-  ArrowUpRight,
-  Sparkles,
-} from 'lucide-react';
+import { Headphones, Search, ArrowUpRight, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { sermons, type Sermon, type SermonTag } from '@/data/sermons';
 import { podcast } from '@/data/media';
@@ -15,8 +10,8 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { Button } from '@/components/ui/Button';
 import { LatestMessages, SeriesList, StudyNotes } from '@/components/teaching/TeachingSections';
 
-const TEACHING_IMAGE_2 = '/images/teachings/image copy.webp';
-const TEACHING_IMAGE_3 = '/images/teachings/image copy 2.webp';
+const TEACHING_IMAGE_2 = '/images/photos/portrait-plum-suit-pink.webp';
+const TEACHING_IMAGE_3 = '/images/photos/portrait-navy-suit-wood-panel.webp';
 
 const PODCAST_IMG = TEACHING_IMAGE_3;
 const BIBLE_IMG = TEACHING_IMAGE_2;
@@ -110,15 +105,13 @@ export function TeachingPage() {
       <section className="relative pt-32 pb-16 lg:pt-44 lg:pb-24 overflow-hidden">
         <div className="container-editorial">
           <Reveal>
-            <Eyebrow className="mb-6">
-              Teachings
-            </Eyebrow>
+            <Eyebrow className="mb-6">Teachings</Eyebrow>
             <h1 className="font-display text-5xl sm:text-6xl lg:text-8xl leading-[0.98] text-cream text-balance tracking-[-0.01em] mb-8">
               Teachings
             </h1>
             <p className="text-lg sm:text-xl text-ash leading-relaxed max-w-2xl font-light text-pretty">
-              Explore messages, series and conversations designed to help you know
-              Christ, grow in faith and live purposefully.
+              Explore messages, series and conversations designed to help you know Christ, grow in faith and live
+              purposefully.
             </p>
           </Reveal>
         </div>
@@ -158,7 +151,7 @@ export function TeachingPage() {
                           'focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-ink',
                           isActive
                             ? 'bg-ink-2 text-cream'
-                            : 'bg-transparent text-ash border border-line hover:border-line hover:text-cream',
+                            : 'bg-transparent text-ash border border-line hover:border-line hover:text-cream'
                         )}
                       >
                         {cat}
@@ -169,9 +162,7 @@ export function TeachingPage() {
 
                 {/* Sort control */}
                 <div className="flex items-center gap-2">
-                  <span className="text-meta text-ash uppercase tracking-widest hidden sm:inline">
-                    Sort
-                  </span>
+                  <span className="text-meta text-ash uppercase tracking-widest hidden sm:inline">Sort</span>
                   <div className="flex items-center gap-1 p-1 rounded-pill border border-line bg-surface/50">
                     {SORT_OPTIONS.map((opt) => {
                       const isActive = sortOption === opt;
@@ -181,9 +172,7 @@ export function TeachingPage() {
                           onClick={() => setSortOption(opt)}
                           className={cn(
                             'px-3 py-1.5 rounded-pill text-xs font-medium transition-all duration-300',
-                            isActive
-                              ? 'bg-cream text-ink'
-                              : 'text-ash hover:text-cream',
+                            isActive ? 'bg-cream text-ink' : 'text-ash hover:text-cream'
                           )}
                         >
                           {opt}
@@ -261,13 +250,9 @@ export function TeachingPage() {
                       <span className="flex items-center justify-center w-10 h-10 rounded-pill border border-brand text-accent">
                         <Headphones className="w-5 h-5" />
                       </span>
-                      <span className="text-meta uppercase tracking-widest text-white/60">
-                        Podcast
-                      </span>
+                      <span className="text-meta uppercase tracking-widest text-white/60">Podcast</span>
                     </div>
-                    <h3 className="font-display text-2xl leading-tight">
-                      Endless Life
-                    </h3>
+                    <h3 className="font-display text-2xl leading-tight">Endless Life</h3>
                   </div>
                 </div>
               </Reveal>
@@ -279,9 +264,8 @@ export function TeachingPage() {
                   Endless Life with Emmanuel Iren
                 </h2>
                 <p className="text-lg text-white/65 leading-relaxed mb-8 text-pretty">
-                  The official Celebration Church International sermons feed. Listen
-                  to full messages, short teachings, and conversations — wherever you
-                  are, whenever you want.
+                  The official Celebration Church International sermons feed. Listen to full messages, short teachings,
+                  and conversations — wherever you are, whenever you want.
                 </p>
 
                 <div className="space-y-3">
@@ -351,9 +335,9 @@ export function TeachingPage() {
                   The word also travels through pages.
                 </h2>
                 <p className="text-lg text-mist leading-relaxed mb-8 text-pretty">
-                  Beyond the pulpit and the podcast, Emmanuel Iren's teaching lives in
-                  books — Leading Seeks You, Purposefully, Saving Grace, LoveCode, and
-                  more. Each one makes the life of faith practical, clear, and lived.
+                  Beyond the pulpit and the podcast, Emmanuel Iren's teaching lives in books — Leading Seeks You,
+                  Purposefully, Saving Grace, LoveCode, and more. Each one makes the life of faith practical, clear, and
+                  lived.
                 </p>
                 <Link to="/about">
                   <Button variant="primary-light" size="lg" withArrow>

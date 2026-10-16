@@ -1,0 +1,287 @@
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ArrowLeft, ArrowRight, BookOpen, Film, Mic2, Music2, Sparkles } from 'lucide-react';
+import { DisplayHeading } from '@/components/ui/DisplayHeading';
+import { Reveal } from '@/components/ui/Reveal';
+
+type Card = {
+  tag: string;
+  title: string;
+  description: string;
+  icon: typeof BookOpen;
+  image: string;
+  accent: string;
+  objectPosition?: string;
+  /** The page the card opens. */
+  to: string;
+};
+
+const cards: Card[] = [
+  {
+    tag: 'Books',
+    title: 'Books',
+    description: 'Words that make the life of faith practical, clear, and lived.',
+    icon: BookOpen,
+    image: '/images/photos/studio-podcast-desk.webp',
+    accent: '#C08A1E',
+    to: '/media/books',
+  },
+  {
+    tag: 'Music',
+    title: 'Music',
+    description: 'Songs of worship, conviction, and the joy of knowing Christ.',
+    icon: Music2,
+    image: '/images/photos/portrait-grey-jacket-seated.webp',
+    accent: '#C08A1E',
+    to: '/media/music',
+  },
+  {
+    tag: 'Film & Media',
+    title: 'Film & Media',
+    description: 'Stories and conversations that carry the message beyond the pulpit.',
+    icon: Film,
+    image: '/images/photos/portrait-green-knit-seated.webp',
+    accent: '#C08A1E',
+    objectPosition: 'center top',
+    to: '/media/films',
+  },
+  {
+    tag: 'Podcast',
+    title: 'Podcast',
+    description: 'Conversations and teachings that explore faith, purpose, leadership, and the Christian life.',
+    icon: Mic2,
+    image: '/images/photos/studio-conversation.webp',
+    accent: '#C08A1E',
+    to: '/media/podcast',
+  },
+  {
+    tag: 'Speaking',
+    title: 'Speaking',
+    description: 'Biblical teaching and conversations that bring clarity to faith, purpose, leadership, and culture.',
+    icon: Sparkles,
+    image: '/images/photos/stage-spotlight-black-and-white.webp',
+    accent: '#C08A1E',
+    to: '/teaching',
+  },
+];
+
+// Below this width the accordion becomes a swipeable row of full cards instead of squeezing all five.
+const MOBILE_QUERY = '(max-width: 767px)';
+
+export function CreativeAccordion() {
+  const navigate = useNavigate();
+  const [active, setActive] = useState(0);
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia(MOBILE_QUERY).matches
+  );
+  const directionRef = useRef(1);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const activeRef = useRef(0);
+  // Phones: the row advances by itself, but waits while someone is swiping and while it is off screen.
+  const pauseUntilRef = useRef(0);
+  const inViewRef = useRef(false);
+
+  useEffect(() => {
+    activeRef.current = active;
+  }, [active]);
+
+  useEffect(() => {
+    const query = window.matchMedia(MOBILE_QUERY);
+    const onChange = () => setIsMobile(query.matches);
+    query.addEventListener('change', onChange);
+    return () => query.removeEventListener('change', onChange);
+  }, []);
+
+  // On phones, choosing a card scrolls the row to it; the scroll handler then marks it active.
+  const goTo = useCallback(
+    (index: number) => {
+      const track = trackRef.current;
+      const card = track?.children[index] as HTMLElement | undefined;
+      if (isMobile && track && card) {
+        track.scrollTo({
+          left: card.offsetLeft - track.offsetLeft - parseFloat(getComputedStyle(track).paddingLeft),
+          behavior: 'smooth',
+        });
+        return;
+      }
+      setActive(index);
+    },
+    [isMobile]
+  );
+
+  const prev = useCallback(() => {
+    goTo((active - 1 + cards.length) % cards.length);
+  }, [active, goTo]);
+
+  const next = useCallback(() => {
+    goTo((active + 1) % cards.length);
+  }, [active, goTo]);
+
+  const onTrackScroll = useCallback(() => {
+    const track = trackRef.current;
+    if (!isMobile || !track) return;
+    const first = track.children[0] as HTMLElement | undefined;
+    if (!first) return;
+    const step = first.offsetWidth + parseFloat(getComputedStyle(track).columnGap || '0');
+    const index = Math.min(cards.length - 1, Math.max(0, Math.round(track.scrollLeft / step)));
+    setActive(index);
+  }, [isMobile]);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inViewRef.current = entry.isIntersecting;
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    // Phones: one card every 3 seconds, wrapping back to the first after the last.
+    if (!isMobile || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const id = setInterval(() => {
+      if (!inViewRef.current || document.hidden || Date.now() < pauseUntilRef.current) return;
+      goTo((activeRef.current + 1) % cards.length);
+    }, 3000);
+    return () => clearInterval(id);
+  }, [isMobile, goTo]);
+
+  useEffect(() => {
+    // Larger screens: the open card moves along the row and back.
+    if (isMobile) return;
+    const id = setInterval(() => {
+      setActive((currentIndex) => {
+        let nextIndex = currentIndex + directionRef.current;
+        if (nextIndex >= cards.length) {
+          directionRef.current = -1;
+          nextIndex = cards.length - 2;
+        } else if (nextIndex < 0) {
+          directionRef.current = 1;
+          nextIndex = 1;
+        }
+        return nextIndex;
+      });
+    }, 2200);
+    return () => clearInterval(id);
+  }, [isMobile]);
+
+  return (
+    <section ref={sectionRef} className="ce-section" aria-label="Creative Expression">
+      <div className="container-editorial">
+        <Reveal variant="left" className="mb-10">
+          <DisplayHeading
+            number="04"
+            eyebrow="Creative Expression"
+            title="More than"
+            accent="the pulpit."
+            accentClassName="text-accent"
+            tone="light"
+          />
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-mist text-pretty">
+            The message also travels through pages, melodies, images, and stories — each one made to meet people where
+            they are.
+          </p>
+        </Reveal>
+      </div>
+
+      <Reveal variant="right" delay={150} className="ce-accordion-wrap">
+        <div
+          ref={trackRef}
+          className="ce-accordion"
+          role="tablist"
+          aria-label="Creative expressions"
+          onScroll={onTrackScroll}
+          onPointerDown={() => {
+            pauseUntilRef.current = Date.now() + 6000;
+          }}
+          onTouchStart={() => {
+            pauseUntilRef.current = Date.now() + 6000;
+          }}
+        >
+          {cards.map((card, i) => {
+            const Icon = card.icon;
+            const isActive = i === active;
+            return (
+              <article
+                key={card.tag}
+                className={`ce-card ${isActive ? 'is-active' : ''}`}
+                style={{ '--ce-accent': card.accent } as CSSProperties}
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={`ce-panel-${i}`}
+                tabIndex={isActive ? 0 : -1}
+                onMouseEnter={() => !isMobile && goTo(i)}
+                // The open card (every card on phones) leads to its page; a closed one opens first.
+                onClick={() => (isActive || isMobile ? navigate(card.to) : goTo(i))}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    if (isActive) navigate(card.to);
+                    else goTo(i);
+                  }
+                }}
+              >
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="ce-card-image"
+                  style={card.objectPosition ? { objectPosition: card.objectPosition } : undefined}
+                  loading="lazy"
+                />
+                <div className="ce-gradient" />
+                <div className="ce-corner" aria-hidden="true" />
+                {(isActive || isMobile) && (
+                  <div className="ce-body" id={`ce-panel-${i}`}>
+                    <span className="ce-icon">
+                      <Icon className="w-5 h-5" strokeWidth={1.5} />
+                    </span>
+                    <p className="ce-tag">{card.tag}</p>
+                    <h3 className="font-display ce-card-title">{card.title}</h3>
+                    <p className="ce-desc">{card.description}</p>
+                    <Link to={card.to} className="ce-explore" onClick={(e) => e.stopPropagation()}>
+                      Explore →
+                    </Link>
+                  </div>
+                )}
+                {!isActive && !isMobile && (
+                  <div className="ce-collapsed">
+                    <span className="ce-collapsed-icon">
+                      <Icon className="w-4 h-4" strokeWidth={1.5} />
+                    </span>
+                    <span className="ce-collapsed-title">{card.title}</span>
+                  </div>
+                )}
+              </article>
+            );
+          })}
+        </div>
+
+        <div className="ce-controls">
+          <button className="ce-nav" onClick={prev} aria-label="Previous expression" type="button">
+            <ArrowLeft className="w-4 h-4" strokeWidth={1.5} />
+          </button>
+          <div className="ce-dots" role="tablist" aria-label="Choose expression">
+            {cards.map((card, i) => (
+              <button
+                key={card.tag}
+                className={`ce-dot ${i === active ? 'is-active' : ''}`}
+                onClick={() => goTo(i)}
+                aria-label={`Go to ${card.title}`}
+                aria-selected={i === active}
+                type="button"
+              />
+            ))}
+          </div>
+          <button className="ce-nav" onClick={next} aria-label="Next expression" type="button">
+            <ArrowRight className="w-4 h-4" strokeWidth={1.5} />
+          </button>
+        </div>
+      </Reveal>
+    </section>
+  );
+}

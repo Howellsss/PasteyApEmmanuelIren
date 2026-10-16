@@ -9,15 +9,13 @@ import { MinistryPage } from '@/pages/MinistryPage';
 import { EventsPage } from '@/pages/EventsPage';
 import { InvitePage } from '@/pages/InvitePage';
 import { ContactPage } from '@/pages/ContactPage';
-import {
-  BooksPage,
-  GalleryPage,
-  IrensPage,
-  FilmsPage,
-  MusicPage,
-  PodcastPage,
-  MediaOverviewPage,
-} from '@/pages/MediaPages';
+import { BooksPage } from '@/pages/media/BooksPage';
+import { GalleryPage } from '@/pages/media/GalleryPage';
+import { IrensPage } from '@/pages/media/IrensPage';
+import { FilmsPage } from '@/pages/media/FilmsPage';
+import { MusicPage } from '@/pages/media/MusicPage';
+import { PodcastPage } from '@/pages/media/PodcastPage';
+import { MediaOverviewPage } from '@/pages/media/MediaOverviewPage';
 
 const SITE = 'Apostle Emmanuel Iren';
 
@@ -28,11 +26,13 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
   '/about': {
     title: `About — ${SITE}`,
-    description: 'The journey, calling, and ministry of Apostle Emmanuel Iren, from a campus fellowship to a global church.',
+    description:
+      'The journey, calling, and ministry of Apostle Emmanuel Iren, from a campus fellowship to a global church.',
   },
   '/teaching': {
     title: `Teachings — ${SITE}`,
-    description: 'Sermons, series, and conversations from Apostle Emmanuel Iren to help you know Christ and live purposefully.',
+    description:
+      'Sermons, series, and conversations from Apostle Emmanuel Iren to help you know Christ and live purposefully.',
   },
   '/ministry': {
     title: `Ministry — ${SITE}`,
@@ -52,7 +52,8 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   },
   '/media/films': {
     title: `Films — ${SITE}`,
-    description: 'Films produced by Emmanuel Iren — What About Us?, Up Next: LOVE, Meltdown and Nigerian Son — and where to watch them.',
+    description:
+      'Films produced by Emmanuel Iren — What About Us?, Up Next: LOVE, Meltdown and Nigerian Son — and where to watch them.',
   },
   '/media/music': {
     title: `Music — ${SITE}`,
@@ -87,7 +88,10 @@ function RouteEffects() {
   useEffect(() => {
     if (!hash) return;
     // Wait for the page to render and the top-of-page scroll to run, then go to the section.
-    const id = window.setTimeout(() => document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth' }), 120);
+    const id = window.setTimeout(
+      () => document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth' }),
+      120
+    );
     return () => window.clearTimeout(id);
   }, [pathname, hash]);
 

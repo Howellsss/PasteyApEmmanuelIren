@@ -14,9 +14,7 @@ export function ContactPage() {
       <section className="py-16 lg:py-24">
         <div className="container-editorial">
           <Reveal>
-            <Eyebrow className="mb-6">
-              Contact
-            </Eyebrow>
+            <Eyebrow className="mb-6">Contact</Eyebrow>
             <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl leading-[0.98] text-cream text-balance tracking-[-0.01em] mb-6 max-w-4xl">
               Get in touch.
             </h1>
@@ -38,30 +36,30 @@ export function ContactPage() {
                   <div>
                     <div className="flex items-center gap-3 mb-2">
                       <Mail className="w-4 h-4 text-accent" />
-                      <span className="text-eyebrow font-sans uppercase tracking-widest text-ash">
-                        Email
-                      </span>
+                      <span className="text-eyebrow font-sans uppercase tracking-widest text-ash">Email</span>
                     </div>
-                    <a href={`mailto:${CONTACT_EMAIL}`} className="break-all text-cream transition-colors duration-300 hover:text-accent">{CONTACT_EMAIL}</a>
+                    <a
+                      href={`mailto:${CONTACT_EMAIL}`}
+                      className="break-all text-cream transition-colors duration-300 hover:text-accent"
+                    >
+                      {CONTACT_EMAIL}
+                    </a>
                   </div>
                   <div>
                     <div className="flex items-center gap-3 mb-2">
                       <Phone className="w-4 h-4 text-accent" />
-                      <span className="text-eyebrow font-sans uppercase tracking-widest text-ash">
-                        Phone
-                      </span>
+                      <span className="text-eyebrow font-sans uppercase tracking-widest text-ash">Phone</span>
                     </div>
                     <p className="text-cream">+234 800 000 0000</p>
                   </div>
                   <div>
                     <div className="flex items-center gap-3 mb-2">
                       <MapPin className="w-4 h-4 text-accent" />
-                      <span className="text-eyebrow font-sans uppercase tracking-widest text-ash">
-                        Address
-                      </span>
+                      <span className="text-eyebrow font-sans uppercase tracking-widest text-ash">Address</span>
                     </div>
                     <p className="text-cream leading-relaxed">
-                      Celebration Church International<br />
+                      Celebration Church International
+                      <br />
                       Lagos, Nigeria
                     </p>
                   </div>
@@ -86,16 +84,17 @@ export function ContactPage() {
                 >
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <FormField name="name" label="Name" placeholder="Your name" autoComplete="name" required />
-                    <FormField name="email" label="Email" type="email" placeholder="you@example.com" autoComplete="email" required />
+                    <FormField
+                      name="email"
+                      label="Email"
+                      type="email"
+                      placeholder="you@example.com"
+                      autoComplete="email"
+                      required
+                    />
                   </div>
                   <FormField name="subject" label="Subject" placeholder="What is this about?" />
-                  <TextareaField
-                    name="message"
-                    label="Message"
-                    placeholder="Your message…"
-                    rows={5}
-                    required
-                  />
+                  <TextareaField name="message" label="Message" placeholder="Your message…" rows={5} required />
                   <div className="flex flex-col gap-3">
                     <Button type="submit" variant="primary" size="lg" withArrow className="w-full sm:w-auto">
                       Send Message
