@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpen, Film, Mic2, Music2, Sparkles } from 'lucide-react';
 import { DisplayHeading } from './DisplayHeading';
 import { Reveal } from './Reveal';
@@ -11,6 +12,8 @@ type Card = {
   image: string;
   accent: string;
   objectPosition?: string;
+  /** The page the card opens. */
+  to: string;
 };
 
 const cards: Card[] = [
@@ -21,6 +24,7 @@ const cards: Card[] = [
     icon: BookOpen,
     image: '/images/creative/image copy 2.webp',
     accent: '#C08A1E',
+    to: '/media/books',
   },
   {
     tag: 'Music',
@@ -29,6 +33,7 @@ const cards: Card[] = [
     icon: Music2,
     image: '/images/creative/image.webp',
     accent: '#C08A1E',
+    to: '/media/music',
   },
   {
     tag: 'Film & Media',
@@ -38,6 +43,7 @@ const cards: Card[] = [
     image: '/images/creative/image copy.webp',
     accent: '#C08A1E',
     objectPosition: 'center top',
+    to: '/media/films',
   },
   {
     tag: 'Podcast',
@@ -46,6 +52,7 @@ const cards: Card[] = [
     icon: Mic2,
     image: '/images/creative/image copy 3.webp',
     accent: '#C08A1E',
+    to: '/media/podcast',
   },
   {
     tag: 'Speaking',
@@ -54,6 +61,7 @@ const cards: Card[] = [
     icon: Sparkles,
     image: '/images/creative/image copy 4.webp',
     accent: '#C08A1E',
+    to: '/teaching',
   },
 ];
 
@@ -61,6 +69,7 @@ const cards: Card[] = [
 const MOBILE_QUERY = '(max-width: 767px)';
 
 export function CreativeAccordion() {
+  const navigate = useNavigate();
   const [active, setActive] = useState(0);
   const [isMobile, setIsMobile] = useState(
     () => typeof window !== 'undefined' && window.matchMedia(MOBILE_QUERY).matches
@@ -193,11 +202,13 @@ export function CreativeAccordion() {
                 aria-controls={`ce-panel-${i}`}
                 tabIndex={isActive ? 0 : -1}
                 onMouseEnter={() => !isMobile && goTo(i)}
-                onClick={() => goTo(i)}
+                // The open card (every card on phones) leads to its page; a closed one opens first.
+                onClick={() => (isActive || isMobile ? navigate(card.to) : goTo(i))}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    goTo(i);
+                    if (isActive) navigate(card.to);
+                    else goTo(i);
                   }
                 }}
               >
@@ -216,7 +227,7 @@ export function CreativeAccordion() {
                     <p className="ce-tag">{card.tag}</p>
                     <h3 className="font-display ce-card-title">{card.title}</h3>
                     <p className="ce-desc">{card.description}</p>
-                    <span className="ce-explore">Explore →</span>
+                    <Link to={card.to} className="ce-explore" onClick={(e) => e.stopPropagation()}>Explore →</Link>
                   </div>
                 )}
                 {!isActive && !isMobile && (

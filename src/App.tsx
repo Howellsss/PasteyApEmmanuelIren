@@ -13,6 +13,9 @@ import {
   BooksPage,
   GalleryPage,
   IrensPage,
+  FilmsPage,
+  MusicPage,
+  PodcastPage,
   MediaOverviewPage,
   ReelsPage,
 } from '@/pages/MediaPages';
@@ -51,6 +54,18 @@ const PAGE_META: Record<string, { title: string; description: string }> = {
   '/media/the-irens': {
     title: `The Irens — ${SITE}`,
     description: 'Emmanuel and Laju Iren, and the family beneath the public work.',
+  },
+  '/media/films': {
+    title: `Films — ${SITE}`,
+    description: 'Films produced by Emmanuel Iren — What About Us?, Up Next: LOVE, Meltdown and Nigerian Son — and where to watch them.',
+  },
+  '/media/music': {
+    title: `Music — ${SITE}`,
+    description: 'The music of Pastor Emmanuel Iren on Spotify, Apple Music and YouTube.',
+  },
+  '/media/podcast': {
+    title: `Podcast — ${SITE}`,
+    description: 'Endless Life with Emmanuel Iren: sermons and Bible teaching on Apple Podcasts and Spotify.',
   },
   '/media/books': {
     title: `The Books — ${SITE}`,
@@ -109,6 +124,9 @@ function App() {
         <Route path="/media/messages" element={<Navigate to={{ pathname: '/teaching', hash: '#latest' }} replace />} />
         <Route path="/media/resources" element={<Navigate to={{ pathname: '/teaching', hash: '#notes' }} replace />} />
         <Route path="/media/the-irens" element={<IrensPage />} />
+        <Route path="/media/films" element={<FilmsPage />} />
+        <Route path="/media/music" element={<MusicPage />} />
+        <Route path="/media/podcast" element={<PodcastPage />} />
         <Route path="/media/books" element={<BooksPage />} />
         <Route path="/media/archive" element={<Navigate to={{ pathname: '/teaching', hash: '#series' }} replace />} />
         <Route path="/events" element={<EventsPage />} />

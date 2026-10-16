@@ -5,6 +5,7 @@ import {
   Calendar,
 } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
+import { ministryLinks } from '@/data/media';
 import { ChapterMarker } from '@/components/ui/ChapterMarker';
 import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeader } from '@/components/ui/SectionHeader';
@@ -106,6 +107,10 @@ export function MinistryPage() {
                   <span className="w-1 h-1 rounded-pill bg-accent" />
                   <span>4 Countries</span>
                 </div>
+                <a href={ministryLinks['Celebration Church International'].url} target="_blank" rel="noopener noreferrer" className="group mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-cream transition-colors duration-300 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                  {ministryLinks['Celebration Church International'].label}
+                  <ArrowUpRight className="h-4 w-4 text-accent transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </a>
               </div>
             </article>
           </Reveal>
@@ -135,6 +140,10 @@ export function MinistryPage() {
                   space for rigorous, accessible teaching that complements the local
                   church.
                 </p>
+                <a href={ministryLinks['Manifest'].url} target="_blank" rel="noopener noreferrer" className="group mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-cream transition-colors duration-300 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                  {ministryLinks['Manifest'].label}
+                  <ArrowUpRight className="h-4 w-4 text-accent transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </a>
               </Reveal>
             </div>
           </div>
@@ -175,6 +184,10 @@ export function MinistryPage() {
                   <span className="w-1 h-1 rounded-pill bg-accent" />
                   <span>Global Reach</span>
                 </div>
+                <a href={ministryLinks['Triumph30'].url} target="_blank" rel="noopener noreferrer" className="group mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-cream transition-colors duration-300 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                  {ministryLinks['Triumph30'].label}
+                  <ArrowUpRight className="h-4 w-4 text-accent transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </a>
               </Reveal>
             </div>
           </div>
@@ -207,6 +220,10 @@ export function MinistryPage() {
                     </span>
                   ))}
                 </div>
+                <a href={ministryLinks['Outburst'].url} target="_blank" rel="noopener noreferrer" className="group mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-cream transition-colors duration-300 hover:text-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                  {ministryLinks['Outburst'].label}
+                  <ArrowUpRight className="h-4 w-4 text-accent transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                </a>
               </Reveal>
             </div>
             <div className="lg:col-span-5 lg:col-start-8">

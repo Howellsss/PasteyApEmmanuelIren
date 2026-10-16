@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight, Mail, Instagram, Youtube, Twitter } from 'lucide-react';
+import { ministryLinks } from '@/data/media';
 
-const FOOTER_LINKS = {
+type FooterLink = { label: string; to?: string; href?: string };
+
+const FOOTER_LINKS: Record<string, FooterLink[]> = {
   Explore: [
     { label: 'Home', to: '/' },
     { label: 'About', to: '/about' },
@@ -10,10 +13,10 @@ const FOOTER_LINKS = {
     { label: 'Events', to: '/events' },
   ],
   Ministry: [
-    { label: 'Celebration Church', to: '/ministry' },
-    { label: 'Manifest', to: '/ministry' },
-    { label: 'Triumph30', to: '/ministry' },
-    { label: 'Outburst', to: '/ministry' },
+    { label: 'Celebration Church', href: ministryLinks['Celebration Church International'].url },
+    { label: 'Manifest', href: ministryLinks.Manifest.url },
+    { label: 'Triumph30', href: ministryLinks.Triumph30.url },
+    { label: 'Outburst', href: ministryLinks.Outburst.url },
   ],
   Connect: [
     { label: 'Invite Emmanuel', to: '/invite' },
@@ -78,13 +81,25 @@ export function Footer() {
                 <ul className="space-y-3">
                   {links.map((link) => (
                     <li key={link.label}>
-                      <Link
-                        to={link.to}
-                        className="group inline-flex items-center gap-1 text-sm text-cream hover:text-accent transition-colors duration-300"
-                      >
-                        {link.label}
-                        <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-                      </Link>
+                      {link.href ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group inline-flex items-center gap-1 text-sm text-cream hover:text-accent transition-colors duration-300"
+                        >
+                          {link.label}
+                          <ArrowUpRight className="w-3 h-3 opacity-60 group-hover:opacity-100 transition-opacity duration-300" />
+                        </a>
+                      ) : (
+                        <Link
+                          to={link.to ?? '/'}
+                          className="group inline-flex items-center gap-1 text-sm text-cream hover:text-accent transition-colors duration-300"
+                        >
+                          {link.label}
+                          <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>

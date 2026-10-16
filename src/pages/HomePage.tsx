@@ -7,7 +7,7 @@ import { TextLink } from '@/components/ui/TextLink';
 import { DisplayHeading } from '@/components/ui/DisplayHeading';
 import { CreativeAccordion } from '@/components/ui/CreativeAccordion';
 import { MediaReveal } from '@/components/ui/MediaReveal';
-import { messages as latestTeachings } from '@/data/media';
+import { messages as latestTeachings, ministryLinks } from '@/data/media';
 import { cn } from '@/lib/cn';
 import { attachHeroVideo, detachHeroVideo, setHeroInView } from '@/lib/heroSound';
 
@@ -51,15 +51,15 @@ const ministryExpressions = [
   },
   {
     name: 'Manifest',
-    description: 'A creative and worship expression for a generation seeking God with excellence.',
+    description: 'An interdenominational Bible course taking believers deeper into scripture.',
   },
   {
     name: 'Triumph30',
-    description: 'A focused journey of prayer, fasting, and spiritual renewal.',
+    description: 'A daily devotional building a culture of prayer and Bible study.',
   },
   {
     name: 'Outburst',
-    description: 'A youth and campus expression built to ignite faith and purpose.',
+    description: 'The music group born from the church choir, carrying the message in song.',
   },
 ];
 
@@ -448,12 +448,20 @@ export function HomePage() {
               </Reveal>
                 <div className="border-t border-line">
                   {ministryExpressions.map((expression, index) => (
-                    <Reveal key={expression.name} variant="left" delay={300 + index * 100} className="grid grid-cols-[3rem_1fr] gap-2 py-5 border-b border-line">
-                      <span className="font-sans text-[1.75rem] font-extrabold leading-none text-brand">{index + 1}</span>
-                      <div>
-                        <h3 className="font-display text-xl text-cream mb-1">{expression.name}</h3>
-                        <p className="text-sm text-ash leading-relaxed max-w-md">{expression.description}</p>
-                      </div>
+                    <Reveal key={expression.name} variant="left" delay={300 + index * 100} className="border-b border-line">
+                      <a
+                        href={ministryLinks[expression.name].url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group grid grid-cols-[3rem_1fr_auto] items-start gap-2 py-5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                      >
+                        <span className="font-sans text-[1.75rem] font-extrabold leading-none text-brand">{index + 1}</span>
+                        <div>
+                          <h3 className="font-display text-xl text-cream mb-1 transition-colors duration-300 group-hover:text-accent">{expression.name}</h3>
+                          <p className="text-sm text-ash leading-relaxed max-w-md">{expression.description}</p>
+                        </div>
+                        <ArrowUpRight className="mt-1 h-5 w-5 text-ash transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+                      </a>
                     </Reveal>
                   ))}
                 </div>

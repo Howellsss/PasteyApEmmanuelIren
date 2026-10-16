@@ -136,6 +136,9 @@ export const mediaSections: MediaSection[] = [
   { label: 'Overview', path: '/media', blurb: 'Everything in one place.' },
   { label: 'Reels', path: '/media/reels', blurb: 'Short moments from recent messages.' },
   { label: 'Gallery', path: '/media/gallery', blurb: 'Photographs from the pulpit, the studio and beyond.' },
+  { label: 'Films', path: '/media/films', blurb: 'Films he has produced, and where to watch them.' },
+  { label: 'Music', path: '/media/music', blurb: 'Albums, singles and official music videos.' },
+  { label: 'Podcast', path: '/media/podcast', blurb: 'Endless Life: sermons and teachings to listen to.' },
   { label: 'The Irens', path: '/media/the-irens', blurb: 'Emmanuel and Laju Iren, and their family.' },
   { label: 'The Books', path: '/media/books', blurb: 'Six books for a practical life of faith.' },
 ];
@@ -187,3 +190,143 @@ export const galleryPhotos: GalleryPhoto[] = [
   { src: '/images/teachings/image copy 5.webp', alt: 'Emmanuel Iren preaching to the congregation', category: 'On stage' },
   { src: '/images/hero/image copy 10.webp', alt: 'Emmanuel Iren on stage in black and white, wide', category: 'On stage' },
 ];
+
+/* ── Films, music and podcast ─────────────────────────────────────────── */
+
+export interface Film {
+  title: string;
+  year?: string;
+  role: string;
+  description: string;
+  /** The YouTube video the card opens. */
+  videoId: string;
+  /** What the video is, shown on the button. */
+  watchLabel: string;
+  /** maxresdefault exists for this video's thumbnail. */
+  hiRes?: boolean;
+}
+
+export const films: Film[] = [
+  {
+    title: 'What About Us?',
+    year: '2024',
+    role: 'Executive producer',
+    description:
+      'His cinema debut as executive producer: a film about marriage, relationship struggles and the challenges Christian couples face, starring Kunle Remi, Folu Storms and Uzor Arukwe.',
+    videoId: 'RHHZdMU9-m0',
+    watchLabel: 'Watch the official trailer',
+    hiRes: true,
+  },
+  {
+    title: 'Up Next: LOVE',
+    year: '2025',
+    role: 'Narrative Entertainment',
+    description:
+      'A film released on YouTube on 7 October 2025, exploring modern love and relationships — a move toward digital-first film distribution.',
+    videoId: 'FMduWO_X930',
+    watchLabel: 'Watch the full film',
+    hiRes: true,
+  },
+  {
+    title: 'Meltdown',
+    year: '2026',
+    role: 'Story & executive producer',
+    description: 'A drama exploring anger, trauma, identity and emotional healing, with a spotlight on men’s mental health.',
+    videoId: 'zA3eOjLtUic',
+    watchLabel: 'Watch the official trailer',
+    hiRes: true,
+  },
+  {
+    title: 'Nigerian Son',
+    year: '2020',
+    role: 'Executive producer',
+    description: 'An eight-minute Nigerian drama written and directed by Laju Iren, starring Ifeanyi Kalu and Uche Leona.',
+    videoId: 'jmsoYq6Yy1o',
+    watchLabel: 'Watch the full film',
+    hiRes: true,
+  },
+];
+
+export const filmChannels = [
+  {
+    name: 'Emmanuel Iren Live',
+    description: 'Sermons, worship sessions, music videos, Bible teaching, Q&A sessions and conversations about relationships and Christian living.',
+    url: 'https://www.youtube.com/@pst_iren',
+  },
+  {
+    name: 'Narrative Entertainment',
+    description: 'His film production venture, telling culturally relevant stories about relationships, family and human experience.',
+    url: 'https://www.youtube.com/@thenarrativentertainment',
+  },
+];
+
+export const musicProfiles = [
+  {
+    name: 'Spotify',
+    description: 'His gospel music, including Anointed, Agbára Olórun Pọ̀, Shekinah and Holy Ghost (Live).',
+    url: 'https://open.spotify.com/artist/1Ge81wiDXhRxTHVE1pdHyw',
+    art: '/images/music/spirituals.webp',
+    artAlt: 'Spirituals album cover',
+    action: 'Open on Spotify',
+  },
+  {
+    name: 'Apple Music',
+    description: 'His albums, singles and collaborations — Kerygma, Apostolos: Sounds of Transition and Spirituals.',
+    url: 'https://music.apple.com/us/artist/pastor-emmanuel-iren/1575782783',
+    art: '/images/music/apostolos.webp',
+    artAlt: 'Apostolos: Sounds of Transition album cover',
+    action: 'Open on Apple Music',
+  },
+];
+
+export interface MusicVideo {
+  id: string;
+  title: string;
+  featuring?: string;
+  duration: string;
+  hiRes: boolean;
+}
+
+/** Official music videos from his YouTube channel, newest first. */
+export const musicVideos: MusicVideo[] = [
+  { id: '47IAfOSHbuc', title: 'Anointed', featuring: 'Godswill Oyor', duration: '7:05', hiRes: true },
+  { id: 'zkLXuzx2-M0', title: 'I Believe', featuring: 'Joybliss', duration: '6:01', hiRes: true },
+  { id: '9C4RqeQRAvI', title: 'Sing Over Me', featuring: '121Selah', duration: '7:03', hiRes: true },
+  { id: 'hvNfJPQlbVg', title: 'Shekinah', featuring: 'Sunmisola Agbebi', duration: '7:00', hiRes: true },
+  { id: 'aQ1TzUjA_sM', title: 'Lead Me', duration: '6:28', hiRes: true },
+  { id: '4-GtqBrVIW0', title: 'Agbára Olórun Pọ̀', featuring: 'Yetunde Are', duration: '6:11', hiRes: true },
+  { id: 'ZiBlRxdy3Cs', title: 'Agalliao', featuring: 'Nathaniel Bassey', duration: '6:13', hiRes: true },
+  { id: 'dVtxHoSWlws', title: 'Glory of the Lord Reveals', duration: '5:27', hiRes: true },
+  { id: 'h8iN2_9t64M', title: 'Holy Ghost', featuring: 'Sinach', duration: '7:04', hiRes: true },
+  { id: 'hGZiTRreJ9g', title: 'Power in Abundance', featuring: 'Bajulaye Victor', duration: '5:35', hiRes: true },
+  { id: 'UrGZuaaYTV0', title: 'Apostolos', duration: '3:06', hiRes: false },
+  { id: 'EermVGUEShc', title: 'Overcome', featuring: 'E-Daniels', duration: '5:40', hiRes: true },
+  { id: 'xDk3VqPHD4A', title: 'Grace Changes Everything', featuring: 'Sinach', duration: '6:45', hiRes: true },
+  { id: 'WIhPlP6nwqc', title: 'Fire on My Altar', duration: '5:32', hiRes: true },
+  { id: 'fjVJpUSaKXk', title: 'Prophetic Chant (Ayayaya)', featuring: 'Nosa', duration: '6:16', hiRes: false },
+  { id: 'pgNueU7ajLk', title: 'The Glory', featuring: 'Outburst Music Group', duration: '8:04', hiRes: true },
+];
+
+export const podcast = {
+  name: 'Endless Life with Emmanuel Iren',
+  tag: 'Official sermons podcast',
+  description:
+    'The official Celebration Church International audio feed: Apostle Emmanuel Iren’s sermons, Bible teachings and messages for Christian living, updated twice weekly.',
+  art: '/images/music/endless-life-podcast.webp',
+  links: [
+    { label: 'Listen on Apple Podcasts', url: 'https://podcasts.apple.com/us/podcast/celebration-church-international/id1482679477' },
+    { label: 'Listen on Spotify', url: 'https://open.spotify.com/show/72UnJcDWdTnhHnYw25mvGS' },
+  ],
+};
+
+/** The ministries' own homes on the web. */
+export const ministryLinks: Record<string, { url: string; label: string }> = {
+  'Celebration Church International': { url: 'https://joincci.org/', label: 'Visit joincci.org' },
+  Manifest: { url: 'https://www.instagram.com/manifestbiblecourse/', label: 'Follow Manifest on Instagram' },
+  Triumph30: { url: 'https://www.youtube.com/@t30devotion', label: 'Watch Triumph30 on YouTube' },
+  Outburst: { url: 'https://www.youtube.com/@outburstmusic4444', label: 'Watch Outburst on YouTube' },
+};
+
+/** A YouTube thumbnail for a video id, at the best size the video has. */
+export const youtubeThumb = (id: string, hiRes = false) => `https://i.ytimg.com/vi/${id}/${hiRes ? 'maxresdefault' : 'hqdefault'}.jpg`;
+export const youtubeWatch = (id: string) => `https://www.youtube.com/watch?v=${id}`;

@@ -13,6 +13,7 @@ import { Eyebrow } from '@/components/ui/Eyebrow';
 import { SectionHeader } from '@/components/ui/SectionHeader';
 import { CTASection } from '@/components/ui/CTASection';
 import { InteractiveTimeline, type TimelineMilestone } from '@/components/ui/InteractiveTimeline';
+import { ministryLinks } from '@/data/media';
 
 const PORTRAIT_HERO = '/images/hero/image copy.webp';
 const ABOUT_IMAGE = '/images/about/image.webp';
@@ -536,19 +537,22 @@ export function AboutPage() {
           <div className="border-t border-white/15">
             {currentExpressions.map((expr, i) => (
               <Reveal key={expr.name}>
-                <div className="grid grid-cols-[2.5rem_1fr] gap-4 sm:gap-8 py-6 border-b border-white/15 group hover:bg-white/5 transition-colors duration-300 px-2 -mx-2 rounded-subtle">
+                <a
+                  href={ministryLinks[expr.name]?.url ?? '/teaching'}
+                  {...(ministryLinks[expr.name] ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  className="grid grid-cols-[2.5rem_1fr] gap-4 sm:gap-8 py-6 border-b border-white/15 group hover:bg-white/5 transition-colors duration-300 px-2 -mx-2 rounded-subtle focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
                   <span className="text-meta text-accent tabular-nums pt-1">
                     0{i + 1}
                   </span>
                   <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2">
-                    <h3 className="font-display text-xl lg:text-2xl leading-tight">
+                    <h3 className="font-display text-xl lg:text-2xl leading-tight transition-colors duration-300 group-hover:text-accent">
                       {expr.name}
                     </h3>
                     <p className="text-sm text-white/55 leading-relaxed max-w-md sm:text-right">
                       {expr.description}
                     </p>
                   </div>
-                </div>
+                </a>
               </Reveal>
             ))}
           </div>
