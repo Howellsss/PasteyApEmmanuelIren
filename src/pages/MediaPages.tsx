@@ -10,6 +10,7 @@ import { PlayBadge, WatchLink } from '@/components/teaching/TeachingSections';
 import { IrensAlbum } from '@/components/media/IrensAlbum';
 import { PhotoViewer } from '@/components/media/PhotoViewer';
 import {
+  BOOK_STORE_URL,
   books,
   galleryPhotos,
   mediaSections,
@@ -107,23 +108,16 @@ function MoreFromMedia({ current }: { current: string }) {
   );
 }
 
-/** A book cover set in type: the books' artwork can replace these when supplied. */
-function BookCover({ book, onNavy, className }: { book: Book; onNavy?: boolean; className?: string }) {
+/** A book's cover, standing on its shelf line: every cover keeps its own shape, bottoms aligned. */
+function BookCover({ book, className }: { book: Book; onNavy?: boolean; className?: string }) {
   return (
-    <div
-      className={cn(
-        'flex aspect-[3/4] flex-col justify-between rounded-soft p-6 shadow-lg shadow-black/30 ring-1 ring-white/5',
-        // On the navy chapter the covers turn ink so they stand off the ground.
-        onNavy ? 'bg-ink' : 'bg-navy',
-        className
-      )}
-    >
-      <span className="text-eyebrow uppercase tracking-[0.2em] text-mist">Emmanuel Iren</span>
-      <div>
-        <span aria-hidden="true" className="mb-4 block h-0.5 w-10 bg-brand" />
-        <p className="font-display text-3xl leading-[1.05] text-cream text-balance">{book.title}</p>
-      </div>
-      <span className="text-eyebrow uppercase tracking-[0.2em] text-accent">{book.theme}</span>
+    <div className={cn('flex aspect-[4/5] items-end justify-center', className)}>
+      <img
+        src={book.cover}
+        alt={`${book.title} by Emmanuel Iren, cover`}
+        loading="lazy"
+        className="max-h-full max-w-full rounded-[3px] object-contain shadow-[0_24px_48px_-12px_rgba(0,0,0,0.65)] ring-1 ring-white/10"
+      />
     </div>
   );
 }
@@ -443,20 +437,32 @@ export function BooksPage() {
           <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
             {books.map((book, index) => (
               <Reveal key={book.title} variant="right" delay={(index % 3) * 120}>
-                <BookCover book={book} className="max-w-[20rem]" />
-                <p className="mt-5 text-eyebrow uppercase tracking-[0.16em] text-accent">{book.theme}</p>
-                <h3 className="mt-1.5 font-display text-2xl text-cream">{book.title}</h3>
-                <p className="mt-2 max-w-sm text-sm leading-relaxed text-ash">{book.description}</p>
+                <a href={book.url} target="_blank" rel="noopener noreferrer" className="group block focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+                  <BookCover book={book} className="max-w-[20rem] transition-transform duration-500 ease-out-quart group-hover:-translate-y-1.5" />
+                  <p className="mt-6 text-eyebrow uppercase tracking-[0.16em] text-accent">{book.theme}</p>
+                  <h3 className="mt-1.5 font-display text-2xl text-cream transition-colors duration-300 group-hover:text-accent">{book.title}</h3>
+                  <p className="mt-2 max-w-sm text-sm leading-relaxed text-ash">{book.description}</p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-cream">
+                    Get the book <ArrowUpRight className="h-4 w-4 text-accent transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </span>
+                </a>
               </Reveal>
             ))}
           </div>
           <Reveal variant="left" className="mt-14 flex flex-col items-start gap-4 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-lg text-ash">For copies, bulk orders for churches and groups, or interviews about the books, get in touch.</p>
-            <Link to="/contact" className="block w-full sm:w-auto">
-              <Button variant="brand" size="lg" withArrow className="h-14 w-full rounded-pill sm:h-auto sm:w-auto">
-                Enquire about the books
-              </Button>
-            </Link>
+            <p className="max-w-lg text-ash">All six books are in the online store. For bulk orders for churches and groups, or interviews about the books, get in touch.</p>
+            <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+              <a href={BOOK_STORE_URL} target="_blank" rel="noopener noreferrer" className="block w-full sm:w-auto">
+                <Button variant="brand" size="lg" withArrow className="h-14 w-full rounded-pill sm:h-auto sm:w-auto">
+                  Visit the store
+                </Button>
+              </a>
+              <Link to="/contact" className="block w-full sm:w-auto">
+                <Button variant="secondary" size="lg" className="h-14 w-full rounded-pill sm:h-auto sm:w-auto">
+                  Bulk orders
+                </Button>
+              </Link>
+            </div>
           </Reveal>
         </div>
       </section>

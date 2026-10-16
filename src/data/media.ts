@@ -72,39 +72,56 @@ export interface Book {
   title: string;
   theme: string;
   description: string;
+  cover: string;
+  /** Where the book is sold: its page in the Flutterwave store. */
+  url: string;
 }
 
-/** His books, as listed on the About page. Covers are set typographically until artwork is supplied. */
+export const BOOK_STORE_URL = 'https://flutterwave.com/store/emmanuelirenbooks';
+
+/** His books, with their covers and store links. */
 export const books: Book[] = [
   {
     title: 'Leading Seeks You',
     theme: 'Leadership',
     description: 'On the call to lead — why leadership is not a title to chase but a responsibility that finds the faithful.',
+    cover: '/images/books/leading-seeks-you.webp',
+    url: BOOK_STORE_URL,
   },
   {
     title: 'Purposefully',
     theme: 'Purpose',
     description: 'On discovering, developing and deploying the purpose God placed in you, one deliberate step at a time.',
+    cover: '/images/books/purposefully.webp',
+    url: BOOK_STORE_URL,
   },
   {
     title: 'Saving Grace',
     theme: 'Grace',
     description: 'On the grace of God that saves and then keeps teaching us how to live.',
+    cover: '/images/books/saving-grace.webp',
+    url: BOOK_STORE_URL,
   },
   {
     title: 'LoveCode',
     theme: 'Love & relationships',
     description: 'On love as God designed it — for friendships, courtship and marriage built to last.',
+    cover: '/images/books/lovecode.webp',
+    url: BOOK_STORE_URL,
   },
   {
     title: 'Am I Being Fooled?',
     theme: 'Discernment',
     description: 'On discernment: learning to tell truth from error in a world full of voices.',
+    cover: '/images/books/am-i-being-fooled.webp',
+    url: BOOK_STORE_URL,
   },
   {
     title: 'Pray Book',
     theme: 'Prayer',
     description: 'A companion for a life of prayer — practical, scriptural and honest about how prayer really works.',
+    cover: '/images/books/pray-book.webp',
+    url: BOOK_STORE_URL,
   },
 ];
 
