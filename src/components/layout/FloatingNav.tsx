@@ -1,8 +1,8 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { ChevronDown, Menu, Volume2, VolumeX, X } from 'lucide-react';
+import { ArrowRight, ChevronDown, Menu, Twitter, Volume2, VolumeX, X, Youtube } from 'lucide-react';
 import { cn } from '@/lib/cn';
-import { mediaSections } from '@/data/media';
+import { CONTACT_EMAIL, mediaSections } from '@/data/media';
 import { toggleHeroSound, useHeroSound } from '@/lib/heroSound';
 
 type NavItem = { label: string; path: string; children?: { label: string; path: string }[] };
@@ -247,53 +247,63 @@ export function FloatingNav() {
         </div>
       </nav>
 
-      {/* Phone menu: a floating card over the blurred page, with the current page highlighted. */}
+      {/* Phone menu: a floating card over the blurred page. Items slide in one after another, the current
+          page carries a gold marker, and Media opens a compact grid of its pages. */}
       <div
         className={cn(
           'fixed inset-0 z-[60] lg:hidden transition-opacity duration-300 ease-out-quart',
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         )}
         aria-hidden={!menuOpen}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site menu"
       >
-        <div className="absolute inset-0 bg-ink/60 backdrop-blur-md" onClick={() => setMenuOpen(false)} />
-        <div className="relative flex h-full flex-col overflow-y-auto px-5 pb-8 pt-5">
+        <div className="absolute inset-0 bg-ink/70 backdrop-blur-xl" onClick={() => setMenuOpen(false)} />
+        <div className="relative flex h-full flex-col overflow-y-auto overscroll-contain px-5 pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-[max(1.25rem,env(safe-area-inset-top))]">
           <div className="flex items-center justify-between">
-            <NavLink to="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
-              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-ink ring-1 ring-white/15">
+            <NavLink to="/" onClick={() => setMenuOpen(false)} className="flex items-center gap-3 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-accent">
+              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-ink ring-1 ring-white/15">
                 <img src="/logo-mark.png" alt="" className="h-5 w-auto" />
               </span>
-              <span className="font-display text-2xl text-cream">
+              <span className="font-display text-[1.375rem] leading-none text-cream">
                 Emmanuel <span className="text-brand">Iren</span>
               </span>
             </NavLink>
             <button
               onClick={() => setMenuOpen(false)}
-              className="flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-ink text-cream transition-colors duration-300 hover:bg-ink-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className="flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-ink/80 text-cream transition-colors duration-300 hover:bg-ink-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               aria-label="Close menu"
             >
-              <X className="h-6 w-6" />
+              <X className={cn('h-6 w-6 transition-transform duration-500 ease-out-quart', menuOpen ? 'rotate-0' : '-rotate-90')} />
             </button>
           </div>
 
           <div
             className={cn(
-              'mt-6 rounded-[2rem] border border-white/10 bg-ink/95 p-3 shadow-2xl shadow-black/50 transition-all duration-500 ease-out-quart',
-              menuOpen ? 'translate-y-0 scale-100' : '-translate-y-2 scale-[0.98]'
+              'mt-6 rounded-[2rem] border border-white/10 bg-ink-2/95 p-2.5 shadow-2xl shadow-black/60 transition-all duration-500 ease-out-quart',
+              menuOpen ? 'translate-y-0 scale-100 opacity-100' : '-translate-y-3 scale-[0.97] opacity-0'
             )}
           >
-            <ul className="space-y-1">
-              {NAV_ITEMS.map((item) => {
+            <ul>
+              {NAV_ITEMS.map((item, index) => {
                 const active = item.path === '/' ? location.pathname === '/' : location.pathname.startsWith(item.path);
                 return (
-                  <li key={item.path}>
-                    <div className={cn('flex items-center rounded-[1.25rem] transition-colors duration-300', active ? 'bg-surface' : 'hover:bg-white/5')}>
+                  <li
+                    key={item.path}
+                    className={cn('transition-all duration-500 ease-out-quart', menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0')}
+                    style={{ transitionDelay: menuOpen ? `${80 + index * 45}ms` : '0ms' }}
+                  >
+                    <div className={cn('relative flex items-center rounded-[1.25rem] transition-colors duration-300', active ? 'bg-surface' : 'active:bg-white/5')}>
+                      {active && <span aria-hidden="true" className="absolute left-0 top-1/2 h-6 w-[3px] -translate-y-1/2 rounded-full bg-brand" />}
                       <NavLink
                         to={item.path}
                         end={item.path === '/'}
                         onClick={() => setMenuOpen(false)}
+                        aria-current={active ? 'page' : undefined}
                         className={cn(
-                          'flex-1 px-6 py-4 text-[1.375rem] transition-colors duration-300 focus:outline-none focus-visible:text-accent',
-                          active ? 'text-cream' : 'text-cream/85'
+                          'flex-1 px-5 py-[0.9rem] text-[1.3125rem] tracking-[-0.01em] transition-colors duration-300 focus:outline-none focus-visible:text-accent',
+                          active ? 'font-medium text-cream' : 'text-cream/80'
                         )}
                       >
                         {item.label}
@@ -304,32 +314,36 @@ export function FloatingNav() {
                           onClick={() => setMobileExpanded((open) => !open)}
                           aria-expanded={mobileExpanded}
                           aria-label={mobileExpanded ? 'Hide media pages' : 'Show media pages'}
-                          className="mr-3 flex h-11 w-11 items-center justify-center rounded-full text-cream/85 transition-colors duration-300 hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+                          className="mr-2 flex h-11 w-11 items-center justify-center rounded-full text-cream/80 transition-colors duration-300 active:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                         >
                           <ChevronDown className={cn('h-6 w-6 transition-transform duration-300', mobileExpanded && 'rotate-180')} />
                         </button>
                       )}
                     </div>
-                    {item.children && mobileExpanded && (
-                      <ul className="mb-2 ml-6 mt-1 border-l border-line pl-4">
-                        {item.children.map((child) => (
-                          <li key={child.path}>
-                            <NavLink
-                              to={child.path}
-                              end
-                              onClick={() => setMenuOpen(false)}
-                              className={({ isActive }) =>
-                                cn(
-                                  'block rounded-xl px-3 py-2.5 text-lg transition-colors duration-300',
-                                  isActive ? 'text-accent' : 'text-ash hover:text-cream'
-                                )
-                              }
-                            >
-                              {child.label}
-                            </NavLink>
-                          </li>
-                        ))}
-                      </ul>
+                    {item.children && (
+                      <div className={cn('grid transition-[grid-template-rows] duration-500 ease-out-quart', mobileExpanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]')}>
+                        {/* "Media" itself opens the overview, so the grid lists the sections: three even rows. */}
+                        <ul className="grid min-h-0 grid-cols-2 gap-1.5 overflow-hidden px-2" aria-hidden={!mobileExpanded}>
+                          {item.children.filter((child) => child.path !== item.path).map((child, childIndex, list) => (
+                            <li key={child.path} className={cn(childIndex < 2 && 'mt-1.5', childIndex >= list.length - 2 && 'mb-2')}>
+                              <NavLink
+                                to={child.path}
+                                end
+                                tabIndex={mobileExpanded ? 0 : -1}
+                                onClick={() => setMenuOpen(false)}
+                                className={({ isActive }) =>
+                                  cn(
+                                    'block rounded-xl border px-3.5 py-2.5 text-[0.9375rem] transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+                                    isActive ? 'border-brand/70 bg-brand/15 text-accent' : 'border-white/[0.06] bg-ink/60 text-ash active:text-cream'
+                                  )
+                                }
+                              >
+                                {child.label}
+                              </NavLink>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     )}
                   </li>
                 );
@@ -338,10 +352,43 @@ export function FloatingNav() {
             <NavLink
               to="/contact"
               onClick={() => setMenuOpen(false)}
-              className="mt-3 block rounded-[1.25rem] bg-brand py-5 text-center text-xl font-semibold text-cream transition-colors duration-300 hover:bg-brand-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              className={cn(
+                'mt-2.5 flex items-center justify-center gap-2 rounded-[1.25rem] bg-brand py-[1.1rem] text-lg font-semibold text-cream transition-all duration-500 ease-out-quart hover:bg-brand-dark focus:outline-none focus-visible:ring-2 focus-visible:ring-accent',
+                menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0'
+              )}
+              style={{ transitionDelay: menuOpen ? `${80 + NAV_ITEMS.length * 45}ms` : '0ms' }}
             >
-              Get in Touch
+              Get in Touch <ArrowRight className="h-5 w-5" />
             </NavLink>
+          </div>
+
+          <div
+            className={cn(
+              'mt-auto flex items-center justify-between gap-4 px-2 pt-8 transition-opacity duration-700',
+              menuOpen ? 'opacity-100' : 'opacity-0'
+            )}
+            style={{ transitionDelay: menuOpen ? '450ms' : '0ms' }}
+          >
+            <a href={`mailto:${CONTACT_EMAIL}`} className="min-w-0 truncate text-sm text-ash transition-colors duration-300 hover:text-cream">
+              {CONTACT_EMAIL}
+            </a>
+            <div className="flex flex-shrink-0 items-center gap-2">
+              {[
+                { href: 'https://www.youtube.com/@pst_iren', label: 'YouTube', Icon: Youtube },
+                { href: 'https://x.com/pst_iren', label: 'X (Twitter)', Icon: Twitter },
+              ].map(({ href, label, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-ash transition-colors duration-300 hover:border-brand hover:text-accent"
+                >
+                  <Icon className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
